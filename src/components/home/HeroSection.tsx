@@ -32,17 +32,19 @@ export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) 
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center px-4 text-center">
-        {/* Logo */}
-        <img
-          src={`${import.meta.env.BASE_URL}los-grisales-logo.webp`}
-          alt="Los Grisales"
-          className="mb-6 h-40 w-40 md:h-52 md:w-52"
-        />
+        {/* Logo with neon glow pulse */}
+        <div className="animate-neon-pulse mb-4">
+          <img
+            src={`${import.meta.env.BASE_URL}los-grisales-logo.webp`}
+            alt="Los Grisales"
+            className="h-52 w-52 drop-shadow-[0_0_25px_rgba(196,169,98,0.4)] md:h-72 md:w-72"
+          />
+        </div>
 
-        {/* Tagline */}
-        <h1 className="font-display mb-8 text-3xl font-bold text-white md:text-5xl">
+        {/* Tagline - subtle below logo */}
+        <p className="font-display mb-8 text-sm tracking-[0.2em] uppercase text-white/60 md:text-base">
           {t('hero.tagline')}
-        </h1>
+        </p>
 
         {/* Action buttons - side by side on all screens */}
         <div className="flex flex-row gap-3">

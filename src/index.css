@@ -11,6 +11,15 @@
   --font-display: "Georgia", serif;
 }
 
+@keyframes neon-pulse {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(196,169,98,0.3)) drop-shadow(0 0 40px rgba(196,169,98,0.15)); }
+  50% { filter: drop-shadow(0 0 30px rgba(196,169,98,0.5)) drop-shadow(0 0 60px rgba(196,169,98,0.25)); }
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
 @keyframes fade-in {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }

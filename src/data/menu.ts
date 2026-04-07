@@ -307,14 +307,14 @@ function buildCategory(id: string, nameEs: string, nameEn: string, emoji: string
 }
 
 export const categories: MenuCategory[] = [
-  buildCategory('tienda', 'Tienda', 'Shop', '🛍️', 'Storefront', 1, tienda),
-  buildCategory('desayunos', 'Desayunos', 'Breakfast', '🍳', 'Egg', 2, desayunos),
-  buildCategory('entradas', 'Entradas', 'Starters', '🧀', 'ForkKnife', 3, entradas),
-  buildCategory('pa-tardear', "Pa' Tardear", 'Afternoon Bites', '🥪', 'SunHorizon', 4, paTardear),
-  buildCategory('postres', 'Postres', 'Desserts', '🍰', 'IceCream', 5, postres),
-  buildCategory('metodos', 'Métodos de Preparación', 'Brew Methods', '☕', 'Funnel', 6, metodos),
-  buildCategory('cafe-caliente', 'Café Caliente', 'Hot Coffee', '☕', 'Coffee', 7, cafeCaliente),
-  buildCategory('cafe-frio', 'Café Frío', 'Iced Coffee', '🧊', 'Snowflake', 8, cafeFrio),
+  buildCategory('cafe-caliente', 'Café Caliente', 'Hot Coffee', '☕', 'Coffee', 1, cafeCaliente),
+  buildCategory('cafe-frio', 'Café Frío', 'Iced Coffee', '🧊', 'Snowflake', 2, cafeFrio),
+  buildCategory('desayunos', 'Desayunos', 'Breakfast', '🍳', 'Egg', 3, desayunos),
+  buildCategory('entradas', 'Entradas', 'Starters', '🧀', 'ForkKnife', 4, entradas),
+  buildCategory('pa-tardear', "Pa' Tardear", 'Afternoon Bites', '🥪', 'SunHorizon', 5, paTardear),
+  buildCategory('postres', 'Postres', 'Desserts', '🍰', 'IceCream', 6, postres),
+  buildCategory('metodos', 'Métodos de Preparación', 'Brew Methods', '☕', 'Funnel', 7, metodos),
+  buildCategory('tienda', 'Tienda', 'Shop', '🛍️', 'Storefront', 8, tienda),
   buildCategory('cocteles-cafe', 'Cócteles de Café', 'Coffee Cocktails', '🍸', 'Martini', 9, coctelesCafe),
   buildCategory('bebidas-calientes', 'Bebidas Calientes', 'Hot Drinks', '🫖', 'TeaBag', 10, bebidasCalientes),
   buildCategory('cocteles-premium', 'Cócteles Premium', 'Premium Cocktails', '🍸', 'Champagne', 11, coctelesPremium),
