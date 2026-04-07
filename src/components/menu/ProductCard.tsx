@@ -37,9 +37,9 @@ export default function ProductCard({ item }: Props) {
 
   return (
     <>
-      <div className="bg-card-bg rounded-xl overflow-hidden h-[280px] flex flex-col text-black">
+      <div className="bg-card-bg rounded-xl overflow-hidden h-[310px] flex flex-col text-black">
         {/* Placeholder image area */}
-        <div className="h-24 bg-[#d4c4b4] flex items-center justify-center">
+        <div className="h-32 bg-[#d4c4b4] flex items-center justify-center">
           <Coffee size={32} className="text-black/30" />
         </div>
 

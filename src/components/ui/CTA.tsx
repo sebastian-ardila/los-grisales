@@ -14,7 +14,7 @@ export default function CTA({ secondaryLabel, secondaryHref }: CTAProps) {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src={`${import.meta.env.BASE_URL}los-grisales.webp`}
+          src={`${import.meta.env.BASE_URL}cta-coffee-farm.webp`}
           alt=""
           className="h-full w-full object-cover"
         />

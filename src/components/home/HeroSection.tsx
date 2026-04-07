@@ -23,7 +23,7 @@ export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) 
       </video>
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/65" />
 
       {/* Blurred black circle - 3x bigger than content */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -37,7 +37,7 @@ export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) 
           <img
             src={`${import.meta.env.BASE_URL}los-grisales-logo.webp`}
             alt="Los Grisales"
-            className="h-52 w-52 drop-shadow-[0_0_25px_rgba(196,169,98,0.4)] md:h-72 md:w-72"
+            className="h-52 w-52 md:h-72 md:w-72"
           />
         </div>
 
@@ -50,7 +50,7 @@ export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) 
         <div className="flex flex-row gap-3">
           <button
             onClick={onViewMenu}
-            className="rounded-xl bg-brand px-6 py-3 text-sm font-bold text-primary transition hover:bg-brand-light sm:px-8 sm:text-base"
+            className="animate-neon-btn rounded-xl bg-brand px-6 py-3 text-sm font-bold text-primary transition hover:bg-brand-light sm:px-8 sm:text-base"
           >
             {t('hero.viewMenu')}
           </button>
