@@ -33,7 +33,7 @@ export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center px-4 text-center">
         {/* Brand name - logo replacement */}
-        <div className="animate-neon-pulse mb-6 flex flex-col items-center leading-none">
+        <div className="animate-neon-text mb-6 flex flex-col items-center leading-none">
           <span className="text-xl tracking-[0.4em] text-brand md:text-3xl" style={{ fontFamily: 'Arial, sans-serif' }}>
             Los
           </span>
