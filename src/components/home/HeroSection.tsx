@@ -9,7 +9,7 @@ export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) 
   const { sedeConfig } = useSede()
 
   return (
-    <section className="relative flex min-h-[100vh] items-center justify-center overflow-hidden">
+    <section className="relative -mt-16 flex h-screen items-center justify-center overflow-hidden">
       {/* Video background */}
       <video
         autoPlay
