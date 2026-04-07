@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "carta": "Carta",
+    "reservas": "Reservas",
+    "horarios": "Horarios",
+    "historia": "Historia",
+    "contacto": "Contacto"
+  },
+  "hero": {
+    "tagline": "Desde el amor a nuestra tierra",
+    "viewMenu": "Ver nuestra carta",
+    "reserveTable": "Reservar mesa",
+    "googleReviews": "Opinar en Google"
+  },
+  "breadcrumb": {
+    "home": "Inicio"
+  },
+  "menu": {
+    "title": "Nuestra Carta",
+    "viewDish": "Ver plato",
+    "add": "Agregar",
+    "consultar": "Consultar",
+    "ingredients": "Ingredientes",
+    "steps": "Preparación",
+    "close": "Cerrar"
+  },
+  "cart": {
+    "title": "Tu pedido",
+    "empty": "Tu carrito está vacío",
+    "continue": "Continuar",
+    "deleteOrder": "Eliminar tu pedido",
+    "back": "Volver",
+    "total": "Total",
+    "viewOrder": "Ver pedido",
+    "items": "productos",
+    "step2Title": "Datos del pedido",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "paymentMethod": "Método de pago",
+    "transfer": "Transferencia",
+    "card": "Tarjeta",
+    "cash": "Efectivo",
+    "orderType": "Tipo de pedido",
+    "dineIn": "En mesa",
+    "delivery": "Domicilio",
+    "address": "Dirección",
+    "addressPlaceholder": "Tu dirección de entrega",
+    "sendWhatsApp": "Enviar pedido por WhatsApp",
+    "completeFields": "Completa los campos requeridos",
+    "whatsappDisabled": "Pedidos por WhatsApp no disponibles en esta sede",
+    "table": "Mesa",
+    "selectTable": "Selecciona mesa",
+    "change": "Cambiar"
+  },
+  "table": {
+    "title": "Selecciona tu mesa",
+    "current": "Actualmente en Mesa",
+    "scanQR": "Escanear código QR",
+    "useCamera": "Usa tu cámara",
+    "removeTable": "Quitar mesa",
+    "assigned": "Mesa asignada",
+    "scanTitle": "Escanear QR",
+    "backToGrid": "Volver",
+    "mesa": "Mesa"
+  },
+  "sede": {
+    "title": "Selecciona tu sede",
+    "subtitle": "¿En cuál sede te encuentras?",
+    "pereiraPlaza": "Pereira Plaza",
+    "unicentro": "Unicentro"
+  },
+  "reservations": {
+    "title": "Reservar mesa",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre completo",
+    "people": "Personas",
+    "date": "Fecha",
+    "selectDate": "Seleccionar fecha",
+    "time": "Hora",
+    "selectDateFirst": "Selecciona una fecha primero",
+    "noSchedule": "No hay horarios disponibles para este día",
+    "closedDay": "No hay servicio este día. Selecciona otra fecha.",
+    "comments": "Comentarios adicionales",
+    "commentsPlaceholder": "Alergias, cumpleaños, preferencias...",
+    "submit": "Enviar reserva por WhatsApp",
+    "completeFields": "Completa los campos requeridos",
+    "morning": "Mañana",
+    "afternoon": "Tarde",
+    "evening": "Noche",
+    "schedule": "Horarios",
+    "location": "Ubicación",
+    "howToGet": "Cómo llegar",
+    "googleMaps": "Google Maps",
+    "waze": "Waze",
+    "appleMaps": "Apple Maps"
+  },
+  "schedule": {
+    "title": "Horarios y Ubicación",
+    "deliveries": "Domicilios a todo Pereira",
+    "reserveTable": "Reservar mesa",
+    "orderWhatsApp": "Pedir por WhatsApp",
+    "howToGet": "Cómo llegar"
+  },
+  "history": {
+    "title": "Nuestra Historia",
+    "p1": "Los Grisales nació del amor profundo por la tierra cafetera colombiana. En las montañas de Risaralda, entre el verde intenso de los cafetales y el aroma inconfundible del café recién tostado, se forjó un sueño familiar.",
+    "p2": "Nuestro café de especialidad proviene de nuestra propia finca, Vista Hermosa, ubicada en la vereda Alto el Toro de Dosquebradas. Allí cultivamos con dedicación cada grano, cuidando cada etapa del proceso para garantizar la más alta calidad.",
+    "p3": "Hoy, Los Grisales es más que un café. Es un espacio donde la tradición cafetera se encuentra con la innovación, donde cada taza cuenta una historia y donde cada visitante se convierte en parte de nuestra familia.",
+    "coffeeTour": "Visita nuestro Coffee Tour en la finca Vista Hermosa y vive la experiencia completa del café de especialidad.",
+    "viewMenu": "Ver nuestra carta"
+  },
+  "contact": {
+    "title": "Contacto",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu@email.com",
+    "phone": "Teléfono (opcional)",
+    "phonePlaceholder": "Tu teléfono",
+    "reason": "Motivo de contacto",
+    "reasonPlaceholder": "Selecciona un motivo",
+    "reasons": {
+      "franchise": "Franquicia",
+      "supplier": "Proveedor",
+      "collaboration": "Colaboración",
+      "events": "Eventos",
+      "birthday": "Cumpleaños",
+      "other": "Otros"
+    },
+    "message": "Mensaje",
+    "messagePlaceholder": "Escribe tu mensaje...",
+    "submit": "Enviar mensaje por WhatsApp",
+    "completeFields": "Completa los campos requeridos"
+  },
+  "cta": {
+    "explore": "¿Quieres explorar más?",
+    "viewMenu": "Ver carta"
+  },
+  "footer": {
+    "schedule": "Horarios",
+    "followUs": "Síguenos",
+    "deliveries": "Domicilios a todo Pereira",
+    "rights": "Todos los derechos reservados",
+    "madeBy": "Sitio web creado por"
+  }
+}

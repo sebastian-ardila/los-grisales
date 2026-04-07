@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #001F0F;
+  --color-primary-light: #002A16;
+  --color-brand: #C4A962;
+  --color-brand-light: #d4be82;
+  --color-accent: #C4A962;
+  --color-card-bg: #e8dace;
+  --color-card-bg-dark: #d4c4b4;
+  --font-display: "Georgia", serif;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+/* Prevent zoom on mobile inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+  font-size: 16px;
+}
+
+/* Scrollbar styling for category bar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Sticky breadcrumb + category bar z-index management */
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: #001F0F;
+  color: white;
+}

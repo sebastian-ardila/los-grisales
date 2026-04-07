@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "carta": "Menu",
+    "reservas": "Reservations",
+    "horarios": "Schedule",
+    "historia": "History",
+    "contacto": "Contact"
+  },
+  "hero": {
+    "tagline": "From the love of our land",
+    "viewMenu": "View our menu",
+    "reserveTable": "Reserve a table",
+    "googleReviews": "Review on Google"
+  },
+  "breadcrumb": {
+    "home": "Home"
+  },
+  "menu": {
+    "title": "Our Menu",
+    "viewDish": "View dish",
+    "add": "Add",
+    "consultar": "Ask price",
+    "ingredients": "Ingredients",
+    "steps": "Preparation",
+    "close": "Close"
+  },
+  "cart": {
+    "title": "Your order",
+    "empty": "Your cart is empty",
+    "continue": "Continue",
+    "deleteOrder": "Delete your order",
+    "back": "Back",
+    "total": "Total",
+    "viewOrder": "View order",
+    "items": "items",
+    "step2Title": "Order details",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "paymentMethod": "Payment method",
+    "transfer": "Transfer",
+    "card": "Card",
+    "cash": "Cash",
+    "orderType": "Order type",
+    "dineIn": "Dine in",
+    "delivery": "Delivery",
+    "address": "Address",
+    "addressPlaceholder": "Your delivery address",
+    "sendWhatsApp": "Send order via WhatsApp",
+    "completeFields": "Please complete all required fields",
+    "whatsappDisabled": "WhatsApp ordering not available at this location",
+    "table": "Table",
+    "selectTable": "Select table",
+    "change": "Change"
+  },
+  "table": {
+    "title": "Select your table",
+    "current": "Currently at Table",
+    "scanQR": "Scan QR code",
+    "useCamera": "Use your camera",
+    "removeTable": "Remove table",
+    "assigned": "Table assigned",
+    "scanTitle": "Scan QR",
+    "backToGrid": "Back",
+    "mesa": "Table"
+  },
+  "sede": {
+    "title": "Select your location",
+    "subtitle": "Which location are you at?",
+    "pereiraPlaza": "Pereira Plaza",
+    "unicentro": "Unicentro"
+  },
+  "reservations": {
+    "title": "Reserve a Table",
+    "name": "Name",
+    "namePlaceholder": "Your full name",
+    "people": "Guests",
+    "date": "Date",
+    "selectDate": "Select date",
+    "time": "Time",
+    "selectDateFirst": "Select a date first",
+    "noSchedule": "No available times for this day",
+    "closedDay": "No service this day. Select another date.",
+    "comments": "Additional comments",
+    "commentsPlaceholder": "Allergies, birthdays, preferences...",
+    "submit": "Send reservation via WhatsApp",
+    "completeFields": "Please complete all required fields",
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "evening": "Evening",
+    "schedule": "Schedule",
+    "location": "Location",
+    "howToGet": "How to get there",
+    "googleMaps": "Google Maps",
+    "waze": "Waze",
+    "appleMaps": "Apple Maps"
+  },
+  "schedule": {
+    "title": "Schedule & Location",
+    "deliveries": "Deliveries across Pereira",
+    "reserveTable": "Reserve a table",
+    "orderWhatsApp": "Order via WhatsApp",
+    "howToGet": "How to get there"
+  },
+  "history": {
+    "title": "Our Story",
+    "p1": "Los Grisales was born from a deep love for the Colombian coffee region. In the mountains of Risaralda, among the lush green coffee plantations and the unmistakable aroma of freshly roasted coffee, a family dream was forged.",
+    "p2": "Our specialty coffee comes from our own farm, Vista Hermosa, located in the Alto el Toro village of Dosquebradas. There we cultivate each bean with dedication, caring for every stage of the process to guarantee the highest quality.",
+    "p3": "Today, Los Grisales is more than a café. It's a space where coffee tradition meets innovation, where every cup tells a story, and where every visitor becomes part of our family.",
+    "coffeeTour": "Visit our Coffee Tour at Vista Hermosa farm and experience the full specialty coffee journey.",
+    "viewMenu": "View our menu"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@email.com",
+    "phone": "Phone (optional)",
+    "phonePlaceholder": "Your phone number",
+    "reason": "Reason for contact",
+    "reasonPlaceholder": "Select a reason",
+    "reasons": {
+      "franchise": "Franchise",
+      "supplier": "Supplier",
+      "collaboration": "Collaboration",
+      "events": "Events",
+      "birthday": "Birthday",
+      "other": "Other"
+    },
+    "message": "Message",
+    "messagePlaceholder": "Write your message...",
+    "submit": "Send message via WhatsApp",
+    "completeFields": "Please complete all required fields"
+  },
+  "cta": {
+    "explore": "Want to explore more?",
+    "viewMenu": "View menu"
+  },
+  "footer": {
+    "schedule": "Schedule",
+    "followUs": "Follow Us",
+    "deliveries": "Deliveries across Pereira",
+    "rights": "All rights reserved",
+    "madeBy": "Website created by"
+  }
+}
