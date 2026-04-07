@@ -1,9 +1,11 @@
 import { useTranslation } from 'react-i18next'
+import { Link, useParams } from 'react-router-dom'
 import { Coffee, Mountains, Tree } from '@phosphor-icons/react'
 import CTA from '../components/ui/CTA'
 
 export default function HistoryPage() {
   const { t, i18n } = useTranslation()
+  const { lang } = useParams()
   const isEn = i18n.language?.startsWith('en')
 
   return (
@@ -43,15 +45,15 @@ export default function HistoryPage() {
       <div className="mt-12 rounded-2xl bg-brand/10 p-6 text-center">
         <Coffee size={40} className="mx-auto mb-3 text-brand" />
         <p className="mb-4 text-white/80">{t('history.coffeeTour')}</p>
-        <a
-          href="#/carta"
+        <Link
+          to={`/${lang}/carta`}
           className="inline-block rounded-xl bg-brand px-8 py-3 font-bold text-primary transition hover:bg-brand-light"
         >
           {t('history.viewMenu')}
-        </a>
+        </Link>
       </div>
 
-      <CTA secondaryLabel={isEn ? 'Reserve' : 'Reservar'} secondaryHref="#/reservas" />
+      <CTA secondaryLabel={isEn ? 'Reserve' : 'Reservar'} secondaryHref="/reservas" />
     </div>
   )
 }

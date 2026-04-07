@@ -1,10 +1,12 @@
 import { useTranslation } from 'react-i18next'
+import { useParams } from 'react-router-dom'
 import { SiGoogle, SiGooglemaps } from 'react-icons/si'
 import { useSede } from '../../context/SedeContext'
 
 export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) {
   const { t, i18n } = useTranslation()
   const isEn = i18n.language?.startsWith('en')
+  const { lang } = useParams()
   const { sedeConfig } = useSede()
 
   return (
@@ -63,7 +65,7 @@ export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) 
             {t('hero.viewMenu')}
           </button>
           <a
-            href="#/reservas"
+            href={`#/${lang}/reservas`}
             className="rounded-xl border-2 border-brand px-6 py-3 text-sm font-bold text-brand transition hover:bg-brand/10 sm:px-8 sm:text-base"
           >
             {t('hero.reserveTable')}

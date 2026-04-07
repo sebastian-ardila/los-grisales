@@ -133,7 +133,7 @@ export default function ContactPage() {
         {tried && !isValid && <p className="text-center text-sm text-white/60">{t('contact.completeFields')}</p>}
       </form>
 
-      <CTA secondaryLabel={isEn ? 'Reserve' : 'Reservar'} secondaryHref="#/reservas" />
+      <CTA secondaryLabel={isEn ? 'Reserve' : 'Reservar'} secondaryHref="/reservas" />
     </div>
   )
 }

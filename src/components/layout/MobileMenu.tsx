@@ -37,7 +37,7 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
           return (
             <NavLink
               key={route.path}
-              to={route.path}
+              to={`/${lang}${route.path}`}
               onClick={onClose}
               className={({ isActive }) =>
                 `flex items-center gap-4 rounded-lg px-4 py-3 text-xl transition ${

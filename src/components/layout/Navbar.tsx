@@ -25,7 +25,7 @@ export default function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-primary">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           {/* Left: Logo */}
-          <Link to="/" className="shrink-0">
+          <Link to={`/${lang}`} className="shrink-0">
             <img
               src={`${import.meta.env.BASE_URL}los-grisales-logo-mini.webp`}
               alt="Los Grisales"
@@ -42,7 +42,7 @@ export default function Navbar() {
               return (
                 <NavLink
                   key={route.path}
-                  to={route.path}
+                  to={`/${lang}${route.path}`}
                   className={({ isActive }) =>
                     `flex items-center gap-1.5 px-3 py-2 text-sm transition ${
                       isActive

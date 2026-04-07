@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 interface CTAProps {
@@ -8,6 +8,7 @@ interface CTAProps {
 
 export default function CTA({ secondaryLabel, secondaryHref }: CTAProps) {
   const { t } = useTranslation()
+  const { lang } = useParams()
 
   return (
     <section className="relative mt-16 overflow-hidden rounded-2xl">
@@ -28,13 +29,13 @@ export default function CTA({ secondaryLabel, secondaryHref }: CTAProps) {
         </p>
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
-            to="/carta"
+            to={`/${lang}/carta`}
             className="w-full rounded-xl bg-brand px-10 py-4 text-lg font-bold text-primary transition hover:bg-brand-light sm:w-auto"
           >
             {t('cta.viewMenu')}
           </Link>
           <Link
-            to={secondaryHref}
+            to={`/${lang}${secondaryHref}`}
             className="w-full rounded-xl border-2 border-brand px-10 py-4 text-lg font-bold text-brand transition hover:bg-brand/10 sm:w-auto"
           >
             {secondaryLabel}

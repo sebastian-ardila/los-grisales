@@ -8,10 +8,13 @@ export default function Breadcrumb() {
   const { t, i18n } = useTranslation()
   const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
 
-  // Don't show breadcrumb on home
-  if (location.pathname === '/' || location.pathname === '' || location.pathname === '/carta') return null
+  // Strip /:lang prefix to get the actual page path
+  const pagePath = location.pathname.replace(/^\/(es|en)/, '') || '/'
 
-  const currentRoute = routes.find((r) => r.path === location.pathname)
+  // Don't show breadcrumb on home or carta
+  if (pagePath === '/' || pagePath === '' || pagePath === '/carta') return null
+
+  const currentRoute = routes.find((r) => r.path === pagePath)
   if (!currentRoute) return null
 
   const Icon = currentRoute.icon

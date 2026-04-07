@@ -294,7 +294,7 @@ export default function ReservationsPage() {
         </div>
       </div>
 
-      <CTA secondaryLabel={isEn ? 'Contact' : 'Contactar'} secondaryHref="#/contacto" />
+      <CTA secondaryLabel={isEn ? 'Contact' : 'Contactar'} secondaryHref="/contacto" />
     </div>
   )
 }

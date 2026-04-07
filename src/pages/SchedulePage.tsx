@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { Link, useParams } from 'react-router-dom'
 import { Clock, MapPin, WhatsappLogo } from '@phosphor-icons/react'
 import { SiGooglemaps, SiWaze, SiApple } from 'react-icons/si'
 import { sedes } from '../config/sedes'
@@ -8,6 +9,7 @@ import CTA from '../components/ui/CTA'
 export default function SchedulePage() {
   const { t, i18n } = useTranslation()
   const isEn = i18n.language?.startsWith('en')
+  const { lang } = useParams()
   const { sedeConfig } = useSede()
   const sedeList = Object.values(sedes)
 
@@ -68,9 +70,9 @@ export default function SchedulePage() {
 
       {/* Action buttons */}
       <div className="mb-10 flex flex-col gap-3 sm:flex-row">
-        <a href="#/reservas" className="flex-1 rounded-xl bg-brand py-3 text-center font-bold text-primary transition hover:bg-brand-light">
+        <Link to={`/${lang}/reservas`} className="flex-1 rounded-xl bg-brand py-3 text-center font-bold text-primary transition hover:bg-brand-light">
           {t('schedule.reserveTable')}
-        </a>
+        </Link>
         {sedeConfig?.whatsappOrderingEnabled && (
           <a href={`https://wa.me/${sedeConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer"
             className="flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-brand py-3 font-bold text-brand transition hover:bg-brand/10">
@@ -80,7 +82,7 @@ export default function SchedulePage() {
         )}
       </div>
 
-      <CTA secondaryLabel={isEn ? 'Reserve' : 'Reservar'} secondaryHref="#/reservas" />
+      <CTA secondaryLabel={isEn ? 'Reserve' : 'Reservar'} secondaryHref="/reservas" />
     </div>
   )
 }
