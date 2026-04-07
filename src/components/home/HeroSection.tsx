@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Star } from '@phosphor-icons/react'
-import { SiGooglemaps } from 'react-icons/si'
+import { SiGoogle, SiGooglemaps } from 'react-icons/si'
 import { useSede } from '../../context/SedeContext'
 
 export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) {
@@ -80,7 +79,7 @@ export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-full border border-white/15 px-3 py-1.5 text-xs text-white/50 transition hover:border-white/30 hover:text-white/70"
             >
-              <Star size={14} weight="fill" className="text-yellow-400/60" />
+              <SiGoogle size={14} className="text-[#4285F4]/70" />
               {t('hero.googleReviews')}
             </a>
           )}
