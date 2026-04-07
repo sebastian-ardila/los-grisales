@@ -74,7 +74,7 @@ export default function ProductCard({ item }: Props) {
                 {t('menu.consultar')}
               </button>
             ) : quantity > 0 ? (
-              <div className="flex-1 flex items-center justify-center gap-2 text-xs py-1.5 rounded-lg bg-primary text-white">
+              <div className="flex-1 flex items-center justify-center gap-3 text-xs py-1.5 px-2 rounded-lg bg-primary text-white">
                 <button
                   onClick={() =>
                     quantity === 1
