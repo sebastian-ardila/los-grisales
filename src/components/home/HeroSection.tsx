@@ -27,7 +27,7 @@ export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) 
 
       {/* Blurred black circle - 3x bigger than content */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="h-[900px] w-[900px] rounded-full bg-black/60 blur-[120px] md:h-[1000px] md:w-[1000px]" />
+        <div className="h-[900px] w-[900px] rounded-full bg-black/70 blur-[120px] md:h-[1000px] md:w-[1000px]" />
       </div>
 
       {/* Content */}

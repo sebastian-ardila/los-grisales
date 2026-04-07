@@ -9,7 +9,7 @@ export default function Breadcrumb() {
   const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
 
   // Don't show breadcrumb on home
-  if (location.pathname === '/' || location.pathname === '') return null
+  if (location.pathname === '/' || location.pathname === '' || location.pathname === '/carta') return null
 
   const currentRoute = routes.find((r) => r.path === location.pathname)
   if (!currentRoute) return null
