@@ -23,26 +23,26 @@ export default function CategoryBar({ categories, activeCategory, onCategoryClic
   const scrollRef = useRef<HTMLDivElement>(null)
   const chipRefs = useRef<Map<string, HTMLButtonElement>>(new Map())
 
-  // Split into rows: we render all row counts and show/hide with CSS
   const rows2 = useMemo(() => splitIntoRows(categories, 2), [categories])
   const rows3 = useMemo(() => splitIntoRows(categories, 3), [categories])
 
+  // Auto-scroll to keep active chip visible
   useEffect(() => {
     if (!activeCategory || !scrollRef.current) return
     const chip = chipRefs.current.get(activeCategory)
     if (!chip) return
 
     const container = scrollRef.current
-    const chipLeft = chip.offsetLeft
-    const chipWidth = chip.offsetWidth
-    const containerWidth = container.clientWidth
-    const scrollLeft = container.scrollLeft
+    const containerRect = container.getBoundingClientRect()
+    const chipRect = chip.getBoundingClientRect()
 
-    if (chipLeft < scrollLeft || chipLeft + chipWidth > scrollLeft + containerWidth) {
-      container.scrollTo({
-        left: chipLeft - containerWidth / 2 + chipWidth / 2,
-        behavior: 'smooth',
-      })
+    // Check if chip is outside the visible scroll area
+    const isOutLeft = chipRect.left < containerRect.left
+    const isOutRight = chipRect.right > containerRect.right
+
+    if (isOutLeft || isOutRight) {
+      const scrollOffset = chipRect.left - containerRect.left - containerRect.width / 2 + chipRect.width / 2
+      container.scrollBy({ left: scrollOffset, behavior: 'smooth' })
     }
   }, [activeCategory])
 
