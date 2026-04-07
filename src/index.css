@@ -9,6 +9,7 @@
   --color-card-bg: #e8dace;
   --color-card-bg-dark: #d4c4b4;
   --font-display: "Georgia", serif;
+  --font-script: "Great Vibes", cursive;
 }
 
 @keyframes neon-pulse {
