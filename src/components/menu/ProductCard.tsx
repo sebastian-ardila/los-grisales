@@ -56,25 +56,18 @@ export default function ProductCard({ item }: Props) {
           </p>
         </div>
 
-        {/* Bottom buttons */}
-        <div className="flex gap-2 p-3 pt-0">
-          <button
-            onClick={() => setShowModal(true)}
-            className={`text-xs py-1.5 rounded-lg border border-primary/20 text-primary hover:bg-primary/10 text-center ${canOrder ? 'flex-1' : 'flex-1'}`}
-          >
-            {t('menu.viewDish')}
-          </button>
-
+        {/* Bottom buttons - stacked on mobile, side by side on desktop */}
+        <div className="flex flex-col gap-1.5 p-3 pt-0 md:flex-row md:gap-2">
           {canOrder && (
             isConsultar ? (
               <button
                 onClick={handleConsultar}
-                className="flex-1 text-xs py-1.5 rounded-lg bg-brand text-primary text-center font-bold"
+                className="w-full text-xs py-1.5 rounded-lg bg-brand text-primary text-center font-bold md:flex-1"
               >
                 {t('menu.consultar')}
               </button>
             ) : quantity > 0 ? (
-              <div className="flex-1 flex items-center justify-center gap-3 text-xs py-1.5 px-2 rounded-lg bg-primary text-white">
+              <div className="w-full flex items-center justify-center gap-3 text-xs py-1.5 px-2 rounded-lg bg-primary text-white md:flex-1">
                 <button
                   onClick={() =>
                     quantity === 1
@@ -96,12 +89,18 @@ export default function ProductCard({ item }: Props) {
             ) : (
               <button
                 onClick={() => addItem(item)}
-                className="flex-1 text-xs py-1.5 rounded-lg bg-primary text-white text-center"
+                className="w-full text-xs py-1.5 rounded-lg bg-primary text-white text-center md:flex-1"
               >
                 {t('menu.add')}
               </button>
             )
           )}
+          <button
+            onClick={() => setShowModal(true)}
+            className="w-full text-xs py-1.5 rounded-lg border border-primary/20 text-primary hover:bg-primary/10 text-center md:flex-1"
+          >
+            {t('menu.viewDish')}
+          </button>
         </div>
       </div>
 
