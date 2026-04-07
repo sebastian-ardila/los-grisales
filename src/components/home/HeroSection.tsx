@@ -43,6 +43,11 @@ export default function HeroSection({ onViewMenu }: { onViewMenu: () => void }) 
           <span className="-mt-1 text-base tracking-[0.3em] uppercase text-brand md:text-xl">
             Café &amp; Bar
           </span>
+          {sedeConfig && (
+            <span className="mt-2 text-[10px] tracking-[0.2em] uppercase text-white/30 md:text-xs">
+              Sede {sedeConfig.nameShort}
+            </span>
+          )}
         </div>
 
         {/* Tagline - subtle below */}
