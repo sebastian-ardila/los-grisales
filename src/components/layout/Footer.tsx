@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { InstagramLogo, WhatsappLogo } from '@phosphor-icons/react'
+import { InstagramLogo, FacebookLogo, TiktokLogo, WhatsappLogo } from '@phosphor-icons/react'
 import { sedes } from '../../config/sedes'
 
 export default function Footer() {
@@ -20,9 +20,12 @@ export default function Footer() {
           />
           <h3 className="text-lg font-bold">Los Grisales</h3>
           <p className="text-sm text-white/60">cafe &amp; bar</p>
-          <div className="mt-4 space-y-1 text-sm text-white/70">
+          <div className="mt-4 space-y-2 text-sm text-white/70">
             {sedeList.map((sede) => (
-              <p key={sede.id}>{sede.address}</p>
+              <div key={sede.id}>
+                <p className="text-xs font-semibold uppercase tracking-wide text-brand/80">{sede.nameShort}</p>
+                <p>{sede.address}</p>
+              </div>
             ))}
           </div>
           <p className="mt-3 text-sm font-medium text-brand">
@@ -64,6 +67,24 @@ export default function Footer() {
             >
               <InstagramLogo size={22} />
               <span>@losgrisalescafe_bar</span>
+            </a>
+            <a
+              href="https://www.facebook.com/people/Caf%C3%A9-Los-Grisales-Coffee-Tour/61551417734035/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 text-sm text-white/70 transition hover:text-white"
+            >
+              <FacebookLogo size={22} />
+              <span>Café Los Grisales Coffee Tour</span>
+            </a>
+            <a
+              href="https://www.tiktok.com/@cafelosgrisales00"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 text-sm text-white/70 transition hover:text-white"
+            >
+              <TiktokLogo size={22} />
+              <span>@cafelosgrisales00</span>
             </a>
             <a
               href={`https://wa.me/${sedeList[0]?.whatsappNumber}`}

@@ -33,11 +33,12 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
         {menuRoutes.map((route) => {
           const Icon = route.icon
           const label = lang === 'en' ? route.nameEn : route.nameEs
-          const tKey = `nav.${route.path.replace('/', '')}` as const
+          const tKey = route.path === '/' ? 'nav.home' : `nav.${route.path.replace('/', '')}`
           return (
             <NavLink
               key={route.path}
               to={`/${lang}${route.path}`}
+              end={route.path === '/'}
               onClick={onClose}
               className={({ isActive }) =>
                 `flex items-center gap-4 rounded-lg px-4 py-3 text-xl transition ${

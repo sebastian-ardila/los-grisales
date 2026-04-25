@@ -5,6 +5,7 @@ import CategorySection from './CategorySection'
 import { useTranslation } from 'react-i18next'
 
 const NAVBAR_HEIGHT = 64
+const BREADCRUMB_HEIGHT = 36
 
 export default function MenuSection() {
   const { t } = useTranslation()
@@ -13,11 +14,10 @@ export default function MenuSection() {
   const sectionRefs = useRef<Map<string, HTMLDivElement>>(new Map())
   const containerRef = useRef<HTMLDivElement>(null)
   const categoryBarRef = useRef<HTMLDivElement>(null)
-  const visibleSections = useRef<Map<string, number>>(new Map())
 
   const getOffset = useCallback(() => {
     const barHeight = categoryBarRef.current?.offsetHeight || 80
-    return NAVBAR_HEIGHT + barHeight + 16
+    return NAVBAR_HEIGHT + BREADCRUMB_HEIGHT + barHeight + 16
   }, [])
 
   const setSectionRef = useCallback((id: string, el: HTMLDivElement | null) => {
@@ -46,85 +46,63 @@ export default function MenuSection() {
   }, [getOffset])
 
   useEffect(() => {
-    const sections = Array.from(sectionRefs.current.values())
-    if (sections.length === 0) return
+    let raf = 0
 
-    const observerRootMargin = () => {
-      const barHeight = categoryBarRef.current?.offsetHeight || 80
-      const topInset = NAVBAR_HEIGHT + barHeight
-      return `-${topInset}px 0px -20% 0px`
-    }
+    const update = () => {
+      if (isScrolling.current) return
+      const offset = getOffset()
+      const ordered = allCategories
+        .map((cat) => ({ id: cat.id, el: sectionRefs.current.get(cat.id) }))
+        .filter((s): s is { id: string; el: HTMLDivElement } => Boolean(s.el))
+      if (ordered.length === 0) return
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (isScrolling.current) return
-
-        for (const entry of entries) {
-          const id = entry.target.getAttribute('id')
-          if (!id) continue
-          if (entry.isIntersecting) {
-            visibleSections.current.set(id, entry.intersectionRatio)
-          } else {
-            visibleSections.current.delete(id)
-          }
+      // Pick the last section whose top has scrolled past the offset point.
+      // If we haven't reached the first one yet, fall back to the first (or none if still way above).
+      let activeId = ''
+      const firstTop = ordered[0].el.getBoundingClientRect().top
+      if (firstTop - offset > 8) {
+        // still above the menu — no active category yet
+        activeId = ''
+      } else {
+        activeId = ordered[0].id
+        for (const s of ordered) {
+          const top = s.el.getBoundingClientRect().top
+          if (top - offset <= 8) activeId = s.id
+          else break
         }
-
-        if (visibleSections.current.size === 0) {
-          setActiveCategory('')
-          return
-        }
-
-        let bestId = ''
-        let bestRatio = 0
-        for (const [id, ratio] of visibleSections.current) {
-          if (ratio > bestRatio) {
-            bestRatio = ratio
-            bestId = id
-          }
-        }
-
-        // If ratios are similar, prefer topmost section
-        if (bestRatio < 0.1) {
-          const offset = getOffset()
-          let topMostId = ''
-          let topMostDist = Infinity
-          for (const [id] of visibleSections.current) {
-            const el = sectionRefs.current.get(id)
-            if (!el) continue
-            const dist = Math.abs(el.getBoundingClientRect().top - offset)
-            if (dist < topMostDist) {
-              topMostDist = dist
-              topMostId = id
-            }
-          }
-          if (topMostId) bestId = topMostId
-        }
-
-        if (bestId) setActiveCategory(bestId)
-      },
-      {
-        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
-        rootMargin: observerRootMargin(),
       }
-    )
 
-    for (const el of sections) {
-      observer.observe(el)
+      setActiveCategory((prev) => (prev === activeId ? prev : activeId))
     }
+
+    const onScroll = () => {
+      if (raf) cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
 
     return () => {
-      observer.disconnect()
-      visibleSections.current.clear()
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (raf) cancelAnimationFrame(raf)
     }
   }, [getOffset])
 
   return (
     <section ref={containerRef} className="py-8">
-      <h2 className="text-3xl font-bold text-brand text-center mb-6 px-4">
-        {t('menu.title')}
-      </h2>
+      <header className="mb-6 px-4 text-center">
+        <span className="text-[11px] font-semibold uppercase tracking-[0.4em] text-brand">
+          {t('menu.title')}
+        </span>
+        <h2 className="font-display mt-2 text-3xl font-bold leading-tight text-white md:text-4xl">
+          {t('menu.title')}
+        </h2>
+      </header>
 
-      <div ref={categoryBarRef} className="sticky top-16 z-30">
+      <div ref={categoryBarRef} className="sticky top-[100px] z-30">
         <CategoryBar
           categories={allCategories}
           activeCategory={activeCategory}

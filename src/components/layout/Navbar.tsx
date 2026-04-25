@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Link } from 'react-router-dom'
-import { ShoppingCart, List, MapPin } from '@phosphor-icons/react'
+import { ShoppingCart, List } from '@phosphor-icons/react'
 import { MdTableRestaurant } from 'react-icons/md'
 import { useTranslation } from 'react-i18next'
 import { routes } from '../../config/routes'
@@ -15,8 +15,9 @@ export default function Navbar() {
   const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
   const { tableNumber, hasTable, setShowTableModal } = useTable()
   const { itemCount, setIsCartOpen } = useCart()
-  const { sedeConfig, setShowSelector } = useSede()
+  const { sedeConfig } = useSede()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [logoAnimKey, setLogoAnimKey] = useState(0)
 
   const menuRoutes = routes.filter((r) => r.showInMenu)
 
@@ -25,12 +26,21 @@ export default function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-primary">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           {/* Left: Logo */}
-          <Link to={`/${lang}`} className="shrink-0">
+          <Link to={`/${lang}`} className="relative inline-block shrink-0" onClick={() => setLogoAnimKey(k => k + 1)}>
             <img
-              src={`${import.meta.env.BASE_URL}los-grisales-logo-mini.webp`}
+              src={`${import.meta.env.BASE_URL}grisales-mini.webp`}
               alt="Los Grisales"
-              className="h-10"
+              className="block h-10 w-auto"
             />
+            {logoAnimKey > 0 && (
+              <img
+                key={logoAnimKey}
+                src={`${import.meta.env.BASE_URL}grisales-mini.webp`}
+                alt=""
+                aria-hidden="true"
+                className="animate-logo-wipe pointer-events-none absolute inset-0 block h-10 w-auto [filter:brightness(0)_invert(1)]"
+              />
+            )}
           </Link>
 
           {/* Center: Desktop nav links */}
@@ -38,11 +48,12 @@ export default function Navbar() {
             {menuRoutes.map((route) => {
               const Icon = route.icon
               const label = lang === 'en' ? route.nameEn : route.nameEs
-              const tKey = `nav.${route.path.replace('/', '')}` as const
+              const tKey = route.path === '/' ? 'nav.home' : `nav.${route.path.replace('/', '')}`
               return (
                 <NavLink
                   key={route.path}
                   to={`/${lang}${route.path}`}
+                  end={route.path === '/'}
                   className={({ isActive }) =>
                     `flex items-center gap-1.5 px-3 py-2 text-sm transition ${
                       isActive
@@ -60,15 +71,6 @@ export default function Navbar() {
 
           {/* Right group */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Sede badge */}
-            <button
-              onClick={() => setShowSelector(true)}
-              className="flex items-center gap-1 rounded-full bg-white/10 px-2 py-1 text-[11px] text-white/80 transition hover:bg-white/20 sm:text-xs"
-            >
-              <MapPin size={14} className="text-brand" />
-              <span className="max-w-[80px] truncate">{sedeConfig?.nameShort || 'Sede'}</span>
-            </button>
-
             {/* Table badge - only for sedes with ordering */}
             {sedeConfig?.whatsappOrderingEnabled && (
               <button

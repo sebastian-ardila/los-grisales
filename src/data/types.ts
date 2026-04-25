@@ -1,4 +1,13 @@
-export type SedeId = 'pereira-plaza' | 'unicentro'
+export type SedeId = 'pereira-plaza' | 'unicentro' | 'coffee-tour'
+
+export type BookingAppIcon = 'airbnb' | 'getyourguide' | 'tripadvisor' | 'viator'
+
+export interface BookingApp {
+  name: string
+  url: string
+  brandColor?: string
+  iconKey?: BookingAppIcon
+}
 
 export interface MenuItem {
   id: string
@@ -10,6 +19,7 @@ export interface MenuItem {
   steps?: string[]
   isVegetarian: boolean
   categoryId: string
+  image?: string
 }
 
 export interface MenuCategory {
@@ -37,6 +47,9 @@ export interface SedeConfig {
   googleReviewsUrl: string
   schedule: DaySchedule[]
   tableCount: number
+  isCoffeeTour?: boolean
+  bookingApps?: BookingApp[]
+  heroImage?: string
 }
 
 export interface DaySchedule {

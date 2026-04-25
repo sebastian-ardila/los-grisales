@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+button:not(:disabled),
+[role="button"]:not(:disabled),
+a[href],
+label[for],
+summary,
+select:not(:disabled),
+[type="submit"]:not(:disabled),
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled) {
+  cursor: pointer;
+}
+
 @theme {
   --color-primary: #001F0F;
   --color-primary-light: #002A16;
@@ -64,6 +76,15 @@
 
 .animate-slide-up {
   animation: slide-up 0.3s ease-out;
+}
+
+@keyframes logo-wipe {
+  from { clip-path: inset(0 0 0 0); }
+  to { clip-path: inset(0 0 0 100%); }
+}
+
+.animate-logo-wipe {
+  animation: logo-wipe 0.8s ease-out forwards;
 }
 
 /* Prevent zoom on mobile inputs */

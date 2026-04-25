@@ -1,8 +1,8 @@
 {
   "nav": {
+    "home": "Home",
     "carta": "Carta",
-    "reservas": "Reservas",
-    "horarios": "Horarios",
+    "reservas": "Visítanos",
     "historia": "Historia",
     "contacto": "Contacto"
   },
@@ -95,18 +95,43 @@
     "appleMaps": "Apple Maps"
   },
   "schedule": {
-    "title": "Horarios y Ubicación",
+    "title": "Visítanos y Reserva",
+    "subtitle": "Tres formas de vivir Los Grisales — escoge cómo, dónde y cuándo",
     "deliveries": "Domicilios a todo Pereira",
     "reserveTable": "Reservar mesa",
     "orderWhatsApp": "Pedir por WhatsApp",
-    "howToGet": "Cómo llegar"
+    "howToGet": "Cómo llegar",
+    "address": "Dirección",
+    "hours": "Horario",
+    "bookOn": "Reserva en",
+    "cafeBar": "Café Bar",
+    "experience": "Experiencia",
+    "selectThisSede": "Seleccionar esta ubicación"
   },
   "history": {
-    "title": "Nuestra Historia",
-    "p1": "Los Grisales nació del amor profundo por la tierra cafetera colombiana. En las montañas de Risaralda, entre el verde intenso de los cafetales y el aroma inconfundible del café recién tostado, se forjó un sueño familiar.",
-    "p2": "Nuestro café de especialidad proviene de nuestra propia finca, Vista Hermosa, ubicada en la vereda Alto el Toro de Dosquebradas. Allí cultivamos con dedicación cada grano, cuidando cada etapa del proceso para garantizar la más alta calidad.",
-    "p3": "Hoy, Los Grisales es más que un café. Es un espacio donde la tradición cafetera se encuentra con la innovación, donde cada taza cuenta una historia y donde cada visitante se convierte en parte de nuestra familia.",
-    "coffeeTour": "Visita nuestro Coffee Tour en la finca Vista Hermosa y vive la experiencia completa del café de especialidad.",
+    "title": "Café Los Grisales",
+    "subtitle": "Desde el amor a nuestra tierra",
+    "lema": "Café Los Grisales, desde el amor a nuestra tierra",
+    "section1": {
+      "kicker": "Nuestro origen",
+      "title": "Una familia, una finca, un café",
+      "p1": "Café Los Grisales nace del amor por la tierra, la tradición y el deseo de compartir el verdadero origen del café colombiano. Somos una marca familiar que ha construido su camino desde la finca, cultivando café de especialidad con dedicación, respeto por el entorno y compromiso con la calidad en cada etapa del proceso.",
+      "p2": "Nuestro café de especialidad se cultiva en la Finca Vista Hermosa, vereda Alto del Toro, rodeada de las montañas risaraldenses y cerca de las emblemáticas Piedras Marcadas en Dosquebradas. Allí, cada grano cuenta una historia: desde la siembra y la cosecha manual, hasta su transformación a través de procesos cuidadosamente seleccionados como el lavado, honey y natural, que resaltan perfiles de sabor únicos y auténticos."
+    },
+    "section2": {
+      "kicker": "De la semilla a la taza",
+      "title": "Trazabilidad y calidez en Pereira",
+      "p1": "Creemos en la transparencia y en la conexión directa con quienes disfrutan nuestro café. Por eso, en Café Los Grisales no sólo ofrecemos un producto, sino una experiencia completa de trazabilidad, donde cada cliente puede conocer el recorrido del café desde la semilla hasta la taza. Este enfoque nos permite garantizar calidad, identidad y un vínculo real con nuestro origen.",
+      "p2": "Te llevamos el sabor de la Finca Vista Hermosa hasta el corazón de Pereira. Hoy contamos con dos puntos de venta tipo café bar: uno en el Centro Comercial Pereira Plaza y otro en Unicentro, donde podrás disfrutar de bebidas preparadas con nuestro propio café de especialidad, explorar diferentes métodos de preparación y llevarte a casa una bolsa de café procesada por nuestra familia. En cada visita encontrarás la misma calidez de nuestra finca: atención cercana, conocimiento real y un café con nombre, historia y origen garantizado."
+    },
+    "section3": {
+      "kicker": "Vive la experiencia",
+      "title": "Coffee Tour en la Finca Vista Hermosa",
+      "p1": "Si buscas más que una taza de café, si deseas conectar con el café de una manera auténtica, te invitamos a vivir nuestra experiencia más especial: el Coffee Tour en la Finca Vista Hermosa. Recorre nuestros cafetales, aprende a reconocer la cereza en su punto exacto de cosecha, conoce los procesos honey, natural y lavado, y termina el recorrido con una degustación del café que acabas de ver nacer. La familia Grisales te espera."
+    },
+    "tagline": "Un solo café.",
+    "taglineAccent": "Tres formas de vivirlo.",
+    "coffeeTour": "Reserva tu Coffee Tour y vive el café de especialidad desde el origen.",
     "viewMenu": "Ver nuestra carta"
   },
   "contact": {

@@ -15,7 +15,7 @@ const SedeContext = createContext<SedeContextValue | null>(null)
 export function SedeProvider({ children }: { children: ReactNode }) {
   const [sedeId, setSedeId] = useState<SedeId | null>(() => {
     const saved = localStorage.getItem('los-grisales-sede')
-    if (saved === 'pereira-plaza' || saved === 'unicentro') return saved
+    if (saved === 'pereira-plaza' || saved === 'unicentro' || saved === 'coffee-tour') return saved
     return null
   })
   const [showSelector, setShowSelector] = useState(false)

@@ -106,3 +106,33 @@ export function buildConsultarUrl(itemName: string, phone: string): string {
   const text = encodeURIComponent(`Hola, quisiera consultar el precio de: *${itemName}*`)
   return `https://wa.me/${phone}?text=${text}`
 }
+
+export function buildCoffeeTourWhatsAppUrl(params: {
+  name: string
+  people: number
+  date: string
+  preferredTime: string
+  comments: string
+  phone: string
+}): string {
+  const { name, people, date, preferredTime, comments, phone } = params
+
+  const lines = [
+    `🌿 *Reserva Coffee Tour - Finca Vista Hermosa*`,
+    '',
+    `👤 ${name}`,
+    `👥 ${people} ${people === 1 ? 'persona' : 'personas'}`,
+    `📅 ${date}`,
+  ]
+
+  if (preferredTime.trim()) {
+    lines.push(`🕐 ${preferredTime}`)
+  }
+
+  if (comments.trim()) {
+    lines.push(`💬 ${comments}`)
+  }
+
+  const text = encodeURIComponent(lines.join('\n'))
+  return `https://wa.me/${phone}?text=${text}`
+}

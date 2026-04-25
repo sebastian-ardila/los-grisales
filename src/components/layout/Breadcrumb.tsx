@@ -11,8 +11,8 @@ export default function Breadcrumb() {
   // Strip /:lang prefix to get the actual page path
   const pagePath = location.pathname.replace(/^\/(es|en)/, '') || '/'
 
-  // Don't show breadcrumb on home or carta
-  if (pagePath === '/' || pagePath === '' || pagePath === '/carta') return null
+  // Don't show breadcrumb on home
+  if (pagePath === '/' || pagePath === '') return null
 
   const currentRoute = routes.find((r) => r.path === pagePath)
   if (!currentRoute) return null

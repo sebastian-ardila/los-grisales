@@ -1,8 +1,8 @@
 {
   "nav": {
+    "home": "Home",
     "carta": "Menu",
-    "reservas": "Reservations",
-    "horarios": "Schedule",
+    "reservas": "Visit Us",
     "historia": "History",
     "contacto": "Contact"
   },
@@ -95,18 +95,43 @@
     "appleMaps": "Apple Maps"
   },
   "schedule": {
-    "title": "Schedule & Location",
+    "title": "Visit & Reserve",
+    "subtitle": "Three ways to experience Los Grisales — pick how, where and when",
     "deliveries": "Deliveries across Pereira",
     "reserveTable": "Reserve a table",
     "orderWhatsApp": "Order via WhatsApp",
-    "howToGet": "How to get there"
+    "howToGet": "How to get there",
+    "address": "Address",
+    "hours": "Hours",
+    "bookOn": "Book on",
+    "cafeBar": "Café Bar",
+    "experience": "Experience",
+    "selectThisSede": "Select this location"
   },
   "history": {
-    "title": "Our Story",
-    "p1": "Los Grisales was born from a deep love for the Colombian coffee region. In the mountains of Risaralda, among the lush green coffee plantations and the unmistakable aroma of freshly roasted coffee, a family dream was forged.",
-    "p2": "Our specialty coffee comes from our own farm, Vista Hermosa, located in the Alto el Toro village of Dosquebradas. There we cultivate each bean with dedication, caring for every stage of the process to guarantee the highest quality.",
-    "p3": "Today, Los Grisales is more than a café. It's a space where coffee tradition meets innovation, where every cup tells a story, and where every visitor becomes part of our family.",
-    "coffeeTour": "Visit our Coffee Tour at Vista Hermosa farm and experience the full specialty coffee journey.",
+    "title": "Café Los Grisales",
+    "subtitle": "From our love for the land",
+    "lema": "Café Los Grisales, from our love for the land",
+    "section1": {
+      "kicker": "Our origin",
+      "title": "One family, one farm, one coffee",
+      "p1": "Café Los Grisales was born from a love for the land, tradition, and the desire to share the true origin of Colombian coffee. We are a family brand that has built its path from the farm itself, growing specialty coffee with dedication, respect for the environment, and a commitment to quality at every stage of the process.",
+      "p2": "Our specialty coffee is grown at Finca Vista Hermosa, in the Alto del Toro village, surrounded by the mountains of Risaralda and near the iconic Piedras Marcadas in Dosquebradas. There, every bean tells a story: from planting and manual harvesting to its transformation through carefully selected washed, honey, and natural processes that bring out unique, authentic flavor profiles."
+    },
+    "section2": {
+      "kicker": "From seed to cup",
+      "title": "Traceability and warmth in Pereira",
+      "p1": "We believe in transparency and in a direct connection with those who enjoy our coffee. That's why at Café Los Grisales we don't just offer a product, we offer a full traceability experience, where every customer can follow the journey of the coffee from seed to cup. This approach allows us to guarantee quality, identity, and a real link to our origin.",
+      "p2": "We bring the flavor of Finca Vista Hermosa to the heart of Pereira. Today we have two café-bar locations: one at Centro Comercial Pereira Plaza and another at Unicentro, where you can enjoy drinks prepared with our own specialty coffee, explore different brewing methods, and take home a bag of coffee processed by our family. On every visit you'll find the same warmth of our farm: close attention, real knowledge, and coffee with name, story, and guaranteed origin."
+    },
+    "section3": {
+      "kicker": "Live the experience",
+      "title": "Coffee Tour at Finca Vista Hermosa",
+      "p1": "If you're looking for more than a cup of coffee, if you want to connect with coffee in an authentic way, we invite you to live our most special experience: the Coffee Tour at Finca Vista Hermosa. Walk through our coffee fields, learn to spot the cherry at its perfect ripeness, discover the honey, natural, and washed processes, and end the tour with a tasting of the coffee you've just seen come to life. The Grisales family is waiting for you."
+    },
+    "tagline": "One coffee.",
+    "taglineAccent": "Three ways to live it.",
+    "coffeeTour": "Book your Coffee Tour and experience specialty coffee from the source.",
     "viewMenu": "View our menu"
   },
   "contact": {
