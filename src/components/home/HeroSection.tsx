@@ -28,9 +28,9 @@ export default function HeroSection() {
       </video>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/72" />
+      <div className="absolute inset-0 bg-black/65" />
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="h-[900px] w-[900px] rounded-full bg-black/78 blur-[140px] md:h-[1100px] md:w-[1100px]" />
+        <div className="h-[900px] w-[900px] rounded-full bg-black/70 blur-[140px] md:h-[1100px] md:w-[1100px]" />
       </div>
 
       {/* Top spacer compensates the -mt-16 navbar offset */}
