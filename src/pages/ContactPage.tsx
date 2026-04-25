@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Storefront, Truck, Handshake, Confetti, Cake, DotsThreeOutline, Check } from '@phosphor-icons/react'
 import { useSede } from '../context/SedeContext'
 import { buildContactWhatsAppUrl } from '../utils/whatsapp'
 import CTA from '../components/ui/CTA'
@@ -17,12 +18,12 @@ export default function ContactPage() {
   const [tried, setTried] = useState(false)
 
   const reasons = [
-    { value: 'franchise', label: t('contact.reasons.franchise') },
-    { value: 'supplier', label: t('contact.reasons.supplier') },
-    { value: 'collaboration', label: t('contact.reasons.collaboration') },
-    { value: 'events', label: t('contact.reasons.events') },
-    { value: 'birthday', label: t('contact.reasons.birthday') },
-    { value: 'other', label: t('contact.reasons.other') },
+    { value: 'franchise', label: t('contact.reasons.franchise'), icon: Storefront },
+    { value: 'supplier', label: t('contact.reasons.supplier'), icon: Truck },
+    { value: 'collaboration', label: t('contact.reasons.collaboration'), icon: Handshake },
+    { value: 'events', label: t('contact.reasons.events'), icon: Confetti },
+    { value: 'birthday', label: t('contact.reasons.birthday'), icon: Cake },
+    { value: 'other', label: t('contact.reasons.other'), icon: DotsThreeOutline },
   ]
 
   const isValid = name.trim() !== '' && email.trim() !== '' && reason !== '' && message.trim() !== ''
@@ -89,23 +90,38 @@ export default function ContactPage() {
           />
         </div>
 
-        {/* Reason */}
+        {/* Reason — selectable buttons with icons */}
         <div>
-          <label className={`mb-1 block text-sm font-medium ${tried && !reason ? 'text-white/60' : 'text-white/70'}`}>
+          <label className={`mb-2 block text-sm font-medium ${tried && !reason ? 'text-white/60' : 'text-white/70'}`}>
             {t('contact.reason')}
           </label>
-          <select
-            value={reason} onChange={(e) => setReason(e.target.value)}
-            className={`w-full rounded-xl bg-white/10 px-4 py-3 text-[16px] text-white outline-none transition ${
-              tried && !reason ? 'ring-2 ring-white/60' : 'focus:ring-2 focus:ring-brand'
-            } ${!reason ? 'text-white/30' : ''}`}
-          >
-            <option value="" className="bg-primary">{t('contact.reasonPlaceholder')}</option>
-            {reasons.map(r => (
-              <option key={r.value} value={r.value} className="bg-primary">{r.label}</option>
-            ))}
-          </select>
-          {tried && !reason && <p className="mt-1 text-xs text-white/60">{isEn ? 'Reason is required' : 'El motivo es requerido'}</p>}
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+            {reasons.map((r) => {
+              const RIcon = r.icon
+              const active = reason === r.value
+              return (
+                <button
+                  key={r.value}
+                  type="button"
+                  onClick={() => setReason(r.value)}
+                  className={`group/r relative flex items-center gap-2 rounded-xl border px-3 py-2.5 text-left text-sm transition ${
+                    active
+                      ? 'border-brand bg-brand/15 text-white shadow-[0_8px_24px_-12px_rgba(196,169,98,0.5)]'
+                      : tried && !reason
+                        ? 'border-white/40 bg-white/5 text-white/80 hover:border-brand/40 hover:bg-white/10'
+                        : 'border-white/15 bg-white/5 text-white/80 hover:border-brand/40 hover:bg-white/10'
+                  }`}
+                >
+                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${active ? 'bg-brand/25 text-brand' : 'bg-white/10 text-white/70'}`}>
+                    <RIcon size={16} weight="duotone" />
+                  </span>
+                  <span className="flex-1 truncate font-medium">{r.label}</span>
+                  {active && <Check size={14} weight="bold" className="shrink-0 text-brand" />}
+                </button>
+              )
+            })}
+          </div>
+          {tried && !reason && <p className="mt-2 text-xs text-white/60">{isEn ? 'Reason is required' : 'El motivo es requerido'}</p>}
         </div>
 
         {/* Message */}

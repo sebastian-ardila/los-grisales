@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Outlet, useParams } from 'react-router-dom'
+import { Outlet, useParams, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Navbar from './Navbar'
 import Breadcrumb from './Breadcrumb'
@@ -17,6 +17,7 @@ export default function Layout() {
   const { showTableModal, setShowTableModal } = useTable()
   const { isCartOpen } = useCart()
   const { lang } = useParams()
+  const { pathname } = useLocation()
   const { i18n } = useTranslation()
 
   // Sync i18n language with URL param
@@ -27,6 +28,11 @@ export default function Layout() {
       }
     }
   }, [lang, i18n])
+
+  // Scroll to top on every route change
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
+  }, [pathname])
 
   return (
     <div className="flex min-h-screen flex-col">

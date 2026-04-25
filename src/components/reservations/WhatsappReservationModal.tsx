@@ -185,33 +185,37 @@ export default function WhatsappReservationModal({ open, onClose, mode, sede, is
           </div>
 
           <div>
-            <label className={`mb-1 block text-sm font-medium ${tried && !dateValid ? 'text-white/60' : 'text-white/70'}`}>
+            <label htmlFor="reservation-date" className={`mb-1 block text-sm font-medium ${tried && !dateValid ? 'text-white/60' : 'text-white/70'}`}>
               {isEn ? 'Date' : 'Fecha'}
             </label>
-            <input
-              ref={dateInputRef}
-              type="date"
-              value={date}
-              min={today}
-              onChange={(e) => handleDateChange(e.target.value)}
-              className="sr-only"
-            />
-            <button
-              type="button"
-              onClick={() => dateInputRef.current?.showPicker()}
-              className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition ${
-                isClosed
-                  ? 'border-2 border-white/60 bg-white/10'
-                  : tried && !dateValid
-                    ? 'bg-white/10 ring-2 ring-white/60'
-                    : 'bg-white/10 hover:bg-white/15'
-              }`}
-            >
-              <CalendarDots size={20} className="text-brand" />
-              <span className={date ? 'text-white' : 'text-white/30'}>
-                {date ? formatDate(date) : (isEn ? 'Select date' : 'Seleccionar fecha')}
-              </span>
-            </button>
+            <div className="relative">
+              {/* Native date input — full size, transparent on top so taps always open the OS picker (iOS, Android, desktop) */}
+              <input
+                ref={dateInputRef}
+                id="reservation-date"
+                type="date"
+                value={date}
+                min={today}
+                onChange={(e) => handleDateChange(e.target.value)}
+                aria-label={isEn ? 'Select date' : 'Seleccionar fecha'}
+                className="absolute inset-0 z-10 h-full w-full cursor-pointer appearance-none opacity-0"
+              />
+              <div
+                aria-hidden="true"
+                className={`pointer-events-none flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition ${
+                  isClosed
+                    ? 'border-2 border-white/60 bg-white/10'
+                    : tried && !dateValid
+                      ? 'bg-white/10 ring-2 ring-white/60'
+                      : 'bg-white/10'
+                }`}
+              >
+                <CalendarDots size={20} className="text-brand" />
+                <span className={date ? 'text-white' : 'text-white/30'}>
+                  {date ? formatDate(date) : (isEn ? 'Select date' : 'Seleccionar fecha')}
+                </span>
+              </div>
+            </div>
             {isClosed && (
               <p className="mt-1 text-xs text-white/60">{isEn ? 'No service on this day. Pick another date.' : 'No hay servicio este día. Selecciona otra fecha.'}</p>
             )}
@@ -253,13 +257,9 @@ export default function WhatsappReservationModal({ open, onClose, mode, sede, is
                 {isEn ? 'Time' : 'Hora'}
               </label>
               {!date ? (
-                <button
-                  type="button"
-                  onClick={() => dateInputRef.current?.showPicker()}
-                  className="w-full rounded-xl bg-white/5 px-4 py-3 text-sm text-white/30"
-                >
+                <p className="rounded-xl bg-white/5 px-4 py-3 text-sm text-white/40">
                   {isEn ? 'Select a date first' : 'Selecciona una fecha primero'}
-                </button>
+                </p>
               ) : isClosed ? (
                 <p className="rounded-xl bg-white/5 px-4 py-3 text-sm text-white/60">
                   {isEn ? 'No hours available for this day' : 'No hay horarios disponibles para este día'}

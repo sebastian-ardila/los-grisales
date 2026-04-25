@@ -29,7 +29,7 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
       </div>
 
       {/* Nav links */}
-      <nav className="flex flex-1 flex-col gap-2 px-6 pt-4">
+      <nav className="flex flex-1 flex-col pt-2">
         {menuRoutes.map((route) => {
           const Icon = route.icon
           const label = lang === 'en' ? route.nameEn : route.nameEs
@@ -41,14 +41,14 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
               end={route.path === '/'}
               onClick={onClose}
               className={({ isActive }) =>
-                `flex items-center gap-4 rounded-lg px-4 py-3 text-xl transition ${
+                `flex items-center gap-4 border-b border-white/10 px-6 py-4 text-xl transition ${
                   isActive
-                    ? 'border-l-4 border-brand font-bold text-brand'
-                    : 'text-white/70 hover:text-white'
+                    ? 'border-l-4 border-l-brand bg-brand/5 font-bold text-brand'
+                    : 'text-white/80 hover:bg-white/5 hover:text-white'
                 }`
               }
             >
-              {Icon && <Icon size={28} />}
+              {Icon && <Icon size={26} />}
               <span>{t(tKey, label)}</span>
             </NavLink>
           )

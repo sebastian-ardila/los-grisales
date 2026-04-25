@@ -26,15 +26,23 @@ export default function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-primary">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
           {/* Left: Logo */}
-          <Link to={`/${lang}`} className="relative inline-block shrink-0" onClick={() => setLogoAnimKey(k => k + 1)}>
+          <Link
+            to={`/${lang}`}
+            className="relative inline-block shrink-0"
+            onClick={() => {
+              setLogoAnimKey((k) => k + 1)
+              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+            }}
+          >
             <img
+              key={`base-${logoAnimKey}`}
               src={`${import.meta.env.BASE_URL}grisales-mini.webp`}
               alt="Los Grisales"
-              className="block h-10 w-auto"
+              className={`block h-10 w-auto ${logoAnimKey > 0 ? 'animate-logo-glow' : ''}`}
             />
             {logoAnimKey > 0 && (
               <img
-                key={logoAnimKey}
+                key={`overlay-${logoAnimKey}`}
                 src={`${import.meta.env.BASE_URL}grisales-mini.webp`}
                 alt=""
                 aria-hidden="true"
