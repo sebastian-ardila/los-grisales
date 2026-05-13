@@ -40,7 +40,7 @@ export default function ProductModal({ item, onClose }: Props) {
         </div>
 
         {/* Placeholder image */}
-        <div className="h-48 bg-[#d4c4b4] flex items-center justify-center">
+        <div className="h-48 bg-card-bg-dark flex items-center justify-center">
           <Coffee size={48} className="text-black/30" />
         </div>
 

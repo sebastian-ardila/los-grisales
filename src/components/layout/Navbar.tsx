@@ -1,25 +1,32 @@
 import { useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
-import { ShoppingCart, List } from '@phosphor-icons/react'
-import { MdTableRestaurant } from 'react-icons/md'
+import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom'
+import { List } from '@phosphor-icons/react'
 import { useTranslation } from 'react-i18next'
 import { routes } from '../../config/routes'
-import { useTable } from '../../context/TableContext'
-import { useCart } from '../../context/CartContext'
-import { useSede } from '../../context/SedeContext'
 import LanguageToggle from '../ui/LanguageToggle'
 import MobileMenu from './MobileMenu'
 
 export default function Navbar() {
   const { t, i18n } = useTranslation()
   const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
-  const { tableNumber, hasTable, setShowTableModal } = useTable()
-  const { itemCount, setIsCartOpen } = useCart()
-  const { sedeConfig } = useSede()
+  const navigate = useNavigate()
+  const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [logoAnimKey, setLogoAnimKey] = useState(0)
+  const navbarLogo = `${import.meta.env.BASE_URL}logo-verde.webp`
 
   const menuRoutes = routes.filter((r) => r.showInMenu)
+
+  const goToAnchor = (anchor: string) => {
+    const onHome = location.pathname === `/${lang}` || location.pathname === `/${lang}/`
+    if (onHome) {
+      document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate(`/${lang}`)
+      setTimeout(() => {
+        document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
+      }, 80)
+    }
+  }
 
   return (
     <>
@@ -28,40 +35,48 @@ export default function Navbar() {
           {/* Left: Logo */}
           <Link
             to={`/${lang}`}
-            className="relative inline-block shrink-0"
-            onClick={() => {
-              setLogoAnimKey((k) => k + 1)
-              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-            }}
+            className="inline-block shrink-0"
+            onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
           >
             <img
-              key={`base-${logoAnimKey}`}
-              src={`${import.meta.env.BASE_URL}grisales-mini.webp`}
+              src={navbarLogo}
               alt="Los Grisales"
-              className={`block h-10 w-auto ${logoAnimKey > 0 ? 'animate-logo-glow' : ''}`}
+              className="block h-14 w-auto"
             />
-            {logoAnimKey > 0 && (
-              <img
-                key={`overlay-${logoAnimKey}`}
-                src={`${import.meta.env.BASE_URL}grisales-mini.webp`}
-                alt=""
-                aria-hidden="true"
-                className="animate-logo-wipe pointer-events-none absolute inset-0 block h-10 w-auto [filter:brightness(0)_invert(1)]"
-              />
-            )}
           </Link>
 
           {/* Center: Desktop nav links */}
           <nav className="hidden items-center gap-1 md:flex">
-            {menuRoutes.map((route) => {
+            {menuRoutes.map((route, idx) => {
               const Icon = route.icon
               const label = lang === 'en' ? route.nameEn : route.nameEs
+              const key = `${route.path}-${route.anchor ?? 'none'}-${idx}`
+
+              if (route.anchor) {
+                return (
+                  <button
+                    key={key}
+                    onClick={() => goToAnchor(route.anchor!)}
+                    className="flex items-center gap-1.5 px-3 py-2 text-sm text-white/70 transition hover:text-white"
+                  >
+                    {Icon && <Icon size={18} />}
+                    <span>{t(`nav.${route.anchor}`, label)}</span>
+                  </button>
+                )
+              }
+
               const tKey = route.path === '/' ? 'nav.home' : `nav.${route.path.replace('/', '')}`
+              const isHomeBtn = route.path === '/'
               return (
                 <NavLink
-                  key={route.path}
-                  to={`/${lang}${route.path}`}
+                  key={key}
+                  to={`/${lang}${route.path === '/' ? '' : route.path}`}
                   end={route.path === '/'}
+                  onClick={() => {
+                    if (isHomeBtn) {
+                      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+                    }
+                  }}
                   className={({ isActive }) =>
                     `flex items-center gap-1.5 px-3 py-2 text-sm transition ${
                       isActive
@@ -79,42 +94,10 @@ export default function Navbar() {
 
           {/* Right group */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Table badge - only for sedes with ordering */}
-            {sedeConfig?.whatsappOrderingEnabled && (
-              <button
-                onClick={() => setShowTableModal(true)}
-                className={`flex items-center gap-1 transition ${
-                  hasTable
-                    ? 'rounded-full bg-black px-2 py-1 text-brand'
-                    : 'text-white/50 hover:text-white/70'
-                }`}
-              >
-                <MdTableRestaurant size={18} />
-                <span className="text-[11px] sm:text-xs">
-                  {hasTable ? `Mesa ${tableNumber}` : 'Mesa'}
-                </span>
-              </button>
-            )}
-
             {/* Language toggle - hidden on mobile */}
             <div className="hidden sm:block">
               <LanguageToggle />
             </div>
-
-            {/* Cart badge - only for sedes with ordering */}
-            {sedeConfig?.whatsappOrderingEnabled && (
-              <button
-                onClick={() => setIsCartOpen(true)}
-                className="relative p-1 text-white transition hover:text-brand"
-              >
-                <ShoppingCart size={24} />
-                {itemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-primary">
-                    {itemCount}
-                </span>
-              )}
-              </button>
-            )}
 
             {/* Mobile hamburger */}
             <button

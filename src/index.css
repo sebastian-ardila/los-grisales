@@ -13,15 +13,58 @@ select:not(:disabled),
 }
 
 @theme {
-  --color-primary: #001F0F;
-  --color-primary-light: #002A16;
+  --color-primary: var(--theme-primary);
+  --color-primary-light: var(--theme-primary-light);
+  --color-brand: var(--theme-brand);
+  --color-brand-light: var(--theme-brand-light);
+  --color-accent: var(--theme-accent);
+  --color-card-bg: var(--theme-card-bg);
+  --color-card-bg-dark: var(--theme-card-bg-dark);
+  --color-text: var(--theme-text);
+  --color-text-muted: var(--theme-text-muted);
+  --font-display: "Georgia", serif;
+  --font-script: "Great Vibes", cursive;
+}
+
+/* Tema único: hueso. Fondos crema claro, verde para acentos y botones.
+   Redefinimos --color-white para invertir text-white/bg-white opacities. */
+:root {
+  --theme-primary: #f5efdf;
+  --theme-primary-light: #ebe3ce;
+  --theme-brand: #064947;
+  --theme-brand-light: #0a5e5b;
+  --theme-accent: #C4A962;
+  --theme-card-bg: #ffffff;
+  --theme-card-bg-dark: #ede5d0;
+  --theme-text: #000000;
+  --theme-text-muted: rgba(0, 0, 0, 0.7);
+  --hero-overlay-opacity: 0.30;
+  --hero-glow-opacity: 0.20;
+  --color-white: #000000;
+  --hero-accent: #f5efdf;
+  --hero-accent-hover: #ebe3ce;
+  --hero-accent-contrast: #064947;
+  --hero-accent-border: #C4A962;
+  --hero-secondary: #C4A962;
+  --hero-secondary-text: #C4A962;
+  --hero-accent-glow: rgba(6, 73, 71, 0.45);
+}
+
+/* Dark island: secciones que SIEMPRE se ven con fondo oscuro y texto claro,
+   sin importar el tema activo (hero con video, CTA con imagen de café).
+   IMPORTANTE: redefinimos --color-* directamente (no solo --theme-*) porque
+   Tailwind v4 resuelve los var() de @theme a nivel :root y no recursa. */
+[data-dark-island] {
+  --color-white: #ffffff;
+  --color-primary: #064947;
+  --color-primary-light: #0a5e5b;
   --color-brand: #C4A962;
   --color-brand-light: #d4be82;
   --color-accent: #C4A962;
-  --color-card-bg: #e8dace;
-  --color-card-bg-dark: #d4c4b4;
-  --font-display: "Georgia", serif;
-  --font-script: "Great Vibes", cursive;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.7);
+  --hero-overlay-opacity: 0.50;
+  --hero-glow-opacity: 0.40;
 }
 
 @keyframes neon-pulse {
@@ -127,6 +170,7 @@ html {
 }
 
 body {
-  background-color: #001F0F;
-  color: white;
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }

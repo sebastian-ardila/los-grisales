@@ -1,12 +1,27 @@
 import { useTranslation } from 'react-i18next'
-import { InstagramLogo, FacebookLogo, TiktokLogo, WhatsappLogo } from '@phosphor-icons/react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { InstagramLogo, FacebookLogo, TiktokLogo, WhatsappLogo, PawPrint, EnvelopeSimple } from '@phosphor-icons/react'
 import { sedes } from '../../config/sedes'
 
 export default function Footer() {
   const { t, i18n } = useTranslation()
   const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const sedeList = Object.values(sedes)
+
+  const goToContact = () => {
+    const onHome = location.pathname === `/${lang}` || location.pathname === `/${lang}/`
+    if (onHome) {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate(`/${lang}`)
+      setTimeout(() => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    }
+  }
 
   return (
     <footer className="bg-primary-light text-white">
@@ -14,12 +29,16 @@ export default function Footer() {
         {/* Column 1: Brand info */}
         <div>
           <img
-            src={`${import.meta.env.BASE_URL}los-grisales-logo-mini.webp`}
+            src={`${import.meta.env.BASE_URL}logo-oficial-verde.webp`}
             alt="Los Grisales"
-            className="mb-3 h-12"
+            className="mb-3 h-32 w-auto md:h-36"
           />
           <h3 className="text-lg font-bold">Los Grisales</h3>
           <p className="text-sm text-white/60">cafe &amp; bar</p>
+          <p className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-brand">
+            <PawPrint size={13} weight="duotone" />
+            {t('footer.petFriendly')}
+          </p>
           <div className="mt-4 space-y-2 text-sm text-white/70">
             {sedeList.map((sede) => (
               <div key={sede.id}>
@@ -28,9 +47,13 @@ export default function Footer() {
               </div>
             ))}
           </div>
-          <p className="mt-3 text-sm font-medium text-brand">
-            {t('footer.deliveries')}
-          </p>
+          <button
+            onClick={goToContact}
+            className="mt-4 inline-flex items-center gap-2 rounded-lg border border-brand/40 bg-brand/10 px-3 py-2 text-sm font-semibold text-brand transition hover:bg-brand/20"
+          >
+            <EnvelopeSimple size={16} weight="duotone" />
+            {t('footer.contactLink', lang === 'en' ? 'Contact us' : 'Contáctanos')}
+          </button>
         </div>
 
         {/* Column 2: Schedule */}
@@ -45,11 +68,15 @@ export default function Footer() {
                 <p className="mb-2 text-sm font-semibold text-brand">
                   {sede.nameShort}
                 </p>
-                {sede.schedule.map((s, i) => (
-                  <p key={i} className="text-sm text-white/70">
-                    {lang === 'en' ? s.days.en : s.days.es}: {s.open} - {s.close}
-                  </p>
-                ))}
+                {sede.schedule.map((s, i) => {
+                  const hasHours = s.open !== '' && s.close !== ''
+                  return (
+                    <p key={i} className="text-sm text-white/70">
+                      {lang === 'en' ? s.days.en : s.days.es}
+                      {hasHours ? `: ${s.open} - ${s.close}` : ''}
+                    </p>
+                  )
+                })}
               </div>
             ))}
           </div>

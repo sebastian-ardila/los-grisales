@@ -1,10 +1,18 @@
 {
   "nav": {
     "home": "Home",
-    "carta": "Menu",
-    "reservas": "Visit Us",
-    "historia": "History",
-    "contacto": "Contact"
+    "tour": "Coffee Tour",
+    "cafe-bar": "Café Bar",
+    "historia": "History"
+  },
+  "tour": {
+    "itineraryTitle": "Itinerary",
+    "itineraryPlaceholder": "Coming soon — tour details.",
+    "contactCta": "Contact via WhatsApp"
+  },
+  "cafeBar": {
+    "title": "Visit us",
+    "contactCta": "I want to visit Los Grisales"
   },
   "hero": {
     "tagline": "From the love of our land",
@@ -97,7 +105,7 @@
   "schedule": {
     "title": "Visit & Reserve",
     "subtitle": "Three ways to experience Los Grisales — pick how, where and when",
-    "deliveries": "Deliveries across Pereira",
+    "petFriendly": "Pet friendly — your pets are welcome",
     "reserveTable": "Reserve a table",
     "orderWhatsApp": "Order via WhatsApp",
     "howToGet": "How to get there",
@@ -129,6 +137,12 @@
       "title": "Coffee Tour at Finca Vista Hermosa",
       "p1": "If you're looking for more than a cup of coffee, if you want to connect with coffee in an authentic way, we invite you to live our most special experience: the Coffee Tour at Finca Vista Hermosa. Walk through our coffee fields, learn to spot the cherry at its perfect ripeness, discover the honey, natural, and washed processes, and end the tour with a tasting of the coffee you've just seen come to life. The Grisales family is waiting for you."
     },
+    "section4": {
+      "kicker": "Our café bars",
+      "title": "Specialty coffee, straight from the farm to your cup",
+      "p1": "In the heart of Pereira you'll find two Café Bar locations where the specialty coffee from Finca Vista Hermosa is the star. Every drink is brewed with beans harvested and processed by us, ensuring full traceability: you know exactly who, where and how what you're drinking was grown. We don't sell just any coffee — we sell ours, with name and origin.",
+      "p2": "Visit us at CC Pereira Plaza or CC Unicentro. There you can explore different brewing methods (espresso, V60, French press, Chemex), enjoy signature drinks made with our honey, washed, or natural coffee, and take home a bag ready to keep the magic going in your own kitchen. Every visit is a journey from origin to cup, served by people who know the farm by heart."
+    },
     "tagline": "One coffee.",
     "taglineAccent": "Three ways to live it.",
     "coffeeTour": "Book your Coffee Tour and experience specialty coffee from the source.",
@@ -150,12 +164,19 @@
       "collaboration": "Collaboration",
       "events": "Events",
       "birthday": "Birthday",
+      "groupReservation": "Group reservation",
+      "catering": "Catering",
+      "work": "Work",
+      "press": "Press",
+      "cause": "Causes",
+      "suggestion": "Suggestion",
       "other": "Other"
     },
     "message": "Message",
     "messagePlaceholder": "Write your message...",
     "submit": "Send message via WhatsApp",
-    "completeFields": "Please complete all required fields"
+    "completeFields": "Please complete all required fields",
+    "sectionKicker": "Get in touch"
   },
   "cta": {
     "explore": "Want to explore more?",
@@ -164,8 +185,9 @@
   "footer": {
     "schedule": "Schedule",
     "followUs": "Follow Us",
-    "deliveries": "Deliveries across Pereira",
+    "petFriendly": "Pet friendly",
     "rights": "All rights reserved",
-    "madeBy": "Website created by"
+    "madeBy": "Website created by",
+    "contactLink": "Contact us"
   }
 }

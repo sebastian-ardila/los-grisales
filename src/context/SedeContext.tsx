@@ -1,10 +1,10 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
+import { createContext, useContext, useState, type ReactNode } from 'react'
 import type { SedeConfig, SedeId } from '../data/types'
 import { sedes } from '../config/sedes'
 
 interface SedeContextValue {
-  sedeId: SedeId | null
-  sedeConfig: SedeConfig | null
+  sedeId: SedeId
+  sedeConfig: SedeConfig
   setSede: (id: SedeId) => void
   showSelector: boolean
   setShowSelector: (show: boolean) => void
@@ -12,31 +12,26 @@ interface SedeContextValue {
 
 const SedeContext = createContext<SedeContextValue | null>(null)
 
+const DEFAULT_SEDE: SedeId = 'pereira-plaza'
+
 export function SedeProvider({ children }: { children: ReactNode }) {
-  const [sedeId, setSedeId] = useState<SedeId | null>(() => {
+  const [sedeId, setSedeId] = useState<SedeId>(() => {
     const saved = localStorage.getItem('los-grisales-sede')
     if (saved === 'pereira-plaza' || saved === 'unicentro' || saved === 'coffee-tour') return saved
-    return null
+    return DEFAULT_SEDE
   })
   const [showSelector, setShowSelector] = useState(false)
-
-  useEffect(() => {
-    if (!sedeId) {
-      setShowSelector(true)
-    }
-  }, [sedeId])
 
   const setSede = (id: SedeId) => {
     setSedeId(id)
     localStorage.setItem('los-grisales-sede', id)
     setShowSelector(false)
-    // Clear cart when switching to a sede without ordering
     if (!sedes[id]?.whatsappOrderingEnabled) {
       localStorage.removeItem('los-grisales-cart')
     }
   }
 
-  const sedeConfig = sedeId ? sedes[sedeId] : null
+  const sedeConfig = sedes[sedeId]
 
   return (
     <SedeContext.Provider value={{ sedeId, sedeConfig, setSede, showSelector, setShowSelector }}>

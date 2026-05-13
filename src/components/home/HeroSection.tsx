@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Link, useParams } from 'react-router-dom'
-import { Mountains, Storefront, CalendarDots, Coffee } from '@phosphor-icons/react'
+import { Mountains, Storefront } from '@phosphor-icons/react'
 
 const partners = [
   { name: 'CARDER', image: 'partner-carder.webp' },
@@ -8,14 +7,17 @@ const partners = [
   { name: 'Gobernación de Risaralda', image: 'partner-risaralda.webp', wider: true },
 ]
 
+function scrollToSection(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+}
+
 export default function HeroSection() {
   const { t, i18n } = useTranslation()
   const isEn = i18n.language?.startsWith('en')
-  const { lang: langParam } = useParams()
-  const lang = langParam || (isEn ? 'en' : 'es')
+  const heroLogo = `${import.meta.env.BASE_URL}logo-dorado.webp`
 
   return (
-    <section className="relative -mt-16 flex min-h-screen flex-col overflow-hidden">
+    <section data-dark-island className="relative -mt-16 flex min-h-screen flex-col overflow-hidden">
       {/* Video background */}
       <video
         autoPlay
@@ -28,22 +30,25 @@ export default function HeroSection() {
       </video>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/65" />
+      <div
+        className="absolute inset-0 bg-black"
+        style={{ opacity: 'var(--hero-overlay-opacity)' }}
+      />
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="h-[900px] w-[900px] rounded-full bg-black/70 blur-[140px] md:h-[1100px] md:w-[1100px]" />
+        <div
+          className="h-[900px] w-[900px] rounded-full bg-black blur-[140px] md:h-[1100px] md:w-[1100px]"
+          style={{ opacity: 'var(--hero-glow-opacity)' }}
+        />
       </div>
 
-      {/* Top spacer compensates the -mt-16 navbar offset */}
-      <div className="h-12 shrink-0 md:h-14" />
-
-      {/* Centered content */}
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-8 px-4 py-8 text-center md:gap-10 md:py-12">
+      {/* Main centered content (logo + tagline + buttons) — vertically centered */}
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-8 px-4 py-8 pb-32 text-center md:gap-10 md:pb-40">
         {/* Brand */}
         <h1 className="animate-neon-text flex justify-center">
           <img
-            src={`${import.meta.env.BASE_URL}logo-grisales-hero.webp`}
+            src={heroLogo}
             alt="Los Grisales — Café & Bar"
-            className="h-32 w-auto object-contain drop-shadow-[0_4px_30px_rgba(196,169,98,0.35)] md:h-44"
+            className="h-48 w-auto object-contain drop-shadow-[0_4px_30px_rgba(196,169,98,0.35)] md:h-64 lg:h-72"
           />
         </h1>
 
@@ -56,65 +61,55 @@ export default function HeroSection() {
           <span className="h-px w-6 bg-white/15" />
         </div>
 
-        {/* Experiences chips — subtle, clickable shortcuts */}
-        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-white/55">
-          <Link
-            to={`/${lang}/reservas`}
-            className="inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.25em] transition hover:text-brand md:text-xs"
-          >
-            <Mountains size={12} weight="regular" />
-            Coffee Tour
-          </Link>
-          <span className="h-3 w-px bg-white/15" aria-hidden="true" />
-          <Link
-            to={`/${lang}/carta`}
-            className="inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-[0.25em] transition hover:text-brand md:text-xs"
-          >
-            <Storefront size={12} weight="regular" />
-            Café Bar
-          </Link>
-        </div>
-
         {/* Action buttons — main attention */}
         <div className="flex flex-row gap-3 md:gap-4">
-          <Link
-            to={`/${lang}/reservas`}
-            className="animate-neon-btn inline-flex items-center gap-2 rounded-xl bg-brand px-7 py-3.5 text-base font-bold text-primary shadow-[0_10px_30px_-8px_rgba(196,169,98,0.5)] transition hover:bg-brand-light hover:shadow-[0_14px_36px_-8px_rgba(196,169,98,0.6)] sm:px-9 sm:text-lg"
+          <button
+            onClick={() => scrollToSection('tour')}
+            style={{
+              backgroundColor: 'var(--hero-accent)',
+              color: 'var(--hero-accent-contrast)',
+              boxShadow: '0 10px 30px -8px var(--hero-accent-glow)',
+            }}
+            className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-base font-bold transition hover:brightness-105 sm:px-9 sm:text-lg"
           >
-            <CalendarDots size={20} weight="bold" />
-            {isEn ? 'Reserve' : 'Reservar'}
-          </Link>
-          <Link
-            to={`/${lang}/carta`}
-            className="inline-flex items-center gap-2 rounded-xl border-2 border-brand bg-black/20 px-7 py-3.5 text-base font-bold text-brand backdrop-blur-sm transition hover:bg-brand/15 sm:px-9 sm:text-lg"
+            <Mountains size={20} weight="bold" />
+            Coffee Tour
+          </button>
+          <button
+            onClick={() => scrollToSection('cafe-bar')}
+            style={{
+              borderColor: 'var(--hero-secondary)',
+              color: 'var(--hero-secondary-text)',
+            }}
+            className="inline-flex items-center gap-2 rounded-xl border-2 bg-black/20 px-7 py-3.5 text-base font-bold backdrop-blur-sm transition hover:bg-black/30 sm:px-9 sm:text-lg"
           >
-            <Coffee size={20} weight="bold" />
-            {isEn ? 'Menu' : 'Carta'}
-          </Link>
+            <Storefront size={20} weight="bold" />
+            Café Bar
+          </button>
         </div>
+      </div>
 
-        {/* Partners */}
-        <div className="animate-fade-in flex w-full max-w-3xl flex-col items-center gap-4" style={{ animationDelay: '160ms', animationFillMode: 'backwards' }}>
-          <div className="flex items-center gap-2">
-            <span className="h-px w-6 bg-white/15" />
-            <span className="text-[9px] font-semibold uppercase tracking-[0.4em] text-white/45 md:text-xs">
-              {isEn ? 'In partnership with' : 'En alianza con'}
-            </span>
-            <span className="h-px w-6 bg-white/15" />
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 md:gap-x-14">
-            {partners.map((p) => (
-              <img
-                key={p.name}
-                src={`${import.meta.env.BASE_URL}${p.image}`}
-                alt={p.name}
-                className={`h-14 w-auto object-contain opacity-60 drop-shadow-[0_0_10px_rgba(0,0,0,0.4)] transition hover:opacity-90 md:h-20 ${
-                  p.wider ? 'max-w-[180px] md:max-w-[260px]' : 'max-w-[140px] md:max-w-[200px]'
-                }`}
-                loading="lazy"
-              />
-            ))}
-          </div>
+      {/* Partners — anchored to the bottom of the hero, not affecting main centering */}
+      <div className="animate-fade-in absolute inset-x-0 bottom-16 z-10 mx-auto flex w-full max-w-3xl flex-col items-center gap-4 px-4 md:bottom-20" style={{ animationDelay: '160ms', animationFillMode: 'backwards' }}>
+        <div className="flex items-center gap-2">
+          <span className="h-px w-6 bg-white/25" />
+          <span className="text-[9px] font-semibold uppercase tracking-[0.4em] text-white/70 md:text-xs">
+            {isEn ? 'In partnership with' : 'En alianza con'}
+          </span>
+          <span className="h-px w-6 bg-white/25" />
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 md:gap-x-14">
+          {partners.map((p) => (
+            <img
+              key={p.name}
+              src={`${import.meta.env.BASE_URL}${p.image}`}
+              alt={p.name}
+              className={`h-14 w-auto object-contain opacity-90 drop-shadow-[0_0_12px_rgba(0,0,0,0.5)] transition hover:opacity-100 md:h-20 ${
+                p.wider ? 'max-w-[180px] md:max-w-[260px]' : 'max-w-[140px] md:max-w-[200px]'
+              }`}
+              loading="lazy"
+            />
+          ))}
         </div>
       </div>
     </section>

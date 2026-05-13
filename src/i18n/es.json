@@ -1,10 +1,18 @@
 {
   "nav": {
     "home": "Home",
-    "carta": "Carta",
-    "reservas": "Visítanos",
-    "historia": "Historia",
-    "contacto": "Contacto"
+    "tour": "Coffee Tour",
+    "cafe-bar": "Café Bar",
+    "historia": "Historia"
+  },
+  "tour": {
+    "itineraryTitle": "Itinerario",
+    "itineraryPlaceholder": "Próximamente — detalle del recorrido.",
+    "contactCta": "Contáctanos por WhatsApp"
+  },
+  "cafeBar": {
+    "title": "Visítanos",
+    "contactCta": "Quiero conocer Los Grisales"
   },
   "hero": {
     "tagline": "Desde el amor a nuestra tierra",
@@ -97,7 +105,7 @@
   "schedule": {
     "title": "Visítanos y Reserva",
     "subtitle": "Tres formas de vivir Los Grisales — escoge cómo, dónde y cuándo",
-    "deliveries": "Domicilios a todo Pereira",
+    "petFriendly": "Pet friendly — tus mascotas son bienvenidas",
     "reserveTable": "Reservar mesa",
     "orderWhatsApp": "Pedir por WhatsApp",
     "howToGet": "Cómo llegar",
@@ -129,6 +137,12 @@
       "title": "Coffee Tour en la Finca Vista Hermosa",
       "p1": "Si buscas más que una taza de café, si deseas conectar con el café de una manera auténtica, te invitamos a vivir nuestra experiencia más especial: el Coffee Tour en la Finca Vista Hermosa. Recorre nuestros cafetales, aprende a reconocer la cereza en su punto exacto de cosecha, conoce los procesos honey, natural y lavado, y termina el recorrido con una degustación del café que acabas de ver nacer. La familia Grisales te espera."
     },
+    "section4": {
+      "kicker": "Nuestras sedes",
+      "title": "Café de especialidad directo de la finca a tu taza",
+      "p1": "En el corazón de Pereira encontrarás dos sedes Café Bar donde el café de especialidad de la Finca Vista Hermosa es el protagonista. Cada bebida se prepara con grano cosechado y procesado por nosotros, garantizando trazabilidad completa: sabes exactamente quién, dónde y cómo se cultivó lo que estás bebiendo. No vendemos café cualquiera — vendemos el nuestro, con nombre y origen.",
+      "p2": "Visítanos en CC Pereira Plaza o en CC Unicentro. Allí podrás explorar diferentes métodos de preparación (espresso, V60, prensa francesa, Chemex), disfrutar bebidas de autor con nuestro café honey, lavado o natural, y llevarte a casa una bolsa lista para que la magia siga en tu cocina. Cada visita es un viaje desde el origen hasta la taza, atendido por gente que conoce la finca de memoria."
+    },
     "tagline": "Un solo café.",
     "taglineAccent": "Tres formas de vivirlo.",
     "coffeeTour": "Reserva tu Coffee Tour y vive el café de especialidad desde el origen.",
@@ -150,12 +164,19 @@
       "collaboration": "Colaboración",
       "events": "Eventos",
       "birthday": "Cumpleaños",
+      "groupReservation": "Reserva grupal",
+      "catering": "Catering",
+      "work": "Trabajo",
+      "press": "Prensa",
+      "cause": "Causas",
+      "suggestion": "Sugerencia",
       "other": "Otros"
     },
     "message": "Mensaje",
     "messagePlaceholder": "Escribe tu mensaje...",
     "submit": "Enviar mensaje por WhatsApp",
-    "completeFields": "Completa los campos requeridos"
+    "completeFields": "Completa los campos requeridos",
+    "sectionKicker": "Contáctanos"
   },
   "cta": {
     "explore": "¿Quieres explorar más?",
@@ -164,8 +185,9 @@
   "footer": {
     "schedule": "Horarios",
     "followUs": "Síguenos",
-    "deliveries": "Domicilios a todo Pereira",
+    "petFriendly": "Pet friendly",
     "rights": "Todos los derechos reservados",
-    "madeBy": "Sitio web creado por"
+    "madeBy": "Sitio web creado por",
+    "contactLink": "Contáctanos"
   }
 }

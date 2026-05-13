@@ -52,7 +52,7 @@ export default function TableModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 p-4" onClick={onClose}>
       <div
-        className="w-full max-w-sm rounded-2xl bg-[#e8dace] p-6 text-black animate-fade-in"
+        className="w-full max-w-sm rounded-2xl bg-card-bg p-6 text-black animate-fade-in"
         onClick={(e) => e.stopPropagation()}
       >
         {mode === 'menu' && (
@@ -83,8 +83,8 @@ export default function TableModal({ onClose }: { onClose: () => void }) {
                   onClick={() => handleSelectTable(num)}
                   className={`h-12 rounded-xl text-lg font-bold transition ${
                     tableNumber === num
-                      ? 'bg-black text-[#C4A962]'
-                      : 'bg-[#C4A962]/30 text-black/70 hover:bg-[#C4A962]/50'
+                      ? 'bg-black text-brand'
+                      : 'bg-brand/30 text-black/70 hover:bg-brand/50'
                   }`}
                 >
                   {num}

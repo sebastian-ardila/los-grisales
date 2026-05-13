@@ -11,7 +11,7 @@ export default function CTA({ secondaryLabel, secondaryHref }: CTAProps) {
   const { lang } = useParams()
 
   return (
-    <section className="relative mt-16 overflow-hidden rounded-2xl">
+    <section data-dark-island className="relative mt-16 overflow-hidden rounded-2xl">
       {/* Background image */}
       <div className="absolute inset-0">
         <img
@@ -30,13 +30,22 @@ export default function CTA({ secondaryLabel, secondaryHref }: CTAProps) {
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             to={`/${lang}/carta`}
-            className="w-full rounded-xl bg-brand px-10 py-4 text-lg font-bold text-primary transition hover:bg-brand-light sm:w-auto"
+            style={{
+              backgroundColor: 'var(--hero-accent)',
+              color: 'var(--hero-accent-contrast)',
+              borderColor: 'var(--hero-accent-border)',
+            }}
+            className="w-full rounded-xl border px-10 py-4 text-lg font-bold transition hover:brightness-105 sm:w-auto"
           >
             {t('cta.viewMenu')}
           </Link>
           <Link
             to={`/${lang}${secondaryHref}`}
-            className="w-full rounded-xl border-2 border-brand px-10 py-4 text-lg font-bold text-brand transition hover:bg-brand/10 sm:w-auto"
+            style={{
+              borderColor: 'var(--hero-secondary)',
+              color: 'var(--hero-secondary-text)',
+            }}
+            className="w-full rounded-xl border-2 px-10 py-4 text-lg font-bold transition hover:bg-black/20 sm:w-auto"
           >
             {secondaryLabel}
           </Link>

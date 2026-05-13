@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Link, useParams } from 'react-router-dom'
-import CTA from '../components/ui/CTA'
+import { useNavigate, useParams } from 'react-router-dom'
 
 interface StorySectionProps {
   image: string
@@ -12,16 +11,16 @@ interface StorySectionProps {
   align?: 'left' | 'right'
   isLast?: boolean
   ctaLabel?: string
-  ctaHref?: string
+  onCtaClick?: () => void
 }
 
-function StorySection({ image, imageAlt, kicker, title, paragraphs, number, align = 'left', isLast, ctaLabel, ctaHref }: StorySectionProps) {
+function StorySection({ image, imageAlt, kicker, title, paragraphs, number, align = 'left', isLast, ctaLabel, onCtaClick }: StorySectionProps) {
   const contentSide = align === 'right' ? 'md:ml-auto md:text-left' : ''
   const overlayDir = align === 'right' ? 'md:bg-gradient-to-l' : 'md:bg-gradient-to-r'
   const numberPos = align === 'right' ? 'md:-left-4 md:top-8' : 'md:-right-4 md:top-8'
 
   return (
-    <section className="relative min-h-[90vh] w-full overflow-hidden">
+    <section data-dark-island className="relative min-h-[90vh] w-full overflow-hidden">
       <img
         src={`${import.meta.env.BASE_URL}${image}`}
         alt={imageAlt}
@@ -62,13 +61,14 @@ function StorySection({ image, imageAlt, kicker, title, paragraphs, number, alig
                 </p>
               ))}
             </div>
-            {ctaLabel && ctaHref && (
-              <Link
-                to={ctaHref}
-                className="mt-8 inline-block rounded-xl bg-brand px-8 py-3 font-bold text-primary transition hover:bg-brand-light"
+            {ctaLabel && onCtaClick && (
+              <button
+                onClick={onCtaClick}
+                style={{ color: '#064947' }}
+                className="mt-8 inline-block rounded-xl bg-brand px-8 py-3 font-bold transition hover:brightness-110"
               >
                 {ctaLabel}
-              </Link>
+              </button>
             )}
           </div>
         </div>
@@ -80,62 +80,88 @@ function StorySection({ image, imageAlt, kicker, title, paragraphs, number, alig
 export default function HistoryPage() {
   const { t, i18n } = useTranslation()
   const { lang } = useParams()
+  const navigate = useNavigate()
   const isEn = i18n.language?.startsWith('en')
+
+  const goHomeToAnchor = (anchor: string) => {
+    navigate(`/${lang}`)
+    setTimeout(() => {
+      document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
+    }, 100)
+  }
 
   return (
     <>
       {/* Lema */}
-      <header className="mx-auto max-w-4xl px-6 pb-12 pt-12 text-center md:pb-20 md:pt-20">
-        <div className="mx-auto mb-6 flex items-center justify-center gap-4">
-          <div className="h-px w-10 bg-brand/60" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.5em] text-brand">
-            {isEn ? 'Our Story' : 'Nuestra Historia'}
-          </span>
-          <div className="h-px w-10 bg-brand/60" />
+      <header data-dark-island className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-primary" />
+        <div className="relative mx-auto max-w-4xl px-6 pb-12 pt-12 text-center md:pb-20 md:pt-20">
+          <div className="mx-auto mb-6 flex items-center justify-center gap-4">
+            <div className="h-px w-10 bg-brand/60" />
+            <span className="text-[11px] font-semibold uppercase tracking-[0.5em] text-brand">
+              {isEn ? 'Our Story' : 'Nuestra Historia'}
+            </span>
+            <div className="h-px w-10 bg-brand/60" />
+          </div>
+          <h1 className="font-display text-2xl font-light italic leading-[1.35] text-white/95 md:text-3xl lg:text-[2.5rem]">
+            {t('history.lema')}
+          </h1>
         </div>
-        <h1 className="font-display text-2xl font-light italic leading-[1.35] text-white/95 md:text-3xl lg:text-[2.5rem]">
-          {t('history.lema')}
-        </h1>
       </header>
 
-      {/* Full-bleed story sections */}
+      {/* Section 1: Origen — Finca */}
       <StorySection
-        image="historia-1.webp"
+        image="coffeetour/coffeetour1.webp"
         imageAlt={isEn ? 'Coffee cherries at Finca Vista Hermosa' : 'Cerezas de café en Finca Vista Hermosa'}
         number="01"
         kicker={t('history.section1.kicker')}
         title={t('history.section1.title')}
         paragraphs={[t('history.section1.p1'), t('history.section1.p2')]}
-        ctaLabel={isEn ? 'Visit our farm' : 'Visita nuestra finca'}
-        ctaHref={`/${lang}/reservas`}
+        ctaLabel={isEn ? 'Book Coffee Tour' : 'Reservar Coffee Tour'}
+        onCtaClick={() => goHomeToAnchor('tour')}
       />
 
+      {/* Section 2: Trazabilidad — Pereira */}
       <StorySection
-        image="historia-2.webp"
-        imageAlt={isEn ? 'Colombian coffee landscape' : 'Paisaje cafetero colombiano'}
+        image="cafebar/cafebar1.webp"
+        imageAlt={isEn ? 'Café Los Grisales storefront' : 'Café Los Grisales en Pereira'}
         number="02"
         kicker={t('history.section2.kicker')}
         title={t('history.section2.title')}
         paragraphs={[t('history.section2.p1'), t('history.section2.p2')]}
         align="right"
-        ctaLabel={isEn ? 'Book Coffee Tour' : 'Reservar Coffee Tour'}
-        ctaHref={`/${lang}/reservas`}
+        ctaLabel={isEn ? 'Visit our café bars' : 'Visita nuestros café bar'}
+        onCtaClick={() => goHomeToAnchor('cafe-bar')}
       />
 
+      {/* Section 3: Coffee Tour — Experiencia */}
       <StorySection
-        image="historia-3.webp"
-        imageAlt={isEn ? 'Coffee tasting in Colombia' : 'Degustación de café en Colombia'}
+        image="coffeetour/coffeetour5.webp"
+        imageAlt={isEn ? 'Coffee tour experience' : 'Experiencia Coffee Tour'}
         number="03"
         kicker={t('history.section3.kicker')}
         title={t('history.section3.title')}
         paragraphs={[t('history.section3.p1')]}
-        isLast
         ctaLabel={isEn ? 'Book your Coffee Tour' : 'Reservar Coffee Tour'}
-        ctaHref={`/${lang}/reservas`}
+        onCtaClick={() => goHomeToAnchor('tour')}
+      />
+
+      {/* Section 4: Sedes que venden el café de especialidad */}
+      <StorySection
+        image="cafebar/cafebar3.webp"
+        imageAlt={isEn ? 'Specialty coffee at our café bars' : 'Café de especialidad en nuestras sedes'}
+        number="04"
+        kicker={t('history.section4.kicker')}
+        title={t('history.section4.title')}
+        paragraphs={[t('history.section4.p1'), t('history.section4.p2')]}
+        align="right"
+        isLast
+        ctaLabel={isEn ? 'Find a café bar' : 'Encuentra un café bar'}
+        onCtaClick={() => goHomeToAnchor('cafe-bar')}
       />
 
       {/* Tagline band */}
-      <section className="relative overflow-hidden px-6 py-24 md:py-32">
+      <section data-dark-island className="relative overflow-hidden bg-primary px-6 py-24 md:py-32">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <div className="h-[500px] w-[500px] rounded-full bg-brand/10 blur-[120px]" />
         </div>
@@ -158,10 +184,6 @@ export default function HistoryPage() {
           </div>
         </div>
       </section>
-
-      <div className="mx-auto max-w-5xl px-6 pb-16">
-        <CTA secondaryLabel={isEn ? 'Reserve' : 'Reservar'} secondaryHref="/reservas" />
-      </div>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { X } from '@phosphor-icons/react'
 import { useTranslation } from 'react-i18next'
 import { routes } from '../../config/routes'
@@ -11,18 +11,32 @@ interface MobileMenuProps {
 export default function MobileMenu({ onClose }: MobileMenuProps) {
   const { t, i18n } = useTranslation()
   const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const navigate = useNavigate()
+  const location = useLocation()
+  const logoSrc = `${import.meta.env.BASE_URL}logo-verde.webp`
 
   const menuRoutes = routes.filter((r) => r.showInMenu)
+
+  const goToAnchor = (anchor: string) => {
+    onClose()
+    const onHome = location.pathname === `/${lang}` || location.pathname === `/${lang}/`
+    if (onHome) {
+      setTimeout(() => {
+        document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
+      }, 30)
+    } else {
+      navigate(`/${lang}`)
+      setTimeout(() => {
+        document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    }
+  }
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-primary animate-fade-in">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-4">
-        <img
-          src={`${import.meta.env.BASE_URL}los-grisales-logo-mini.webp`}
-          alt="Los Grisales"
-          className="h-10"
-        />
+        <img src={logoSrc} alt="Los Grisales" className="h-16 w-auto" />
         <button onClick={onClose} className="p-2 text-white">
           <X size={28} weight="bold" />
         </button>
@@ -30,16 +44,37 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
 
       {/* Nav links */}
       <nav className="flex flex-1 flex-col pt-2">
-        {menuRoutes.map((route) => {
+        {menuRoutes.map((route, idx) => {
           const Icon = route.icon
           const label = lang === 'en' ? route.nameEn : route.nameEs
+          const key = `${route.path}-${route.anchor ?? 'none'}-${idx}`
+
+          if (route.anchor) {
+            return (
+              <button
+                key={key}
+                onClick={() => goToAnchor(route.anchor!)}
+                className="flex items-center gap-4 border-b border-white/10 px-6 py-4 text-xl text-white/80 transition hover:bg-white/5 hover:text-white"
+              >
+                {Icon && <Icon size={26} />}
+                <span>{t(`nav.${route.anchor}`, label)}</span>
+              </button>
+            )
+          }
+
           const tKey = route.path === '/' ? 'nav.home' : `nav.${route.path.replace('/', '')}`
+          const isHomeBtn = route.path === '/'
           return (
             <NavLink
-              key={route.path}
-              to={`/${lang}${route.path}`}
+              key={key}
+              to={`/${lang}${route.path === '/' ? '' : route.path}`}
               end={route.path === '/'}
-              onClick={onClose}
+              onClick={() => {
+                onClose()
+                if (isHomeBtn) {
+                  setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }), 30)
+                }
+              }}
               className={({ isActive }) =>
                 `flex items-center gap-4 border-b border-white/10 px-6 py-4 text-xl transition ${
                   isActive

@@ -1,8 +1,21 @@
 import { Navigate } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
+
+function detectLang(): 'es' | 'en' {
+  const saved = localStorage.getItem('i18nextLng')?.toLowerCase()
+  if (saved?.startsWith('en')) return 'en'
+  if (saved?.startsWith('es')) return 'es'
+  const navLangs = [
+    ...((typeof navigator !== 'undefined' && navigator.languages) || []),
+    typeof navigator !== 'undefined' ? navigator.language : '',
+  ].filter(Boolean)
+  for (const l of navLangs) {
+    const low = l.toLowerCase()
+    if (low.startsWith('en')) return 'en'
+    if (low.startsWith('es')) return 'es'
+  }
+  return 'es'
+}
 
 export default function LangRedirect() {
-  const { i18n } = useTranslation()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
-  return <Navigate to={`/${lang}`} replace />
+  return <Navigate to={`/${detectLang()}`} replace />
 }
