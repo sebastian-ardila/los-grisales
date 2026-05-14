@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next'
-import { MapPin, Clock, ArrowSquareOut, WhatsappLogo, ListChecks, Sparkle } from '@phosphor-icons/react'
+import { MapPin, Clock, ArrowSquareOut, WhatsappLogo, ListChecks, Sparkle, Mountains } from '@phosphor-icons/react'
 import { sedes } from '../../config/sedes'
 import { reviewsBySede } from '../../data/reviews'
 import PhotoStack from '../ui/PhotoStack'
 import BookingAppIcon from '../ui/BookingAppIcon'
 import ReviewsBlock from '../reviews/ReviewsBlock'
+import SectionHeader from '../ui/SectionHeader'
 
 const photos = [
   'coffeetour1.webp',
@@ -31,20 +32,18 @@ export default function TourSection() {
   return (
     <section id="tour" className="px-4 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
-        <header className="mb-12 text-center">
-          <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/8 px-4 py-1.5">
-            <Sparkle size={14} weight="fill" className="text-brand" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-brand">
-              {isEn ? 'Experience' : 'Experiencia'}
-            </span>
-          </div>
-          <h2 className="font-display text-4xl font-bold md:text-5xl">Coffee Tour</h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm italic opacity-70 md:text-base">
-            {isEn
+        <SectionHeader
+          index="01"
+          kickerIcon={<Mountains size={14} weight="fill" />}
+          kickerLabel={isEn ? 'Experience' : 'Experiencia'}
+          title="Coffee Tour"
+          tagline={
+            isEn
               ? 'Walk our coffee fields and taste what we grow — from seed to cup.'
-              : 'Recorre nuestros cafetales y prueba lo que sembramos — desde el origen hasta tu taza.'}
-          </p>
-        </header>
+              : 'Recorre nuestros cafetales y prueba lo que sembramos — desde el origen hasta tu taza.'
+          }
+          backdrop={photos[0]}
+        />
 
         {/* Two-column hero */}
         <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-10">

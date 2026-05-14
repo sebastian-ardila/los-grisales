@@ -7,6 +7,7 @@ import { reviewsBySede } from '../../data/reviews'
 import PhotoStack from '../ui/PhotoStack'
 import WhatsappReservationModal from '../reservations/WhatsappReservationModal'
 import ReviewsBlock from '../reviews/ReviewsBlock'
+import SectionHeader from '../ui/SectionHeader'
 
 const photos = [
   'cafebar1.webp',
@@ -36,20 +37,18 @@ export default function CafeBarSection() {
       className="border-y border-black/8 px-4 py-16 md:py-24"
     >
       <div className="mx-auto max-w-7xl">
-        <header className="mb-12 text-center">
-          <div className="mx-auto mb-4 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-brand/8 px-4 py-1.5">
-            <Storefront size={14} weight="fill" className="text-brand" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-brand">
-              {t('cafeBar.kicker', isEn ? 'Visit us' : 'Visítanos')}
-            </span>
-          </div>
-          <h2 className="font-display text-4xl font-bold md:text-5xl">Café Bar</h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm italic opacity-70 md:text-base">
-            {isEn
+        <SectionHeader
+          index="02"
+          kickerIcon={<Storefront size={14} weight="fill" />}
+          kickerLabel={t('cafeBar.kicker', isEn ? 'Visit us' : 'Visítanos')}
+          title="Café Bar"
+          tagline={
+            isEn
               ? 'Two places in Pereira where our specialty coffee meets you in person.'
-              : 'Dos lugares en Pereira donde nuestro café de especialidad te recibe en persona.'}
-          </p>
-        </header>
+              : 'Dos lugares en Pereira donde nuestro café de especialidad te recibe en persona.'
+          }
+          backdrop={photos[0]}
+        />
 
         <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-10">
           {/* Unified sedes card */}
