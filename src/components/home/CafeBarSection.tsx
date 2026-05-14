@@ -63,14 +63,14 @@ export default function CafeBarSection() {
                 return (
                   <div
                     key={sede.id}
-                    className={`flex flex-col gap-5 p-6 md:p-7 ${
+                    className={`flex flex-col p-6 md:p-7 ${
                       idx === 0 ? 'border-b border-black/10 sm:border-b-0 sm:border-r' : ''
                     }`}
                   >
                     {/* Header */}
-                    <header className="flex items-center gap-3">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand/12 text-brand">
-                        <Icon size={22} weight="duotone" />
+                    <header className="mb-5 flex items-center gap-3 border-b border-black/8 pb-4">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand/12 text-brand">
+                        <Icon size={24} weight="duotone" />
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-brand/70">
@@ -80,66 +80,86 @@ export default function CafeBarSection() {
                       </div>
                     </header>
 
-                    {/* Address */}
-                    <div>
-                      <p className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.25em] text-brand/70">
-                        <MapPin size={12} weight="fill" />
-                        {isEn ? 'Location' : 'Ubicación'}
-                      </p>
-                      <p className="text-sm leading-snug opacity-85">{sede.address}</p>
-                      {sede.googleMapsUrl && (
-                        <a
-                          href={sede.googleMapsUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="mt-1 inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand transition hover:opacity-80"
-                        >
-                          {isEn ? 'How to get there' : 'Cómo llegar'}
-                          <ArrowRight size={11} weight="bold" />
-                        </a>
-                      )}
-                    </div>
-
-                    {/* Hours */}
-                    <div>
-                      <p className="mb-1 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.25em] text-brand/70">
-                        <Clock size={12} weight="fill" />
-                        {isEn ? 'Hours' : 'Horario'}
-                      </p>
-                      <div className="space-y-1">
-                        {sede.schedule.map((s, i) => {
-                          const hasHours = s.open !== '' && s.close !== ''
-                          return (
-                            <div key={i} className="text-sm leading-snug">
-                              <div className="opacity-85">{isEn ? s.days.en : s.days.es}</div>
-                              {hasHours && (
-                                <div className="font-semibold text-brand">
-                                  {s.open} – {s.close}
-                                </div>
-                              )}
-                            </div>
-                          )
-                        })}
+                    {/* Data list */}
+                    <dl className="space-y-4">
+                      {/* Address */}
+                      <div className="flex gap-3">
+                        <dt className="shrink-0">
+                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand/10 text-brand">
+                            <MapPin size={14} weight="fill" />
+                          </span>
+                        </dt>
+                        <dd className="flex-1">
+                          <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-brand/70">
+                            {isEn ? 'Location' : 'Ubicación'}
+                          </p>
+                          <p className="mt-0.5 text-sm leading-snug">{sede.address}</p>
+                          {sede.googleMapsUrl && (
+                            <a
+                              href={sede.googleMapsUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="mt-1 inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand transition hover:opacity-80"
+                            >
+                              {isEn ? 'How to get there' : 'Cómo llegar'}
+                              <ArrowRight size={11} weight="bold" />
+                            </a>
+                          )}
+                        </dd>
                       </div>
-                    </div>
+
+                      {/* Hours */}
+                      <div className="flex gap-3">
+                        <dt className="shrink-0">
+                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand/10 text-brand">
+                            <Clock size={14} weight="fill" />
+                          </span>
+                        </dt>
+                        <dd className="flex-1">
+                          <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-brand/70">
+                            {isEn ? 'Hours' : 'Horario'}
+                          </p>
+                          <div className="mt-1 space-y-1.5">
+                            {sede.schedule.map((s, i) => {
+                              const hasHours = s.open !== '' && s.close !== ''
+                              return (
+                                <div key={i} className="grid grid-cols-[1fr_auto] items-baseline gap-3 text-sm">
+                                  <span className="opacity-85">{isEn ? s.days.en : s.days.es}</span>
+                                  {hasHours && (
+                                    <span className="whitespace-nowrap text-xs font-semibold text-brand">
+                                      {s.open} – {s.close}
+                                    </span>
+                                  )}
+                                </div>
+                              )
+                            })}
+                          </div>
+                        </dd>
+                      </div>
+                    </dl>
                   </div>
                 )
               })}
             </div>
 
-            {/* Shared CTAs — separated by subtle border */}
-            <div className="flex flex-wrap items-center justify-center gap-3 border-t border-black/10 p-5">
+            {/* Shared CTAs — always side by side, even on mobile */}
+            <div className="flex flex-row items-stretch justify-center gap-3 border-t border-black/10 p-5">
               <button
                 onClick={() => setWhatsappOpen(true)}
                 style={{ color: '#ffffff' }}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-6 py-2.5 text-sm font-bold transition hover:brightness-110"
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-sm font-bold transition hover:brightness-110 sm:flex-initial sm:px-6"
               >
                 <WhatsappLogo size={16} weight="fill" />
-                {isEn ? 'Reserve via WhatsApp' : 'Reservar por WhatsApp'}
+                <span className="hidden sm:inline">
+                  {isEn ? 'Reserve via WhatsApp' : 'Reservar por WhatsApp'}
+                </span>
+                <span className="sm:hidden">
+                  {isEn ? 'Reserve' : 'Reservar'}
+                </span>
               </button>
               <a
                 href="#"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-brand/40 px-6 py-2.5 text-sm font-bold text-brand transition hover:bg-brand/5"
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-brand/40 px-4 py-2.5 text-sm font-bold text-brand transition hover:bg-brand/5 sm:flex-initial sm:px-6"
               >
                 <Coffee size={16} weight="bold" />
                 {isEn ? 'View menu' : 'Ver carta'}
