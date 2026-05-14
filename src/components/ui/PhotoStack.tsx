@@ -134,11 +134,12 @@ export default function PhotoStack({ photos, autoMs, className = '' }: Props) {
       </div>
 
       {/* Controls */}
-      <div className="mt-5 flex items-center justify-center gap-3">
+      <div className="relative z-20 mt-6 flex items-center justify-center gap-3">
         <button
           onClick={() => advance(-1)}
           aria-label="Anterior"
-          className="flex h-9 w-9 items-center justify-center rounded-full bg-black/10 transition hover:bg-black/20"
+          style={{ backgroundColor: '#ffffff' }}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-black/15 text-brand shadow-[0_4px_12px_-2px_rgba(0,0,0,0.18)] transition hover:border-brand/40 hover:shadow-[0_6px_16px_-2px_rgba(6,73,71,0.25)]"
         >
           <CaretLeft size={18} weight="bold" />
         </button>
@@ -157,7 +158,8 @@ export default function PhotoStack({ photos, autoMs, className = '' }: Props) {
         <button
           onClick={() => advance(1)}
           aria-label="Siguiente"
-          className="flex h-9 w-9 items-center justify-center rounded-full bg-black/10 transition hover:bg-black/20"
+          style={{ backgroundColor: '#ffffff' }}
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-black/15 text-brand shadow-[0_4px_12px_-2px_rgba(0,0,0,0.18)] transition hover:border-brand/40 hover:shadow-[0_6px_16px_-2px_rgba(6,73,71,0.25)]"
         >
           <CaretRight size={18} weight="bold" />
         </button>
