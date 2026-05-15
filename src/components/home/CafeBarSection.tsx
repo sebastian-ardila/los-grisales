@@ -9,13 +9,14 @@ import WhatsappReservationModal from '../reservations/WhatsappReservationModal'
 import ReviewsBlock from '../reviews/ReviewsBlock'
 import SectionHeader from '../ui/SectionHeader'
 
+const BASE = import.meta.env.BASE_URL
 const photos = [
-  'cafebar1.webp',
-  'cafebar2.webp',
-  'cafebar3.webp',
-  'cafebar4.webp',
-  'cafebar5.webp',
-].map((f) => `${import.meta.env.BASE_URL}cafebar/${f}`)
+  { src: `${BASE}cafebar/cafebar1.webp` },
+  { src: `${BASE}cafebar/cafebar2.webp`, position: 'top' },
+  { src: `${BASE}cafebar/cafebar3.webp` },
+  { src: `${BASE}cafebar/cafebar4.webp` },
+  { src: `${BASE}cafebar/cafebar5.webp` },
+]
 
 const sedeIcons: Record<string, typeof Storefront> = {
   'pereira-plaza': Storefront,
@@ -39,15 +40,13 @@ export default function CafeBarSection() {
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           index="02"
-          kickerIcon={<Storefront size={14} weight="fill" />}
-          kickerLabel={t('cafeBar.kicker', isEn ? 'Visit us' : 'Visítanos')}
           title="Café Bar"
           tagline={
             isEn
               ? 'Two places in Pereira where our specialty coffee meets you in person.'
               : 'Dos lugares en Pereira donde nuestro café de especialidad te recibe en persona.'
           }
-          backdrop={photos[0]}
+          backdrop={photos[0].src}
         />
 
         <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-10">
@@ -142,7 +141,7 @@ export default function CafeBarSection() {
             </div>
 
             {/* Shared CTAs — always side by side, even on mobile */}
-            <div className="flex flex-row items-stretch justify-center gap-3 border-t border-black/10 p-5">
+            <div className="flex flex-row items-stretch justify-center gap-3 border-t border-black/10 p-5 sm:justify-start sm:px-7">
               <button
                 onClick={() => setWhatsappOpen(true)}
                 style={{ color: '#ffffff' }}
@@ -157,7 +156,9 @@ export default function CafeBarSection() {
                 </span>
               </button>
               <a
-                href="#"
+                href={`${import.meta.env.BASE_URL}cafebar/menu-spanish.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-brand/40 px-4 py-2.5 text-sm font-bold text-brand transition hover:bg-brand/5 sm:flex-initial sm:px-6"
               >
                 <Coffee size={16} weight="bold" />

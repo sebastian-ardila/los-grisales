@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 interface StorySectionProps {
   image: string
@@ -79,9 +79,9 @@ function StorySection({ image, imageAlt, kicker, title, paragraphs, number, alig
 
 export default function HistoryPage() {
   const { t, i18n } = useTranslation()
-  const { lang } = useParams()
   const navigate = useNavigate()
   const isEn = i18n.language?.startsWith('en')
+  const lang = isEn ? 'en' : 'es'
 
   const goHomeToAnchor = (anchor: string) => {
     navigate(`/${lang}`)
@@ -111,7 +111,7 @@ export default function HistoryPage() {
 
       {/* Section 1: Origen — Finca */}
       <StorySection
-        image="coffeetour/coffeetour1.webp"
+        image="coffeetour/coffeetour0.webp"
         imageAlt={isEn ? 'Coffee cherries at Finca Vista Hermosa' : 'Cerezas de café en Finca Vista Hermosa'}
         number="01"
         kicker={t('history.section1.kicker')}

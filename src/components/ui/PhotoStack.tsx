@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState, type PointerEvent } from 'react'
+import { useEffect, useMemo, useRef, useState, type PointerEvent } from 'react'
 import { CaretLeft, CaretRight } from '@phosphor-icons/react'
 
+export type PhotoItem = string | { src: string; position?: string }
+
 interface Props {
-  photos: string[]
+  photos: PhotoItem[]
   autoMs?: number
   className?: string
 }
@@ -38,13 +40,17 @@ const SLOTS = [
 ]
 
 export default function PhotoStack({ photos, autoMs, className = '' }: Props) {
+  const items = useMemo(
+    () => photos.map((p) => (typeof p === 'string' ? { src: p, position: 'center' } : { position: 'center', ...p })),
+    [photos]
+  )
   const [index, setIndex] = useState(0)
   const isPaused = useRef(false)
   const startX = useRef(0)
   const pointerId = useRef<number | null>(null)
   const dragging = useRef(false)
 
-  const len = photos.length
+  const len = items.length
   const wrap = (n: number) => ((n % len) + len) % len
 
   const advance = (dir: 1 | -1) => setIndex((i) => wrap(i + dir))
@@ -61,9 +67,9 @@ export default function PhotoStack({ photos, autoMs, className = '' }: Props) {
   useEffect(() => {
     ;[1, 2].forEach((d) => {
       const img = new Image()
-      img.src = photos[wrap(index + d)]
+      img.src = items[wrap(index + d)].src
     })
-  }, [index, photos])
+  }, [index, items])
 
   const onPointerDown = (e: PointerEvent<HTMLDivElement>) => {
     pointerId.current = e.pointerId
@@ -92,7 +98,7 @@ export default function PhotoStack({ photos, autoMs, className = '' }: Props) {
       }}
     >
       {/* Stack container — has padding to allow back cards to peek */}
-      <div className="relative mx-auto aspect-square w-full max-w-[580px] md:aspect-[5/4] [&_img]:!object-center">
+      <div className="relative mx-auto aspect-square w-full max-w-[580px] md:aspect-[5/4]">
         {SLOTS.map((slot) => {
           const photoIdx = wrap(index + slot.offset)
           const isFront = slot.offset === 0
@@ -112,16 +118,16 @@ export default function PhotoStack({ photos, autoMs, className = '' }: Props) {
               onPointerCancel={isFront ? onPointerUp : undefined}
             >
               <div className={`relative h-full w-full select-none ${isFront ? 'cursor-grab touch-pan-y active:cursor-grabbing' : 'pointer-events-none'}`}>
-                {photos.map((src, i) => (
+                {items.map((item, i) => (
                   <img
-                    key={src}
-                    src={src}
+                    key={item.src}
+                    src={item.src}
                     alt=""
                     draggable={false}
                     className="absolute inset-0 h-full w-full"
                     style={{
                       objectFit: 'cover',
-                      objectPosition: 'center',
+                      objectPosition: item.position,
                       opacity: i === photoIdx ? 1 : 0,
                       transition: 'opacity 0.7s ease',
                     }}

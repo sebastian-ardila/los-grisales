@@ -22,7 +22,7 @@ select:not(:disabled),
   --color-card-bg-dark: var(--theme-card-bg-dark);
   --color-text: var(--theme-text);
   --color-text-muted: var(--theme-text-muted);
-  --font-display: "Georgia", serif;
+  --font-display: "Fraunces", "Georgia", serif;
   --font-script: "Great Vibes", cursive;
 }
 

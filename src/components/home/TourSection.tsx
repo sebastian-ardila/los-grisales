@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { MapPin, Clock, ArrowSquareOut, WhatsappLogo, ListChecks, Sparkle, Mountains } from '@phosphor-icons/react'
+import { MapPin, Clock, ArrowSquareOut, WhatsappLogo, ListChecks, Sparkle } from '@phosphor-icons/react'
 import { sedes } from '../../config/sedes'
 import { reviewsBySede } from '../../data/reviews'
 import PhotoStack from '../ui/PhotoStack'
@@ -8,6 +8,7 @@ import ReviewsBlock from '../reviews/ReviewsBlock'
 import SectionHeader from '../ui/SectionHeader'
 
 const photos = [
+  'coffeetour0.webp',
   'coffeetour1.webp',
   'coffeetour2.webp',
   'coffeetour3.webp',
@@ -34,8 +35,6 @@ export default function TourSection() {
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           index="01"
-          kickerIcon={<Mountains size={14} weight="fill" />}
-          kickerLabel={isEn ? 'Experience' : 'Experiencia'}
           title="Coffee Tour"
           tagline={
             isEn
@@ -107,7 +106,7 @@ export default function TourSection() {
               icon={<Sparkle size={18} weight="fill" />}
               title={isEn ? 'Book on' : 'Reservar en'}
             >
-              <div className="mt-1 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
+              <div className="mt-1 flex flex-wrap gap-2.5">
                 {sede.bookingApps?.map((app) => (
                   <BookingChip
                     key={app.name}
@@ -120,7 +119,7 @@ export default function TourSection() {
                 <BookingChip
                   href={whatsappHref}
                   name="WhatsApp"
-                  color="#25D366"
+                  color="#064947"
                   icon={<WhatsappLogo size={20} weight="fill" />}
                   solid
                 />
@@ -206,7 +205,7 @@ function BookingChip({
         color: solid ? '#ffffff' : undefined,
         borderColor: solid ? color : undefined,
       }}
-      className="group flex items-center gap-2.5 rounded-xl border border-black/12 px-3 py-2.5 text-sm font-semibold shadow-[0_2px_8px_-4px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-12px_rgba(6,73,71,0.25)]"
+      className="group inline-flex items-center gap-2.5 rounded-xl border border-black/12 px-3 py-2.5 text-sm font-semibold shadow-[0_2px_8px_-4px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-12px_rgba(6,73,71,0.25)]"
     >
       <span
         className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
@@ -218,7 +217,7 @@ function BookingChip({
       >
         {icon}
       </span>
-      <span className="flex-1 truncate text-left">{name}</span>
+      <span className="whitespace-nowrap text-left">{name}</span>
       <ArrowSquareOut
         size={11}
         className={`shrink-0 transition ${solid ? 'opacity-70 group-hover:opacity-100' : 'opacity-30 group-hover:opacity-70'}`}
