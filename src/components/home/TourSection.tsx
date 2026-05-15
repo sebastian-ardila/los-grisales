@@ -122,6 +122,7 @@ export default function TourSection() {
                   name="WhatsApp"
                   color="#25D366"
                   icon={<WhatsappLogo size={20} weight="fill" />}
+                  solid
                 />
               </div>
             </InfoBlock>
@@ -186,28 +187,42 @@ function BookingChip({
   name,
   color,
   icon,
+  solid = false,
 }: {
   href: string
   name: string
   color: string
   icon: React.ReactNode
+  /** Render with solid colored background and white text/icon. */
+  solid?: boolean
 }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      style={{ backgroundColor: '#ffffff' }}
-      className="group flex items-center gap-2.5 rounded-xl border border-black/12 px-3 py-2.5 text-sm font-semibold shadow-[0_2px_8px_-4px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_10px_20px_-12px_rgba(6,73,71,0.25)]"
+      style={{
+        backgroundColor: solid ? color : '#ffffff',
+        color: solid ? '#ffffff' : undefined,
+        borderColor: solid ? color : undefined,
+      }}
+      className="group flex items-center gap-2.5 rounded-xl border border-black/12 px-3 py-2.5 text-sm font-semibold shadow-[0_2px_8px_-4px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-12px_rgba(6,73,71,0.25)]"
     >
       <span
         className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
-        style={{ backgroundColor: `${color}1f`, color }}
+        style={
+          solid
+            ? { backgroundColor: 'rgba(255,255,255,0.18)', color: '#ffffff' }
+            : { backgroundColor: `${color}1f`, color }
+        }
       >
         {icon}
       </span>
       <span className="flex-1 truncate text-left">{name}</span>
-      <ArrowSquareOut size={11} className="shrink-0 opacity-30 transition group-hover:opacity-70" />
+      <ArrowSquareOut
+        size={11}
+        className={`shrink-0 transition ${solid ? 'opacity-70 group-hover:opacity-100' : 'opacity-30 group-hover:opacity-70'}`}
+      />
     </a>
   )
 }
