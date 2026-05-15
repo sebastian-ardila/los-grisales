@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { MapPin, Clock, ArrowSquareOut, WhatsappLogo, ListChecks, Sparkle, Mountains, FilePdf } from '@phosphor-icons/react'
+import { MapPin, Clock, ArrowSquareOut, WhatsappLogo, ListChecks, Sparkle, Mountains } from '@phosphor-icons/react'
 import { sedes } from '../../config/sedes'
 import { reviewsBySede } from '../../data/reviews'
 import PhotoStack from '../ui/PhotoStack'
@@ -59,28 +59,16 @@ export default function TourSection() {
               title={t('tour.itineraryTitle', 'Itinerario')}
             >
               <div className="flex flex-wrap gap-2">
-                <a
+                <PdfChip
                   href={`${import.meta.env.BASE_URL}coffeetour/itinerario-spanish.pdf`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ backgroundColor: '#ffffff' }}
-                  className="inline-flex items-center gap-2 rounded-xl border border-black/12 px-3.5 py-2 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_8px_18px_-12px_rgba(6,73,71,0.25)]"
-                >
-                  <FilePdf size={18} weight="fill" className="text-[#E94335]" />
-                  <span className="text-base leading-none" aria-hidden="true">🇪🇸</span>
-                  <span>Itinerario</span>
-                </a>
-                <a
+                  flag="🇪🇸"
+                  label="Itinerario"
+                />
+                <PdfChip
                   href={`${import.meta.env.BASE_URL}coffeetour/itinerario-english.pdf`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ backgroundColor: '#ffffff' }}
-                  className="inline-flex items-center gap-2 rounded-xl border border-black/12 px-3.5 py-2 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_8px_18px_-12px_rgba(6,73,71,0.25)]"
-                >
-                  <FilePdf size={18} weight="fill" className="text-[#E94335]" />
-                  <span className="text-base leading-none" aria-hidden="true">🇬🇧</span>
-                  <span>Itinerary</span>
-                </a>
+                  flag="🇬🇧"
+                  label="Itinerary"
+                />
               </div>
             </InfoBlock>
 
@@ -174,6 +162,22 @@ function InfoBlock({
         {children}
       </div>
     </div>
+  )
+}
+
+function PdfChip({ href, flag, label }: { href: string; flag: string; label: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ backgroundColor: '#ffffff' }}
+      className="group inline-flex items-center gap-2 rounded-xl border border-black/12 px-3.5 py-2 text-sm font-semibold shadow-[0_2px_8px_-4px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_10px_20px_-12px_rgba(6,73,71,0.25)]"
+    >
+      <span aria-hidden="true" className="text-base leading-none">{flag}</span>
+      <span>{label}</span>
+      <ArrowSquareOut size={13} className="ml-0.5 shrink-0 opacity-40 transition group-hover:opacity-80" />
+    </a>
   )
 }
 
