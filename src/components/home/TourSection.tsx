@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { MapPin, Clock, ArrowSquareOut, WhatsappLogo, ListChecks, Sparkle, Mountains } from '@phosphor-icons/react'
+import { MapPin, Clock, ArrowSquareOut, WhatsappLogo, ListChecks, Sparkle, Mountains, FilePdf } from '@phosphor-icons/react'
 import { sedes } from '../../config/sedes'
 import { reviewsBySede } from '../../data/reviews'
 import PhotoStack from '../ui/PhotoStack'
@@ -58,9 +58,30 @@ export default function TourSection() {
               icon={<ListChecks size={18} weight="fill" />}
               title={t('tour.itineraryTitle', 'Itinerario')}
             >
-              <p className="text-sm italic opacity-60">
-                {t('tour.itineraryPlaceholder', 'Próximamente — detalle del recorrido.')}
-              </p>
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href={`${import.meta.env.BASE_URL}coffeetour/itinerario-spanish.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ backgroundColor: '#ffffff' }}
+                  className="inline-flex items-center gap-2 rounded-xl border border-black/12 px-3.5 py-2 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_8px_18px_-12px_rgba(6,73,71,0.25)]"
+                >
+                  <FilePdf size={18} weight="fill" className="text-[#E94335]" />
+                  <span className="text-base leading-none" aria-hidden="true">🇪🇸</span>
+                  <span>Itinerario</span>
+                </a>
+                <a
+                  href={`${import.meta.env.BASE_URL}coffeetour/itinerario-english.pdf`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ backgroundColor: '#ffffff' }}
+                  className="inline-flex items-center gap-2 rounded-xl border border-black/12 px-3.5 py-2 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_8px_18px_-12px_rgba(6,73,71,0.25)]"
+                >
+                  <FilePdf size={18} weight="fill" className="text-[#E94335]" />
+                  <span className="text-base leading-none" aria-hidden="true">🇬🇧</span>
+                  <span>Itinerary</span>
+                </a>
+              </div>
             </InfoBlock>
 
             <InfoBlock
