@@ -6,6 +6,7 @@ import Layout from './components/layout/Layout'
 import LangRedirect from './components/layout/LangRedirect'
 import HomePage from './pages/HomePage'
 import HistoryPage from './pages/HistoryPage'
+import ProductsPage from './pages/ProductsPage'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
               <Route path="/:lang" element={<Layout />}>
                 <Route index element={<HomePage />} />
                 <Route path="historia" element={<HistoryPage />} />
+                <Route path="productos" element={<ProductsPage />} />
               </Route>
 
               {/* Fallback */}

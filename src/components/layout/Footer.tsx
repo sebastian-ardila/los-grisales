@@ -2,10 +2,11 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { InstagramLogo, FacebookLogo, TiktokLogo, WhatsappLogo, PawPrint, EnvelopeSimple } from '@phosphor-icons/react'
 import { sedes } from '../../config/sedes'
+import { useLang } from '../../utils/lang'
 
 export default function Footer() {
-  const { t, i18n } = useTranslation()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const { t } = useTranslation()
+  const lang = useLang()
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -52,7 +53,7 @@ export default function Footer() {
             className="mt-4 inline-flex items-center gap-2 rounded-lg border border-brand/40 bg-brand/10 px-3 py-2 text-sm font-semibold text-brand transition hover:bg-brand/20"
           >
             <EnvelopeSimple size={16} weight="duotone" />
-            {t('footer.contactLink', lang === 'en' ? 'Contact us' : 'Contáctanos')}
+            {t('footer.contactLink')}
           </button>
         </div>
 

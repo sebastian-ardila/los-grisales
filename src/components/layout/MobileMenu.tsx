@@ -2,15 +2,16 @@ import { NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { X } from '@phosphor-icons/react'
 import { useTranslation } from 'react-i18next'
 import { routes } from '../../config/routes'
-import LanguageToggle from '../ui/LanguageToggle'
+import LanguageSwitcher from '../ui/LanguageSwitcher'
+import { useLang } from '../../utils/lang'
 
 interface MobileMenuProps {
   onClose: () => void
 }
 
 export default function MobileMenu({ onClose }: MobileMenuProps) {
-  const { t, i18n } = useTranslation()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const { t } = useTranslation()
+  const lang = useLang()
   const navigate = useNavigate()
   const location = useLocation()
   const logoSrc = `${import.meta.env.BASE_URL}logo-verde.webp`
@@ -32,6 +33,9 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
     }
   }
 
+  const labelFor = (r: (typeof menuRoutes)[number]) =>
+    lang === 'en' ? r.nameEn : lang === 'fr' ? r.nameFr : r.nameEs
+
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-primary animate-fade-in">
       {/* Header */}
@@ -46,7 +50,7 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
       <nav className="flex flex-1 flex-col pt-2">
         {menuRoutes.map((route, idx) => {
           const Icon = route.icon
-          const label = lang === 'en' ? route.nameEn : route.nameEs
+          const label = labelFor(route)
           const key = `${route.path}-${route.anchor ?? 'none'}-${idx}`
 
           if (route.anchor) {
@@ -90,9 +94,9 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
         })}
       </nav>
 
-      {/* Language toggle at bottom */}
+      {/* Language switcher at bottom */}
       <div className="px-6 py-6">
-        <LanguageToggle />
+        <LanguageSwitcher variant="dark" />
       </div>
     </div>
   )

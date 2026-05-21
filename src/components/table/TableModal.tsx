@@ -8,8 +8,7 @@ import { useTranslation } from 'react-i18next'
 type Mode = 'menu' | 'qr' | 'confirmed'
 
 export default function TableModal({ onClose }: { onClose: () => void }) {
-  const { i18n } = useTranslation()
-  const isEn = i18n.language?.startsWith('en')
+  const { t } = useTranslation()
   const { tableNumber, setTableNumber, hasTable, clearTable } = useTable()
   const isMobile = useIsMobile()
   const [mode, setMode] = useState<Mode>('menu')
@@ -39,7 +38,7 @@ export default function TableModal({ onClose }: { onClose: () => void }) {
         <div className="text-center">
           <CheckCircle size={72} className="mx-auto text-brand" weight="fill" />
           <p className="mt-4 text-xs uppercase tracking-widest text-white/60">
-            {isEn ? 'Table assigned' : 'Mesa asignada'}
+            {t('table.assigned')}
           </p>
           <p className="mt-2 font-display text-5xl font-bold text-white md:text-7xl">
             {confirmedTable}
@@ -61,7 +60,7 @@ export default function TableModal({ onClose }: { onClose: () => void }) {
               <div className="flex items-center gap-2">
                 <MdTableRestaurant size={24} />
                 <h3 className="text-lg font-bold">
-                  {isEn ? 'Select your table' : 'Selecciona tu mesa'}
+                  {t('table.title')}
                 </h3>
               </div>
               <button onClick={onClose} className="rounded-full p-1 hover:bg-black/10">
@@ -71,7 +70,7 @@ export default function TableModal({ onClose }: { onClose: () => void }) {
 
             {hasTable && (
               <p className="mb-4 text-center text-sm text-black/60">
-                {isEn ? 'Currently at Table' : 'Actualmente en Mesa'}{' '}
+                {t('table.current')}{' '}
                 <span className="text-xl font-bold text-black">{tableNumber}</span>
               </p>
             )}
@@ -98,7 +97,7 @@ export default function TableModal({ onClose }: { onClose: () => void }) {
                 className="mb-3 flex w-full items-center justify-center gap-2 rounded-xl bg-black/10 py-3 text-sm font-medium hover:bg-black/20"
               >
                 <Camera size={20} />
-                {isEn ? 'Scan QR code' : 'Escanear código QR'}
+                {t('table.scanQR')}
               </button>
             )}
 
@@ -107,7 +106,7 @@ export default function TableModal({ onClose }: { onClose: () => void }) {
                 onClick={() => { clearTable(); onClose() }}
                 className="w-full text-center text-sm text-black/40 hover:text-black/60"
               >
-                {isEn ? 'Remove table' : 'Quitar mesa'}
+                {t('table.removeTable')}
               </button>
             )}
           </>
@@ -120,7 +119,7 @@ export default function TableModal({ onClose }: { onClose: () => void }) {
                 <ArrowLeft size={20} />
               </button>
               <h3 className="text-lg font-bold">
-                {isEn ? 'Scan QR' : 'Escanear QR'}
+                {t('table.scanTitle')}
               </h3>
             </div>
             <QRScannerView onSuccess={handleQRSuccess} />

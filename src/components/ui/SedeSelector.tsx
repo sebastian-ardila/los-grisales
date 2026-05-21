@@ -4,6 +4,7 @@ import { Storefront, Buildings, Mountains } from '@phosphor-icons/react'
 import { useSede } from '../../context/SedeContext'
 import { sedes } from '../../config/sedes'
 import type { SedeId } from '../../data/types'
+import { useLang } from '../../utils/lang'
 
 const sedeIcons: Record<string, typeof Storefront> = {
   'pereira-plaza': Storefront,
@@ -12,10 +13,11 @@ const sedeIcons: Record<string, typeof Storefront> = {
 }
 
 export default function SedeSelector() {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const { setSede } = useSede()
   const navigate = useNavigate()
   const { lang } = useParams()
+  const currentI18nLang = useLang()
 
   const sedeList = Object.values(sedes).sort((a, b) => {
     if (a.isCoffeeTour && !b.isCoffeeTour) return -1
@@ -25,7 +27,7 @@ export default function SedeSelector() {
 
   const handleSelect = (id: SedeId) => {
     setSede(id)
-    const currentLang = lang || (i18n.language?.startsWith('en') ? 'en' : 'es')
+    const currentLang = lang || currentI18nLang
     navigate(`/${currentLang}`)
   }
 

@@ -8,6 +8,7 @@ import PhotoStack from '../ui/PhotoStack'
 import WhatsappReservationModal from '../reservations/WhatsappReservationModal'
 import ReviewsBlock from '../reviews/ReviewsBlock'
 import SectionHeader from '../ui/SectionHeader'
+import { useLang } from '../../utils/lang'
 
 const BASE = import.meta.env.BASE_URL
 const photos = [
@@ -15,7 +16,7 @@ const photos = [
   { src: `${BASE}cafebar/cafebar2.webp`, position: 'top' },
   { src: `${BASE}cafebar/cafebar3.webp` },
   { src: `${BASE}cafebar/cafebar4.webp` },
-  { src: `${BASE}cafebar/cafebar5.webp` },
+  { src: `${BASE}cafebar/cafebar5.webp`, position: 'center 25%' },
 ]
 
 const sedeIcons: Record<string, typeof Storefront> = {
@@ -24,8 +25,9 @@ const sedeIcons: Record<string, typeof Storefront> = {
 }
 
 export default function CafeBarSection() {
-  const { i18n, t } = useTranslation()
-  const isEn = i18n.language?.startsWith('en')
+  const { t } = useTranslation()
+  const lang = useLang()
+  const isEn = lang === 'en'
   const [whatsappOpen, setWhatsappOpen] = useState(false)
 
   const sedeList = [sedes['pereira-plaza'], sedes['unicentro']]
@@ -42,9 +44,11 @@ export default function CafeBarSection() {
           index="02"
           title="Café Bar"
           tagline={
-            isEn
-              ? 'Two places in Pereira where our specialty coffee meets you in person.'
-              : 'Dos lugares en Pereira donde nuestro café de especialidad te recibe en persona.'
+            {
+              es: 'Dos lugares en Pereira donde nuestro café de especialidad te recibe en persona.',
+              en: 'Two places in Pereira where our specialty coffee meets you in person.',
+              fr: 'Deux adresses à Pereira où notre café de spécialité vous accueille en personne.',
+            }[lang]
           }
           backdrop={photos[0].src}
         />
@@ -89,7 +93,7 @@ export default function CafeBarSection() {
                         </dt>
                         <dd className="flex-1">
                           <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-brand/70">
-                            {isEn ? 'Location' : 'Ubicación'}
+                            {{ es: 'Ubicación', en: 'Location', fr: 'Adresse' }[lang]}
                           </p>
                           <p className="mt-0.5 text-sm leading-snug">{sede.address}</p>
                           {sede.googleMapsUrl && (
@@ -99,7 +103,7 @@ export default function CafeBarSection() {
                               rel="noopener noreferrer"
                               className="mt-1 inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand transition hover:opacity-80"
                             >
-                              {isEn ? 'How to get there' : 'Cómo llegar'}
+                              {{ es: 'Cómo llegar', en: 'How to get there', fr: 'Comment s\'y rendre' }[lang]}
                               <ArrowRight size={11} weight="bold" />
                             </a>
                           )}
@@ -115,7 +119,7 @@ export default function CafeBarSection() {
                         </dt>
                         <dd className="flex-1">
                           <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-brand/70">
-                            {isEn ? 'Hours' : 'Horario'}
+                            {{ es: 'Horario', en: 'Hours', fr: 'Horaires' }[lang]}
                           </p>
                           <div className="mt-1 space-y-1.5">
                             {sede.schedule.map((s, i) => {
@@ -149,10 +153,10 @@ export default function CafeBarSection() {
               >
                 <WhatsappLogo size={16} weight="fill" />
                 <span className="hidden sm:inline">
-                  {isEn ? 'Reserve via WhatsApp' : 'Reservar por WhatsApp'}
+                  {{ es: 'Reservar por WhatsApp', en: 'Reserve via WhatsApp', fr: 'Réserver par WhatsApp' }[lang]}
                 </span>
                 <span className="sm:hidden">
-                  {isEn ? 'Reserve' : 'Reservar'}
+                  {{ es: 'Reservar', en: 'Reserve', fr: 'Réserver' }[lang]}
                 </span>
               </button>
               <a
@@ -162,7 +166,7 @@ export default function CafeBarSection() {
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-brand/40 px-4 py-2.5 text-sm font-bold text-brand transition hover:bg-brand/5 sm:flex-initial sm:px-6"
               >
                 <Coffee size={16} weight="bold" />
-                {isEn ? 'View menu' : 'Ver carta'}
+                {{ es: 'Ver carta', en: 'View menu', fr: 'Voir la carte' }[lang]}
               </a>
             </div>
           </article>
@@ -185,8 +189,8 @@ export default function CafeBarSection() {
           { label: 'Unicentro', url: sedes['unicentro'].googleReviewsUrl },
         ]}
         isEn={!!isEn}
-        title={isEn ? 'What people say about our Café Bar' : 'Lo que dicen de nuestros Café Bar'}
-        displayCount={isEn ? '+20 reviews' : '+20 reseñas'}
+        title={{ es: 'Lo que dicen de nuestros Café Bar', en: 'What people say about our Café Bar', fr: 'Ce qu\'on dit de nos Café Bar' }[lang]}
+        displayCount={{ es: '+20 reseñas', en: '+20 reviews', fr: '+20 avis' }[lang]}
       />
 
       {whatsappOpen && (

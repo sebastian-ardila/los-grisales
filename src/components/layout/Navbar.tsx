@@ -3,12 +3,13 @@ import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom'
 import { List } from '@phosphor-icons/react'
 import { useTranslation } from 'react-i18next'
 import { routes } from '../../config/routes'
-import LanguageToggle from '../ui/LanguageToggle'
+import LanguageSwitcher from '../ui/LanguageSwitcher'
+import { useLang } from '../../utils/lang'
 import MobileMenu from './MobileMenu'
 
 export default function Navbar() {
-  const { t, i18n } = useTranslation()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const { t } = useTranslation()
+  const lang = useLang()
   const navigate = useNavigate()
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -27,6 +28,9 @@ export default function Navbar() {
       }, 80)
     }
   }
+
+  const labelFor = (r: (typeof menuRoutes)[number]) =>
+    lang === 'en' ? r.nameEn : lang === 'fr' ? r.nameFr : r.nameEs
 
   return (
     <>
@@ -49,7 +53,7 @@ export default function Navbar() {
           <nav className="hidden items-center gap-1 md:flex">
             {menuRoutes.map((route, idx) => {
               const Icon = route.icon
-              const label = lang === 'en' ? route.nameEn : route.nameEs
+              const label = labelFor(route)
               const key = `${route.path}-${route.anchor ?? 'none'}-${idx}`
 
               if (route.anchor) {
@@ -94,9 +98,9 @@ export default function Navbar() {
 
           {/* Right group */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Language toggle - hidden on mobile */}
+            {/* Language switcher - hidden on mobile (lives in mobile menu) */}
             <div className="hidden sm:block">
-              <LanguageToggle />
+              <LanguageSwitcher variant="dark" />
             </div>
 
             {/* Mobile hamburger */}

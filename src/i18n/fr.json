@@ -1,0 +1,228 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "tour": "Coffee Tour",
+    "cafe-bar": "Café Bar",
+    "especialidad": "Notre Café",
+    "historia": "Histoire",
+    "productos": "Produits"
+  },
+  "tour": {
+    "itineraryTitle": "Itinéraire",
+    "itineraryPlaceholder": "Bientôt — détails du parcours.",
+    "contactCta": "Nous contacter par WhatsApp"
+  },
+  "cafeBar": {
+    "title": "Visitez-nous",
+    "contactCta": "Je veux découvrir Los Grisales"
+  },
+  "hero": {
+    "tagline": "De l'amour pour notre terre",
+    "viewMenu": "Voir notre carte",
+    "reserveTable": "Réserver une table",
+    "googleReviews": "Donner mon avis sur Google"
+  },
+  "breadcrumb": {
+    "home": "Accueil"
+  },
+  "menu": {
+    "title": "Notre Carte",
+    "viewDish": "Voir le plat",
+    "add": "Ajouter",
+    "consultar": "Demander le prix",
+    "ingredients": "Ingrédients",
+    "steps": "Préparation",
+    "close": "Fermer"
+  },
+  "cart": {
+    "title": "Votre commande",
+    "empty": "Votre panier est vide",
+    "continue": "Continuer",
+    "deleteOrder": "Supprimer la commande",
+    "back": "Retour",
+    "total": "Total",
+    "viewOrder": "Voir la commande",
+    "items": "articles",
+    "step2Title": "Détails de la commande",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "paymentMethod": "Mode de paiement",
+    "transfer": "Virement",
+    "card": "Carte",
+    "cash": "Espèces",
+    "orderType": "Type de commande",
+    "dineIn": "Sur place",
+    "delivery": "Livraison",
+    "address": "Adresse",
+    "addressPlaceholder": "Votre adresse de livraison",
+    "sendWhatsApp": "Envoyer la commande par WhatsApp",
+    "completeFields": "Veuillez compléter les champs requis",
+    "whatsappDisabled": "Commande WhatsApp non disponible à cette adresse",
+    "table": "Table",
+    "selectTable": "Choisir une table",
+    "change": "Changer"
+  },
+  "table": {
+    "title": "Choisissez votre table",
+    "current": "Actuellement à la table",
+    "scanQR": "Scanner le code QR",
+    "useCamera": "Utilisez votre caméra",
+    "removeTable": "Retirer la table",
+    "assigned": "Table attribuée",
+    "scanTitle": "Scanner QR",
+    "backToGrid": "Retour",
+    "mesa": "Table"
+  },
+  "sede": {
+    "title": "Choisissez votre adresse",
+    "subtitle": "Dans quelle adresse êtes-vous ?",
+    "pereiraPlaza": "Pereira Plaza",
+    "unicentro": "Unicentro"
+  },
+  "reservations": {
+    "title": "Réserver une table",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom complet",
+    "people": "Personnes",
+    "date": "Date",
+    "selectDate": "Choisir une date",
+    "time": "Heure",
+    "selectDateFirst": "Choisissez d'abord une date",
+    "noSchedule": "Aucun horaire disponible ce jour",
+    "closedDay": "Pas de service ce jour. Choisissez une autre date.",
+    "comments": "Commentaires",
+    "commentsPlaceholder": "Allergies, anniversaires, préférences...",
+    "submit": "Envoyer la réservation par WhatsApp",
+    "completeFields": "Veuillez compléter les champs requis",
+    "morning": "Matin",
+    "afternoon": "Après-midi",
+    "evening": "Soir",
+    "schedule": "Horaires",
+    "location": "Adresse",
+    "howToGet": "Comment s'y rendre",
+    "googleMaps": "Google Maps",
+    "waze": "Waze",
+    "appleMaps": "Apple Maps"
+  },
+  "schedule": {
+    "title": "Visitez & Réservez",
+    "subtitle": "Trois manières de vivre Los Grisales — choisissez comment, où et quand",
+    "petFriendly": "Pet friendly — vos animaux sont les bienvenus",
+    "reserveTable": "Réserver une table",
+    "orderWhatsApp": "Commander par WhatsApp",
+    "howToGet": "Comment s'y rendre",
+    "address": "Adresse",
+    "hours": "Horaires",
+    "bookOn": "Réservez sur",
+    "cafeBar": "Café Bar",
+    "experience": "Expérience",
+    "selectThisSede": "Choisir cette adresse"
+  },
+  "history": {
+    "title": "Café Los Grisales",
+    "subtitle": "De l'amour pour notre terre",
+    "lema": "Café Los Grisales, de l'amour pour notre terre",
+    "section1": {
+      "kicker": "Nos origines",
+      "title": "Une famille, une ferme, un café",
+      "p1": "Café Los Grisales est né de l'amour pour la terre, la tradition et l'envie de partager la véritable origine du café colombien. Nous sommes une marque familiale qui a tracé son chemin depuis la ferme, cultivant un café de spécialité avec dévouement, respect de l'environnement et engagement envers la qualité à chaque étape du processus.",
+      "p2": "Notre café de spécialité est cultivé à la ferme Vista Hermosa, dans le hameau d'Alto del Toro, entouré des montagnes du Risaralda et près des emblématiques Piedras Marcadas à Dosquebradas. Là, chaque grain raconte une histoire : depuis la plantation et la récolte manuelle jusqu'à sa transformation grâce à des procédés soigneusement choisis comme le lavé, le honey et le naturel, qui révèlent des profils aromatiques uniques et authentiques."
+    },
+    "section2": {
+      "kicker": "De la graine à la tasse",
+      "title": "Traçabilité et chaleur à Pereira",
+      "p1": "Nous croyons en la transparence et en un lien direct avec ceux qui apprécient notre café. C'est pourquoi, chez Café Los Grisales, nous ne proposons pas seulement un produit, mais une expérience complète de traçabilité où chaque client peut suivre le parcours du café de la graine à la tasse. Cette approche nous permet de garantir qualité, identité et un véritable lien avec notre origine.",
+      "p2": "Nous apportons la saveur de la ferme Vista Hermosa au cœur de Pereira. Nous comptons aujourd'hui deux adresses de type café bar : l'une au Centro Comercial Pereira Plaza et l'autre à Unicentro, où vous pourrez déguster des boissons préparées avec notre propre café de spécialité, explorer différentes méthodes d'extraction et emporter chez vous un paquet de café traité par notre famille. À chaque visite, vous retrouverez la même chaleur que dans notre ferme : un accueil attentionné, un vrai savoir-faire et un café avec un nom, une histoire et une origine garantie."
+    },
+    "section3": {
+      "kicker": "Vivez l'expérience",
+      "title": "Coffee Tour à la ferme Vista Hermosa",
+      "p1": "Si vous cherchez plus qu'une tasse de café, si vous souhaitez vous connecter au café de manière authentique, nous vous invitons à vivre notre expérience la plus spéciale : le Coffee Tour à la ferme Vista Hermosa. Parcourez nos plantations, apprenez à repérer la cerise à son point de récolte idéal, découvrez les procédés honey, naturel et lavé, et terminez la visite par une dégustation du café que vous venez de voir naître. La famille Grisales vous attend."
+    },
+    "section4": {
+      "kicker": "Nos café bars",
+      "title": "Café de spécialité, directement de la ferme à votre tasse",
+      "p1": "Au cœur de Pereira, vous trouverez deux adresses Café Bar où le café de spécialité de la ferme Vista Hermosa est à l'honneur. Chaque boisson est préparée avec des grains récoltés et traités par nous, garantissant une traçabilité totale : vous savez exactement qui, où et comment ce que vous buvez a été cultivé. Nous ne vendons pas n'importe quel café — nous vendons le nôtre, avec un nom et une origine.",
+      "p2": "Rendez-nous visite au CC Pereira Plaza ou au CC Unicentro. Vous pourrez y explorer différentes méthodes d'extraction (espresso, V60, presse française, Chemex), savourer des créations à base de notre café honey, lavé ou naturel, et emporter un paquet pour prolonger la magie chez vous. Chaque visite est un voyage de l'origine à la tasse, servi par des gens qui connaissent la ferme par cœur."
+    },
+    "tagline": "Un seul café.",
+    "taglineAccent": "Trois façons de le vivre.",
+    "coffeeTour": "Réservez votre Coffee Tour et vivez le café de spécialité dès son origine.",
+    "viewMenu": "Voir notre carte"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Nom",
+    "namePlaceholder": "Votre nom",
+    "email": "E-mail",
+    "emailPlaceholder": "vous@email.com",
+    "phone": "Téléphone (facultatif)",
+    "phonePlaceholder": "Votre téléphone",
+    "reason": "Motif du contact",
+    "reasonPlaceholder": "Choisissez un motif",
+    "reasons": {
+      "franchise": "Franchise",
+      "supplier": "Fournisseur",
+      "collaboration": "Collaboration",
+      "events": "Événements",
+      "birthday": "Anniversaire",
+      "groupReservation": "Réservation de groupe",
+      "catering": "Traiteur",
+      "work": "Travail",
+      "press": "Presse",
+      "cause": "Causes",
+      "suggestion": "Suggestion",
+      "other": "Autre"
+    },
+    "message": "Message",
+    "messagePlaceholder": "Écrivez votre message...",
+    "submit": "Envoyer le message par WhatsApp",
+    "completeFields": "Veuillez compléter les champs requis",
+    "sectionKicker": "Contactez-nous"
+  },
+  "cta": {
+    "explore": "Envie d'explorer davantage ?",
+    "viewMenu": "Voir la carte"
+  },
+  "footer": {
+    "schedule": "Horaires",
+    "followUs": "Suivez-nous",
+    "petFriendly": "Pet friendly",
+    "rights": "Tous droits réservés",
+    "madeBy": "Site créé par",
+    "contactLink": "Nous contacter"
+  },
+  "products": {
+    "title": "Nos produits",
+    "subtitle": "Café cultivé, récolté et traité par notre famille à la ferme Vista Hermosa.",
+    "back": "Retour",
+    "process": "Procédé",
+    "weight": "Présentation",
+    "notes": "Notes de dégustation",
+    "buy": "Commander par WhatsApp",
+    "buyMessage": "Bonjour ! Je souhaite commander {{product}}.",
+    "items": {
+      "natural340": {
+        "name": "Naturel 340 g",
+        "description": "Profil fruité et sucré, avec une longue rétro-olfaction."
+      },
+      "honey340": {
+        "name": "Honey 340 g",
+        "description": "Équilibré et dense, notes de cacao et fruits secs."
+      },
+      "washed500": {
+        "name": "Lavé 500 g",
+        "description": "Net et délicat, idéal pour les méthodes filtre."
+      },
+      "washed250": {
+        "name": "Lavé 250 g",
+        "description": "Format de dégustation pour découvrir le profil lavé."
+      }
+    }
+  },
+  "ourCoffee": {
+    "exploreTour": "Découvrir le Coffee Tour",
+    "exploreCafeBar": "Visiter notre Café Bar",
+    "viewProducts": "Voir nos produits"
+  }
+}

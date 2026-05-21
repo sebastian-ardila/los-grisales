@@ -3,7 +3,9 @@
     "home": "Home",
     "tour": "Coffee Tour",
     "cafe-bar": "Café Bar",
-    "historia": "History"
+    "especialidad": "Our Coffee",
+    "historia": "History",
+    "productos": "Products"
   },
   "tour": {
     "itineraryTitle": "Itinerary",
@@ -189,5 +191,38 @@
     "rights": "All rights reserved",
     "madeBy": "Website created by",
     "contactLink": "Contact us"
+  },
+  "products": {
+    "title": "Our products",
+    "subtitle": "Coffee grown, harvested and processed by our family at Finca Vista Hermosa.",
+    "back": "Back",
+    "process": "Process",
+    "weight": "Presentation",
+    "notes": "Tasting notes",
+    "buy": "Order via WhatsApp",
+    "buyMessage": "Hi! I'd like to order {{product}}.",
+    "items": {
+      "natural340": {
+        "name": "Natural 340 g",
+        "description": "Fruity, sweet profile with a long finish."
+      },
+      "honey340": {
+        "name": "Honey 340 g",
+        "description": "Balanced and dense, with cocoa and nutty notes."
+      },
+      "washed500": {
+        "name": "Washed 500 g",
+        "description": "Clean and delicate — perfect for pour-over."
+      },
+      "washed250": {
+        "name": "Washed 250 g",
+        "description": "Tasting size to discover the washed profile."
+      }
+    }
+  },
+  "ourCoffee": {
+    "exploreTour": "See the Coffee Tour",
+    "exploreCafeBar": "Visit our Café Bar",
+    "viewProducts": "View our products"
   }
 }

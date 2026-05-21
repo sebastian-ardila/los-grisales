@@ -2,14 +2,15 @@ import { Link, useLocation } from 'react-router-dom'
 import { House } from '@phosphor-icons/react'
 import { useTranslation } from 'react-i18next'
 import { routes } from '../../config/routes'
+import { useLang } from '../../utils/lang'
 
 export default function Breadcrumb() {
   const location = useLocation()
-  const { t, i18n } = useTranslation()
-  const lang = i18n.language?.startsWith('en') ? 'en' : 'es'
+  const { t } = useTranslation()
+  const lang = useLang()
 
   // Strip /:lang prefix to get the actual page path
-  const pagePath = location.pathname.replace(/^\/(es|en)/, '') || '/'
+  const pagePath = location.pathname.replace(/^\/(es|en|fr)/, '') || '/'
 
   // Don't show breadcrumb on home
   if (pagePath === '/' || pagePath === '') return null
@@ -18,7 +19,8 @@ export default function Breadcrumb() {
   if (!currentRoute) return null
 
   const Icon = currentRoute.icon
-  const pageName = lang === 'en' ? currentRoute.nameEn : currentRoute.nameEs
+  const pageName =
+    lang === 'en' ? currentRoute.nameEn : lang === 'fr' ? currentRoute.nameFr : currentRoute.nameEs
 
   return (
     <div className="sticky top-16 z-40 bg-primary/90 backdrop-blur-sm">

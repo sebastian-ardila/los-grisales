@@ -1,9 +1,11 @@
 {
   "nav": {
-    "home": "Home",
+    "home": "Inicio",
     "tour": "Coffee Tour",
     "cafe-bar": "Café Bar",
-    "historia": "Historia"
+    "especialidad": "Nuestro Café",
+    "historia": "Historia",
+    "productos": "Productos"
   },
   "tour": {
     "itineraryTitle": "Itinerario",
@@ -189,5 +191,38 @@
     "rights": "Todos los derechos reservados",
     "madeBy": "Sitio web creado por",
     "contactLink": "Contáctanos"
+  },
+  "products": {
+    "title": "Nuestros productos",
+    "subtitle": "Café cultivado, cosechado y procesado por nuestra familia en la Finca Vista Hermosa.",
+    "back": "Volver",
+    "process": "Proceso",
+    "weight": "Presentación",
+    "notes": "Notas de sabor",
+    "buy": "Comprar por WhatsApp",
+    "buyMessage": "¡Hola! Quiero pedir {{product}}.",
+    "items": {
+      "natural340": {
+        "name": "Natural 340 g",
+        "description": "Perfil frutal y dulce, con retrogusto largo."
+      },
+      "honey340": {
+        "name": "Honey 340 g",
+        "description": "Equilibrado y denso, notas de cacao y frutos secos."
+      },
+      "washed500": {
+        "name": "Lavado 500 g",
+        "description": "Limpio y delicado, ideal para métodos filtro."
+      },
+      "washed250": {
+        "name": "Lavado 250 g",
+        "description": "Formato de cata para probar el perfil lavado."
+      }
+    }
+  },
+  "ourCoffee": {
+    "exploreTour": "Conoce el Coffee Tour",
+    "exploreCafeBar": "Visita nuestro Café Bar",
+    "viewProducts": "Ver nuestros productos"
   }
 }

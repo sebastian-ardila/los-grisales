@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Mountains, Storefront } from '@phosphor-icons/react'
+import { useLang } from '../../utils/lang'
 
 const partners = [
   { name: 'CARDER', image: 'partner-carder.webp' },
@@ -12,8 +13,8 @@ function scrollToSection(id: string) {
 }
 
 export default function HeroSection() {
-  const { t, i18n } = useTranslation()
-  const isEn = i18n.language?.startsWith('en')
+  const { t } = useTranslation()
+  const lang = useLang()
   const heroLogo = `${import.meta.env.BASE_URL}logo-dorado.webp`
 
   return (
@@ -94,7 +95,7 @@ export default function HeroSection() {
         <div className="flex items-center gap-2">
           <span className="h-px w-6 bg-white/25" />
           <span className="text-[9px] font-semibold uppercase tracking-[0.4em] text-white/70 md:text-xs">
-            {isEn ? 'In partnership with' : 'En alianza con'}
+            {{ es: 'En alianza con', en: 'In partnership with', fr: 'En partenariat avec' }[lang]}
           </span>
           <span className="h-px w-6 bg-white/25" />
         </div>

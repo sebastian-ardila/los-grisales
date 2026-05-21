@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Outlet, useParams, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Navbar from './Navbar'
@@ -22,16 +22,23 @@ export default function Layout() {
 
   // Sync i18n language with URL param
   useEffect(() => {
-    if (lang && (lang === 'es' || lang === 'en')) {
+    if (lang && (lang === 'es' || lang === 'en' || lang === 'fr')) {
       if (i18n.language !== lang) {
         i18n.changeLanguage(lang)
       }
     }
   }, [lang, i18n])
 
-  // Scroll to top on every route change
+  // Scroll to top only when navigating to a different page, NOT when only the
+  // language prefix changes (so the language switcher preserves scroll position).
+  const prevPagePathRef = useRef<string | null>(null)
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
+    const stripLang = (p: string) => p.replace(/^\/(es|en|fr)/, '') || '/'
+    const pagePath = stripLang(pathname)
+    if (prevPagePathRef.current !== null && prevPagePathRef.current !== pagePath) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
+    }
+    prevPagePathRef.current = pagePath
   }, [pathname])
 
   return (

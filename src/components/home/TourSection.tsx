@@ -6,6 +6,7 @@ import PhotoStack from '../ui/PhotoStack'
 import BookingAppIcon from '../ui/BookingAppIcon'
 import ReviewsBlock from '../reviews/ReviewsBlock'
 import SectionHeader from '../ui/SectionHeader'
+import { useLang } from '../../utils/lang'
 
 const photos = [
   'coffeetour0.webp',
@@ -21,13 +22,16 @@ const photos = [
 ].map((f) => `${import.meta.env.BASE_URL}coffeetour/${f}`)
 
 export default function TourSection() {
-  const { t, i18n } = useTranslation()
-  const isEn = i18n.language?.startsWith('en')
+  const { t } = useTranslation()
+  const lang = useLang()
+  const isEn = lang === 'en'
   const sede = sedes['coffee-tour']
 
-  const whatsappMessage = isEn
-    ? "Hello, I'd like to reserve a Coffee Tour"
-    : 'Hola, quisiera reservar un Coffee Tour'
+  const whatsappMessage = {
+    es: 'Hola, quisiera reservar un Coffee Tour',
+    en: "Hello, I'd like to reserve a Coffee Tour",
+    fr: 'Bonjour, je souhaite réserver un Coffee Tour',
+  }[lang]
   const whatsappHref = `https://wa.me/${sede.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
 
   return (
@@ -37,9 +41,11 @@ export default function TourSection() {
           index="01"
           title="Coffee Tour"
           tagline={
-            isEn
-              ? 'Walk our coffee fields and taste what we grow — from seed to cup.'
-              : 'Recorre nuestros cafetales y prueba lo que sembramos — desde el origen hasta tu taza.'
+            {
+              es: 'Recorre nuestros cafetales y prueba lo que sembramos — desde el origen hasta tu taza.',
+              en: 'Walk our coffee fields and taste what we grow — from seed to cup.',
+              fr: 'Parcourez nos plantations et dégustez ce que nous cultivons — de la graine à la tasse.',
+            }[lang]
           }
           backdrop={photos[0]}
         />
@@ -73,7 +79,7 @@ export default function TourSection() {
 
             <InfoBlock
               icon={<MapPin size={18} weight="fill" />}
-              title={isEn ? 'Location' : 'Ubicación'}
+              title={{ es: 'Ubicación', en: 'Location', fr: 'Adresse' }[lang]}
             >
               <p className="text-base font-bold">Finca Vista Hermosa</p>
               <p className="text-sm opacity-80">{sede.address}</p>
@@ -84,7 +90,7 @@ export default function TourSection() {
                   rel="noopener noreferrer"
                   className="mt-1 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.2em] text-brand hover:opacity-80"
                 >
-                  {isEn ? 'How to get there' : 'Cómo llegar'}
+                  {{ es: 'Cómo llegar', en: 'How to get there', fr: 'Comment s\'y rendre' }[lang]}
                   <ArrowSquareOut size={12} weight="bold" />
                 </a>
               )}
@@ -92,7 +98,7 @@ export default function TourSection() {
 
             <InfoBlock
               icon={<Clock size={18} weight="fill" />}
-              title={isEn ? 'Hours' : 'Horario'}
+              title={{ es: 'Horario', en: 'Hours', fr: 'Horaires' }[lang]}
             >
               {sede.schedule.map((s, i) => (
                 <p key={i} className="text-base font-medium">
@@ -104,7 +110,7 @@ export default function TourSection() {
             {/* Booking apps - bigger, prettier */}
             <InfoBlock
               icon={<Sparkle size={18} weight="fill" />}
-              title={isEn ? 'Book on' : 'Reservar en'}
+              title={{ es: 'Reservar en', en: 'Book on', fr: 'Réserver sur' }[lang]}
             >
               <div className="mt-1 flex flex-wrap gap-2.5">
                 {sede.bookingApps?.map((app) => (
@@ -134,8 +140,8 @@ export default function TourSection() {
         reviews={reviewsBySede['coffee-tour']}
         googleUrl={sede.googleReviewsUrl}
         isEn={!!isEn}
-        title={isEn ? 'What people say about the Coffee Tour' : 'Lo que dicen del Coffee Tour'}
-        displayCount={isEn ? '+40 reviews' : '+40 reseñas'}
+        title={{ es: 'Lo que dicen del Coffee Tour', en: 'What people say about the Coffee Tour', fr: 'Ce qu\'on dit du Coffee Tour' }[lang]}
+        displayCount={{ es: '+40 reseñas', en: '+40 reviews', fr: '+40 avis' }[lang]}
       />
     </section>
   )

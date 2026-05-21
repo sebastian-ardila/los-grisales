@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
+import { useLang } from '../utils/lang'
 
 interface StorySectionProps {
   image: string
@@ -78,10 +79,9 @@ function StorySection({ image, imageAlt, kicker, title, paragraphs, number, alig
 }
 
 export default function HistoryPage() {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate()
-  const isEn = i18n.language?.startsWith('en')
-  const lang = isEn ? 'en' : 'es'
+  const lang = useLang()
 
   const goHomeToAnchor = (anchor: string) => {
     navigate(`/${lang}`)
@@ -99,7 +99,7 @@ export default function HistoryPage() {
           <div className="mx-auto mb-6 flex items-center justify-center gap-4">
             <div className="h-px w-10 bg-brand/60" />
             <span className="text-[11px] font-semibold uppercase tracking-[0.5em] text-brand">
-              {isEn ? 'Our Story' : 'Nuestra Historia'}
+              {{ es: 'Nuestra Historia', en: 'Our Story', fr: 'Notre Histoire' }[lang]}
             </span>
             <div className="h-px w-10 bg-brand/60" />
           </div>
@@ -112,51 +112,51 @@ export default function HistoryPage() {
       {/* Section 1: Origen — Finca */}
       <StorySection
         image="coffeetour/coffeetour0.webp"
-        imageAlt={isEn ? 'Coffee cherries at Finca Vista Hermosa' : 'Cerezas de café en Finca Vista Hermosa'}
+        imageAlt={{ es: 'Cerezas de café en Finca Vista Hermosa', en: 'Coffee cherries at Finca Vista Hermosa', fr: 'Cerises de café à la ferme Vista Hermosa' }[lang]}
         number="01"
         kicker={t('history.section1.kicker')}
         title={t('history.section1.title')}
         paragraphs={[t('history.section1.p1'), t('history.section1.p2')]}
-        ctaLabel={isEn ? 'Book Coffee Tour' : 'Reservar Coffee Tour'}
+        ctaLabel={{ es: 'Reservar Coffee Tour', en: 'Book Coffee Tour', fr: 'Réserver le Coffee Tour' }[lang]}
         onCtaClick={() => goHomeToAnchor('tour')}
       />
 
       {/* Section 2: Trazabilidad — Pereira */}
       <StorySection
         image="cafebar/cafebar1.webp"
-        imageAlt={isEn ? 'Café Los Grisales storefront' : 'Café Los Grisales en Pereira'}
+        imageAlt={{ es: 'Café Los Grisales en Pereira', en: 'Café Los Grisales storefront', fr: 'Café Los Grisales à Pereira' }[lang]}
         number="02"
         kicker={t('history.section2.kicker')}
         title={t('history.section2.title')}
         paragraphs={[t('history.section2.p1'), t('history.section2.p2')]}
         align="right"
-        ctaLabel={isEn ? 'Visit our café bars' : 'Visita nuestros café bar'}
+        ctaLabel={{ es: 'Visita nuestros café bar', en: 'Visit our café bars', fr: 'Visiter nos café bars' }[lang]}
         onCtaClick={() => goHomeToAnchor('cafe-bar')}
       />
 
       {/* Section 3: Coffee Tour — Experiencia */}
       <StorySection
         image="coffeetour/coffeetour5.webp"
-        imageAlt={isEn ? 'Coffee tour experience' : 'Experiencia Coffee Tour'}
+        imageAlt={{ es: 'Experiencia Coffee Tour', en: 'Coffee tour experience', fr: 'Expérience Coffee Tour' }[lang]}
         number="03"
         kicker={t('history.section3.kicker')}
         title={t('history.section3.title')}
         paragraphs={[t('history.section3.p1')]}
-        ctaLabel={isEn ? 'Book your Coffee Tour' : 'Reservar Coffee Tour'}
+        ctaLabel={{ es: 'Reservar Coffee Tour', en: 'Book your Coffee Tour', fr: 'Réserver votre Coffee Tour' }[lang]}
         onCtaClick={() => goHomeToAnchor('tour')}
       />
 
       {/* Section 4: Sedes que venden el café de especialidad */}
       <StorySection
         image="cafebar/cafebar3.webp"
-        imageAlt={isEn ? 'Specialty coffee at our café bars' : 'Café de especialidad en nuestras sedes'}
+        imageAlt={{ es: 'Café de especialidad en nuestras sedes', en: 'Specialty coffee at our café bars', fr: 'Café de spécialité dans nos café bars' }[lang]}
         number="04"
         kicker={t('history.section4.kicker')}
         title={t('history.section4.title')}
         paragraphs={[t('history.section4.p1'), t('history.section4.p2')]}
         align="right"
         isLast
-        ctaLabel={isEn ? 'Find a café bar' : 'Encuentra un café bar'}
+        ctaLabel={{ es: 'Encuentra un café bar', en: 'Find a café bar', fr: 'Trouver un café bar' }[lang]}
         onCtaClick={() => goHomeToAnchor('cafe-bar')}
       />
 

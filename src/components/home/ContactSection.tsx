@@ -18,10 +18,11 @@ import {
 } from '@phosphor-icons/react'
 import { buildContactWhatsAppUrl } from '../../utils/whatsapp'
 import { sedes } from '../../config/sedes'
+import { useLang } from '../../utils/lang'
 
 export default function ContactSection() {
-  const { t, i18n } = useTranslation()
-  const isEn = i18n.language?.startsWith('en')
+  const { t } = useTranslation()
+  const lang = useLang()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -73,7 +74,7 @@ export default function ContactSection() {
       <div className="mx-auto max-w-6xl">
         <header className="mb-8 text-center">
           <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-brand">
-            {t('contact.sectionKicker', isEn ? 'Get in touch' : 'Contáctanos')}
+            {t('contact.sectionKicker')}
           </p>
           <h2 className="font-display mt-2 text-3xl font-bold md:text-4xl">
             {t('contact.title')}
@@ -121,7 +122,7 @@ export default function ContactSection() {
             </div>
             {tried && !reason && (
               <p className="mt-2 text-xs opacity-60">
-                {isEn ? 'Reason is required' : 'El motivo es requerido'}
+                {{ es: 'El motivo es requerido', en: 'Reason is required', fr: 'Le motif est requis' }[lang]}
               </p>
             )}
           </div>
@@ -144,7 +145,7 @@ export default function ContactSection() {
                 />
                 {tried && !name.trim() && (
                   <p className="mt-1 text-xs opacity-60">
-                    {isEn ? 'Name is required' : 'El nombre es requerido'}
+                    {{ es: 'El nombre es requerido', en: 'Name is required', fr: 'Le nom est requis' }[lang]}
                   </p>
                 )}
               </div>
@@ -163,7 +164,7 @@ export default function ContactSection() {
                 />
                 {tried && !email.trim() && (
                   <p className="mt-1 text-xs opacity-60">
-                    {isEn ? 'Email is required' : 'El correo es requerido'}
+                    {{ es: 'El correo es requerido', en: 'Email is required', fr: 'L\'e-mail est requis' }[lang]}
                   </p>
                 )}
               </div>
@@ -198,7 +199,7 @@ export default function ContactSection() {
             <div className="flex flex-col">
               <label className="mb-1 block text-sm font-medium opacity-80">
                 {t('contact.message')}{' '}
-                <span className="opacity-50">({isEn ? 'optional' : 'opcional'})</span>
+                <span className="opacity-50">({{ es: 'opcional', en: 'optional', fr: 'facultatif' }[lang]})</span>
               </label>
               <textarea
                 value={message}
