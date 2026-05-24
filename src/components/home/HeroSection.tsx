@@ -1,11 +1,13 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Mountains, Storefront } from '@phosphor-icons/react'
+import { Mountains, Storefront, UsersThree } from '@phosphor-icons/react'
 import { useLang } from '../../utils/lang'
+import SocialModal from '../ui/SocialModal'
 
 const partners = [
-  { name: 'CARDER', image: 'partner-carder.webp' },
-  { name: 'Alcaldía de Pereira', image: 'partner-pereira.webp' },
-  { name: 'Gobernación de Risaralda', image: 'partner-risaralda.webp', wider: true },
+  { name: 'CARDER', image: 'partners/partner-carder.webp' },
+  { name: 'Alcaldía de Pereira', image: 'partners/partner-pereira.webp' },
+  { name: 'Gobernación de Risaralda', image: 'partners/partner-risaralda.webp', wider: true },
 ]
 
 function scrollToSection(id: string) {
@@ -15,7 +17,10 @@ function scrollToSection(id: string) {
 export default function HeroSection() {
   const { t } = useTranslation()
   const lang = useLang()
-  const heroLogo = `${import.meta.env.BASE_URL}logo-dorado.webp`
+  const [socialOpen, setSocialOpen] = useState(false)
+  const heroLogo = `${import.meta.env.BASE_URL}logos/logo-dorado.webp`
+
+  const followLabel = { es: 'Síguenos', en: 'Follow us', fr: 'Suivez-nous' }[lang]
 
   return (
     <section data-dark-island className="relative -mt-16 flex min-h-screen flex-col overflow-hidden">
@@ -27,7 +32,7 @@ export default function HeroSection() {
         playsInline
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src={`${import.meta.env.BASE_URL}video-hero-3.webm`} type="video/webm" />
+        <source src={`${import.meta.env.BASE_URL}hero/video-hero-3.webm`} type="video/webm" />
       </video>
 
       {/* Overlay */}
@@ -63,32 +68,46 @@ export default function HeroSection() {
         </div>
 
         {/* Action buttons — main attention */}
-        <div className="flex flex-row gap-3 md:gap-4">
+        <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-row gap-3 md:gap-4">
+            <button
+              onClick={() => scrollToSection('tour')}
+              style={{
+                backgroundColor: 'var(--hero-accent)',
+                color: 'var(--hero-accent-contrast)',
+                boxShadow: '0 10px 30px -8px var(--hero-accent-glow)',
+              }}
+              className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-base font-bold transition hover:brightness-105 sm:px-9 sm:text-lg"
+            >
+              <Mountains size={20} weight="bold" />
+              Coffee Tour
+            </button>
+            <button
+              onClick={() => scrollToSection('cafe-bar')}
+              style={{
+                borderColor: 'var(--hero-secondary)',
+                color: 'var(--hero-secondary-text)',
+              }}
+              className="inline-flex items-center gap-2 rounded-xl border-2 bg-black/20 px-7 py-3.5 text-base font-bold backdrop-blur-sm transition hover:bg-black/30 sm:px-9 sm:text-lg"
+            >
+              <Storefront size={20} weight="bold" />
+              Café Bar
+            </button>
+          </div>
+
+          {/* Subtle "follow us" trigger */}
           <button
-            onClick={() => scrollToSection('tour')}
-            style={{
-              backgroundColor: 'var(--hero-accent)',
-              color: 'var(--hero-accent-contrast)',
-              boxShadow: '0 10px 30px -8px var(--hero-accent-glow)',
-            }}
-            className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-base font-bold transition hover:brightness-105 sm:px-9 sm:text-lg"
+            type="button"
+            onClick={() => setSocialOpen(true)}
+            className="group mt-1 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-white/55 transition hover:text-white"
           >
-            <Mountains size={20} weight="bold" />
-            Coffee Tour
-          </button>
-          <button
-            onClick={() => scrollToSection('cafe-bar')}
-            style={{
-              borderColor: 'var(--hero-secondary)',
-              color: 'var(--hero-secondary-text)',
-            }}
-            className="inline-flex items-center gap-2 rounded-xl border-2 bg-black/20 px-7 py-3.5 text-base font-bold backdrop-blur-sm transition hover:bg-black/30 sm:px-9 sm:text-lg"
-          >
-            <Storefront size={20} weight="bold" />
-            Café Bar
+            <UsersThree size={15} weight="duotone" />
+            <span className="underline-offset-[6px] group-hover:underline">{followLabel}</span>
           </button>
         </div>
       </div>
+
+      <SocialModal open={socialOpen} onClose={() => setSocialOpen(false)} />
 
       {/* Partners — anchored to the bottom of the hero, not affecting main centering */}
       <div className="animate-fade-in absolute inset-x-0 bottom-16 z-10 mx-auto flex w-full max-w-3xl flex-col items-center gap-4 px-4 md:bottom-20" style={{ animationDelay: '160ms', animationFillMode: 'backwards' }}>

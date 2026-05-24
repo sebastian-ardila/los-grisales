@@ -13,7 +13,7 @@ export default function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const navbarLogo = `${import.meta.env.BASE_URL}logo-verde.webp`
+  const navbarLogo = `${import.meta.env.BASE_URL}logos/logo-verde.webp`
 
   const menuRoutes = routes.filter((r) => r.showInMenu)
 

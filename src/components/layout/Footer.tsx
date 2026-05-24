@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { InstagramLogo, FacebookLogo, TiktokLogo, WhatsappLogo, PawPrint, EnvelopeSimple } from '@phosphor-icons/react'
+import { InstagramLogo, FacebookLogo, TiktokLogo, YoutubeLogo, WhatsappLogo, PawPrint, EnvelopeSimple } from '@phosphor-icons/react'
 import { sedes } from '../../config/sedes'
+import { social } from '../../data/social'
 import { useLang } from '../../utils/lang'
 
 export default function Footer() {
@@ -30,7 +31,7 @@ export default function Footer() {
         {/* Column 1: Brand info */}
         <div>
           <img
-            src={`${import.meta.env.BASE_URL}logo-oficial-verde.webp`}
+            src={`${import.meta.env.BASE_URL}logos/logo-oficial-verde.webp`}
             alt="Los Grisales"
             className="mb-3 h-32 w-auto md:h-36"
           />
@@ -106,13 +107,22 @@ export default function Footer() {
               <span>Café Los Grisales Coffee Tour</span>
             </a>
             <a
-              href="https://www.tiktok.com/@cafelosgrisales00"
+              href={social.tiktok}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 text-sm text-white/70 transition hover:text-white"
             >
               <TiktokLogo size={22} />
-              <span>@cafelosgrisales00</span>
+              <span>{social.tiktokHandle}</span>
+            </a>
+            <a
+              href={social.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 text-sm text-white/70 transition hover:text-white"
+            >
+              <YoutubeLogo size={22} />
+              <span>{social.youtubeHandle}</span>
             </a>
             <a
               href={`https://wa.me/${sedeList[0]?.whatsappNumber}`}

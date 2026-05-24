@@ -14,7 +14,7 @@ export default function MobileMenu({ onClose }: MobileMenuProps) {
   const lang = useLang()
   const navigate = useNavigate()
   const location = useLocation()
-  const logoSrc = `${import.meta.env.BASE_URL}logo-verde.webp`
+  const logoSrc = `${import.meta.env.BASE_URL}logos/logo-verde.webp`
 
   const menuRoutes = routes.filter((r) => r.showInMenu)
 

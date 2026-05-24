@@ -49,7 +49,6 @@ export interface SedeConfig {
   tableCount: number
   isCoffeeTour?: boolean
   bookingApps?: BookingApp[]
-  heroImage?: string
 }
 
 export interface DaySchedule {

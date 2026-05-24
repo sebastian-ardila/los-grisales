@@ -9,7 +9,8 @@ import SectionHeader from '../ui/SectionHeader'
 import { useLang } from '../../utils/lang'
 
 const photos = [
-  'coffeetour0.webp',
+  'cafelosgrisalesfamily.webp',
+  'cafelosgrisalesjeep.webp',
   'coffeetour1.webp',
   'coffeetour2.webp',
   'coffeetour3.webp',
@@ -127,7 +128,7 @@ export default function TourSection() {
                   name="WhatsApp"
                   color="#064947"
                   icon={<WhatsappLogo size={20} weight="fill" />}
-                  solid
+                  outlined
                 />
               </div>
             </InfoBlock>
@@ -193,6 +194,7 @@ function BookingChip({
   color,
   icon,
   solid = false,
+  outlined = false,
 }: {
   href: string
   name: string
@@ -200,26 +202,30 @@ function BookingChip({
   icon: React.ReactNode
   /** Render with solid colored background and white text/icon. */
   solid?: boolean
+  /** Render with white background, colored border + text/icon. */
+  outlined?: boolean
 }) {
+  const containerStyle = solid
+    ? { backgroundColor: color, color: '#ffffff', borderColor: color }
+    : outlined
+      ? { backgroundColor: '#ffffff', color, borderColor: color }
+      : { backgroundColor: '#ffffff', borderColor: undefined }
+  const iconStyle = solid
+    ? { backgroundColor: 'rgba(255,255,255,0.18)', color: '#ffffff' }
+    : { backgroundColor: `${color}1f`, color }
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      style={{
-        backgroundColor: solid ? color : '#ffffff',
-        color: solid ? '#ffffff' : undefined,
-        borderColor: solid ? color : undefined,
-      }}
-      className="group inline-flex items-center gap-2.5 rounded-xl border border-black/12 px-3 py-2.5 text-sm font-semibold shadow-[0_2px_8px_-4px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-12px_rgba(6,73,71,0.25)]"
+      style={containerStyle}
+      className={`group inline-flex items-center gap-2.5 rounded-xl border px-3 py-2.5 text-sm font-semibold shadow-[0_2px_8px_-4px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_10px_20px_-12px_rgba(6,73,71,0.25)] ${
+        solid || outlined ? '' : 'border-black/12'
+      }`}
     >
       <span
         className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
-        style={
-          solid
-            ? { backgroundColor: 'rgba(255,255,255,0.18)', color: '#ffffff' }
-            : { backgroundColor: `${color}1f`, color }
-        }
+        style={iconStyle}
       >
         {icon}
       </span>
