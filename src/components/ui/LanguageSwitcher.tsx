@@ -42,11 +42,15 @@ export default function LanguageSwitcher({ variant = 'light' }: Props) {
     navigate(`${newPath}${location.search}`, { replace: true })
   }
 
-  // Border colour: thin green that contrasts with each background.
-  //  - light card: brand dark green
-  //  - dark navbar: a softer mid-green that's visible on the dark navbar
-  const borderColor = variant === 'dark' ? 'rgba(196, 226, 213, 0.5)' : '#064947'
-  const inactiveFg = variant === 'dark' ? 'rgba(255,255,255,0.85)' : '#064947'
+  // Border colour: same brand-green family on both backgrounds.
+  //  - light card: brand dark green at full strength
+  //  - dark variant (navbar over the cream theme): a very soft, dusty sage so
+  //    the pill outlines the chips without competing with anything. No opacity.
+  const borderColor = variant === 'dark' ? '#b3c2bb' : '#064947'
+  // Inactive label colour. The navbar sits on the cream theme primary so the
+  // text needs to be dark to keep contrast; full brand green pairs with the
+  // active chip without looking like a hard black.
+  const inactiveFg = variant === 'dark' ? '#064947' : '#064947'
 
   return (
     <div
@@ -97,8 +101,8 @@ function Chip({
           ? { backgroundColor: '#064947', color: '#ffffff' }
           : { color: inactiveFg, backgroundColor: 'transparent' }
       }
-      className={`inline-flex flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-1 text-[9px] font-extrabold uppercase leading-none tracking-wider transition ${
-        active ? 'shadow-[0_2px_6px_-2px_rgba(0,0,0,0.2)]' : 'hover:bg-black/5'
+      className={`inline-flex flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-1 text-[10px] font-extrabold uppercase leading-none tracking-wider transition ${
+        active ? 'shadow-[0_2px_6px_-2px_rgba(0,0,0,0.2)]' : 'hover:bg-white/10'
       }`}
     >
       <Flag

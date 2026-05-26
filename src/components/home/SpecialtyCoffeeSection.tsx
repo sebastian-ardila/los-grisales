@@ -99,11 +99,6 @@ const sheetLabels = {
     en: 'Processes & tasting notes',
     fr: 'Procédés et notes de dégustation',
   } as T,
-  sheetLanguage: {
-    es: 'Idioma',
-    en: 'Language',
-    fr: 'Langue',
-  } as T,
   coffeeTourCta: {
     es: 'Coffee Tour',
     en: 'Coffee Tour',
@@ -165,10 +160,7 @@ export default function SpecialtyCoffeeSection() {
           {/* Left column: language switcher + spec sheet */}
           <div className="flex flex-col gap-3">
             {/* Language switcher — sits directly above the card */}
-            <div className="flex items-center justify-end gap-3">
-              <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-brand/70">
-                {sheetLabels.sheetLanguage[lang]}
-              </span>
+            <div className="flex items-center justify-end">
               <LanguageSwitcher variant="light" />
             </div>
 
