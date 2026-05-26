@@ -105,14 +105,14 @@ const sheetLabels = {
     fr: 'Langue',
   } as T,
   coffeeTourCta: {
-    es: 'Conoce el Coffee Tour',
-    en: 'See the Coffee Tour',
-    fr: 'Découvrir le Coffee Tour',
+    es: 'Coffee Tour',
+    en: 'Coffee Tour',
+    fr: 'Coffee Tour',
   } as T,
   cafeBarCta: {
-    es: 'Visita nuestro Café Bar',
-    en: 'Visit our Café Bar',
-    fr: 'Visiter notre Café Bar',
+    es: 'Tiendas de Café',
+    en: 'Coffee Shops',
+    fr: 'Boutiques de Café',
   } as T,
   productsCta: {
     es: 'Ver nuestros productos',
@@ -295,16 +295,16 @@ export default function SpecialtyCoffeeSection() {
               to={`/${lang}/productos`}
               style={{
                 backgroundColor: '#064947',
-                color: '#F0D78A',
+                color: '#ffffff',
                 boxShadow:
-                  '0 18px 40px -10px rgba(6,73,71,0.55), 0 0 0 1px rgba(196,169,98,0.6) inset, 0 0 24px -8px rgba(196,169,98,0.4)',
+                  '0 18px 40px -10px rgba(6,73,71,0.55), 0 0 0 1px rgba(255,255,255,0.6) inset, 0 0 24px -8px rgba(255,255,255,0.4)',
               }}
               className="group relative inline-flex items-center justify-center gap-2.5 self-center overflow-hidden rounded-2xl px-7 py-4 text-base font-extrabold tracking-wide transition duration-300 hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0"
             >
               {/* Glossy sheen */}
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-[#C4A962]/40 opacity-0 transition duration-700 group-hover:translate-x-[400%] group-hover:opacity-100"
+                className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 -skew-x-12 bg-white/40 opacity-0 transition duration-700 group-hover:translate-x-[400%] group-hover:opacity-100"
               />
               <Package size={22} weight="duotone" />
               <span>{sheetLabels.productsCta[lang]}</span>

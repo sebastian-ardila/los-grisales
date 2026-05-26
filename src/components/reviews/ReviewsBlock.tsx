@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { Star } from '@phosphor-icons/react'
 import type { Review } from '../../data/reviews'
 
@@ -41,6 +42,78 @@ function initials(name: string) {
     .map((s) => s[0]?.toUpperCase())
     .slice(0, 2)
     .join('')
+}
+
+function ReviewsCarousel({ reviews }: { reviews: Review[] }) {
+  const scrollerRef = useRef<HTMLDivElement>(null)
+  const [activeIdx, setActiveIdx] = useState(0)
+
+  useEffect(() => {
+    const scroller = scrollerRef.current
+    if (!scroller) return
+    const cards = Array.from(scroller.children) as HTMLElement[]
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Pick the most-visible card and use it as the active index.
+        let bestIdx = -1
+        let bestRatio = 0
+        entries.forEach((entry) => {
+          const idx = cards.indexOf(entry.target as HTMLElement)
+          if (idx < 0) return
+          if (entry.intersectionRatio > bestRatio) {
+            bestRatio = entry.intersectionRatio
+            bestIdx = idx
+          }
+        })
+        if (bestIdx >= 0 && bestRatio > 0.5) setActiveIdx(bestIdx)
+      },
+      { root: scroller, threshold: [0.5, 0.75, 1] },
+    )
+    cards.forEach((c) => observer.observe(c))
+    return () => observer.disconnect()
+  }, [reviews.length])
+
+  const scrollTo = (idx: number) => {
+    const scroller = scrollerRef.current
+    if (!scroller) return
+    const target = scroller.children[idx] as HTMLElement | undefined
+    target?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+  }
+
+  return (
+    <div className="sm:hidden">
+      <div
+        ref={scrollerRef}
+        className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {reviews.map((r, i) => (
+          <div
+            key={r.author + r.relativeDate + i}
+            className="w-[82vw] max-w-[340px] shrink-0 snap-center"
+          >
+            <ReviewCard review={r} />
+          </div>
+        ))}
+      </div>
+      {reviews.length > 1 && (
+        <div className="mt-3 flex items-center justify-center gap-1.5" role="tablist" aria-label="Reseñas">
+          {reviews.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              role="tab"
+              aria-selected={i === activeIdx}
+              aria-label={`Reseña ${i + 1}`}
+              onClick={() => scrollTo(i)}
+              className={`h-1.5 rounded-full transition-all ${
+                i === activeIdx ? 'w-5 bg-brand' : 'w-1.5 bg-black/20'
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  )
 }
 
 function ReviewCard({ review, tall = false }: { review: Review; tall?: boolean }) {
@@ -103,8 +176,9 @@ export default function ReviewsBlock({ reviews, googleUrl, sedeLinks, isEn, titl
           </div>
         </header>
 
-        {/* Grid — 2 rows in both desktop and mobile (3 cols desktop, 1 col mobile) */}
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Mobile: horizontal swipe carousel with snap. Desktop: 2/3 col grid. */}
+        <ReviewsCarousel reviews={reviews.slice(0, 6)} />
+        <div className="hidden gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3">
           {reviews.slice(0, 6).map((r, i) => (
             <ReviewCard key={r.author + r.relativeDate + i} review={r} />
           ))}
@@ -139,9 +213,9 @@ function GoogleRateButton({ href, label }: { href: string; label: string }) {
       target="_blank"
       rel="noopener noreferrer"
       style={{ backgroundColor: '#ffffff', color: '#3c4043' }}
-      className="inline-flex items-center gap-3 rounded-full border border-[#dadce0] px-5 py-2.5 text-sm font-medium shadow-[0_1px_3px_rgba(60,64,67,0.15)] transition hover:shadow-[0_2px_6px_rgba(60,64,67,0.2)]"
+      className="inline-flex items-center gap-1.5 rounded-full border border-[#dadce0] px-2.5 py-1.5 text-[0.68rem] font-medium shadow-[0_1px_3px_rgba(60,64,67,0.15)] transition hover:shadow-[0_2px_6px_rgba(60,64,67,0.2)] sm:gap-3 sm:px-5 sm:py-2.5 sm:text-sm"
     >
-      <GoogleGlyph size={18} />
+      <GoogleGlyph size={14} />
       <span style={{ fontFamily: '"Google Sans", Roboto, Arial, sans-serif' }}>{label}</span>
     </a>
   )

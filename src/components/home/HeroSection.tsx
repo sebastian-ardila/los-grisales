@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Mountains, Storefront, UsersThree } from '@phosphor-icons/react'
+import { Mountains, Storefront, ShareNetwork } from '@phosphor-icons/react'
 import { useLang } from '../../utils/lang'
 import SocialModal from '../ui/SocialModal'
 
@@ -20,7 +20,8 @@ export default function HeroSection() {
   const [socialOpen, setSocialOpen] = useState(false)
   const heroLogo = `${import.meta.env.BASE_URL}logos/logo-dorado.webp`
 
-  const followLabel = { es: 'Síguenos', en: 'Follow us', fr: 'Suivez-nous' }[lang]
+  const followLabel = { es: 'Síguenos en redes', en: 'Follow us on social', fr: 'Suivez-nous sur les réseaux' }[lang]
+  const cafeBarLabel = { es: 'Tiendas de Café', en: 'Coffee Shops', fr: 'Boutiques de Café' }[lang]
 
   return (
     <section data-dark-island className="relative -mt-16 flex min-h-screen flex-col overflow-hidden">
@@ -47,8 +48,8 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Main centered content (logo + tagline + buttons) — vertically centered */}
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-8 px-4 py-8 pb-32 text-center md:gap-10 md:pb-40">
+      {/* Main centered content — everything in flow so it stacks cleanly on small screens */}
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-8 px-4 pb-10 pt-24 text-center md:gap-10 md:pb-14 md:pt-28">
         {/* Brand */}
         <h1 className="animate-neon-text flex justify-center">
           <img
@@ -68,8 +69,8 @@ export default function HeroSection() {
         </div>
 
         {/* Action buttons — main attention */}
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex flex-row gap-3 md:gap-4">
+        <div className="flex flex-col items-center gap-4">
+          <div className="flex w-full max-w-sm flex-col gap-3 sm:w-auto sm:max-w-none sm:flex-row sm:gap-4">
             <button
               onClick={() => scrollToSection('tour')}
               style={{
@@ -77,7 +78,7 @@ export default function HeroSection() {
                 color: 'var(--hero-accent-contrast)',
                 boxShadow: '0 10px 30px -8px var(--hero-accent-glow)',
               }}
-              className="inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-base font-bold transition hover:brightness-105 sm:px-9 sm:text-lg"
+              className="inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-base font-bold transition hover:brightness-105 sm:px-9 sm:text-lg"
             >
               <Mountains size={20} weight="bold" />
               Coffee Tour
@@ -88,50 +89,50 @@ export default function HeroSection() {
                 borderColor: 'var(--hero-secondary)',
                 color: 'var(--hero-secondary-text)',
               }}
-              className="inline-flex items-center gap-2 rounded-xl border-2 bg-black/20 px-7 py-3.5 text-base font-bold backdrop-blur-sm transition hover:bg-black/30 sm:px-9 sm:text-lg"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border-2 bg-black/20 px-7 py-3.5 text-base font-bold backdrop-blur-sm transition hover:bg-black/30 sm:px-9 sm:text-lg"
             >
               <Storefront size={20} weight="bold" />
-              Café Bar
+              {cafeBarLabel}
             </button>
           </div>
 
-          {/* Subtle "follow us" trigger */}
+          {/* "Follow us" — subtle chip, more visible than plain text but visually subordinate to the CTAs */}
           <button
             type="button"
             onClick={() => setSocialOpen(true)}
-            className="group mt-1 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-white/55 transition hover:text-white"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/80 backdrop-blur-sm transition hover:border-white/50 hover:bg-white/10 hover:text-white"
           >
-            <UsersThree size={15} weight="duotone" />
-            <span className="underline-offset-[6px] group-hover:underline">{followLabel}</span>
+            <ShareNetwork size={14} weight="duotone" />
+            <span>{followLabel}</span>
           </button>
+        </div>
+
+        {/* Partners — now part of the flow so they never collide with the follow-us button */}
+        <div className="animate-fade-in mt-4 flex w-full max-w-3xl flex-col items-center gap-4 md:mt-8" style={{ animationDelay: '160ms', animationFillMode: 'backwards' }}>
+          <div className="flex items-center gap-2">
+            <span className="h-px w-6 bg-white/25" />
+            <span className="text-[9px] font-semibold uppercase tracking-[0.4em] text-white/70 md:text-xs">
+              {{ es: 'En alianza con', en: 'In partnership with', fr: 'En partenariat avec' }[lang]}
+            </span>
+            <span className="h-px w-6 bg-white/25" />
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 md:gap-x-14">
+            {partners.map((p) => (
+              <img
+                key={p.name}
+                src={`${import.meta.env.BASE_URL}${p.image}`}
+                alt={p.name}
+                className={`h-12 w-auto object-contain opacity-90 drop-shadow-[0_0_12px_rgba(0,0,0,0.5)] transition hover:opacity-100 md:h-20 ${
+                  p.wider ? 'max-w-[180px] md:max-w-[260px]' : 'max-w-[140px] md:max-w-[200px]'
+                }`}
+                loading="lazy"
+              />
+            ))}
+          </div>
         </div>
       </div>
 
       <SocialModal open={socialOpen} onClose={() => setSocialOpen(false)} />
-
-      {/* Partners — anchored to the bottom of the hero, not affecting main centering */}
-      <div className="animate-fade-in absolute inset-x-0 bottom-16 z-10 mx-auto flex w-full max-w-3xl flex-col items-center gap-4 px-4 md:bottom-20" style={{ animationDelay: '160ms', animationFillMode: 'backwards' }}>
-        <div className="flex items-center gap-2">
-          <span className="h-px w-6 bg-white/25" />
-          <span className="text-[9px] font-semibold uppercase tracking-[0.4em] text-white/70 md:text-xs">
-            {{ es: 'En alianza con', en: 'In partnership with', fr: 'En partenariat avec' }[lang]}
-          </span>
-          <span className="h-px w-6 bg-white/25" />
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 md:gap-x-14">
-          {partners.map((p) => (
-            <img
-              key={p.name}
-              src={`${import.meta.env.BASE_URL}${p.image}`}
-              alt={p.name}
-              className={`h-14 w-auto object-contain opacity-90 drop-shadow-[0_0_12px_rgba(0,0,0,0.5)] transition hover:opacity-100 md:h-20 ${
-                p.wider ? 'max-w-[180px] md:max-w-[260px]' : 'max-w-[140px] md:max-w-[200px]'
-              }`}
-              loading="lazy"
-            />
-          ))}
-        </div>
-      </div>
     </section>
   )
 }

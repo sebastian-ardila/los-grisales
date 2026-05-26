@@ -2,7 +2,7 @@
   "nav": {
     "home": "Accueil",
     "tour": "Coffee Tour",
-    "cafe-bar": "Café Bar",
+    "cafe-bar": "Boutiques de Café",
     "especialidad": "Notre Café",
     "historia": "Histoire",
     "productos": "Produits"
@@ -114,7 +114,7 @@
     "address": "Adresse",
     "hours": "Horaires",
     "bookOn": "Réservez sur",
-    "cafeBar": "Café Bar",
+    "cafeBar": "Boutique de Café",
     "experience": "Expérience",
     "selectThisSede": "Choisir cette adresse"
   },
@@ -222,7 +222,7 @@
   },
   "ourCoffee": {
     "exploreTour": "Découvrir le Coffee Tour",
-    "exploreCafeBar": "Visiter notre Café Bar",
+    "exploreCafeBar": "Visiter nos boutiques de café",
     "viewProducts": "Voir nos produits"
   }
 }

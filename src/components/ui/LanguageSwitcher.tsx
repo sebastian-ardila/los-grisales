@@ -1,26 +1,35 @@
+import type { ComponentType, SVGProps } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useLocation } from 'react-router-dom'
+import ES from 'country-flag-icons/react/3x2/ES'
+import GB from 'country-flag-icons/react/3x2/GB'
+import FR from 'country-flag-icons/react/3x2/FR'
 import { toLang, type Lang } from '../../utils/lang'
 
-const LANGS: { code: Lang; flag: string; label: string; aria: string }[] = [
-  { code: 'es', flag: '🇪🇸', label: 'ES', aria: 'Cambiar a Español' },
-  { code: 'en', flag: '🇬🇧', label: 'EN', aria: 'Switch to English' },
-  { code: 'fr', flag: '🇫🇷', label: 'FR', aria: 'Passer au français' },
+type FlagIcon = ComponentType<SVGProps<SVGSVGElement>>
+
+const LANGS: { code: Lang; Flag: FlagIcon; label: string; aria: string }[] = [
+  { code: 'es', Flag: ES as FlagIcon, label: 'ES', aria: 'Cambiar a Español' },
+  { code: 'en', Flag: GB as FlagIcon, label: 'EN', aria: 'Switch to English' },
+  { code: 'fr', Flag: FR as FlagIcon, label: 'FR', aria: 'Passer au français' },
 ]
 
 interface Props {
   /** "dark" → on dark backgrounds (navbar). "light" → on light card backgrounds. */
   variant?: 'dark' | 'light'
-  /** Hide the language label, keep just the flag (extra compact). */
-  hideLabel?: boolean
 }
 
 /**
- * Shared language switcher. Updates global i18n language AND the URL hash so
- * deep-links and refresh keep the selected language. Used by Navbar and any
- * section-level switcher.
+ * Shared language switcher. A single pill with one segment per supported
+ * language: flag on top, 2-letter code below. Active segment fills with the
+ * brand green; the rest stay transparent. Container has no background and a
+ * thin border that picks up the surrounding text colour so it works on both
+ * dark navbars and light section cards.
+ *
+ * Updates global i18n language AND the URL prefix so deep-links and refresh
+ * keep the selected language.
  */
-export default function LanguageSwitcher({ variant = 'light', hideLabel = false }: Props) {
+export default function LanguageSwitcher({ variant = 'light' }: Props) {
   const { i18n } = useTranslation()
   const navigate = useNavigate()
   const location = useLocation()
@@ -29,33 +38,32 @@ export default function LanguageSwitcher({ variant = 'light', hideLabel = false 
   const switchTo = (target: Lang) => {
     if (target === current) return
     i18n.changeLanguage(target)
-    // Update the URL path (lang prefix) so react-router useParams stays consistent
-    // and Layout's sync effect doesn't revert the change on next navigation.
     const newPath = location.pathname.replace(/^\/(es|en|fr)/, `/${target}`)
     navigate(`${newPath}${location.search}`, { replace: true })
   }
 
-  const containerStyle =
-    variant === 'dark'
-      ? { backgroundColor: 'rgba(255,255,255,0.95)', borderColor: 'rgba(255,255,255,0.4)' }
-      : { backgroundColor: '#ffffff', borderColor: 'rgba(0,0,0,0.18)' }
+  // Border colour: thin green that contrasts with each background.
+  //  - light card: brand dark green
+  //  - dark navbar: a softer mid-green that's visible on the dark navbar
+  const borderColor = variant === 'dark' ? 'rgba(196, 226, 213, 0.5)' : '#064947'
+  const inactiveFg = variant === 'dark' ? 'rgba(255,255,255,0.85)' : '#064947'
 
   return (
     <div
       role="tablist"
       aria-label="Language"
-      style={containerStyle}
-      className="inline-flex shrink-0 items-center gap-0.5 rounded-full border p-0.5 shadow-[inset_0_1px_2px_rgba(0,0,0,0.04)]"
+      style={{ borderColor }}
+      className="inline-flex shrink-0 items-stretch gap-1 rounded-2xl border bg-transparent p-1"
     >
-      {LANGS.map(({ code, flag, label, aria }) => (
+      {LANGS.map(({ code, Flag, label, aria }) => (
         <Chip
           key={code}
           active={current === code}
           onClick={() => switchTo(code)}
-          flag={flag}
+          Flag={Flag}
           label={label}
           aria={aria}
-          hideLabel={hideLabel}
+          inactiveFg={inactiveFg}
         />
       ))}
     </div>
@@ -65,17 +73,17 @@ export default function LanguageSwitcher({ variant = 'light', hideLabel = false 
 function Chip({
   active,
   onClick,
-  flag,
+  Flag,
   label,
   aria,
-  hideLabel,
+  inactiveFg,
 }: {
   active: boolean
   onClick: () => void
-  flag: string
+  Flag: FlagIcon
   label: string
   aria: string
-  hideLabel: boolean
+  inactiveFg: string
 }) {
   return (
     <button
@@ -84,13 +92,20 @@ function Chip({
       aria-selected={active}
       aria-label={aria}
       onClick={onClick}
-      style={active ? { backgroundColor: '#064947', color: '#ffffff' } : { color: 'rgba(0,0,0,0.7)' }}
-      className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-[10px] font-extrabold uppercase tracking-wider transition ${
-        active ? 'shadow-[0_2px_6px_-1px_rgba(0,0,0,0.25)]' : 'hover:bg-black/5'
+      style={
+        active
+          ? { backgroundColor: '#064947', color: '#ffffff' }
+          : { color: inactiveFg, backgroundColor: 'transparent' }
+      }
+      className={`inline-flex flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-1 text-[9px] font-extrabold uppercase leading-none tracking-wider transition ${
+        active ? 'shadow-[0_2px_6px_-2px_rgba(0,0,0,0.2)]' : 'hover:bg-black/5'
       }`}
     >
-      <span aria-hidden="true" className="text-sm leading-none">{flag}</span>
-      {!hideLabel && <span>{label}</span>}
+      <Flag
+        aria-hidden="true"
+        className="h-3 w-[18px] shrink-0 overflow-hidden rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,0.1)]"
+      />
+      <span>{label}</span>
     </button>
   )
 }

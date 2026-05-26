@@ -1,5 +1,8 @@
+import type { ComponentType, SVGProps } from 'react'
 import { useTranslation } from 'react-i18next'
 import { MapPin, Clock, ArrowSquareOut, WhatsappLogo, ListChecks, Sparkle } from '@phosphor-icons/react'
+import ES from 'country-flag-icons/react/3x2/ES'
+import GB from 'country-flag-icons/react/3x2/GB'
 import { sedes } from '../../config/sedes'
 import { reviewsBySede } from '../../data/reviews'
 import PhotoStack from '../ui/PhotoStack'
@@ -7,6 +10,8 @@ import BookingAppIcon from '../ui/BookingAppIcon'
 import ReviewsBlock from '../reviews/ReviewsBlock'
 import SectionHeader from '../ui/SectionHeader'
 import { useLang } from '../../utils/lang'
+
+type FlagIcon = ComponentType<SVGProps<SVGSVGElement>>
 
 const photos = [
   'cafelosgrisalesfamily.webp',
@@ -67,12 +72,12 @@ export default function TourSection() {
               <div className="flex flex-wrap gap-2">
                 <PdfChip
                   href={`${import.meta.env.BASE_URL}coffeetour/itinerario-spanish.pdf`}
-                  flag="🇪🇸"
+                  Flag={ES as FlagIcon}
                   label="Itinerario"
                 />
                 <PdfChip
                   href={`${import.meta.env.BASE_URL}coffeetour/itinerario-english.pdf`}
-                  flag="🇬🇧"
+                  Flag={GB as FlagIcon}
                   label="Itinerary"
                 />
               </div>
@@ -172,7 +177,7 @@ function InfoBlock({
   )
 }
 
-function PdfChip({ href, flag, label }: { href: string; flag: string; label: string }) {
+function PdfChip({ href, Flag, label }: { href: string; Flag: FlagIcon; label: string }) {
   return (
     <a
       href={href}
@@ -181,7 +186,10 @@ function PdfChip({ href, flag, label }: { href: string; flag: string; label: str
       style={{ backgroundColor: '#ffffff' }}
       className="group inline-flex items-center gap-2 rounded-xl border border-black/12 px-3.5 py-2 text-sm font-semibold shadow-[0_2px_8px_-4px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-[0_10px_20px_-12px_rgba(6,73,71,0.25)]"
     >
-      <span aria-hidden="true" className="text-base leading-none">{flag}</span>
+      <Flag
+        aria-hidden="true"
+        className="h-3.5 w-[21px] shrink-0 overflow-hidden rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,0.1)]"
+      />
       <span>{label}</span>
       <ArrowSquareOut size={13} className="ml-0.5 shrink-0 opacity-40 transition group-hover:opacity-80" />
     </a>

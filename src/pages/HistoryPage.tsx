@@ -13,9 +13,28 @@ interface StorySectionProps {
   isLast?: boolean
   ctaLabel?: string
   onCtaClick?: () => void
+  /** When true the image sits beside the text instead of behind it. */
+  splitImage?: boolean
 }
 
-function StorySection({ image, imageAlt, kicker, title, paragraphs, number, align = 'left', isLast, ctaLabel, onCtaClick }: StorySectionProps) {
+function StorySection({ image, imageAlt, kicker, title, paragraphs, number, align = 'left', isLast, ctaLabel, onCtaClick, splitImage }: StorySectionProps) {
+  if (splitImage) {
+    return (
+      <SplitStorySection
+        image={image}
+        imageAlt={imageAlt}
+        kicker={kicker}
+        title={title}
+        paragraphs={paragraphs}
+        number={number}
+        align={align}
+        isLast={isLast}
+        ctaLabel={ctaLabel}
+        onCtaClick={onCtaClick}
+      />
+    )
+  }
+
   const contentSide = align === 'right' ? 'md:ml-auto md:text-left' : ''
   const overlayDir = align === 'right' ? 'md:bg-gradient-to-l' : 'md:bg-gradient-to-r'
   const numberPos = align === 'right' ? 'md:-left-4 md:top-8' : 'md:-right-4 md:top-8'
@@ -78,6 +97,77 @@ function StorySection({ image, imageAlt, kicker, title, paragraphs, number, alig
   )
 }
 
+function SplitStorySection({ image, imageAlt, kicker, title, paragraphs, number, align = 'left', isLast, ctaLabel, onCtaClick }: Omit<StorySectionProps, 'splitImage'>) {
+  // align refers to TEXT position. align='left' → image on right; align='right' → image on left.
+  const textCol = align === 'right' ? 'md:col-start-2' : 'md:col-start-1'
+  const imageCol = align === 'right' ? 'md:col-start-1' : 'md:col-start-2'
+  const numberPos = align === 'right' ? '-right-2 md:-right-4' : '-left-2 md:-left-4'
+
+  return (
+    <section data-dark-island className="relative w-full overflow-hidden bg-primary">
+      {!isLast && (
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-primary via-primary/60 to-transparent" />
+      )}
+      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-primary/70 to-transparent" />
+
+      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 py-20 md:grid-cols-2 md:gap-x-14 md:gap-y-8 md:px-10 md:py-28">
+        {/* Header (kicker + title) — mobile: first; desktop: text column, row 1 */}
+        <div className={`relative ${textCol} md:row-start-1 md:self-end`}>
+          <span
+            className={`pointer-events-none absolute -top-14 select-none font-display text-[8rem] font-bold leading-none tracking-tighter text-brand/10 md:-top-16 md:text-[14rem] ${numberPos}`}
+            aria-hidden="true"
+          >
+            {number}
+          </span>
+          <div className="relative">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-10 bg-brand" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.4em] text-brand">
+                {kicker}
+              </span>
+            </div>
+            <h2 className="font-display text-3xl font-bold leading-[1.15] text-white md:text-4xl lg:text-[2.75rem]">
+              {title}
+            </h2>
+          </div>
+        </div>
+
+        {/* Image — mobile: second (between title and body); desktop: image column, centered, contained */}
+        <div className={`${imageCol} md:row-span-2 md:row-start-1 md:self-center`}>
+          <div className="relative overflow-hidden rounded-2xl bg-black/20 shadow-[0_25px_60px_-25px_rgba(0,0,0,0.6)] ring-1 ring-white/10">
+            <img
+              src={`${import.meta.env.BASE_URL}${image}`}
+              alt={imageAlt}
+              className="block max-h-[60vh] w-full object-contain md:max-h-[640px]"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        {/* Body (paragraphs + CTA) — mobile: third; desktop: text column, row 2 */}
+        <div className={`${textCol} md:row-start-2 md:self-start`}>
+          <div className="space-y-4">
+            {paragraphs.map((p, i) => (
+              <p key={i} className="text-[15px] leading-[1.75] text-white/85 md:text-[17px]">
+                {p}
+              </p>
+            ))}
+          </div>
+          {ctaLabel && onCtaClick && (
+            <button
+              onClick={onCtaClick}
+              style={{ color: '#064947' }}
+              className="mt-8 inline-block rounded-xl bg-brand px-8 py-3 font-bold transition hover:brightness-110"
+            >
+              {ctaLabel}
+            </button>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function HistoryPage() {
   const { t } = useTranslation()
   const navigate = useNavigate()
@@ -111,27 +201,29 @@ export default function HistoryPage() {
 
       {/* Section 1: Origen — Finca */}
       <StorySection
-        image="coffeetour/coffeetour0.webp"
-        imageAlt={{ es: 'Cerezas de café en Finca Vista Hermosa', en: 'Coffee cherries at Finca Vista Hermosa', fr: 'Cerises de café à la ferme Vista Hermosa' }[lang]}
+        image="coffeetour/cafelosgrisalesfamily.webp"
+        imageAlt={{ es: 'La familia Grisales en su finca', en: 'The Grisales family on their farm', fr: 'La famille Grisales dans leur ferme' }[lang]}
         number="01"
         kicker={t('history.section1.kicker')}
         title={t('history.section1.title')}
         paragraphs={[t('history.section1.p1'), t('history.section1.p2')]}
         ctaLabel={{ es: 'Reservar Coffee Tour', en: 'Book Coffee Tour', fr: 'Réserver le Coffee Tour' }[lang]}
         onCtaClick={() => goHomeToAnchor('tour')}
+        splitImage
       />
 
       {/* Section 2: Trazabilidad — Pereira */}
       <StorySection
-        image="cafebar/cafebar1.webp"
-        imageAlt={{ es: 'Café Los Grisales en Pereira', en: 'Café Los Grisales storefront', fr: 'Café Los Grisales à Pereira' }[lang]}
+        image="collage.webp"
+        imageAlt={{ es: 'Collage del Café Bar Los Grisales en Pereira', en: 'Collage of the Los Grisales café bar in Pereira', fr: 'Collage du café bar Los Grisales à Pereira' }[lang]}
         number="02"
         kicker={t('history.section2.kicker')}
         title={t('history.section2.title')}
         paragraphs={[t('history.section2.p1'), t('history.section2.p2')]}
         align="right"
-        ctaLabel={{ es: 'Visita nuestros café bar', en: 'Visit our café bars', fr: 'Visiter nos café bars' }[lang]}
+        ctaLabel={{ es: 'Visita nuestras tiendas de café', en: 'Visit our coffee shops', fr: 'Visiter nos boutiques de café' }[lang]}
         onCtaClick={() => goHomeToAnchor('cafe-bar')}
+        splitImage
       />
 
       {/* Section 3: Coffee Tour — Experiencia */}
@@ -144,20 +236,22 @@ export default function HistoryPage() {
         paragraphs={[t('history.section3.p1')]}
         ctaLabel={{ es: 'Reservar Coffee Tour', en: 'Book your Coffee Tour', fr: 'Réserver votre Coffee Tour' }[lang]}
         onCtaClick={() => goHomeToAnchor('tour')}
+        splitImage
       />
 
       {/* Section 4: Sedes que venden el café de especialidad */}
       <StorySection
-        image="cafebar/cafebar3.webp"
-        imageAlt={{ es: 'Café de especialidad en nuestras sedes', en: 'Specialty coffee at our café bars', fr: 'Café de spécialité dans nos café bars' }[lang]}
+        image="cafebar/terraza.webp"
+        imageAlt={{ es: 'Terraza de nuestra tienda de café', en: 'Our coffee shop terrace', fr: 'Terrasse de notre boutique de café' }[lang]}
         number="04"
         kicker={t('history.section4.kicker')}
         title={t('history.section4.title')}
         paragraphs={[t('history.section4.p1'), t('history.section4.p2')]}
         align="right"
         isLast
-        ctaLabel={{ es: 'Encuentra un café bar', en: 'Find a café bar', fr: 'Trouver un café bar' }[lang]}
+        ctaLabel={{ es: 'Encuentra una tienda de café', en: 'Find a coffee shop', fr: 'Trouver une boutique de café' }[lang]}
         onCtaClick={() => goHomeToAnchor('cafe-bar')}
+        splitImage
       />
 
       {/* Tagline band */}

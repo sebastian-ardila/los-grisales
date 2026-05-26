@@ -13,7 +13,8 @@ import { useLang } from '../../utils/lang'
 const BASE = import.meta.env.BASE_URL
 const photos = [
   { src: `${BASE}cafebar/cafebar1.webp` },
-  { src: `${BASE}cafebar/cafebar2.webp`, position: 'top' },
+  { src: `${BASE}cafebar/terraza.webp` },
+  { src: `${BASE}cafebar/interior.webp` },
   { src: `${BASE}cafebar/cafebar3.webp` },
   { src: `${BASE}cafebar/cafebar4.webp` },
   { src: `${BASE}cafebar/cafebar5.webp`, position: 'center 25%' },
@@ -42,7 +43,7 @@ export default function CafeBarSection() {
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           index="02"
-          title="Café Bar"
+          title={{ es: 'Nuestras Tiendas de Café', en: 'Our Coffee Shops', fr: 'Nos Boutiques de Café' }[lang]}
           tagline={
             {
               es: 'Dos lugares en Pereira donde nuestro café de especialidad te recibe en persona.',
@@ -160,7 +161,7 @@ export default function CafeBarSection() {
                 </span>
               </button>
               <a
-                href={`${import.meta.env.BASE_URL}cafebar/menu-spanish.pdf`}
+                href={`${import.meta.env.BASE_URL}cafebar/menu-spanish-v2.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-brand/40 px-4 py-2.5 text-sm font-bold text-brand transition hover:bg-brand/5 sm:flex-initial sm:px-6"
@@ -189,7 +190,7 @@ export default function CafeBarSection() {
           { label: 'Unicentro', url: sedes['unicentro'].googleReviewsUrl },
         ]}
         isEn={!!isEn}
-        title={{ es: 'Lo que dicen de nuestros Café Bar', en: 'What people say about our Café Bar', fr: 'Ce qu\'on dit de nos Café Bar' }[lang]}
+        title={{ es: 'Lo que dicen de nuestras tiendas', en: 'What people say about our coffee shops', fr: 'Ce qu\'on dit de nos boutiques' }[lang]}
         displayCount={{ es: '+20 reseñas', en: '+20 reviews', fr: '+20 avis' }[lang]}
       />
 

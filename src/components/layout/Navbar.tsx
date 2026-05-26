@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { NavLink, Link, useNavigate, useLocation } from 'react-router-dom'
-import { List } from '@phosphor-icons/react'
+import { List, ShareNetwork } from '@phosphor-icons/react'
 import { useTranslation } from 'react-i18next'
 import { routes } from '../../config/routes'
 import LanguageSwitcher from '../ui/LanguageSwitcher'
+import SocialModal from '../ui/SocialModal'
 import { useLang } from '../../utils/lang'
 import MobileMenu from './MobileMenu'
 
@@ -13,6 +14,8 @@ export default function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [socialOpen, setSocialOpen] = useState(false)
+  const followLabel = { es: 'Síguenos en redes', en: 'Follow us on social', fr: 'Suivez-nous sur les réseaux' }[lang]
   const navbarLogo = `${import.meta.env.BASE_URL}logos/logo-verde.webp`
 
   const menuRoutes = routes.filter((r) => r.showInMenu)
@@ -50,7 +53,7 @@ export default function Navbar() {
           </Link>
 
           {/* Center: Desktop nav links */}
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-0.5 md:flex">
             {menuRoutes.map((route, idx) => {
               const Icon = route.icon
               const label = labelFor(route)
@@ -61,9 +64,9 @@ export default function Navbar() {
                   <button
                     key={key}
                     onClick={() => goToAnchor(route.anchor!)}
-                    className="flex items-center gap-1.5 px-3 py-2 text-sm text-white/70 transition hover:text-white"
+                    className="flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 text-[13px] text-white/70 transition hover:text-white"
                   >
-                    {Icon && <Icon size={18} />}
+                    {Icon && <Icon size={16} />}
                     <span>{t(`nav.${route.anchor}`, label)}</span>
                   </button>
                 )
@@ -82,14 +85,14 @@ export default function Navbar() {
                     }
                   }}
                   className={({ isActive }) =>
-                    `flex items-center gap-1.5 px-3 py-2 text-sm transition ${
+                    `flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 text-[13px] transition ${
                       isActive
                         ? 'border-b-2 border-brand font-bold text-brand'
                         : 'text-white/70 hover:text-white'
                     }`
                   }
                 >
-                  {Icon && <Icon size={18} />}
+                  {Icon && <Icon size={16} />}
                   <span>{t(tKey, label)}</span>
                 </NavLink>
               )
@@ -97,22 +100,35 @@ export default function Navbar() {
           </nav>
 
           {/* Right group */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Language switcher - hidden on mobile (lives in mobile menu) */}
-            <div className="hidden sm:block">
-              <LanguageSwitcher variant="dark" />
-            </div>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {/* Social trigger — matches the LanguageSwitcher's transparent-
+                bg + thin-green-border treatment so the pair reads as a
+                consistent unit. */}
+            <button
+              type="button"
+              onClick={() => setSocialOpen(true)}
+              aria-label={followLabel}
+              title={followLabel}
+              style={{ borderColor: 'rgba(196, 226, 213, 0.5)' }}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border bg-transparent text-white/85 transition hover:bg-white/10 hover:text-white"
+            >
+              <ShareNetwork size={16} weight="duotone" />
+            </button>
+
+            <LanguageSwitcher variant="dark" />
 
             {/* Mobile hamburger */}
             <button
               onClick={() => setMobileOpen(true)}
-              className="p-1 text-white md:hidden"
+              className="ml-0.5 p-1 text-white md:hidden"
             >
-              <List size={28} />
+              <List size={26} />
             </button>
           </div>
         </div>
       </header>
+
+      <SocialModal open={socialOpen} onClose={() => setSocialOpen(false)} />
 
       {/* Mobile menu */}
       {mobileOpen && <MobileMenu onClose={() => setMobileOpen(false)} />}
