@@ -2,16 +2,111 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!-- Favicons -->
     <link rel="icon" type="image/png" href="%BASE_URL%favicon-32.png" sizes="32x32" />
     <link rel="icon" href="%BASE_URL%favicon.ico" sizes="48x48" />
     <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="description" content="Los Grisales caf&eacute; &amp; bar - Desde el amor a nuestra tierra. Caf&eacute; de especialidad en Pereira, Colombia." />
-    <meta name="theme-color" content="#003A1D" />
+
+    <!-- Primary SEO -->
+    <title>Café Los Grisales — Café de especialidad & Coffee Tour en Pereira</title>
+    <meta name="description" content="Café de especialidad cultivado por nosotros en la Finca Vista Hermosa (Risaralda). Visita nuestras tiendas en Pereira o vive el Coffee Tour: del grano a la taza." />
+    <meta name="keywords" content="café de especialidad, coffee tour Pereira, Los Grisales, Finca Vista Hermosa, café Risaralda, café Pereira, tienda de café, café honey, café natural, café lavado" />
+    <meta name="author" content="Café Los Grisales" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#064947" />
+    <link rel="canonical" href="https://cafelosgrisales.com/" />
+
+    <!-- Language alternates -->
+    <link rel="alternate" hreflang="es" href="https://cafelosgrisales.com/es" />
+    <link rel="alternate" hreflang="en" href="https://cafelosgrisales.com/en" />
+    <link rel="alternate" hreflang="fr" href="https://cafelosgrisales.com/fr" />
+    <link rel="alternate" hreflang="x-default" href="https://cafelosgrisales.com/" />
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp preview, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Café Los Grisales" />
+    <meta property="og:title" content="Café Los Grisales — Café de especialidad & Coffee Tour en Pereira" />
+    <meta property="og:description" content="Café de especialidad cultivado por nosotros en la Finca Vista Hermosa (Risaralda). Visita nuestras tiendas en Pereira o vive el Coffee Tour: del grano a la taza." />
+    <meta property="og:url" content="https://cafelosgrisales.com/" />
+    <meta property="og:image" content="https://cafelosgrisales.com/og-image.jpg" />
+    <meta property="og:image:secure_url" content="https://cafelosgrisales.com/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Logo de Café Los Grisales sobre fondo verde brand" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Café Los Grisales — Café de especialidad & Coffee Tour en Pereira" />
+    <meta name="twitter:description" content="Café de especialidad cultivado por nosotros en la Finca Vista Hermosa (Risaralda). Visita nuestras tiendas en Pereira o vive el Coffee Tour: del grano a la taza." />
+    <meta name="twitter:image" content="https://cafelosgrisales.com/og-image.jpg" />
+    <meta name="twitter:image:alt" content="Logo de Café Los Grisales sobre fondo verde brand" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=Great+Vibes&display=swap" rel="stylesheet" />
-    <title>Los Grisales - Caf&eacute; &amp; Bar</title>
+
+    <!-- Structured data: CafeOrCoffeeShop brand with two locations + the Coffee Tour -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CafeOrCoffeeShop",
+        "name": "Café Los Grisales",
+        "url": "https://cafelosgrisales.com/",
+        "logo": "https://cafelosgrisales.com/logos/logo-oficial-verde.webp",
+        "image": "https://cafelosgrisales.com/og-image.jpg",
+        "description": "Café de especialidad cultivado por la familia Grisales en la Finca Vista Hermosa, Alto del Toro, Dosquebradas (Risaralda). Tiendas de café en Pereira y experiencia Coffee Tour en la finca.",
+        "telephone": "+57 304 420 0309",
+        "areaServed": "Pereira, Risaralda, Colombia",
+        "sameAs": [
+          "https://www.instagram.com/losgrisalescafe_bar/",
+          "https://www.tiktok.com/@cafelosgrisales00",
+          "https://youtube.com/@cafelosgrisales"
+        ],
+        "location": [
+          {
+            "@type": "CafeOrCoffeeShop",
+            "name": "Café Los Grisales — Pereira Plaza",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "CC Pereira Plaza Local 209",
+              "addressLocality": "Pereira",
+              "addressRegion": "Risaralda",
+              "addressCountry": "CO"
+            }
+          },
+          {
+            "@type": "CafeOrCoffeeShop",
+            "name": "Café Los Grisales — Unicentro",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "CC Unicentro, nivel B, Plazoleta de comidas",
+              "addressLocality": "Pereira",
+              "addressRegion": "Risaralda",
+              "addressCountry": "CO"
+            }
+          },
+          {
+            "@type": "TouristAttraction",
+            "name": "Coffee Tour — Finca Vista Hermosa",
+            "description": "Experiencia de Coffee Tour en la finca de Café Los Grisales: recorrido por los cafetales, procesos de beneficio y degustación.",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Vereda Alto del Toro",
+              "addressLocality": "Dosquebradas",
+              "addressRegion": "Risaralda",
+              "addressCountry": "CO"
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
