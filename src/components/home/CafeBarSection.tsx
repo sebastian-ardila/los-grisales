@@ -161,7 +161,7 @@ export default function CafeBarSection() {
                 </span>
               </button>
               <a
-                href={`${import.meta.env.BASE_URL}cafebar/menu-spanish-v2.pdf`}
+                href={`${import.meta.env.BASE_URL}cafebar/menu-spanish-v3.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-brand/40 px-4 py-2.5 text-sm font-bold text-brand transition hover:bg-brand/5 sm:flex-initial sm:px-6"
