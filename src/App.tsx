@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { SedeProvider } from './context/SedeContext'
 import { TableProvider } from './context/TableContext'
 import { CartProvider } from './context/CartContext'
@@ -13,7 +13,7 @@ export default function App() {
     <SedeProvider>
       <TableProvider>
         <CartProvider>
-          <HashRouter>
+          <BrowserRouter>
             <Routes>
               {/* Redirect root to /:lang */}
               <Route path="/" element={<LangRedirect />} />
@@ -28,7 +28,7 @@ export default function App() {
               {/* Fallback */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
-          </HashRouter>
+          </BrowserRouter>
         </CartProvider>
       </TableProvider>
     </SedeProvider>

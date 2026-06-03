@@ -11,6 +11,7 @@ import {
 } from '@phosphor-icons/react'
 import { useLang, type Lang } from '../utils/lang'
 import { sedes } from '../config/sedes'
+import SEO from '../components/seo/SEO'
 
 const BASE = import.meta.env.BASE_URL
 const beansImg = `${BASE}products/cafe.webp`
@@ -244,7 +245,20 @@ export default function ProductsPage() {
   const addLabel: T = { es: 'Agregar', en: 'Add', fr: 'Ajouter' }
 
   return (
-    <section className="px-4 py-10 md:py-16">
+    <>
+      <SEO
+        title={{
+          es: 'Productos — Café de especialidad Los Grisales',
+          en: 'Products — Los Grisales Specialty Coffee',
+          fr: 'Produits — Café de spécialité Los Grisales',
+        }}
+        description={{
+          es: 'Café en grano (Honey, Natural, Lavado) y drips listos para preparar. Cultivado por la familia Grisales en la Finca Vista Hermosa, Risaralda.',
+          en: 'Whole-bean coffee (Honey, Natural, Washed) and ready-to-brew drip bags. Grown by the Grisales family at Finca Vista Hermosa, Risaralda.',
+          fr: 'Café en grains (Honey, Naturel, Lavé) et drips prêts à infuser. Cultivé par la famille Grisales à la Finca Vista Hermosa, Risaralda.',
+        }}
+      />
+      <section className="px-4 py-10 md:py-16">
       <div className="mx-auto max-w-6xl">
         {/* Compact landing-style header */}
         <header className="relative mb-8 overflow-hidden rounded-3xl border border-brand/15 px-5 py-10 md:mb-12 md:px-8 md:py-14">
@@ -537,5 +551,6 @@ export default function ProductsPage() {
         </div>
       )}
     </section>
+    </>
   )
 }

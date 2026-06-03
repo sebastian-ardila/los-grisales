@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import { useLang } from '../utils/lang'
+import SEO from '../components/seo/SEO'
 
 interface StorySectionProps {
   image: string
@@ -182,6 +183,18 @@ export default function HistoryPage() {
 
   return (
     <>
+      <SEO
+        title={{
+          es: 'Nuestra Historia — Café Los Grisales',
+          en: 'Our Story — Café Los Grisales',
+          fr: 'Notre Histoire — Café Los Grisales',
+        }}
+        description={{
+          es: 'La historia de Café Los Grisales: una familia, la Finca Vista Hermosa en Risaralda, café de especialidad cultivado a mano y dos tiendas en Pereira.',
+          en: 'The story of Café Los Grisales: a family, Finca Vista Hermosa in Risaralda, hand-grown specialty coffee, and two coffee shops in Pereira.',
+          fr: "L'histoire de Café Los Grisales : une famille, la Finca Vista Hermosa au Risaralda, du café de spécialité cultivé à la main et deux boutiques à Pereira.",
+        }}
+      />
       {/* Lema */}
       <header data-dark-island className="relative overflow-hidden">
         <div className="absolute inset-0 bg-primary" />
