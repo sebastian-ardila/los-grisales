@@ -40,8 +40,8 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       # Hashed asset files (Vite emits content-hashed names) get long cache.
-      # HTML, the og-image, the menu PDF and other root files get short cache
-      # so updates land fast.
+      # HTML, sitemap.xml, robots.txt, og-image, PDFs and other unhashed root
+      # files get short cache so updates land fast.
       - name: Sync hashed assets (long cache)
         run: |
           aws s3 sync dist/ s3://${{ env.S3_BUCKET }}/ \
@@ -49,6 +49,8 @@ jobs:
             --cache-control "public, max-age=31536000, immutable" \
             --exclude "*.html" \
             --exclude "*.pdf" \
+            --exclude "*.xml" \
+            --exclude "*.txt" \
             --exclude "og-image.jpg" \
             --exclude "CNAME" \
             --exclude "favicon*" \
@@ -61,6 +63,8 @@ jobs:
             --exclude "*" \
             --include "*.html" \
             --include "*.pdf" \
+            --include "*.xml" \
+            --include "*.txt" \
             --include "og-image.jpg" \
             --include "favicon*" \
             --include "apple-touch-icon*"
