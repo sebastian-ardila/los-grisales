@@ -1310,8 +1310,6 @@ import { blog } from '../lib/blog'
 import SEO from '../components/seo/SEO'
 import BlogGrid from '../components/blog/BlogGrid'
 
-const SITE_ORIGIN = 'https://cafelosgrisales.com'
-
 export default function BlogListPage() {
   const lang = useLang()
   const posts = blog.getAllPosts(lang)
