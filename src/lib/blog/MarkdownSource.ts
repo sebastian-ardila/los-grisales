@@ -98,6 +98,10 @@ export class MarkdownSource implements ContentSource {
     )
   }
 
+  findByAnySlug(slug: string): BlogPost | null {
+    return this.posts.find((p) => Object.values(p.translations).includes(slug)) ?? null
+  }
+
   getAllSlugs(): { id: string; lang: Lang; slug: string }[] {
     return this.posts.map((p) => ({ id: p.id, lang: this.langOf(p), slug: p.slug }))
   }

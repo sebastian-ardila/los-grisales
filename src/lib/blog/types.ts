@@ -37,6 +37,9 @@ export interface BlogListItem extends BlogMeta {
 export interface ContentSource {
   getAllPosts(lang: Lang): BlogListItem[]
   getPost(lang: Lang, slug: string): BlogPost | null
+  /** Encuentra un artículo por su slug en CUALQUIER idioma (para resolver
+   *  cambios de idioma sobre slugs localizados). */
+  findByAnySlug(slug: string): BlogPost | null
   getAllSlugs(): { id: string; lang: Lang; slug: string }[]
   getRelated(post: BlogMeta, lang: Lang, limit?: number): BlogListItem[]
 }

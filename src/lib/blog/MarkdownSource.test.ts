@@ -52,4 +52,13 @@ describe('MarkdownSource', () => {
     const related = src.getRelated(post, 'es')
     expect(related.every((r) => r.id !== post.id)).toBe(true)
   })
+
+  it('findByAnySlug resuelve el post desde el slug de cualquier idioma', () => {
+    // slug en inglés debe encontrar el mismo post (id post-uno)
+    expect(src.findByAnySlug('post-one-en')?.id).toBe('post-uno')
+    // slug en francés también
+    expect(src.findByAnySlug('post-un-fr')?.id).toBe('post-uno')
+    // slug inexistente → null
+    expect(src.findByAnySlug('no-existe')).toBeNull()
+  })
 })

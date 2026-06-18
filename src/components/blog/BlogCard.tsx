@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from '@phosphor-icons/react'
 import type { BlogListItem, Lang } from '../../lib/blog/types'
 import { formatPostDate } from '../../lib/blog/format'
-import { iconForPost } from './postIcon'
 
 interface Props {
   post: BlogListItem
@@ -14,17 +13,12 @@ const READ_LABEL: Record<Lang, string> = { es: 'Leer artículo', en: 'Read artic
 
 /**
  * Tarjeta de artículo en formato editorial claro: sin caja ni borde, separada
- * de las demás por una línea fina superior. Mientras no haya fotos, usa un
- * ícono de marca. Toda la tarjeta es clicable vía enlace estirado.
+ * de las demás por una línea fina superior. Toda la tarjeta es clicable vía
+ * enlace estirado.
  */
 export default function BlogCard({ post, lang }: Props) {
-  const Icon = iconForPost(post)
   return (
     <article className="group relative flex flex-col border-t border-brand/15 pt-7">
-      <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-brand/8 text-brand ring-1 ring-brand/10 transition-colors duration-300 group-hover:bg-brand group-hover:text-primary">
-        <Icon size={24} weight="duotone" aria-hidden="true" />
-      </span>
-
       <div className="mb-3 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand/70">
         {post.tags.slice(0, 3).map((tag, i) => (
           <span key={tag} className="inline-flex items-center gap-2">

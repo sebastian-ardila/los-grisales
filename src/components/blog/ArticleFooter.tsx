@@ -32,7 +32,7 @@ const SEDE_LABEL: Record<Lang, string> = {
 export default function ArticleFooter({ post, lang }: Props) {
   const anchor = post.relatedSede ? SEDE_ANCHOR[post.relatedSede] : 'cafe-bar'
   return (
-    <aside className="mx-auto mt-16 max-w-2xl overflow-hidden rounded-[2rem] bg-brand px-8 py-12 text-center">
+    <aside className="mx-auto mt-16 max-w-3xl overflow-hidden rounded-[2rem] bg-brand px-8 py-12 text-center">
       <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-accent">
         Café Los Grisales
       </p>

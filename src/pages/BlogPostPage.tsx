@@ -18,6 +18,14 @@ export default function BlogPostPage() {
   const post = slug ? blog.getPost(lang, slug) : null
 
   if (!post) {
+    // Al cambiar de idioma el slug es localizado: si el slug pertenece a este
+    // artículo en otro idioma, redirige a su versión traducida (mismo artículo)
+    // en vez de salir al índice del blog.
+    const known = slug ? blog.findByAnySlug(slug) : null
+    const localizedSlug = known?.translations[lang]
+    if (localizedSlug) {
+      return <Navigate to={`/${lang}/blog/${localizedSlug}`} replace />
+    }
     return <Navigate to={`/${lang}/blog`} replace />
   }
 
@@ -32,7 +40,7 @@ export default function BlogPostPage() {
   const related = blog.getRelated(post, lang)
 
   return (
-    <main className="mx-auto max-w-4xl px-4 py-20 md:py-28">
+    <main className="mx-auto max-w-6xl px-4 py-20 md:py-28">
       <SEO
         title={{ es: post.title, en: post.title, fr: post.title }}
         description={{ es: post.description, en: post.description, fr: post.description }}

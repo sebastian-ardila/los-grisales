@@ -10,7 +10,7 @@ interface Props {
 /** Renderiza el cuerpo del artículo. Estilos tipográficos con Tailwind. */
 export default function ArticleBody({ markdown }: Props) {
   return (
-    <div className="prose-article mx-auto max-w-2xl">
+    <div className="prose-article mx-auto max-w-3xl">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[
