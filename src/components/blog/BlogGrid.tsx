@@ -10,8 +10,10 @@ interface Props {
 
 export default function BlogGrid({ posts, lang }: Props) {
   const [active, setActive] = useState<string | null>(null)
-  const allLabel = { es: 'Todos', en: 'All', fr: 'Tous' }[lang]
-  const filterLabel = { es: 'Filtrar por tema', en: 'Filter by topic', fr: 'Filtrer par thème' }[lang]
+  const allLabels: Record<Lang, string> = { es: 'Todos', en: 'All', fr: 'Tous' }
+  const filterLabels: Record<Lang, string> = { es: 'Filtrar por tema', en: 'Filter by topic', fr: 'Filtrer par thème' }
+  const allLabel = allLabels[lang]
+  const filterLabel = filterLabels[lang]
 
   const tags = useMemo(
     () => Array.from(new Set(posts.flatMap((p) => p.tags))).sort(),

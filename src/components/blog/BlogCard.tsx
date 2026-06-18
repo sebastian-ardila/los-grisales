@@ -8,7 +8,7 @@ interface Props {
 }
 
 export default function BlogCard({ post, lang }: Props) {
-  const minLabel = { es: 'min de lectura', en: 'min read', fr: 'min de lecture' }[lang]
+  const minLabel: Record<Lang, string> = { es: 'min de lectura', en: 'min read', fr: 'min de lecture' }
   return (
     <article className="group overflow-hidden rounded-3xl border border-brand/15 bg-white shadow-sm transition-shadow hover:shadow-md focus-within:ring-2 focus-within:ring-accent">
       <Link to={`/${lang}/blog/${post.slug}`} className="block focus:outline-none">
@@ -36,7 +36,7 @@ export default function BlogCard({ post, lang }: Props) {
             <time dateTime={post.date}>{post.date}</time>
             <span aria-hidden="true">·</span>
             <Clock size={14} aria-hidden="true" />
-            <span>{post.readingMinutes} {minLabel}</span>
+            <span>{post.readingMinutes} {minLabel[lang]}</span>
           </div>
         </div>
       </Link>
