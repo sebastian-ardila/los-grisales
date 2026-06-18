@@ -8,4 +8,11 @@ describe('ArticleBody', () => {
     expect(screen.getByRole('heading', { level: 2, name: /Sección uno/ })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'enlace' })).toHaveAttribute('href', '/es#tour')
   })
+
+  it('no aplica subrayado de enlace al ancla envolvente del encabezado', () => {
+    render(<ArticleBody markdown={'## Sección uno'} />)
+    const headingAnchor = screen.getByRole('link', { name: /Sección uno/ })
+    expect(headingAnchor).toHaveClass('no-underline')
+    expect(headingAnchor).not.toHaveClass('underline')
+  })
 })

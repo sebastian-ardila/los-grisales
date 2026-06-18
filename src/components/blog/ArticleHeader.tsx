@@ -34,6 +34,8 @@ export default function ArticleHeader({ post, lang }: Props) {
           alt={post.coverAlt}
           width={1200}
           height={630}
+          loading="eager"
+          fetchPriority="high"
           className="aspect-[1200/630] w-full rounded-3xl object-cover"
         />
       </figure>

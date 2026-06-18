@@ -13,12 +13,20 @@ export default function ArticleBody({ markdown }: Props) {
     <div className="prose-article mx-auto max-w-2xl">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]]}
+        rehypePlugins={[
+          rehypeSlug,
+          [rehypeAutolinkHeadings, { behavior: 'wrap', properties: { className: ['heading-anchor'] } }],
+        ]}
         components={{
           h2: (props) => <h2 className="mt-12 font-display text-3xl font-bold text-brand" {...props} />,
           h3: (props) => <h3 className="mt-8 font-display text-2xl font-semibold text-brand" {...props} />,
           p: (props) => <p className="mt-5 leading-relaxed opacity-90" {...props} />,
-          a: (props) => <a className="text-brand underline decoration-accent underline-offset-4 hover:text-accent" {...props} />,
+          a: ({ className, ...props }) =>
+            String(className ?? '').includes('heading-anchor') ? (
+              <a className="text-inherit no-underline" {...props} />
+            ) : (
+              <a className="text-brand underline decoration-accent underline-offset-4 hover:text-accent" {...props} />
+            ),
           ul: (props) => <ul className="mt-5 list-disc space-y-2 pl-6" {...props} />,
           ol: (props) => <ol className="mt-5 list-decimal space-y-2 pl-6" {...props} />,
           img: (props) => <img loading="lazy" className="mt-8 rounded-2xl" {...props} />,
