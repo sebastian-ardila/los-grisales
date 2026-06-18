@@ -23,14 +23,16 @@ export default function BlogGrid({ posts, lang }: Props) {
 
   return (
     <div>
-      <div role="group" aria-label={filterLabel} className="mb-10 flex flex-wrap justify-center gap-3">
+      <div role="group" aria-label={filterLabel} className="mb-12 flex flex-wrap justify-center gap-2.5">
         <button
           type="button"
           aria-pressed={active === null}
           onClick={() => setActive(null)}
           className={cn(
-            'rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
-            active === null ? 'border-brand bg-brand text-white' : 'border-brand/30 text-brand hover:bg-brand/10',
+            'rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary',
+            active === null
+              ? 'bg-brand text-primary'
+              : 'text-brand/70 ring-1 ring-inset ring-brand/20 hover:text-brand hover:ring-brand/40',
           )}
         >
           {allLabel}
@@ -42,8 +44,10 @@ export default function BlogGrid({ posts, lang }: Props) {
             aria-pressed={active === tag}
             onClick={() => setActive(tag)}
             className={cn(
-              'rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
-              active === tag ? 'border-brand bg-brand text-white' : 'border-brand/30 text-brand hover:bg-brand/10',
+              'rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary',
+              active === tag
+                ? 'bg-brand text-primary'
+                : 'text-brand/70 ring-1 ring-inset ring-brand/20 hover:text-brand hover:ring-brand/40',
             )}
           >
             {tag}
@@ -51,7 +55,7 @@ export default function BlogGrid({ posts, lang }: Props) {
         ))}
       </div>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {visible.map((post) => (
           <BlogCard key={post.id} post={post} lang={lang} />
         ))}

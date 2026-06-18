@@ -54,6 +54,10 @@ export default function Navbar() {
 
   const menuRoutes = routes.filter((r) => r.showInMenu)
   const standaloneRoutes = menuRoutes.filter((r) => !isGrouped(r))
+  // `Inicio` (ruta home) va primero; las páginas standalone (p. ej. Blog) van
+  // al final, después de los dropdowns, para no ocupar la segunda posición.
+  const homeRoutes = standaloneRoutes.filter((r) => r.path === '/')
+  const pageRoutes = standaloneRoutes.filter((r) => r.path !== '/')
 
   const goToAnchor = (anchor: string) => {
     const onHome = location.pathname === `/${lang}` || location.pathname === `/${lang}/`
@@ -95,7 +99,7 @@ export default function Navbar() {
 
           {/* Center: Desktop nav links */}
           <nav className="hidden items-center gap-0.5 md:flex">
-            {standaloneRoutes.map((route, idx) => (
+            {homeRoutes.map((route, idx) => (
               <StandaloneItem
                 key={`${route.path}-${route.anchor ?? 'none'}-${idx}`}
                 route={route}
@@ -108,6 +112,14 @@ export default function Navbar() {
                 key={idx}
                 label={group.label[lang]}
                 items={groupItems(group)}
+                lang={lang}
+                goToAnchor={goToAnchor}
+              />
+            ))}
+            {pageRoutes.map((route, idx) => (
+              <StandaloneItem
+                key={`${route.path}-${route.anchor ?? 'none'}-${idx}`}
+                route={route}
                 lang={lang}
                 goToAnchor={goToAnchor}
               />
