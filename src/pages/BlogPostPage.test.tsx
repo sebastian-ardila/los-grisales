@@ -30,4 +30,13 @@ describe('BlogPostPage', () => {
     renderAt('/es/blog/no-existe-123')
     expect(screen.getByText('LISTA')).toBeInTheDocument()
   })
+
+  it('cambio de idioma: un slug de otro idioma redirige a la traducción del mismo artículo (no a la lista)', () => {
+    const esSlug = blog.getAllPosts('es')[0].slug
+    const enSlug = blog.getPost('es', esSlug)!.translations.en
+    const enTitle = blog.getPost('en', enSlug)!.title
+    // slug en español bajo el prefijo /en (lo que produce el cambio de idioma)
+    renderAt(`/en/blog/${esSlug}`)
+    expect(screen.getByRole('heading', { level: 1, name: enTitle })).toBeInTheDocument()
+  })
 })

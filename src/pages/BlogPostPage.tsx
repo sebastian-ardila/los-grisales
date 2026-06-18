@@ -1,5 +1,5 @@
 import { Navigate, useParams } from 'react-router-dom'
-import { useLang } from '../utils/lang'
+import { toLang } from '../utils/lang'
 import { blog } from '../lib/blog'
 import SEO from '../components/seo/SEO'
 import ArticleJsonLd from '../components/seo/ArticleJsonLd'
@@ -13,8 +13,11 @@ import ShareButtons from '../components/blog/ShareButtons'
 const SITE_ORIGIN = 'https://cafelosgrisales.com'
 
 export default function BlogPostPage() {
-  const lang = useLang()
-  const { slug } = useParams<{ slug: string }>()
+  // El idioma se deriva del parámetro de la URL (fuente de verdad del routing),
+  // no de i18n: así las redirecciones no alteran el prefijo de idioma y no
+  // entran en bucle con la sincronización i18n↔URL del Layout.
+  const { lang: langParam, slug } = useParams<{ lang: string; slug: string }>()
+  const lang = toLang(langParam)
   const post = slug ? blog.getPost(lang, slug) : null
 
   if (!post) {
