@@ -1,6 +1,5 @@
 import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/react'
-import { HelmetProvider } from 'react-helmet-async'
 import ArticleJsonLd from './ArticleJsonLd'
 import type { BlogPost } from '../../lib/blog/types'
 
@@ -14,9 +13,7 @@ const post: BlogPost = {
 describe('ArticleJsonLd', () => {
   it('inyecta JSON-LD BlogPosting con datos del post', () => {
     render(
-      <HelmetProvider>
-        <ArticleJsonLd post={post} lang="es" url="https://cafelosgrisales.com/es/blog/x" />
-      </HelmetProvider>,
+      <ArticleJsonLd post={post} lang="es" url="https://cafelosgrisales.com/es/blog/x" />,
     )
     const script = document.head.querySelector('script[type="application/ld+json"]')
     expect(script).not.toBeNull()

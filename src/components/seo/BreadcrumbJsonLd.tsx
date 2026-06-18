@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async'
+import JsonLd from './JsonLd'
 
 interface Props {
   items: { name: string; url: string }[]
@@ -16,9 +16,5 @@ export default function BreadcrumbJsonLd({ items }: Props) {
       item: item.url,
     })),
   }
-  return (
-    <Helmet>
-      <script type="application/ld+json">{JSON.stringify(data)}</script>
-    </Helmet>
-  )
+  return <JsonLd data={data} />
 }

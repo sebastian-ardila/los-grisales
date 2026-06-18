@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import JsonLd from './JsonLd'
 import type { BlogPost, Lang } from '../../lib/blog/types'
 
 const SITE_ORIGIN = 'https://cafelosgrisales.com'
@@ -32,16 +32,5 @@ export default function ArticleJsonLd({ post, lang, url }: Props) {
     mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   }
 
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.type = 'application/ld+json'
-    script.textContent = JSON.stringify(data)
-    document.head.appendChild(script)
-    return () => {
-      document.head.removeChild(script)
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [url, post.date, post.updated])
-
-  return null
+  return <JsonLd data={data} />
 }
