@@ -37,7 +37,7 @@ La carta de nuestra tienda en Unicentro refleja la misma filosofía de origen pr
 
 **Si quieres explorar el café de origen:** Pide el espresso de temporada o la preparación de filtrado disponible ese día. Nuestros baristas rotan los lotes de la finca para ofrecer distintos perfiles durante el año: un mes puede predominar un natural de notas frutales, y al siguiente un lavado más luminoso y cítrico.
 
-**Si prefieres algo más accesible:** Nuestros cafés con leche —cortado, latte, cappuccino— están preparados con la misma base de espresso de especialidad. La diferencia con una cadena de café convencional es palpable en la primera sorbo: hay profundidad y limpieza en el sabor que difícilmente se consigue con granos de mezcla genérica.
+**Si prefieres algo más accesible:** Nuestros cafés con leche —cortado, latte, cappuccino— están preparados con la misma base de espresso de especialidad. La diferencia con una cadena de café convencional es palpable en el primer sorbo: hay profundidad y limpieza en el sabor que difícilmente se consigue con granos de mezcla genérica.
 
 **Para una experiencia más sensorial:** Pregunta por el café del día en método manual. V60, chemex o aeropress permiten que los matices del origen se expresen de manera más abierta. Es la opción perfecta para quien quiere sentarse, tomarse su tiempo y realmente explorar lo que el café tiene para decir.
 
