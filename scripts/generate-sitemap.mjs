@@ -8,6 +8,7 @@
 import { writeFileSync, mkdirSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { blogSitemapEntries } from './read-blog.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = resolve(__dirname, '..', 'dist')
@@ -23,6 +24,7 @@ const ROUTES = [
   { path: '', priority: '1.0', changefreq: 'weekly' },
   { path: '/historia', priority: '0.8', changefreq: 'monthly' },
   { path: '/productos', priority: '0.8', changefreq: 'weekly' },
+  { path: '/blog', priority: '0.7', changefreq: 'weekly' },
 ]
 
 function urlEntry(lang, route) {
@@ -46,6 +48,24 @@ for (const route of ROUTES) {
   for (const lang of LANGS) {
     urls.push(urlEntry(lang, route))
   }
+}
+
+// Artículos del blog (slugs localizados, alternates por idioma)
+for (const entry of blogSitemapEntries()) {
+  const loc = `${SITE_ORIGIN}/${entry.lang}${entry.path}`
+  const alternates = entry.alternates
+    .map((a) => `    <xhtml:link rel="alternate" hreflang="${a.lang}" href="${SITE_ORIGIN}/${a.lang}${a.path}"/>`)
+    .join('\n')
+  const esAlt = entry.alternates.find((a) => a.lang === 'es') ?? entry.alternates[0]
+  const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_ORIGIN}/es${esAlt.path}"/>`
+  urls.push(`  <url>
+    <loc>${loc}</loc>
+    <lastmod>${entry.lastmod || today}</lastmod>
+    <changefreq>${entry.changefreq}</changefreq>
+    <priority>${entry.priority}</priority>
+${alternates}
+${xDefault}
+  </url>`)
 }
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
