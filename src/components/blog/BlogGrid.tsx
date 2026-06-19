@@ -32,7 +32,7 @@ export default function BlogGrid({ posts, lang }: Props) {
             'rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary',
             active === null
               ? 'bg-brand text-primary'
-              : 'text-brand/70 ring-1 ring-inset ring-brand/20 hover:text-brand hover:ring-brand/40',
+              : 'text-brand ring-1 ring-inset ring-brand/20 hover:text-brand hover:ring-brand/40',
           )}
         >
           {allLabel}
@@ -47,7 +47,7 @@ export default function BlogGrid({ posts, lang }: Props) {
               'rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary',
               active === tag
                 ? 'bg-brand text-primary'
-                : 'text-brand/70 ring-1 ring-inset ring-brand/20 hover:text-brand hover:ring-brand/40',
+                : 'text-brand ring-1 ring-inset ring-brand/20 hover:text-brand hover:ring-brand/40',
             )}
           >
             {tag}

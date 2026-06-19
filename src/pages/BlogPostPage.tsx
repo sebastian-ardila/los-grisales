@@ -43,7 +43,7 @@ export default function BlogPostPage() {
   const related = blog.getRelated(post, lang)
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-20 md:py-28">
+    <div className="mx-auto max-w-6xl px-4 py-20 md:py-28">
       <SEO
         title={{ es: post.title, en: post.title, fr: post.title }}
         description={{ es: post.description, en: post.description, fr: post.description }}
@@ -69,6 +69,6 @@ export default function BlogPostPage() {
         <ArticleFooter post={post} lang={lang} />
       </article>
       <RelatedPosts posts={related} lang={lang} />
-    </main>
+    </div>
   )
 }

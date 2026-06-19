@@ -14,7 +14,7 @@ export default function BlogListPage() {
   }[lang]
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-20 md:py-28">
+    <div className="mx-auto max-w-6xl px-4 py-20 md:py-28">
       <SEO
         title={{
           es: 'Blog de café de especialidad y Coffee Tour en Pereira | Café Los Grisales',
@@ -33,6 +33,6 @@ export default function BlogListPage() {
         <p className="mx-auto mt-5 max-w-2xl opacity-70">{tagline}</p>
       </header>
       <BlogGrid posts={posts} lang={lang} />
-    </main>
+    </div>
   )
 }
