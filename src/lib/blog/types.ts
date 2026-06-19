@@ -25,7 +25,8 @@ export interface BlogMeta {
   coverAlt: string
   tags: string[]
   relatedSede?: SedeRef
-  faq?: FaqItem[]
+  /** Siempre presente (el parser usa [] cuando no hay FAQ en el frontmatter). */
+  faq: FaqItem[]
   /** id-de-este-post → slug por idioma, para construir hreflang. */
   translations: Record<Lang, string>
 }

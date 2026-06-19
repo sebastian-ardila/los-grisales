@@ -6,7 +6,7 @@ import type { BlogPost } from '../../lib/blog/types'
 const post: BlogPost = {
   id: 'x', slug: 'x', title: 'T', description: 'D', excerpt: 'E',
   keywords: ['k1', 'k2'], date: '2026-06-01', updated: '2026-06-02',
-  author: 'Café Los Grisales', cover: '/c.jpg', coverAlt: 'alt', tags: ['t'],
+  author: 'Café Los Grisales', cover: '/c.jpg', coverAlt: 'alt', tags: ['t'], faq: [],
   translations: { es: 'x', en: 'x', fr: 'x' }, body: 'b', readingMinutes: 1,
 }
 

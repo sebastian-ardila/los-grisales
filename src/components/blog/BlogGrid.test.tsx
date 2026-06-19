@@ -9,7 +9,7 @@ function item(id: string, tag: string): BlogListItem {
   return {
     id, slug: id, title: `Título ${id}`, description: 'd', excerpt: 'e',
     keywords: [], date: '2026-06-01', updated: '2026-06-01', author: 'A',
-    cover: '/c.svg', coverAlt: 'alt', tags: [tag],
+    cover: '/c.svg', coverAlt: 'alt', tags: [tag], faq: [],
     translations: { es: id, en: id, fr: id }, readingMinutes: 1,
   }
 }

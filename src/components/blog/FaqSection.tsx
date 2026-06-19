@@ -25,7 +25,7 @@ export default function FaqSection({ items, lang }: Props) {
       >
         {HEADING[lang]}
       </h2>
-      <dl className="divide-y divide-brand/15">
+      <div className="divide-y divide-brand/15">
         {items.map((item, i) => (
           <details
             key={i}
@@ -45,7 +45,7 @@ export default function FaqSection({ items, lang }: Props) {
             </div>
           </details>
         ))}
-      </dl>
+      </div>
     </section>
   )
 }
