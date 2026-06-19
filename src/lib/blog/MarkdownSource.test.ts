@@ -62,3 +62,48 @@ describe('MarkdownSource', () => {
     expect(src.findByAnySlug('no-existe')).toBeNull()
   })
 })
+
+describe('MarkdownSource – campo faq', () => {
+  const faqDoc = `---
+slug: faq-test
+title: FAQ Test
+description: d
+excerpt: e
+keywords: [k]
+date: 2026-06-01
+updated: 2026-06-01
+author: A
+cover: /c.jpg
+coverAlt: alt
+tags: [t]
+faq:
+  - q: "¿Qué es el café de especialidad?"
+    a: "Es un café con puntaje SCA superior a 80."
+  - q: "¿Dónde está Café Los Grisales?"
+    a: "En Pereira Plaza y Unicentro Pereira."
+  - q: "¿Tienen Coffee Tour?"
+    a: "Sí, ofrecemos Coffee Tour del grano a la taza."
+---
+Cuerpo con FAQ.`
+
+  const src2 = new MarkdownSource({
+    '/src/content/blog/faq-post/es.md': faqDoc,
+  })
+
+  it('expone faq como array de {q,a}', () => {
+    const post = src2.getPost('es', 'faq-test')
+    expect(post).not.toBeNull()
+    expect(Array.isArray(post!.faq)).toBe(true)
+    expect(post!.faq).toHaveLength(3)
+    expect(post!.faq![0].q).toBe('¿Qué es el café de especialidad?')
+    expect(post!.faq![0].a).toBe('Es un café con puntaje SCA superior a 80.')
+  })
+
+  it('faq es [] cuando no está en el frontmatter', () => {
+    const src3 = new MarkdownSource({
+      '/src/content/blog/no-faq/es.md': doc('no-faq', 'Sin FAQ'),
+    })
+    const post = src3.getPost('es', 'no-faq')
+    expect(post!.faq).toEqual([])
+  })
+})

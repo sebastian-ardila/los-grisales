@@ -3,6 +3,7 @@ import type {
   BlogMeta,
   BlogPost,
   ContentSource,
+  FaqItem,
   Lang,
   SedeRef,
 } from './types'
@@ -23,6 +24,19 @@ function toStringArray(value: unknown): string[] {
   if (Array.isArray(value)) return value.map((v) => String(v))
   if (value == null) return []
   return [String(value)]
+}
+
+function toFaqArray(value: unknown): FaqItem[] {
+  if (!Array.isArray(value)) return []
+  return value
+    .filter((item): item is Record<string, unknown> =>
+      item !== null && typeof item === 'object',
+    )
+    .map((item) => ({
+      q: String(item.q ?? ''),
+      a: String(item.a ?? ''),
+    }))
+    .filter((item) => item.q.length > 0)
 }
 
 export class MarkdownSource implements ContentSource {
@@ -56,6 +70,7 @@ export class MarkdownSource implements ContentSource {
           relatedSede: a.relatedSede
             ? (String(a.relatedSede) as SedeRef)
             : undefined,
+          faq: toFaqArray(a.faq),
         },
       })
     }
