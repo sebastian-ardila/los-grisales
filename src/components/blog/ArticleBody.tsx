@@ -23,9 +23,9 @@ export default function ArticleBody({ markdown }: Props) {
           p: (props) => <p className="mt-5 leading-relaxed opacity-90" {...props} />,
           a: ({ className, ...props }) =>
             String(className ?? '').includes('heading-anchor') ? (
-              <a className="text-inherit no-underline" {...props} />
+              <a className="text-inherit no-underline focus-visible:underline focus-visible:decoration-accent focus-visible:outline-none" {...props} />
             ) : (
-              <a className="text-brand underline decoration-accent underline-offset-4 hover:text-accent" {...props} />
+              <a className="text-brand underline decoration-accent underline-offset-4 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:rounded" {...props} />
             ),
           ul: (props) => <ul className="mt-5 list-disc space-y-2 pl-6" {...props} />,
           ol: (props) => <ol className="mt-5 list-decimal space-y-2 pl-6" {...props} />,

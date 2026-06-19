@@ -28,14 +28,14 @@ export default function BlogCard({ post, lang }: Props) {
         ))}
       </div>
 
-      <h3 className="font-display text-2xl font-semibold leading-snug text-brand">
+      <h2 className="font-display text-2xl font-semibold leading-snug text-brand">
         <Link
           to={`/${lang}/blog/${post.slug}`}
           className="after:absolute after:inset-0 after:content-[''] transition-colors duration-200 focus:outline-none focus-visible:underline focus-visible:decoration-accent group-hover:text-brand-light"
         >
           {post.title}
         </Link>
-      </h3>
+      </h2>
 
       <p className="mt-3 text-sm leading-relaxed text-brand/75">{post.excerpt}</p>
 
