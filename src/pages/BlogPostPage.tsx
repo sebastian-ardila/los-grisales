@@ -4,6 +4,8 @@ import { blog } from '../lib/blog'
 import SEO from '../components/seo/SEO'
 import ArticleJsonLd from '../components/seo/ArticleJsonLd'
 import BreadcrumbJsonLd from '../components/seo/BreadcrumbJsonLd'
+import FaqJsonLd from '../components/seo/FaqJsonLd'
+import FaqSection from '../components/blog/FaqSection'
 import ArticleHeader from '../components/blog/ArticleHeader'
 import ArticleBody from '../components/blog/ArticleBody'
 import ArticleFooter from '../components/blog/ArticleFooter'
@@ -62,10 +64,14 @@ export default function BlogPostPage() {
           { name: post.title, url },
         ]}
       />
+      {(post.faq?.length ?? 0) > 0 && <FaqJsonLd items={post.faq!} />}
       <article>
         <ArticleHeader post={post} lang={lang} />
         <ArticleBody markdown={post.body} />
         <ShareButtons url={url} title={post.title} lang={lang} />
+        {(post.faq?.length ?? 0) > 0 && (
+          <FaqSection items={post.faq!} lang={lang} />
+        )}
         <ArticleFooter post={post} lang={lang} />
       </article>
       <RelatedPosts posts={related} lang={lang} />
