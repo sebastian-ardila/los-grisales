@@ -26,3 +26,17 @@ describe('contenido real del blog', () => {
     })
   }
 })
+
+describe('FAQ en el contenido real', () => {
+  it('el post cafe-de-especialidad-pereira/es tiene al menos 3 preguntas FAQ', () => {
+    const post = blog.getPost('es', 'cafe-de-especialidad-pereira')
+    expect(post).not.toBeNull()
+    expect(Array.isArray(post!.faq)).toBe(true)
+    expect(post!.faq!.length).toBeGreaterThanOrEqual(3)
+    // cada ítem tiene q y a no vacíos
+    for (const item of post!.faq!) {
+      expect(item.q.length).toBeGreaterThan(0)
+      expect(item.a.length).toBeGreaterThan(0)
+    }
+  })
+})
