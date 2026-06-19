@@ -77,3 +77,8 @@ jobs:
           aws cloudfront create-invalidation \
             --distribution-id ${{ env.CLOUDFRONT_DISTRIBUTION_ID }} \
             --paths "/*"
+
+      # Notifica a IndexNow (Bing/Yandex) para indexación casi instantánea.
+      # Best-effort: no debe romper el deploy si IndexNow falla.
+      - name: Notify IndexNow
+        run: node scripts/indexnow.mjs || true
