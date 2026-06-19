@@ -10,6 +10,15 @@ author: "Café Los Grisales"
 cover: /blog/que-es-cafe-de-especialidad/cover.svg
 coverAlt: "Carefully selected specialty coffee beans ready for cupping at Café Los Grisales"
 tags: ["specialty coffee", "coffee education", "SCA", "Colombia"]
+faq:
+  - q: "What is specialty coffee exactly?"
+    a: "Specialty coffee is coffee that scores 80 points or higher on the Specialty Coffee Association (SCA) scale, as evaluated by certified tasters. It requires traceability from the farm, selective harvesting, controlled processing, and careful preparation in the cup."
+  - q: "How does specialty coffee differ from commercial coffee?"
+    a: "Commercial coffee typically blends beans from different origins and quality levels to standardize a uniform flavor. Specialty coffee, on the other hand, has its own identity: you know which farm it comes from, who grew it, which variety it is, and how it was processed. That traceability is what makes unique and complex flavors possible."
+  - q: "What is the SCA scale and how is specialty coffee scored?"
+    a: "The Specialty Coffee Association (SCA) developed a cupping protocol that evaluates coffee on attributes such as aroma, flavor, aftertaste, acidity, body, balance, sweetness, and uniformity, among others. Certified tasters (Q Graders) perform the evaluation, and any coffee that reaches 80 points or more out of 100 earns the specialty category."
+  - q: "Where can I taste specialty coffee in the Eje Cafetero?"
+    a: "At Café Los Grisales you can taste it at our shops in Pereira (Pereira Plaza and Unicentro Pereira) or on our Coffee Tour at the farm, where Eje Cafetero specialty coffee comes to life through the complete journey from bean to cup."
 ---
 
 **What is specialty coffee** is a question more and more consumers ask when they walk into a premium café and see prices different from the supermarket, or when they hear terms like "floral notes," "natural process," or "microlot." The answer has a precise technical dimension and an experiential one that is equally important.

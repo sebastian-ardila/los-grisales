@@ -11,6 +11,15 @@ cover: /blog/coffee-tour-eje-cafetero/cover.svg
 coverAlt: "Recorrido por la finca cafetera en el Eje Cafetero durante el Coffee Tour de Café Los Grisales"
 tags: ["Coffee Tour", "Pereira", "experiencia cafetera", "Eje Cafetero"]
 relatedSede: coffee-tour
+faq:
+  - q: "¿Qué incluye el Coffee Tour de Café Los Grisales en el Eje Cafetero?"
+    a: "El Coffee Tour incluye un recorrido guiado por los cafetales de nuestra finca familiar, una demostración de los procesos de beneficio (lavado, natural y honey) y una sesión de cata guiada donde probarás cafés con perfiles distintos. También compartimos la historia de nuestra familia y su relación con el Eje Cafetero."
+  - q: "¿Cómo reservar el Coffee Tour en Pereira?"
+    a: "Puedes reservar el Coffee Tour directamente desde nuestra web o visitando cualquiera de nuestras tiendas en Pereira (Pereira Plaza o Unicentro). El equipo te indicará los días y horarios disponibles y si hay cupos para grupos o visitas corporativas."
+  - q: "¿Necesito experiencia previa en café para el Coffee Tour?"
+    a: "No es necesaria ninguna experiencia previa. El tour está diseñado tanto para curiosos sin conocimientos técnicos como para aficionados que quieren profundizar. Nuestros guías adaptan la explicación al nivel del grupo."
+  - q: "¿El Coffee Tour en el Eje Cafetero incluye cata de café?"
+    a: "Sí. La sesión de cata es una de las partes más valoradas del recorrido. Siguiendo el protocolo estándar de cupping, probarás cafés de nuestra propia finca procesados de maneras distintas y aprenderás a identificar aromas, acidez, cuerpo y retrogusto."
 ---
 
 El **Coffee Tour en Pereira** que ofrece Café Los Grisales es más que un paseo por una finca: es una inmersión completa en el mundo del café de especialidad, desde el árbol que lo produce hasta la taza que lo contiene. Si has visitado el Eje Cafetero o si eres residente de Pereira que nunca ha visto de cerca cómo se produce el café que consumes cada mañana, este recorrido fue diseñado para ti.

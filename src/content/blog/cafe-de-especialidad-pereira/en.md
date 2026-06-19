@@ -11,6 +11,15 @@ cover: /blog/cafe-de-especialidad-pereira/cover.svg
 coverAlt: "Cup of specialty coffee served at Café Los Grisales, Pereira, with fresh coffee beans in the background"
 tags: ["specialty coffee", "Pereira", "Eje Cafetero"]
 relatedSede: pereira-plaza
+faq:
+  - q: "Where can I drink specialty coffee in Pereira?"
+    a: "Café Los Grisales has two locations in Pereira: one at Pereira Plaza and one at Unicentro Pereira. Both serve specialty coffee sourced from our own family farm in the Eje Cafetero coffee region."
+  - q: "What makes specialty coffee different from regular coffee?"
+    a: "Specialty coffee achieves scores above 80 points on the Specialty Coffee Association (SCA) scale. This means full traceability from the farm, selective harvesting of ripe cherries, and controlled processing methods that preserve the unique flavors of the origin."
+  - q: "Does Café Los Grisales have its own farm in the Eje Cafetero?"
+    a: "Yes. Our specialty coffee comes from a family-owned farm in the Eje Cafetero region. We control every step from cultivation to harvest to processing, which allows us to guarantee the quality and traceability of every cup we serve in Pereira."
+  - q: "Can I learn about the coffee process in Pereira?"
+    a: "Absolutely. We offer a Coffee Tour where you walk through the farm, learn about the processing stages, and finish with a guided cupping session. It's the best way to understand where the specialty coffee we serve in our shops comes from."
 ---
 
 **Specialty coffee in Pereira** has never been more alive. The city that grew up surrounded by coffee farms now has spaces where every sip tells the complete story of the bean — from the farm to the cup. At Café Los Grisales, that story begins on our own family farm in the Eje Cafetero and travels to our shops in the heart of the city.

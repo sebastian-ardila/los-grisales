@@ -11,6 +11,15 @@ cover: /blog/coffee-tour-eje-cafetero/cover.svg
 coverAlt: "Walking through the coffee farm in Eje Cafetero during the Café Los Grisales Coffee Tour"
 tags: ["Coffee Tour", "Pereira", "coffee experience", "Eje Cafetero"]
 relatedSede: coffee-tour
+faq:
+  - q: "What does the Café Los Grisales Coffee Tour in the Eje Cafetero include?"
+    a: "The Coffee Tour includes a guided walk through our family farm's coffee fields, a demonstration of processing methods (washed, natural, and honey), and a guided cupping session where you'll taste coffees with different flavor profiles. We also share the story of our family and its connection to the Eje Cafetero region."
+  - q: "How do I book the Coffee Tour in Pereira?"
+    a: "You can book the Coffee Tour directly on our website or by visiting either of our Pereira locations (Pereira Plaza or Unicentro). Our team will tell you about available dates, times, and options for group or corporate visits."
+  - q: "Do I need any coffee experience to join the Coffee Tour?"
+    a: "No prior experience is needed. The tour is designed for curious newcomers and coffee enthusiasts alike. Our guides adapt the level of detail to the group's background and interest."
+  - q: "Does the Coffee Tour include a coffee cupping session?"
+    a: "Yes. The cupping session is one of the most popular parts of the tour. Following the standard cupping protocol, you'll taste coffees from our own farm processed in different ways, and learn to identify aromas, acidity, body, and aftertaste."
 ---
 
 The **Coffee Tour in Pereira** offered by Café Los Grisales is more than a walk through a farm — it is a complete immersion in the world of specialty coffee, from the tree that produces it to the cup that holds it. Whether you are visiting the Eje Cafetero region or a Pereira local who has never seen up close how the coffee you drink every morning is produced, this tour was designed for you.

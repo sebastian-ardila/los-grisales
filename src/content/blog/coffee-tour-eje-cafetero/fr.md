@@ -11,6 +11,15 @@ cover: /blog/coffee-tour-eje-cafetero/cover.svg
 coverAlt: "Promenade dans la plantation de café dans l'Eje Cafetero lors du Coffee Tour de Café Los Grisales"
 tags: ["Coffee Tour", "Pereira", "expérience café", "Eje Cafetero"]
 relatedSede: coffee-tour
+faq:
+  - q: "Que comprend le Coffee Tour de Café Los Grisales dans le Eje Cafetero ?"
+    a: "Le Coffee Tour comprend une visite guidée des caféiers de notre ferme familiale, une démonstration des méthodes de transformation (lavé, naturel et honey) et une séance de dégustation guidée où vous goûterez des cafés aux profils différents. Nous partageons également l'histoire de notre famille et son lien avec la région du Eje Cafetero."
+  - q: "Comment réserver le Coffee Tour à Pereira ?"
+    a: "Vous pouvez réserver le Coffee Tour directement sur notre site web ou en visitant l'une de nos boutiques à Pereira (Pereira Plaza ou Unicentro). Notre équipe vous indiquera les dates et horaires disponibles, ainsi que les options pour les groupes ou les visites d'entreprise."
+  - q: "Faut-il une expérience préalable en café pour participer au Coffee Tour ?"
+    a: "Aucune expérience préalable n'est nécessaire. Le tour est conçu aussi bien pour les curieux sans connaissances techniques que pour les amateurs qui souhaitent approfondir leurs connaissances. Nos guides adaptent le niveau d'explication au groupe."
+  - q: "Le Coffee Tour comprend-il une séance de dégustation de café ?"
+    a: "Oui. La séance de dégustation est l'une des parties les plus appréciées du parcours. En suivant le protocole standard de cupping, vous dégusterez des cafés de notre propre ferme transformés de différentes manières et apprendrez à identifier les arômes, l'acidité, le corps et l'arrière-goût."
 ---
 
 Le **Coffee Tour à Pereira** proposé par Café Los Grisales est bien plus qu'une promenade dans une ferme — c'est une immersion complète dans l'univers du café de spécialité, de l'arbre qui le produit à la tasse qui le contient. Que vous visitiez la région de l'Eje Cafetero ou que vous soyez un habitant de Pereira qui n'a jamais vu de près comment est produit le café que vous buvez chaque matin, ce parcours a été conçu pour vous.

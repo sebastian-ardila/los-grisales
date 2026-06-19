@@ -10,6 +10,15 @@ author: "Café Los Grisales"
 cover: /blog/que-es-cafe-de-especialidad/cover.svg
 coverAlt: "Granos de café de especialidad cuidadosamente seleccionados, listos para la cata en Café Los Grisales"
 tags: ["café de especialidad", "educación del café", "SCA", "Colombia"]
+faq:
+  - q: "¿Qué es el café de especialidad exactamente?"
+    a: "El café de especialidad es aquel que obtiene un puntaje de 80 puntos o más en la escala de la Specialty Coffee Association (SCA), evaluado por catadores certificados. Implica trazabilidad desde la finca, cosecha selectiva, procesos de beneficio controlados y una preparación cuidadosa en taza."
+  - q: "¿Cómo se diferencia el café de especialidad del café comercial?"
+    a: "El café comercial suele mezclar granos de distintos orígenes y calidades para estandarizar un sabor uniforme. El café de especialidad, en cambio, tiene identidad: sabes de qué finca viene, quién lo cultivó, qué variedad es y cómo fue procesado. Esa trazabilidad es lo que permite sabores únicos y complejos en la taza."
+  - q: "¿Cuál es la escala SCA y cómo se puntúa el café de especialidad?"
+    a: "La Specialty Coffee Association (SCA) desarrolló un protocolo de cata que evalúa el café en atributos como aroma, sabor, retrogusto, acidez, cuerpo, balance, dulzura y uniformidad, entre otros. Los catadores certificados (Q Graders) realizan la evaluación y un café que alcanza 80 puntos o más sobre 100 recibe la categoría de especialidad."
+  - q: "¿Dónde puedo probar café de especialidad en el Eje Cafetero?"
+    a: "En Café Los Grisales puedes probarlo en nuestras tiendas en Pereira (Pereira Plaza y Unicentro Pereira) o en nuestro Coffee Tour en la finca, donde el café de especialidad del Eje Cafetero cobra todo su sentido con el proceso completo del grano a la taza."
 ---
 
 **Qué es el café de especialidad** es una pregunta que cada vez más consumidores se hacen cuando entran a una cafetería premium y ven precios distintos a los del supermercado, o cuando escuchan términos como "notas florales", "proceso natural" o "microlote". La respuesta tiene una dimensión técnica precisa y una dimensión experiencial que es igual de importante.

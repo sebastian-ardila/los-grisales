@@ -11,6 +11,15 @@ cover: /blog/cafe-de-especialidad-pereira/cover.svg
 coverAlt: "Tasse de café de spécialité servie chez Café Los Grisales à Pereira, avec des grains de café frais en arrière-plan"
 tags: ["café de spécialité", "Pereira", "Eje Cafetero"]
 relatedSede: pereira-plaza
+faq:
+  - q: "Où peut-on boire du café de spécialité à Pereira ?"
+    a: "Café Los Grisales dispose de deux boutiques à Pereira : l'une à Pereira Plaza et l'autre à Unicentro Pereira. Toutes deux servent du café de spécialité issu de notre propre ferme familiale dans la région du Eje Cafetero."
+  - q: "Quelle est la différence entre le café de spécialité et le café ordinaire ?"
+    a: "Le café de spécialité atteint des scores supérieurs à 80 points sur l'échelle de la Specialty Coffee Association (SCA). Cela implique une traçabilité complète depuis la ferme, une récolte sélective des cerises mûres et des procédés de transformation contrôlés qui préservent les saveurs uniques de l'origine."
+  - q: "Café Los Grisales possède-t-il sa propre ferme dans le Eje Cafetero ?"
+    a: "Oui. Notre café de spécialité provient d'une ferme familiale située dans la région du Eje Cafetero. Nous maîtrisons chaque étape, de la culture à la récolte jusqu'à la transformation, ce qui nous permet de garantir la qualité de chaque tasse servie à Pereira."
+  - q: "Puis-je en apprendre davantage sur le processus du café à Pereira ?"
+    a: "Oui. Nous proposons un Coffee Tour où vous parcourez la ferme, découvrez les étapes de transformation et terminez par une séance de dégustation guidée. C'est la meilleure façon de comprendre l'origine du café de spécialité que nous servons dans nos boutiques."
 ---
 
 Le **café de spécialité à Pereira** connaît un moment d'exception. La ville qui a grandi entourée de caféiers dispose aujourd'hui d'espaces où chaque gorgée raconte l'histoire complète du grain, de la ferme à la tasse. Chez Café Los Grisales, cette histoire commence sur notre propre ferme familiale dans l'Eje Cafetero et arrive jusqu'à nos boutiques au cœur de la ville.

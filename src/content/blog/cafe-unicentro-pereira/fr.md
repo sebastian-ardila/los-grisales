@@ -11,6 +11,15 @@ cover: /blog/cafe-unicentro-pereira/cover.svg
 coverAlt: "Intérieur de la boutique Café Los Grisales à Unicentro Pereira, avec le bar barista et une ambiance chaleureuse"
 tags: ["boutiques", "Unicentro Pereira", "café de spécialité", "Pereira"]
 relatedSede: unicentro
+faq:
+  - q: "Où se trouve le café Café Los Grisales à Unicentro Pereira ?"
+    a: "Notre boutique Café Los Grisales à Unicentro Pereira est située à l'intérieur du centre commercial Unicentro, l'un des plus fréquentés du nord de Pereira. C'est un espace chaleureux et accessible conçu pour savourer un café de spécialité au cœur de la ville."
+  - q: "Quel type de café servez-vous à l'emplacement Unicentro ?"
+    a: "Dans notre boutique d'Unicentro Pereira, nous servons du café de spécialité issu de notre propre ferme dans la région du Eje Cafetero. Vous trouverez des expressos, des méthodes de filtration et des boissons au lait, tous préparés avec des grains que nous cultivons et transformons nous-mêmes."
+  - q: "Y a-t-il une différence entre les boutiques d'Unicentro et de Pereira Plaza ?"
+    a: "Les deux boutiques offrent la même qualité de café et le même standard de service Café Los Grisales. Le menu principal est identique ; il peut y avoir de légères différences dans les préparations saisonnières selon l'emplacement."
+  - q: "Puis-je faire une réservation de groupe chez Café Los Grisales Unicentro ?"
+    a: "Oui. Si vous prévoyez une visite en groupe, nous vous recommandons de nous contacter à l'avance pour coordonner votre expérience. Notre équipe à Unicentro Pereira sera ravie de vous aider."
 ---
 
 **Café à Unicentro Pereira** — c'est ainsi que beaucoup de nos habitués désignent notre boutique située à l'intérieur d'Unicentro Pereira, l'un des centres commerciaux les plus fréquentés de la ville. Pour Café Los Grisales, cet espace représente l'opportunité de porter notre offre de café de spécialité dans le rythme quotidien de ceux qui vivent, travaillent ou visitent le nord de Pereira.

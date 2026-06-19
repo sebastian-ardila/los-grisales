@@ -11,6 +11,15 @@ cover: /blog/cafe-pereira-plaza/cover.svg
 coverAlt: "Boutique Café Los Grisales à Pereira Plaza, avec bar barista et design chaleureux inspiré du paysage cafetier"
 tags: ["boutiques", "Pereira Plaza", "café de spécialité", "Pereira"]
 relatedSede: pereira-plaza
+faq:
+  - q: "Où se trouve Café Los Grisales à Pereira Plaza ?"
+    a: "Notre boutique de Pereira Plaza est située à l'intérieur de ce centre commercial, dans un espace conçu pour vivre l'expérience complète du café de spécialité. C'est l'une des destinations café les plus appréciées des amateurs à Pereira."
+  - q: "Que peut-on commander chez Café Los Grisales à Pereira Plaza ?"
+    a: "À Pereira Plaza, vous trouverez tout le menu Café Los Grisales : espresso d'origine unique, méthodes de filtration comme le V60 ou la Chemex, boissons au lait végétal et préparations saisonnières. Tout le café provient de notre propre ferme dans la région du Eje Cafetero."
+  - q: "Café Los Grisales à Pereira Plaza propose-t-il des dégustations ou des ateliers ?"
+    a: "Nos baristas à Pereira Plaza sont toujours disponibles pour vous guider sur le café du jour, les notes de tasse et les différences entre les méthodes de transformation. Pour des expériences plus approfondies, nous proposons le Coffee Tour dans notre ferme du Eje Cafetero."
+  - q: "Qu'est-ce qui distingue Café Los Grisales des autres cafés à Pereira Plaza ?"
+    a: "Café Los Grisales est la seule boutique de café à Pereira Plaza avec une traçabilité directe depuis notre propre ferme dans le Eje Cafetero. Quand vous commandez un expresso, le grain a été cultivé, récolté et transformé par nous — sans intermédiaires."
 ---
 
 **Café à Pereira Plaza** — c'est là que la proposition de Café Los Grisales prend sa forme la plus complète. Notre boutique à Pereira Plaza n'est pas simplement un endroit pour vendre du café : c'est un lieu de rencontre où la culture du café de spécialité devient accessible, chaleureuse et agréable pour tous les types de clientèle de la ville.

@@ -10,6 +10,15 @@ author: "Café Los Grisales"
 cover: /blog/que-es-cafe-de-especialidad/cover.svg
 coverAlt: "Grains de café de spécialité soigneusement sélectionnés, prêts pour la dégustation chez Café Los Grisales"
 tags: ["café de spécialité", "éducation café", "SCA", "Colombie"]
+faq:
+  - q: "Qu'est-ce que le café de spécialité exactement ?"
+    a: "Le café de spécialité est un café qui obtient un score de 80 points ou plus sur l'échelle de la Specialty Coffee Association (SCA), évalué par des dégustateurs certifiés. Il implique une traçabilité depuis la ferme, une récolte sélective, des procédés de transformation contrôlés et une préparation soignée en tasse."
+  - q: "En quoi le café de spécialité diffère-t-il du café commercial ?"
+    a: "Le café commercial mélange généralement des grains de différentes origines et qualités pour standardiser un goût uniforme. Le café de spécialité, en revanche, a sa propre identité : vous savez de quelle ferme il provient, qui l'a cultivé, quelle est la variété et comment il a été transformé. C'est cette traçabilité qui permet des saveurs uniques et complexes dans la tasse."
+  - q: "Qu'est-ce que l'échelle SCA et comment le café de spécialité est-il noté ?"
+    a: "La Specialty Coffee Association (SCA) a développé un protocole de dégustation qui évalue le café sur des attributs tels que l'arôme, la saveur, l'arrière-goût, l'acidité, le corps, l'équilibre, la douceur et l'uniformité. Des dégustateurs certifiés (Q Graders) réalisent l'évaluation, et tout café atteignant 80 points ou plus sur 100 reçoit la catégorie spécialité."
+  - q: "Où puis-je goûter du café de spécialité dans le Eje Cafetero ?"
+    a: "Chez Café Los Grisales, vous pouvez le déguster dans nos boutiques à Pereira (Pereira Plaza et Unicentro Pereira) ou lors de notre Coffee Tour à la ferme, où le café de spécialité du Eje Cafetero prend tout son sens à travers le voyage complet du grain à la tasse."
 ---
 
 **Qu'est-ce que le café de spécialité** — c'est une question que de plus en plus de consommateurs se posent lorsqu'ils entrent dans un café premium et voient des prix différents de ceux du supermarché, ou lorsqu'ils entendent des termes comme « notes florales », « procédé naturel » ou « microlot ». La réponse a une dimension technique précise et une dimension expérientielle tout aussi importante.

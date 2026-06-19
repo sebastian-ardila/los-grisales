@@ -11,6 +11,15 @@ cover: /blog/cafe-de-especialidad-pereira/cover.svg
 coverAlt: "Taza de café de especialidad servida en Café Los Grisales, Pereira, con granos frescos al fondo"
 tags: ["café de especialidad", "Pereira", "Eje Cafetero"]
 relatedSede: pereira-plaza
+faq:
+  - q: "¿Dónde puedo tomar café de especialidad en Pereira?"
+    a: "En Café Los Grisales tienes dos tiendas en Pereira: una en Pereira Plaza y otra en Unicentro Pereira. Ambas sirven café de especialidad proveniente de nuestra propia finca en el Eje Cafetero."
+  - q: "¿Qué diferencia al café de especialidad del café corriente?"
+    a: "El café de especialidad alcanza puntajes superiores a 80 puntos en la escala de la Specialty Coffee Association (SCA). Eso implica trazabilidad completa desde la finca, cosecha selectiva del fruto maduro y procesos controlados de beneficio que preservan los sabores únicos del origen."
+  - q: "¿Café Los Grisales tiene finca propia en el Eje Cafetero?"
+    a: "Sí. Nuestro café de especialidad nace en una finca familiar ubicada en el Eje Cafetero. Controlamos el cultivo, la cosecha y el beneficio, lo que nos permite garantizar la calidad y trazabilidad de cada taza que servimos en Pereira."
+  - q: "¿Puedo aprender sobre el proceso del café en Pereira?"
+    a: "Sí. Ofrecemos un Coffee Tour donde recorres la finca, conoces el proceso de beneficio y terminas con una sesión de cata guiada. Es la mejor forma de entender de dónde viene el café de especialidad que servimos en nuestras tiendas."
 ---
 
 El **café de especialidad en Pereira** vive un momento único: la ciudad que creció rodeada de cafetales hoy cuenta con espacios donde cada sorbo cuenta la historia completa del grano, desde la finca hasta la taza. En Café Los Grisales esa historia comienza en nuestra propia finca familiar en el Eje Cafetero y llega hasta nuestras tiendas en el corazón de la ciudad.
