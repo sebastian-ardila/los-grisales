@@ -30,23 +30,28 @@ function outFile(routePath) {
 
 const server = await preview({ preview: { port: 4173 } })
 const origin = server.resolvedUrls.local[0].replace(/\/$/, '')
-const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
-
+let browser
 try {
+  browser = await puppeteer.launch({ args: ['--no-sandbox'] })
   const routes = routesToRender()
   for (const routePath of routes) {
-    const page = await browser.newPage()
-    await page.goto(`${origin}${routePath}`, { waitUntil: 'networkidle0' })
-    await page.waitForSelector('main, article', { timeout: 15000 })
-    const html = await page.content()
-    const file = outFile(routePath)
-    mkdirSync(dirname(file), { recursive: true })
-    writeFileSync(file, html, 'utf8')
-    await page.close()
-    console.log(`✓ prerender ${routePath}`)
+    try {
+      const page = await browser.newPage()
+      await page.goto(`${origin}${routePath}`, { waitUntil: 'networkidle0' })
+      await page.waitForSelector('main, article', { timeout: 15000 })
+      const html = await page.content()
+      const file = outFile(routePath)
+      mkdirSync(dirname(file), { recursive: true })
+      writeFileSync(file, html, 'utf8')
+      await page.close()
+      console.log(`✓ prerender ${routePath}`)
+    } catch (e) {
+      console.error(`✗ prerender ${routePath}`, e)
+      throw e
+    }
   }
   console.log(`✓ prerendered ${routes.length} rutas`)
 } finally {
-  await browser.close()
+  if (browser) await browser.close()
   await new Promise((res) => server.httpServer.close(res))
 }
