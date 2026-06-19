@@ -13,7 +13,10 @@ const LANGS = ['es', 'en', 'fr']
 function readRaw() {
   if (!existsSync(BLOG_DIR)) return []
   const out = []
-  for (const id of readdirSync(BLOG_DIR)) {
+  const ids = readdirSync(BLOG_DIR, { withFileTypes: true })
+    .filter((d) => d.isDirectory())
+    .map((d) => d.name)
+  for (const id of ids) {
     for (const lang of LANGS) {
       const file = resolve(BLOG_DIR, id, `${lang}.md`)
       if (!existsSync(file)) continue

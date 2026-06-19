@@ -14,4 +14,10 @@ describe('read-blog', () => {
       expect(e.path.startsWith('/blog/')).toBe(true)
     }
   })
+
+  it('lastmod tiene formato YYYY-MM-DD (guard de Date aplicado)', () => {
+    for (const e of blogSitemapEntries()) {
+      expect(e.lastmod).toMatch(/^\d{4}-\d{2}-\d{2}$/)
+    }
+  })
 })
