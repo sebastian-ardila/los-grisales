@@ -1,5 +1,10 @@
 export type Lang = 'es' | 'en' | 'fr'
 
+export interface FaqItem {
+  q: string
+  a: string
+}
+
 export type SedeRef = 'pereira-plaza' | 'unicentro' | 'coffee-tour'
 
 export interface BlogMeta {
@@ -20,6 +25,7 @@ export interface BlogMeta {
   coverAlt: string
   tags: string[]
   relatedSede?: SedeRef
+  faq?: FaqItem[]
   /** id-de-este-post → slug por idioma, para construir hreflang. */
   translations: Record<Lang, string>
 }
