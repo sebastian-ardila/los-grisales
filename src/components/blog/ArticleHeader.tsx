@@ -10,6 +10,7 @@ interface Props {
 const MIN_LABEL: Record<Lang, string> = { es: 'min de lectura', en: 'min read', fr: 'min de lecture' }
 
 export default function ArticleHeader({ post, lang }: Props) {
+  const coverSrc = `${import.meta.env.BASE_URL}${post.cover.replace(/^\//, '')}`
   return (
     <header className="mx-auto mb-12 max-w-3xl text-center">
       <div className="mb-5 flex flex-wrap justify-center gap-x-2 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand/70">
@@ -35,6 +36,15 @@ export default function ArticleHeader({ post, lang }: Props) {
           {post.readingMinutes} {MIN_LABEL[lang]}
         </span>
       </div>
+
+      {post.cover && (
+        <img
+          src={coverSrc}
+          alt={post.coverAlt}
+          className="mt-10 aspect-[16/9] w-full rounded-2xl object-cover shadow-lg shadow-black/5 ring-1 ring-brand/10"
+          loading="eager"
+        />
+      )}
     </header>
   )
 }
