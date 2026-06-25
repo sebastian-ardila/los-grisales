@@ -26,6 +26,17 @@ function toStringArray(value: unknown): string[] {
   return [String(value)]
 }
 
+/**
+ * Normaliza una fecha del frontmatter a "YYYY-MM-DD". El parser YAML convierte
+ * `date: 2026-06-25` (sin comillas) en un objeto `Date` (medianoche UTC); sin
+ * esta normalización, `String(date)` produce una cadena local que desfasa un
+ * día en zonas con offset negativo. Mismo criterio que scripts/read-blog.mjs.
+ */
+function toIsoDate(value: unknown): string {
+  if (value instanceof Date) return value.toISOString().slice(0, 10)
+  return String(value ?? '')
+}
+
 function toFaqArray(value: unknown): FaqItem[] {
   if (!Array.isArray(value)) return []
   return value
@@ -61,8 +72,8 @@ export class MarkdownSource implements ContentSource {
           description: String(a.description ?? ''),
           excerpt: String(a.excerpt ?? ''),
           keywords: toStringArray(a.keywords),
-          date: String(a.date ?? ''),
-          updated: String(a.updated ?? a.date ?? ''),
+          date: toIsoDate(a.date),
+          updated: toIsoDate(a.updated ?? a.date),
           author: String(a.author ?? 'Café Los Grisales'),
           cover: String(a.cover ?? ''),
           coverAlt: String(a.coverAlt ?? ''),
