@@ -14,7 +14,7 @@ relatedSede: unicentro
 faq: []
 ---
 
-En Café Los Grisales creemos que el café también se aprende, se vive y se comparte. Por eso, en nuestro punto ubicado en la plazoleta de comidas de Unicentro Pereira, hemos creado un espacio especial: **Hablemos de café**, una experiencia gratuita que se realizará el primer viernes de cada mes.
+En Café Los Grisales creemos que el café también se aprende, se vive y se comparte. Por eso, en nuestro punto ubicado en Unicentro Pereira (Nivel B, plazoleta de comidas), hemos creado un espacio especial: **Hablemos de café**, una experiencia gratuita que se realizará el primer viernes de cada mes.
 
 ## Un tema distinto cada mes
 
@@ -30,3 +30,7 @@ Estas charlas están diseñadas para acercar a las personas al mundo cafetero de
 ## Cupos limitados
 
 La participación es gratuita, pero los cupos son limitados. Por eso te invitamos a estar muy pendiente de nuestras redes sociales para conocer cada tema mensual y el proceso de inscripción.
+
+## Dónde es
+
+📍 Nos encuentras en **Unicentro Pereira – Nivel B, plazoleta de comidas**, todos los primeros viernes del mes.

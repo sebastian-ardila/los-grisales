@@ -39,9 +39,9 @@ const NOTICES: Notice[] = [
     eyebrow: { es: 'Evento', en: 'Event', fr: 'Événement' },
     title: { es: 'Hablemos de café', en: "Let's talk coffee", fr: 'Parlons café' },
     description: {
-      es: 'Primeros viernes del mes en nuestra burbuja en Unicentro',
-      en: 'First Friday each month at our Unicentro coffee bar',
-      fr: 'Premiers vendredis du mois à notre bar à Unicentro',
+      es: 'Primeros viernes del mes en nuestra burbuja en Unicentro, nivel B, Plazoleta de comidas',
+      en: 'First Friday each month at our Unicentro bubble — Level B, food court',
+      fr: 'Premiers vendredis du mois à notre bulle à Unicentro, niveau B, aire de restauration',
     },
   },
   {

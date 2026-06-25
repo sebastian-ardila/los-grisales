@@ -14,7 +14,7 @@ relatedSede: unicentro
 faq: []
 ---
 
-At Café Los Grisales we believe coffee is also something you learn, live and share. That is why, at our spot in the food court of Unicentro Pereira, we created a special space: **Let's talk coffee**, a free experience held on the first Friday of every month.
+At Café Los Grisales we believe coffee is also something you learn, live and share. That is why, at our spot in Unicentro Pereira (Level B, food court), we created a special space: **Let's talk coffee**, a free experience held on the first Friday of every month.
 
 ## A different topic each month
 
@@ -30,3 +30,7 @@ These talks are designed to bring people closer to the coffee world from an educ
 ## Limited seats
 
 Participation is free, but seats are limited. We invite you to keep a close eye on our social media to find out each month's topic and how to sign up.
+
+## Where it happens
+
+📍 Find us at **Unicentro Pereira – Level B, food court**, every first Friday of the month.

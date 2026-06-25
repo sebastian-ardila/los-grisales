@@ -14,7 +14,7 @@ relatedSede: unicentro
 faq: []
 ---
 
-Chez Café Los Grisales, nous croyons que le café s'apprend, se vit et se partage. C'est pourquoi, à notre point situé dans l'aire de restauration d'Unicentro Pereira, nous avons créé un espace spécial : **Parlons café**, une expérience gratuite qui a lieu le premier vendredi de chaque mois.
+Chez Café Los Grisales, nous croyons que le café s'apprend, se vit et se partage. C'est pourquoi, à notre point situé à Unicentro Pereira (Niveau B, aire de restauration), nous avons créé un espace spécial : **Parlons café**, une expérience gratuite qui a lieu le premier vendredi de chaque mois.
 
 ## Un thème différent chaque mois
 
@@ -30,3 +30,7 @@ Ces causeries sont conçues pour rapprocher les gens du monde du café avec une 
 ## Places limitées
 
 La participation est gratuite, mais les places sont limitées. Nous vous invitons à suivre de près nos réseaux sociaux pour connaître le thème de chaque mois et les modalités d'inscription.
+
+## Où ça se passe
+
+📍 Retrouvez-nous à **Unicentro Pereira – Niveau B, aire de restauration**, tous les premiers vendredis du mois.
