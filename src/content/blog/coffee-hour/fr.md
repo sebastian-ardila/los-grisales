@@ -7,8 +7,8 @@ keywords: ["coffee hour", "combos café pereira", "café los grisales", "promos 
 date: 2026-06-25
 updated: 2026-06-25
 author: "Café Los Grisales"
-cover: /blog/coffee-hour/cover.svg
-coverAlt: "Table avec boissons et combos Coffee Hour chez Café Los Grisales"
+cover: /blog/coffee-hour/cover.webp
+coverAlt: "Deux cocktails espresso martini et une pizza dans une boutique Café Los Grisales pendant le Coffee Hour"
 tags: ["novedades", "promotions"]
 faq: []
 ---

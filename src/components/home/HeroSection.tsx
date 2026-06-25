@@ -18,6 +18,7 @@ type Localized = { es: string; en: string; fr: string }
 interface Notice {
   id: string
   image?: string
+  eyebrow: Localized
   title: Localized
   description: Localized
 }
@@ -26,6 +27,7 @@ const NOTICES: Notice[] = [
   {
     id: 'negocios-verdes-carder',
     image: 'blog/negocios-verdes-carder/cover.webp',
+    eyebrow: { es: 'Sostenibilidad', en: 'Sustainability', fr: 'Durabilité' },
     title: { es: 'Sostenibilidad real', en: 'Real sustainability', fr: 'Durabilité réelle' },
     description: {
       es: 'Somos Negocios Verdes certificados por la CARDER',
@@ -36,6 +38,7 @@ const NOTICES: Notice[] = [
   {
     id: 'hablemos-de-cafe',
     image: 'blog/hablemos-de-cafe/cover.webp',
+    eyebrow: { es: 'Evento', en: 'Event', fr: 'Événement' },
     title: { es: 'Hablemos de café', en: "Let's talk coffee", fr: 'Parlons café' },
     description: {
       es: 'Primeros viernes del mes en nuestra burbuja en Unicentro',
@@ -46,6 +49,7 @@ const NOTICES: Notice[] = [
   {
     id: 'zona-mundialista',
     image: 'blog/zona-mundialista/cover.webp',
+    eyebrow: { es: 'Evento', en: 'Event', fr: 'Événement' },
     title: { es: 'Zona Mundialista', en: 'World Cup Zone', fr: 'Zone Mondial' },
     description: {
       es: 'Vive el Mundial en nuestras tiendas: pantalla y promos',
@@ -55,6 +59,8 @@ const NOTICES: Notice[] = [
   },
   {
     id: 'coffee-hour',
+    image: 'blog/coffee-hour/cover.webp',
+    eyebrow: { es: 'Promoción', en: 'Deal', fr: 'Promo' },
     title: { es: 'Coffee Hour', en: 'Coffee Hour', fr: 'Coffee Hour' },
     description: {
       es: 'Martes y jueves de 4:00 a 7:00 p.m.',
@@ -78,6 +84,8 @@ export default function HeroSection() {
   const followLabel = { es: 'Síguenos en redes', en: 'Follow us on social', fr: 'Suivez-nous sur les réseaux' }[lang]
   const cafeBarLabel = { es: 'Tiendas de Café', en: 'Coffee Shops', fr: 'Boutiques de Café' }[lang]
   const allNewsLabel = { es: 'Ver todas las novedades', en: 'See all updates', fr: 'Voir toutes les nouveautés' }[lang]
+  const noveltiesLabel = { es: 'Novedades', en: 'Latest', fr: 'Nouveautés' }[lang]
+  const partnersLabel = { es: 'En alianza con', en: 'In partnership with', fr: 'En partenariat avec' }[lang]
 
   const cards = NOTICES.map((n) => {
     const post = posts.find((p) => p.id === n.id)
@@ -85,6 +93,7 @@ export default function HeroSection() {
     return {
       key: n.id,
       href: `/${lang}/blog/${post.slug}`,
+      eyebrow: n.eyebrow[lang],
       title: n.title[lang],
       description: n.description[lang],
       date: post.date,
@@ -99,34 +108,33 @@ export default function HeroSection() {
         <source src={`${import.meta.env.BASE_URL}hero/video-hero-3.webm`} type="video/webm" />
       </video>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black" style={{ opacity: 'var(--hero-overlay-opacity)' }} />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div
-          className="h-[900px] w-[900px] rounded-full bg-black blur-[140px] md:h-[1100px] md:w-[1100px]"
-          style={{ opacity: 'var(--hero-glow-opacity)' }}
-        />
-      </div>
+      {/* Overlays — tinte verde de marca + gradiente direccional para legibilidad */}
+      <div aria-hidden="true" className="absolute inset-0 bg-[#03211f]/55" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-r from-[#03211f] via-[#03211f]/75 to-[#03211f]/25 lg:via-[#03211f]/55 lg:to-transparent"
+      />
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-[#03211f] to-transparent" />
 
-      <div className="relative z-10 flex flex-1 flex-col px-4 pb-10 pt-24 md:pb-14 md:pt-28">
-        {/* Split: left = brand/CTAs, right = novedades */}
-        <div className="grid flex-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-1 flex-col px-4 pb-12 pt-24 sm:px-6 md:pb-16 md:pt-28">
+        {/* Split: izquierda = marca/CTAs, derecha = mosaico de novedades */}
+        <div className="grid flex-1 items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
           {/* LEFT */}
-          <div className="flex flex-col items-center gap-8 text-center md:gap-10 lg:items-start lg:text-left">
+          <div className="flex flex-col items-center gap-7 text-center md:gap-9 lg:items-start lg:text-left">
             <h1 className="animate-neon-text flex">
               <img
                 src={heroLogo}
                 alt="Los Grisales — Café & Bar"
-                className="h-44 w-auto object-contain drop-shadow-[0_4px_30px_rgba(196,169,98,0.35)] md:h-56 lg:h-64"
+                className="h-40 w-auto object-contain drop-shadow-[0_4px_30px_rgba(196,169,98,0.4)] md:h-52 lg:h-60"
               />
             </h1>
 
-            <div className="flex items-center gap-2">
-              <span className="h-px w-6 bg-white/15" />
-              <span className="text-[9px] font-semibold uppercase tracking-[0.4em] text-white/45 md:text-xs">
+            <div className="flex items-center gap-2.5">
+              <span className="h-px w-8 bg-[#C4A962]/50" />
+              <span className="text-[9px] font-semibold uppercase tracking-[0.4em] text-[#C4A962]/90 md:text-[11px]">
                 {t('hero.tagline')}
               </span>
-              <span className="h-px w-6 bg-white/15" />
+              <span className="h-px w-8 bg-[#C4A962]/50" />
             </div>
 
             <div className="flex flex-col items-center gap-4 lg:items-start">
@@ -136,7 +144,7 @@ export default function HeroSection() {
                   style={{
                     backgroundColor: 'var(--hero-accent)',
                     color: 'var(--hero-accent-contrast)',
-                    boxShadow: '0 10px 30px -8px var(--hero-accent-glow)',
+                    boxShadow: '0 12px 34px -10px var(--hero-accent-glow)',
                   }}
                   className="inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-base font-bold transition hover:brightness-105 sm:px-9 sm:text-lg"
                 >
@@ -146,7 +154,7 @@ export default function HeroSection() {
                 <button
                   onClick={() => scrollToSection('cafe-bar')}
                   style={{ borderColor: 'var(--hero-secondary)', color: 'var(--hero-secondary-text)' }}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 bg-black/20 px-7 py-3.5 text-base font-bold backdrop-blur-sm transition hover:bg-black/30 sm:px-9 sm:text-lg"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 bg-black/25 px-7 py-3.5 text-base font-bold backdrop-blur-sm transition hover:bg-black/40 sm:px-9 sm:text-lg"
                 >
                   <Storefront size={20} weight="bold" />
                   {cafeBarLabel}
@@ -164,49 +172,59 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* RIGHT: novedades */}
-          <div className="animate-fade-in flex w-full max-w-xl flex-col gap-3 justify-self-center lg:max-w-none">
-            {cards.map((c) => (
-              <HeroNoticeCard
-                key={c.key}
-                lang={lang}
-                href={c.href}
-                title={c.title}
-                description={c.description}
-                date={c.date}
-                image={c.image}
-              />
-            ))}
+          {/* RIGHT: mosaico de novedades */}
+          <div className="flex w-full min-w-0 max-w-2xl flex-col gap-4 justify-self-center lg:max-w-none">
+            <div className="flex items-center gap-3">
+              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#C4A962]">{noveltiesLabel}</span>
+              <span className="h-px flex-1 bg-gradient-to-r from-[#C4A962]/50 to-transparent" />
+            </div>
+
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
+              {cards.map((c, i) => (
+                <div
+                  key={c.key}
+                  className="animate-fade-in min-w-0"
+                  style={{ animationDelay: `${i * 80}ms`, animationFillMode: 'backwards' }}
+                >
+                  <HeroNoticeCard
+                    lang={lang}
+                    href={c.href}
+                    eyebrow={c.eyebrow}
+                    title={c.title}
+                    description={c.description}
+                    date={c.date}
+                    image={c.image}
+                  />
+                </div>
+              ))}
+            </div>
+
             <Link
               to={`/${lang}/blog?cat=novedades`}
-              className="group mt-1 inline-flex items-center justify-center gap-1.5 text-sm font-semibold uppercase tracking-[0.18em] text-white/80 transition hover:text-white"
+              className="group inline-flex items-center justify-center gap-1.5 self-center rounded-full border border-[#C4A962]/40 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#C4A962] transition hover:border-[#C4A962] hover:bg-[#C4A962]/10 lg:self-end"
             >
               {allNewsLabel}
-              <ArrowRight size={15} weight="bold" className="transition-transform group-hover:translate-x-1" />
+              <ArrowRight size={14} weight="bold" className="transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
 
-        {/* Partners — full width below the split */}
+        {/* Partners — todo el ancho, debajo del split */}
         <div
-          className="animate-fade-in mt-10 flex w-full flex-col items-center gap-4 md:mt-14"
-          style={{ animationDelay: '160ms', animationFillMode: 'backwards' }}
+          className="animate-fade-in mt-12 flex w-full flex-col items-center gap-5 border-t border-white/10 pt-8 md:mt-16"
+          style={{ animationDelay: '220ms', animationFillMode: 'backwards' }}
         >
-          <div className="flex items-center gap-2">
-            <span className="h-px w-6 bg-white/25" />
-            <span className="text-[9px] font-semibold uppercase tracking-[0.4em] text-white/70 md:text-xs">
-              {{ es: 'En alianza con', en: 'In partnership with', fr: 'En partenariat avec' }[lang]}
-            </span>
-            <span className="h-px w-6 bg-white/25" />
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 md:gap-x-14">
+          <span className="text-[9px] font-semibold uppercase tracking-[0.4em] text-white/60 md:text-[11px]">
+            {partnersLabel}
+          </span>
+          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 md:gap-x-16">
             {partners.map((p) => (
               <img
                 key={p.name}
                 src={`${import.meta.env.BASE_URL}${p.image}`}
                 alt={p.name}
-                className={`h-12 w-auto object-contain opacity-90 drop-shadow-[0_0_12px_rgba(0,0,0,0.5)] transition hover:opacity-100 md:h-20 ${
-                  p.wider ? 'max-w-[180px] md:max-w-[260px]' : 'max-w-[140px] md:max-w-[200px]'
+                className={`h-11 w-auto object-contain opacity-80 drop-shadow-[0_0_12px_rgba(0,0,0,0.5)] transition hover:opacity-100 md:h-16 ${
+                  p.wider ? 'max-w-[170px] md:max-w-[230px]' : 'max-w-[130px] md:max-w-[180px]'
                 }`}
                 loading="lazy"
               />

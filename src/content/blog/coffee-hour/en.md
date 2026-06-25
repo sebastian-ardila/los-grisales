@@ -7,8 +7,8 @@ keywords: ["coffee hour", "coffee combos pereira", "café los grisales", "coffee
 date: 2026-06-25
 updated: 2026-06-25
 author: "Café Los Grisales"
-cover: /blog/coffee-hour/cover.svg
-coverAlt: "Table with Coffee Hour drinks and combos at Café Los Grisales"
+cover: /blog/coffee-hour/cover.webp
+coverAlt: "Two espresso martini coffee cocktails and a pizza at a Café Los Grisales shop during Coffee Hour"
 tags: ["novedades", "deals"]
 faq: []
 ---
