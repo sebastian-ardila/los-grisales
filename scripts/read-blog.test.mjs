@@ -2,13 +2,13 @@ import { describe, it, expect } from 'vitest'
 import { readBlogPosts, blogSitemapEntries } from './read-blog.mjs'
 
 describe('read-blog', () => {
-  it('lee 15 entradas (5 posts × 3 idiomas)', () => {
-    expect(readBlogPosts()).toHaveLength(15)
+  it('lee 27 entradas (9 posts × 3 idiomas)', () => {
+    expect(readBlogPosts()).toHaveLength(27)
   })
 
   it('cada entrada de sitemap del blog tiene alternates en 3 idiomas', () => {
     const entries = blogSitemapEntries()
-    expect(entries).toHaveLength(15)
+    expect(entries).toHaveLength(27)
     for (const e of entries) {
       expect(e.alternates).toHaveLength(3)
       expect(e.path.startsWith('/blog/')).toBe(true)
