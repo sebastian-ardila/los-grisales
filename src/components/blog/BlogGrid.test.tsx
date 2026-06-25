@@ -1,33 +1,43 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
 import { MemoryRouter } from 'react-router-dom'
 import BlogGrid from './BlogGrid'
 import type { BlogListItem } from '../../lib/blog/types'
 
-function item(id: string, tag: string): BlogListItem {
-  return {
-    id, slug: id, title: `Título ${id}`, description: 'd', excerpt: 'e',
-    keywords: [], date: '2026-06-01', updated: '2026-06-01', author: 'A',
-    cover: '/c.svg', coverAlt: 'alt', tags: [tag], faq: [],
-    translations: { es: id, en: id, fr: id }, readingMinutes: 1,
-  }
+const base = {
+  description: '', excerpt: 'x', keywords: [], date: '2026-06-25', updated: '2026-06-25',
+  author: 'A', cover: '', coverAlt: 'a', faq: [], readingMinutes: 1,
+  translations: { es: '', en: '', fr: '' },
+}
+const posts: BlogListItem[] = [
+  { ...base, id: 'p1', slug: 'p1', title: 'Post Novedad', tags: ['novedades', 'eventos'] },
+  { ...base, id: 'p2', slug: 'p2', title: 'Post Normal', tags: ['Pereira'] },
+]
+
+function renderAt(path: string) {
+  return render(
+    <MemoryRouter initialEntries={[path]}>
+      <BlogGrid posts={posts} lang="es" />
+    </MemoryRouter>,
+  )
 }
 
-const posts = [item('uno', 'tour'), item('dos', 'especialidad')]
+describe('BlogGrid filtro por ?cat=', () => {
+  it('sin cat muestra todos los posts', () => {
+    renderAt('/es/blog')
+    expect(screen.getByText('Post Novedad')).toBeInTheDocument()
+    expect(screen.getByText('Post Normal')).toBeInTheDocument()
+  })
 
-describe('BlogGrid', () => {
-  it('filtra por tag al pulsar el botón', async () => {
-    render(
-      <MemoryRouter>
-        <BlogGrid posts={posts} lang="es" />
-      </MemoryRouter>,
-    )
-    expect(screen.getByText('Título uno')).toBeInTheDocument()
-    expect(screen.getByText('Título dos')).toBeInTheDocument()
+  it('cat=novedades muestra solo posts con ese tag', () => {
+    renderAt('/es/blog?cat=novedades')
+    expect(screen.getByText('Post Novedad')).toBeInTheDocument()
+    expect(screen.queryByText('Post Normal')).not.toBeInTheDocument()
+  })
 
-    await userEvent.click(screen.getByRole('button', { name: 'tour' }))
-    expect(screen.getByText('Título uno')).toBeInTheDocument()
-    expect(screen.queryByText('Título dos')).not.toBeInTheDocument()
+  it('cat inexistente muestra todos', () => {
+    renderAt('/es/blog?cat=zzz')
+    expect(screen.getByText('Post Novedad')).toBeInTheDocument()
+    expect(screen.getByText('Post Normal')).toBeInTheDocument()
   })
 })
