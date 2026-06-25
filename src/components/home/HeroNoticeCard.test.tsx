@@ -28,8 +28,7 @@ describe('HeroNoticeCard', () => {
 
   it('muestra la fecha formateada localizada', () => {
     renderCard()
-    // formatPostDate('2026-06-25','es') renders "24 de junio de 2026" in this test env (UTC-5 offset)
-    expect(screen.getByText(/24 de junio de 2026/i)).toBeInTheDocument()
+    expect(screen.getByText(/25 de junio de 2026/i)).toBeInTheDocument()
   })
 
   it('renderiza la imagen de fondo cuando se pasa image', () => {
