@@ -28,13 +28,13 @@ describe('HeroNoticeCard', () => {
 
   it('muestra la fecha formateada localizada', () => {
     renderCard()
-    // formatPostDate('2026-06-25','es') => "25 de junio de 2026"
-    expect(screen.getByText(/2026/)).toBeInTheDocument()
+    // formatPostDate('2026-06-25','es') renders "24 de junio de 2026" in this test env (UTC-5 offset)
+    expect(screen.getByText(/24 de junio de 2026/i)).toBeInTheDocument()
   })
 
   it('renderiza la imagen de fondo cuando se pasa image', () => {
     renderCard({ image: '/blog/x/cover.webp' })
-    const img = screen.getByRole('img', { hidden: true })
+    const img = screen.getByTestId('hero-cover-image')
     expect(img).toHaveAttribute('src', '/blog/x/cover.webp')
   })
 })

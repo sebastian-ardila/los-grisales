@@ -21,9 +21,9 @@ export default function HeroNoticeCard({ lang, href, title, description, date, i
         <img
           src={image}
           alt=""
-          role="img"
           aria-hidden="true"
           loading="lazy"
+          data-testid="hero-cover-image"
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       ) : (
