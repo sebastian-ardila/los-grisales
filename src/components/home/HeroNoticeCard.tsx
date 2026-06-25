@@ -30,7 +30,7 @@ export default function HeroNoticeCard({
   return (
     <Link
       to={href}
-      className="group relative flex aspect-[5/4] flex-col justify-end overflow-hidden rounded-2xl ring-1 ring-inset ring-white/10 transition duration-300 hover:ring-[#C4A962]/50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C4A962] sm:aspect-[16/11]"
+      className="group relative flex aspect-[16/10] flex-col justify-end overflow-hidden rounded-2xl shadow-lg shadow-black/40 ring-1 ring-inset ring-white/10 transition duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-black/50 hover:ring-[#C4A962]/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C4A962] motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:aspect-[16/11]"
     >
       {image ? (
         <img
@@ -39,12 +39,12 @@ export default function HeroNoticeCard({
           aria-hidden="true"
           data-testid="hero-cover-image"
           loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[600ms] ease-out group-hover:scale-[1.08]"
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[600ms] ease-out motion-safe:group-hover:scale-[1.08]"
         />
       ) : (
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-br from-[#053b39] via-[#0a5f5c] to-[#C4A962]/40 transition-transform duration-[600ms] ease-out group-hover:scale-[1.08]"
+          className="absolute inset-0 bg-gradient-to-br from-[#053b39] via-[#0a5f5c] to-[#C4A962]/40 transition-transform duration-[600ms] ease-out motion-safe:group-hover:scale-[1.08]"
         />
       )}
 
@@ -76,7 +76,7 @@ export default function HeroNoticeCard({
         <h3 className="font-display text-lg font-semibold leading-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)]">
           {title}
         </h3>
-        <p className="mt-1 line-clamp-2 text-xs leading-snug text-white/75">{description}</p>
+        <p className="mt-1 line-clamp-2 text-xs leading-snug text-white/80">{description}</p>
       </div>
 
       {/* Barra de acento en hover */}
