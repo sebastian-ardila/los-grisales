@@ -50,6 +50,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [socialOpen, setSocialOpen] = useState(false)
   const followLabel = { es: 'Síguenos en redes', en: 'Follow us on social', fr: 'Suivez-nous sur les réseaux' }[lang]
+  const followShort = { es: 'Síguenos', en: 'Follow us', fr: 'Suivez-nous' }[lang]
   const navbarLogo = `${import.meta.env.BASE_URL}logos/logo-verde.webp`
 
   const menuRoutes = routes.filter((r) => r.showInMenu)
@@ -136,10 +137,11 @@ export default function Navbar() {
               onClick={() => setSocialOpen(true)}
               aria-label={followLabel}
               title={followLabel}
-              style={{ borderColor: '#b3c2bb' }}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border bg-transparent text-white/85 transition hover:bg-white/10 hover:text-white"
+              style={{ borderColor: '#b3c2bb', color: '#064947' }}
+              className="inline-flex h-10 items-center gap-1.5 rounded-2xl border bg-transparent px-2.5 text-[12px] font-semibold transition hover:bg-white/10 sm:px-3"
             >
               <ShareNetwork size={16} weight="duotone" />
+              <span>{followShort}</span>
             </button>
 
             <LanguageSwitcher variant="dark" />

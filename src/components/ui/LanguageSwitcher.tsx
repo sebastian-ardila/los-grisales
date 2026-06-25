@@ -42,6 +42,11 @@ export default function LanguageSwitcher({ variant = 'light' }: Props) {
     navigate(`${newPath}${location.search}`, { replace: true })
   }
 
+  // Mobile: una sola bandera que cicla al siguiente idioma en cada click.
+  const currentIdx = Math.max(0, LANGS.findIndex((l) => l.code === current))
+  const nextLang = LANGS[(currentIdx + 1) % LANGS.length]
+  const currentLang = LANGS[currentIdx]
+
   // Border colour: same brand-green family on both backgrounds.
   //  - light card: brand dark green at full strength
   //  - dark variant (navbar over the cream theme): a very soft, dusty sage so
@@ -53,24 +58,47 @@ export default function LanguageSwitcher({ variant = 'light' }: Props) {
   const inactiveFg = variant === 'dark' ? '#064947' : '#064947'
 
   return (
-    <div
-      role="tablist"
-      aria-label="Language"
-      style={{ borderColor }}
-      className="inline-flex shrink-0 items-stretch gap-1 rounded-2xl border bg-transparent p-1"
-    >
-      {LANGS.map(({ code, Flag, label, aria }) => (
-        <Chip
-          key={code}
-          active={current === code}
-          onClick={() => switchTo(code)}
-          Flag={Flag}
-          label={label}
-          aria={aria}
-          inactiveFg={inactiveFg}
-        />
-      ))}
-    </div>
+    <>
+      {/* Mobile: una sola bandera (la actual); click → siguiente idioma */}
+      <button
+        type="button"
+        onClick={() => switchTo(nextLang.code)}
+        aria-label={nextLang.aria}
+        style={{ borderColor }}
+        className="inline-flex shrink-0 items-center rounded-2xl border bg-transparent p-1 sm:hidden"
+      >
+        <span
+          style={{ backgroundColor: '#064947', color: '#ffffff' }}
+          className="inline-flex flex-col items-center justify-center gap-0.5 rounded-xl px-2 py-1 text-[10px] font-extrabold uppercase leading-none tracking-wider shadow-[0_2px_6px_-2px_rgba(0,0,0,0.2)]"
+        >
+          <currentLang.Flag
+            aria-hidden="true"
+            className="h-3 w-[18px] shrink-0 overflow-hidden rounded-[2px] shadow-[0_0_0_1px_rgba(0,0,0,0.1)]"
+          />
+          <span>{currentLang.label}</span>
+        </span>
+      </button>
+
+      {/* Desktop: selector con las 3 banderas */}
+      <div
+        role="tablist"
+        aria-label="Language"
+        style={{ borderColor }}
+        className="hidden shrink-0 items-stretch gap-1 rounded-2xl border bg-transparent p-1 sm:inline-flex"
+      >
+        {LANGS.map(({ code, Flag, label, aria }) => (
+          <Chip
+            key={code}
+            active={current === code}
+            onClick={() => switchTo(code)}
+            Flag={Flag}
+            label={label}
+            aria={aria}
+            inactiveFg={inactiveFg}
+          />
+        ))}
+      </div>
+    </>
   )
 }
 
