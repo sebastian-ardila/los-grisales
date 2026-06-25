@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { Mountains, Storefront, ShareNetwork, ArrowRight } from '@phosphor-icons/react'
+import { Mountains, Storefront, ArrowRight } from '@phosphor-icons/react'
 import { useLang } from '../../utils/lang'
 import { blog } from '../../lib/blog'
-import SocialModal from '../ui/SocialModal'
 import HeroNoticeCard from './HeroNoticeCard'
 
 const partners = [
@@ -77,11 +75,9 @@ function scrollToSection(id: string) {
 export default function HeroSection() {
   const { t } = useTranslation()
   const lang = useLang()
-  const [socialOpen, setSocialOpen] = useState(false)
   const heroLogo = `${import.meta.env.BASE_URL}logos/logo-dorado.webp`
   const posts = blog.getAllPosts(lang)
 
-  const followLabel = { es: 'Síguenos en redes', en: 'Follow us on social', fr: 'Suivez-nous sur les réseaux' }[lang]
   const cafeBarLabel = { es: 'Tiendas de Café', en: 'Coffee Shops', fr: 'Boutiques de Café' }[lang]
   const allNewsLabel = { es: 'Ver todas las novedades', en: 'See all updates', fr: 'Voir toutes les nouveautés' }[lang]
   const noveltiesLabel = { es: 'Novedades', en: 'Latest', fr: 'Nouveautés' }[lang]
@@ -137,37 +133,26 @@ export default function HeroSection() {
               <span className="h-px w-8 bg-[#C4A962]/50" />
             </div>
 
-            <div className="flex flex-col items-center gap-4 lg:items-start">
-              <div className="flex w-full max-w-sm flex-col gap-3 sm:w-auto sm:max-w-none sm:flex-row sm:gap-4">
-                <button
-                  onClick={() => scrollToSection('tour')}
-                  style={{
-                    backgroundColor: 'var(--hero-accent)',
-                    color: 'var(--hero-accent-contrast)',
-                    boxShadow: '0 12px 34px -10px var(--hero-accent-glow)',
-                  }}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl px-7 py-3.5 text-base font-bold transition hover:brightness-105 sm:px-9 sm:text-lg"
-                >
-                  <Mountains size={20} weight="bold" />
-                  Coffee Tour
-                </button>
-                <button
-                  onClick={() => scrollToSection('cafe-bar')}
-                  style={{ borderColor: 'var(--hero-secondary)', color: 'var(--hero-secondary-text)' }}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border-2 bg-black/25 px-7 py-3.5 text-base font-bold backdrop-blur-sm transition hover:bg-black/40 sm:px-9 sm:text-lg"
-                >
-                  <Storefront size={20} weight="bold" />
-                  {cafeBarLabel}
-                </button>
-              </div>
-
+            <div className="flex w-full flex-row gap-3 sm:w-auto sm:gap-4">
               <button
-                type="button"
-                onClick={() => setSocialOpen(true)}
-                className="group inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.25em] text-white/80 backdrop-blur-sm transition hover:border-white/50 hover:bg-white/10 hover:text-white"
+                onClick={() => scrollToSection('tour')}
+                style={{
+                  backgroundColor: 'var(--hero-accent)',
+                  color: 'var(--hero-accent-contrast)',
+                  boxShadow: '0 12px 34px -10px var(--hero-accent-glow)',
+                }}
+                className="inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl px-4 py-3.5 text-sm font-bold transition hover:brightness-105 sm:flex-none sm:px-9 sm:text-lg"
               >
-                <ShareNetwork size={14} weight="duotone" />
-                <span>{followLabel}</span>
+                <Mountains size={20} weight="bold" />
+                Coffee Tour
+              </button>
+              <button
+                onClick={() => scrollToSection('cafe-bar')}
+                style={{ borderColor: 'var(--hero-secondary)', color: 'var(--hero-secondary-text)' }}
+                className="inline-flex flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-xl border-2 bg-black/25 px-4 py-3.5 text-sm font-bold backdrop-blur-sm transition hover:bg-black/40 sm:flex-none sm:px-9 sm:text-lg"
+              >
+                <Storefront size={20} weight="bold" />
+                {cafeBarLabel}
               </button>
             </div>
           </div>
@@ -232,8 +217,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-
-      <SocialModal open={socialOpen} onClose={() => setSocialOpen(false)} />
     </section>
   )
 }

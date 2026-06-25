@@ -28,7 +28,8 @@ describe('HeroNoticeCard', () => {
 
   it('muestra la fecha formateada localizada', () => {
     renderCard()
-    expect(screen.getByText(/25 de junio de 2026/i)).toBeInTheDocument()
+    // La fecha se renderiza en la variante móvil y en la de escritorio.
+    expect(screen.getAllByText(/25 de junio de 2026/i).length).toBeGreaterThan(0)
   })
 
   it('renderiza la imagen de fondo cuando se pasa image', () => {
