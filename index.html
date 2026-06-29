@@ -11,11 +11,17 @@
 
     <!-- Primary SEO -->
     <title>Café Los Grisales — Café de especialidad & Coffee Tour en Pereira</title>
-    <meta name="description" content="Café de especialidad cultivado por nosotros en la Finca Vista Hermosa (Risaralda). Visita nuestras tiendas en Pereira o vive el Coffee Tour: del grano a la taza." />
-    <meta name="keywords" content="café de especialidad, coffee tour Pereira, Los Grisales, Finca Vista Hermosa, café Risaralda, café Pereira, tienda de café, café honey, café natural, café lavado" />
+    <meta name="description" content="Café de especialidad cultivado por nosotros en la Finca Vista Hermosa (Risaralda). Coffee shop en Pereira (Pereira Plaza y Unicentro) y Coffee Tour: del grano a la taza." />
+    <meta name="keywords" content="café de especialidad, coffee shop Pereira, coffee tour Pereira, cafetería Pereira, Los Grisales, Finca Vista Hermosa, café Risaralda, café Pereira, tienda de café, café honey, café natural, café lavado" />
     <meta name="author" content="Café Los Grisales" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#064947" />
+
+    <!-- Local SEO geo signals (Pereira, Risaralda) -->
+    <meta name="geo.region" content="CO-RIS" />
+    <meta name="geo.placename" content="Pereira, Risaralda, Colombia" />
+    <meta name="geo.position" content="4.8090127;-75.691384" />
+    <meta name="ICBM" content="4.8090127, -75.691384" />
 
     <!-- Open Graph (Facebook, LinkedIn, WhatsApp preview, etc.) -->
     <meta property="og:type" content="website" />
@@ -43,57 +49,130 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=Great+Vibes&display=swap" rel="stylesheet" />
 
-    <!-- Structured data: CafeOrCoffeeShop brand with two locations + the Coffee Tour -->
+    <!-- Structured data: Organization + two coffee shops + the Coffee Tour (each a node with its own @id, geo, hours and map) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "CafeOrCoffeeShop",
-        "name": "Café Los Grisales",
-        "url": "https://cafelosgrisales.com/",
-        "logo": "https://cafelosgrisales.com/logos/logo-oficial-verde.webp",
-        "image": "https://cafelosgrisales.com/og-image.jpg",
-        "description": "Café de especialidad cultivado por la familia Grisales en la Finca Vista Hermosa, Alto del Toro, Dosquebradas (Risaralda). Tiendas de café en Pereira y experiencia Coffee Tour en la finca.",
-        "telephone": "+57 304 420 0309",
-        "areaServed": "Pereira, Risaralda, Colombia",
-        "sameAs": [
-          "https://www.instagram.com/losgrisalescafe_bar/",
-          "https://www.tiktok.com/@cafelosgrisales00",
-          "https://youtube.com/@cafelosgrisales"
-        ],
-        "location": [
+        "@graph": [
           {
-            "@type": "CafeOrCoffeeShop",
-            "name": "Café Los Grisales — Pereira Plaza",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "CC Pereira Plaza Local 209",
-              "addressLocality": "Pereira",
-              "addressRegion": "Risaralda",
-              "addressCountry": "CO"
-            }
+            "@type": "Organization",
+            "@id": "https://cafelosgrisales.com/#organization",
+            "name": "Café Los Grisales",
+            "url": "https://cafelosgrisales.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://cafelosgrisales.com/logos/logo-oficial-verde.webp"
+            },
+            "image": "https://cafelosgrisales.com/og-image.jpg",
+            "description": "Café de especialidad cultivado por la familia Grisales en la Finca Vista Hermosa, Alto del Toro, Dosquebradas (Risaralda). Coffee shops en Pereira y experiencia Coffee Tour en la finca.",
+            "telephone": "+57 304 420 0309",
+            "areaServed": "Pereira, Risaralda, Colombia",
+            "sameAs": [
+              "https://www.instagram.com/losgrisalescafe_bar/",
+              "https://www.tiktok.com/@cafelosgrisales00",
+              "https://youtube.com/@cafelosgrisales",
+              "https://www.facebook.com/people/Caf%C3%A9-Los-Grisales-Coffee-Tour/61551417734035/"
+            ]
           },
           {
             "@type": "CafeOrCoffeeShop",
-            "name": "Café Los Grisales — Unicentro",
+            "@id": "https://cafelosgrisales.com/#pereira-plaza",
+            "name": "Café Los Grisales — Pereira Plaza",
+            "parentOrganization": { "@id": "https://cafelosgrisales.com/#organization" },
+            "url": "https://cafelosgrisales.com/",
+            "image": "https://cafelosgrisales.com/og-image.jpg",
+            "telephone": "+57 304 420 0309",
+            "priceRange": "$$",
+            "servesCuisine": ["Coffee", "Café de especialidad"],
+            "currenciesAccepted": "COP",
+            "paymentAccepted": "Cash, Credit Card, Debit Card",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "CC Unicentro, nivel B, Plazoleta de comidas",
+              "streetAddress": "CC Pereira Plaza, Local 209",
               "addressLocality": "Pereira",
               "addressRegion": "Risaralda",
+              "postalCode": "660001",
               "addressCountry": "CO"
-            }
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 4.8090127,
+              "longitude": -75.691384
+            },
+            "hasMap": "https://google.com/maps/dir//Los+Grisales+caf%C3%A9+%26+bar+%7C+Coffee+tour,+Centro+Comercial+Pereira+Plaza+Terraza,+Pereira,+Risaralda/@4.8088163,-75.6922365,19.23z/data=!4m8!4m7!1m0!1m5!1m1!1s0x8e38878b684ed5ed:0x7c9f1f312026eea8!2m2!1d-75.691384!2d4.8090127?entry=ttu",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+                "opens": "09:00",
+                "closes": "21:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Friday", "Saturday"],
+                "opens": "09:00",
+                "closes": "23:00"
+              }
+            ]
+          },
+          {
+            "@type": "CafeOrCoffeeShop",
+            "@id": "https://cafelosgrisales.com/#unicentro",
+            "name": "Café Los Grisales — Unicentro",
+            "parentOrganization": { "@id": "https://cafelosgrisales.com/#organization" },
+            "url": "https://cafelosgrisales.com/",
+            "image": "https://cafelosgrisales.com/og-image.jpg",
+            "telephone": "+57 304 420 0309",
+            "priceRange": "$$",
+            "servesCuisine": ["Coffee", "Café de especialidad"],
+            "currenciesAccepted": "COP",
+            "paymentAccepted": "Cash, Credit Card, Debit Card",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "CC Unicentro, Nivel B, Plazoleta de comidas",
+              "addressLocality": "Pereira",
+              "addressRegion": "Risaralda",
+              "postalCode": "660001",
+              "addressCountry": "CO"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 4.8090687,
+              "longitude": -75.7404054
+            },
+            "hasMap": "https://www.google.com/maps/place/caf%C3%A9+%26+bar+Los+Grisales+%7C+coffee+tour/@4.809074,-75.7429803,17z/data=!3m1!4b1!4m6!3m5!1s0x8e387d731aea59bd:0x66dc26a357fe6f14!8m2!3d4.8090687!4d-75.7404054!16s%2Fg%2F11ywjs0prv",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+                "opens": "10:00",
+                "closes": "20:00"
+              }
+            ]
           },
           {
             "@type": "TouristAttraction",
-            "name": "Coffee Tour — Finca Vista Hermosa",
-            "description": "Experiencia de Coffee Tour en la finca de Café Los Grisales: recorrido por los cafetales, procesos de beneficio y degustación.",
+            "@id": "https://cafelosgrisales.com/#coffee-tour",
+            "name": "Grisales Coffee Tour — Finca Vista Hermosa",
+            "description": "Experiencia de Coffee Tour en la finca de Café Los Grisales: recorrido por los cafetales, procesos de beneficio (lavado, natural y honey) y degustación guiada, en el Eje Cafetero.",
+            "url": "https://cafelosgrisales.com/",
+            "image": "https://cafelosgrisales.com/og-image.jpg",
+            "isAccessibleForFree": false,
+            "availableLanguage": ["es", "en"],
+            "touristType": ["Coffee lovers", "Eco-tourism", "Cultural tourism"],
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Vereda Alto del Toro",
               "addressLocality": "Dosquebradas",
               "addressRegion": "Risaralda",
               "addressCountry": "CO"
-            }
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 4.8094674,
+              "longitude": -75.6372488
+            },
+            "hasMap": "https://www.google.com/maps/place/Grisales+Coffee+Tour/@4.8094674,-75.6372488,17z/data=!3m1!4b1!4m6!3m5!1s0x8e3887a71b437cc7:0xe21568b409abb0e4!8m2!3d4.8094674!4d-75.6372488!16s%2Fg%2F11x79tmxy1"
           }
         ]
       }
