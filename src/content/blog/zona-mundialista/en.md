@@ -4,8 +4,8 @@ title: "World Cup Zone: live the World Cup at Café Los Grisales"
 description: "Watch the World Cup matches at our Pereira shops: big screen, great vibe and special deals on cocktails and beer."
 excerpt: "Our shops become a World Cup Zone: big screen, atmosphere and deals during the matches."
 keywords: ["world cup zone", "watch world cup pereira", "football coffee pereira", "café los grisales", "world cup deals"]
-date: 2026-06-25
-updated: 2026-06-25
+date: 2026-07-31
+updated: 2026-07-31
 author: "Café Los Grisales"
 cover: /blog/zona-mundialista/cover.webp
 coverAlt: "Screen showing a football match at a Café Los Grisales shop during the World Cup Zone"

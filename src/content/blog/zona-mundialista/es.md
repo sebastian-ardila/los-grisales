@@ -4,8 +4,8 @@ title: "Zona Mundialista: vive el Mundial en Café Los Grisales"
 description: "Vive los partidos del Mundial en nuestras tiendas de Pereira: pantalla, ambiente y promociones especiales en cocteles y cerveza."
 excerpt: "Nuestras tiendas se convierten en Zona Mundialista: pantalla, ambiente y promociones durante los partidos."
 keywords: ["zona mundialista", "ver mundial pereira", "fútbol café pereira", "café los grisales", "promociones mundial"]
-date: 2026-06-25
-updated: 2026-06-25
+date: 2026-07-31
+updated: 2026-07-31
 author: "Café Los Grisales"
 cover: /blog/zona-mundialista/cover.webp
 coverAlt: "Pantalla con un partido de fútbol en una tienda de Café Los Grisales durante la Zona Mundialista"
