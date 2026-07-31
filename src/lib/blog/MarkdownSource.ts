@@ -131,6 +131,17 @@ export class MarkdownSource implements ContentSource {
       .map((p) => this.listItem(p))
   }
 
+  getHeroPosts(lang: Lang, limit = 4): BlogListItem[] {
+    // getAllPosts ya viene ordenado por fecha descendente; `sort` es estable,
+    // así que dos posts con el mismo `hero` conservan ese orden.
+    const all = this.getAllPosts(lang)
+    const pinned = all
+      .filter((p) => p.hero !== undefined)
+      .sort((a, b) => (a.hero as number) - (b.hero as number))
+    const rest = all.filter((p) => p.hero === undefined)
+    return [...pinned, ...rest].slice(0, limit)
+  }
+
   getPost(lang: Lang, slug: string): BlogPost | null {
     return (
       this.posts.find((p) => p.translations[lang] === slug && p.slug === slug) ??

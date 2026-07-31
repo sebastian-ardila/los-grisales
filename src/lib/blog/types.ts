@@ -51,6 +51,9 @@ export interface BlogListItem extends BlogMeta {
 
 export interface ContentSource {
   getAllPosts(lang: Lang): BlogListItem[]
+  /** Posts para el hero: los marcados con `hero` en orden, completados con
+   *  los más recientes hasta `limit`. */
+  getHeroPosts(lang: Lang, limit?: number): BlogListItem[]
   getPost(lang: Lang, slug: string): BlogPost | null
   /** Encuentra un artículo por su slug en CUALQUIER idioma (para resolver
    *  cambios de idioma sobre slugs localizados). */
