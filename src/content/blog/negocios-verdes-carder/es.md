@@ -10,6 +10,10 @@ author: "Café Los Grisales"
 cover: /blog/negocios-verdes-carder/cover.webp
 coverAlt: "Empaque de Café Los Grisales junto al sello Negocios Verdes de la CARDER"
 tags: ["novedades", "sostenibilidad", "CARDER", "Pereira"]
+hero: 3
+heroEyebrow: "Sostenibilidad"
+heroTitle: "Sostenibilidad real"
+heroExcerpt: "Somos Negocios Verdes certificados por la CARDER"
 faq: []
 ---
 

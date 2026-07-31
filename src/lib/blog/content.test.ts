@@ -49,3 +49,30 @@ describe('FAQ en el contenido real', () => {
     }
   })
 })
+
+describe('hero curado desde el contenido', () => {
+  const ESPERADO = ['coffee-tour-experience', 'fiestas-cosecha', 'negocios-verdes-carder', 'coffee-hour']
+
+  for (const lang of ['es', 'en', 'fr'] as Lang[]) {
+    it(`${lang}: el hero muestra los 4 posts marcados en orden`, () => {
+      expect(blog.getHeroPosts(lang).map((p) => p.id)).toEqual(ESPERADO)
+    })
+
+    it(`${lang}: cada post del hero tiene etiqueta, título corto, resumen y portada`, () => {
+      for (const post of blog.getHeroPosts(lang)) {
+        expect(post.heroEyebrow, `${post.id} heroEyebrow`).toBeTruthy()
+        expect(post.heroTitle, `${post.id} heroTitle`).toBeTruthy()
+        expect(post.heroExcerpt!.length, `${post.id} heroExcerpt`).toBeLessThanOrEqual(70)
+        expect(post.cover, `${post.id} cover`).toMatch(/^\/blog\/.+\.(webp|svg)$/)
+        expect(post.tags, `${post.id} tags`).toContain('novedades')
+      }
+    })
+  }
+
+  it('hablemos-de-cafe y zona-mundialista salen del hero y conservan su fecha', () => {
+    const ids = blog.getHeroPosts('es').map((p) => p.id)
+    expect(ids).not.toContain('hablemos-de-cafe')
+    expect(ids).not.toContain('zona-mundialista')
+    expect(blog.getPost('es', 'zona-mundialista-futbol-cafe')!.date).toBe('2026-06-25')
+  })
+})

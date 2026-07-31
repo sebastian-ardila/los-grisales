@@ -10,6 +10,10 @@ author: "Café Los Grisales"
 cover: /blog/coffee-hour/cover.webp
 coverAlt: "Deux cocktails espresso martini et une pizza dans une boutique Café Los Grisales pendant le Coffee Hour"
 tags: ["novedades", "promotions"]
+hero: 4
+heroEyebrow: "Promo"
+heroTitle: "Coffee Hour"
+heroExcerpt: "Mardi et jeudi, 16h–19h"
 faq: []
 ---
 
