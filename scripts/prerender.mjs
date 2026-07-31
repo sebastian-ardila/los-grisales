@@ -6,6 +6,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { readBlogPosts } from './read-blog.mjs'
+import { dedupeHead } from './dedupe-head.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const distDir = resolve(__dirname, '..', 'dist')
@@ -39,12 +40,15 @@ try {
       const page = await browser.newPage()
       await page.goto(`${origin}${routePath}`, { waitUntil: 'networkidle0' })
       await page.waitForSelector('main, article', { timeout: 15000 })
+      // El head lleva las etiquetas SEO del template y las que inyecta
+      // Helmet; nos quedamos solo con las de la página.
+      const eliminadas = await page.evaluate(dedupeHead)
       const html = await page.content()
       const file = outFile(routePath)
       mkdirSync(dirname(file), { recursive: true })
       writeFileSync(file, html, 'utf8')
       await page.close()
-      console.log(`✓ prerender ${routePath}`)
+      console.log(`✓ prerender ${routePath} (−${eliminadas} etiquetas duplicadas)`)
     } catch (e) {
       console.error(`✗ prerender ${routePath}`, e)
       throw e
