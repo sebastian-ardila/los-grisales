@@ -3,14 +3,14 @@ import { blog } from './index'
 import type { Lang } from './types'
 
 const EXPECTED = {
-  es: ['cafe-de-especialidad-pereira', 'coffee-tour-en-pereira', 'cafe-en-unicentro-pereira', 'cafe-en-pereira-plaza', 'que-es-cafe-de-especialidad', 'sostenibilidad-negocios-verdes-carder', 'hablemos-de-cafe-unicentro-pereira', 'zona-mundialista-futbol-cafe', 'coffee-hour-martes-jueves'],
-  en: ['specialty-coffee-pereira', 'coffee-tour-in-pereira', 'coffee-at-unicentro-pereira', 'coffee-at-pereira-plaza', 'what-is-specialty-coffee', 'sustainable-coffee-carder', 'lets-talk-coffee-unicentro-pereira', 'world-cup-zone-football-coffee', 'coffee-hour-tuesday-thursday'],
-  fr: ['cafe-de-specialite-pereira', 'coffee-tour-a-pereira', 'cafe-a-unicentro-pereira', 'cafe-a-pereira-plaza', 'quest-ce-que-le-cafe-de-specialite', 'cafe-durable-carder', 'parlons-cafe-unicentro-pereira', 'zone-mondial-football-cafe', 'coffee-hour-mardi-jeudi'],
+  es: ['cafe-de-especialidad-pereira', 'coffee-tour-en-pereira', 'cafe-en-unicentro-pereira', 'cafe-en-pereira-plaza', 'que-es-cafe-de-especialidad', 'sostenibilidad-negocios-verdes-carder', 'hablemos-de-cafe-unicentro-pereira', 'zona-mundialista-futbol-cafe', 'coffee-hour-martes-jueves', 'experiencia-coffee-tour', 'que-hacer-en-pereira-fiestas-de-la-cosecha'],
+  en: ['specialty-coffee-pereira', 'coffee-tour-in-pereira', 'coffee-at-unicentro-pereira', 'coffee-at-pereira-plaza', 'what-is-specialty-coffee', 'sustainable-coffee-carder', 'lets-talk-coffee-unicentro-pereira', 'world-cup-zone-football-coffee', 'coffee-hour-tuesday-thursday', 'coffee-tour-experience', 'what-to-do-in-pereira-harvest-festival'],
+  fr: ['cafe-de-specialite-pereira', 'coffee-tour-a-pereira', 'cafe-a-unicentro-pereira', 'cafe-a-pereira-plaza', 'quest-ce-que-le-cafe-de-specialite', 'cafe-durable-carder', 'parlons-cafe-unicentro-pereira', 'zone-mondial-football-cafe', 'coffee-hour-mardi-jeudi', 'experience-coffee-tour', 'que-faire-a-pereira-fetes-de-la-recolte'],
 } as const
 
 describe('contenido real del blog', () => {
   for (const lang of ['es', 'en', 'fr'] as Lang[]) {
-    it(`${lang}: hay 9 posts con los slugs esperados`, () => {
+    it(`${lang}: hay 11 posts con los slugs esperados`, () => {
       const slugs = blog.getAllPosts(lang).map((p) => p.slug).sort()
       expect(slugs).toEqual([...EXPECTED[lang]].sort())
     })
@@ -47,5 +47,32 @@ describe('FAQ en el contenido real', () => {
       expect(item.q.length).toBeGreaterThan(0)
       expect(item.a.length).toBeGreaterThan(0)
     }
+  })
+})
+
+describe('hero curado desde el contenido', () => {
+  const ESPERADO = ['coffee-tour-experience', 'fiestas-cosecha', 'negocios-verdes-carder', 'coffee-hour']
+
+  for (const lang of ['es', 'en', 'fr'] as Lang[]) {
+    it(`${lang}: el hero muestra los 4 posts marcados en orden`, () => {
+      expect(blog.getHeroPosts(lang).map((p) => p.id)).toEqual(ESPERADO)
+    })
+
+    it(`${lang}: cada post del hero tiene etiqueta, título corto, resumen y portada`, () => {
+      for (const post of blog.getHeroPosts(lang)) {
+        expect(post.heroEyebrow, `${post.id} heroEyebrow`).toBeTruthy()
+        expect(post.heroTitle, `${post.id} heroTitle`).toBeTruthy()
+        expect(post.heroExcerpt!.length, `${post.id} heroExcerpt`).toBeLessThanOrEqual(70)
+        expect(post.cover, `${post.id} cover`).toMatch(/^\/blog\/.+\.(webp|svg)$/)
+        expect(post.tags, `${post.id} tags`).toContain('novedades')
+      }
+    })
+  }
+
+  it('hablemos-de-cafe y zona-mundialista salen del hero y conservan su fecha', () => {
+    const ids = blog.getHeroPosts('es').map((p) => p.id)
+    expect(ids).not.toContain('hablemos-de-cafe')
+    expect(ids).not.toContain('zona-mundialista')
+    expect(blog.getPost('es', 'zona-mundialista-futbol-cafe')!.date).toBe('2026-06-25')
   })
 })

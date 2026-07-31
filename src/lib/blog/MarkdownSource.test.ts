@@ -107,3 +107,82 @@ Cuerpo con FAQ.`
     expect(post!.faq).toEqual([])
   })
 })
+
+describe('campos hero del frontmatter', () => {
+  const heroFiles: Record<string, string> = {
+    '/src/content/blog/marcado/es.md':
+      `---\nslug: marcado-es\ntitle: Marcado\ndescription: d\nexcerpt: Excerpt largo\nkeywords: [k]\ndate: 2026-06-01\nauthor: A\ncover: /c.jpg\ncoverAlt: alt\ntags: [t]\nhero: 2\nheroEyebrow: Evento\nheroTitle: Corto\nheroExcerpt: Una línea\n---\nCuerpo.`,
+    '/src/content/blog/simple/es.md':
+      `---\nslug: simple-es\ntitle: Simple\ndescription: d\nexcerpt: e\nkeywords: [k]\ndate: 2026-06-02\nauthor: A\ncover: /c.jpg\ncoverAlt: alt\ntags: [t]\n---\nCuerpo.`,
+    '/src/content/blog/invalido/es.md':
+      `---\nslug: invalido-es\ntitle: Inválido\ndescription: d\nexcerpt: e\nkeywords: [k]\ndate: 2026-06-03\nauthor: A\ncover: /c.jpg\ncoverAlt: alt\ntags: [t]\nhero: cero\n---\nCuerpo.`,
+  }
+  const heroSrc = new MarkdownSource(heroFiles)
+
+  it('lee hero, heroEyebrow, heroTitle y heroExcerpt', () => {
+    const post = heroSrc.getPost('es', 'marcado-es')!
+    expect(post.hero).toBe(2)
+    expect(post.heroEyebrow).toBe('Evento')
+    expect(post.heroTitle).toBe('Corto')
+    expect(post.heroExcerpt).toBe('Una línea')
+  })
+
+  it('deja los campos hero indefinidos cuando no están en el frontmatter', () => {
+    const post = heroSrc.getPost('es', 'simple-es')!
+    expect(post.hero).toBeUndefined()
+    expect(post.heroEyebrow).toBeUndefined()
+    expect(post.heroTitle).toBeUndefined()
+    expect(post.heroExcerpt).toBeUndefined()
+  })
+
+  it('ignora un hero que no sea entero >= 1', () => {
+    expect(heroSrc.getPost('es', 'invalido-es')!.hero).toBeUndefined()
+  })
+})
+
+describe('getHeroPosts', () => {
+  /** Crea un post de un solo idioma (es) con fecha y hero opcionales. */
+  function heroDoc(slug: string, date: string, hero?: number) {
+    const heroLine = hero === undefined ? '' : `hero: ${hero}\n`
+    return `---\nslug: ${slug}\ntitle: T ${slug}\ndescription: d\nexcerpt: e\nkeywords: [k]\ndate: ${date}\nauthor: A\ncover: /c.jpg\ncoverAlt: alt\ntags: [t]\n${heroLine}---\nCuerpo.`
+  }
+
+  it('antepone los marcados en orden y rellena con los más recientes', () => {
+    const src = new MarkdownSource({
+      '/src/content/blog/a/es.md': heroDoc('a', '2026-01-01', 2),
+      '/src/content/blog/b/es.md': heroDoc('b', '2026-01-02', 1),
+      '/src/content/blog/c/es.md': heroDoc('c', '2026-05-01'),
+      '/src/content/blog/d/es.md': heroDoc('d', '2026-04-01'),
+      '/src/content/blog/e/es.md': heroDoc('e', '2026-03-01'),
+    })
+    expect(src.getHeroPosts('es').map((p) => p.slug)).toEqual(['b', 'a', 'c', 'd'])
+  })
+
+  it('sin marcados devuelve las publicaciones más recientes', () => {
+    const src = new MarkdownSource({
+      '/src/content/blog/a/es.md': heroDoc('a', '2026-01-01'),
+      '/src/content/blog/b/es.md': heroDoc('b', '2026-02-01'),
+      '/src/content/blog/c/es.md': heroDoc('c', '2026-03-01'),
+      '/src/content/blog/d/es.md': heroDoc('d', '2026-04-01'),
+      '/src/content/blog/e/es.md': heroDoc('e', '2026-05-01'),
+    })
+    expect(src.getHeroPosts('es').map((p) => p.slug)).toEqual(['e', 'd', 'c', 'b'])
+  })
+
+  it('respeta el límite y no repite un post marcado', () => {
+    const src = new MarkdownSource({
+      '/src/content/blog/a/es.md': heroDoc('a', '2026-05-01', 1),
+      '/src/content/blog/b/es.md': heroDoc('b', '2026-04-01'),
+    })
+    expect(src.getHeroPosts('es', 2).map((p) => p.slug)).toEqual(['a', 'b'])
+    expect(src.getHeroPosts('es', 1).map((p) => p.slug)).toEqual(['a'])
+  })
+
+  it('desempata dos posts con el mismo hero por fecha descendente', () => {
+    const src = new MarkdownSource({
+      '/src/content/blog/a/es.md': heroDoc('a', '2026-01-01', 1),
+      '/src/content/blog/b/es.md': heroDoc('b', '2026-02-01', 1),
+    })
+    expect(src.getHeroPosts('es').map((p) => p.slug)).toEqual(['b', 'a'])
+  })
+})

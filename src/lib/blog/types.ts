@@ -24,6 +24,14 @@ export interface BlogMeta {
   cover: string
   coverAlt: string
   tags: string[]
+  /** Posición fija en el hero (1..4). Ausente = el post no está fijado. */
+  hero?: number
+  /** Etiqueta corta de la tarjeta del hero, en el idioma del archivo. */
+  heroEyebrow?: string
+  /** Título corto para la tarjeta del hero. Fallback: `title`. */
+  heroTitle?: string
+  /** Descripción de una línea para la tarjeta del hero. Fallback: `excerpt`. */
+  heroExcerpt?: string
   relatedSede?: SedeRef
   /** Siempre presente (el parser usa [] cuando no hay FAQ en el frontmatter). */
   faq: FaqItem[]
@@ -43,6 +51,9 @@ export interface BlogListItem extends BlogMeta {
 
 export interface ContentSource {
   getAllPosts(lang: Lang): BlogListItem[]
+  /** Posts para el hero: los marcados con `hero` en orden, completados con
+   *  los más recientes hasta `limit`. */
+  getHeroPosts(lang: Lang, limit?: number): BlogListItem[]
   getPost(lang: Lang, slug: string): BlogPost | null
   /** Encuentra un artículo por su slug en CUALQUIER idioma (para resolver
    *  cambios de idioma sobre slugs localizados). */

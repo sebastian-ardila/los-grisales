@@ -27,6 +27,16 @@ function toStringArray(value: unknown): string[] {
 }
 
 /**
+ * Normaliza `hero` del frontmatter a un entero >= 1. Cualquier otro valor
+ * (ausente, texto, 0, negativo) deja el post sin fijar en el hero.
+ */
+function toHeroOrder(value: unknown): number | undefined {
+  if (value == null || value === '') return undefined
+  const n = Number(value)
+  return Number.isInteger(n) && n >= 1 ? n : undefined
+}
+
+/**
  * Normaliza una fecha del frontmatter a "YYYY-MM-DD". El parser YAML convierte
  * `date: 2026-06-25` (sin comillas) en un objeto `Date` (medianoche UTC); sin
  * esta normalización, `String(date)` produce una cadena local que desfasa un
@@ -78,6 +88,10 @@ export class MarkdownSource implements ContentSource {
           cover: String(a.cover ?? ''),
           coverAlt: String(a.coverAlt ?? ''),
           tags: toStringArray(a.tags),
+          hero: toHeroOrder(a.hero),
+          heroEyebrow: a.heroEyebrow ? String(a.heroEyebrow) : undefined,
+          heroTitle: a.heroTitle ? String(a.heroTitle) : undefined,
+          heroExcerpt: a.heroExcerpt ? String(a.heroExcerpt) : undefined,
           relatedSede: a.relatedSede
             ? (String(a.relatedSede) as SedeRef)
             : undefined,
@@ -115,6 +129,17 @@ export class MarkdownSource implements ContentSource {
       .filter((p) => p.translations[lang] === p.slug)
       .sort((a, b) => b.date.localeCompare(a.date))
       .map((p) => this.listItem(p))
+  }
+
+  getHeroPosts(lang: Lang, limit = 4): BlogListItem[] {
+    // getAllPosts ya viene ordenado por fecha descendente; `sort` es estable,
+    // así que dos posts con el mismo `hero` conservan ese orden.
+    const all = this.getAllPosts(lang)
+    const pinned = all
+      .filter((p) => p.hero !== undefined)
+      .sort((a, b) => (a.hero as number) - (b.hero as number))
+    const rest = all.filter((p) => p.hero === undefined)
+    return [...pinned, ...rest].slice(0, limit)
   }
 
   getPost(lang: Lang, slug: string): BlogPost | null {

@@ -11,63 +11,6 @@ const partners = [
   { name: 'Gobernación de Risaralda', image: 'partners/partner-risaralda.webp', wider: true },
 ]
 
-type Localized = { es: string; en: string; fr: string }
-
-interface Notice {
-  id: string
-  image?: string
-  eyebrow: Localized
-  title: Localized
-  description: Localized
-}
-
-const NOTICES: Notice[] = [
-  {
-    id: 'negocios-verdes-carder',
-    image: 'blog/negocios-verdes-carder/cover.webp',
-    eyebrow: { es: 'Sostenibilidad', en: 'Sustainability', fr: 'Durabilité' },
-    title: { es: 'Sostenibilidad real', en: 'Real sustainability', fr: 'Durabilité réelle' },
-    description: {
-      es: 'Somos Negocios Verdes certificados por la CARDER',
-      en: "We're a CARDER-certified Green Business",
-      fr: 'Entreprise Verte certifiée par la CARDER',
-    },
-  },
-  {
-    id: 'hablemos-de-cafe',
-    image: 'blog/hablemos-de-cafe/cover.webp',
-    eyebrow: { es: 'Evento', en: 'Event', fr: 'Événement' },
-    title: { es: 'Hablemos de café', en: "Let's talk coffee", fr: 'Parlons café' },
-    description: {
-      es: 'Primeros viernes del mes en nuestra burbuja en Unicentro, nivel B, Plazoleta de comidas',
-      en: 'First Friday each month at our Unicentro bubble — Level B, food court',
-      fr: 'Premiers vendredis du mois à notre bulle à Unicentro, niveau B, aire de restauration',
-    },
-  },
-  {
-    id: 'zona-mundialista',
-    image: 'blog/zona-mundialista/cover.webp',
-    eyebrow: { es: 'Evento', en: 'Event', fr: 'Événement' },
-    title: { es: 'Zona Mundialista', en: 'World Cup Zone', fr: 'Zone Mondial' },
-    description: {
-      es: 'Vive el Mundial en nuestras tiendas: pantalla y promos',
-      en: 'Live the World Cup in our shops: big screen & deals',
-      fr: 'Vivez le Mondial dans nos boutiques : écran et promos',
-    },
-  },
-  {
-    id: 'coffee-hour',
-    image: 'blog/coffee-hour/cover.webp',
-    eyebrow: { es: 'Promoción', en: 'Deal', fr: 'Promo' },
-    title: { es: 'Coffee Hour', en: 'Coffee Hour', fr: 'Coffee Hour' },
-    description: {
-      es: 'Martes y jueves de 4:00 a 7:00 p.m.',
-      en: 'Tuesday & Thursday, 4:00–7:00 p.m.',
-      fr: 'Mardi et jeudi, 16h–19h',
-    },
-  },
-]
-
 function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
@@ -76,26 +19,25 @@ export default function HeroSection() {
   const { t } = useTranslation()
   const lang = useLang()
   const heroLogo = `${import.meta.env.BASE_URL}logos/logo-dorado.webp`
-  const posts = blog.getAllPosts(lang)
 
   const cafeBarLabel = { es: 'Tiendas de Café', en: 'Coffee Shops', fr: 'Boutiques de Café' }[lang]
   const allNewsLabel = { es: 'Ver todas las novedades', en: 'See all updates', fr: 'Voir toutes les nouveautés' }[lang]
   const noveltiesLabel = { es: 'Novedades', en: 'Latest', fr: 'Nouveautés' }[lang]
   const partnersLabel = { es: 'En alianza con', en: 'In partnership with', fr: 'En partenariat avec' }[lang]
 
-  const cards = NOTICES.map((n) => {
-    const post = posts.find((p) => p.id === n.id)
-    if (!post) return null
-    return {
-      key: n.id,
-      href: `/${lang}/blog/${post.slug}`,
-      eyebrow: n.eyebrow[lang],
-      title: n.title[lang],
-      description: n.description[lang],
-      date: post.date,
-      image: n.image ? `${import.meta.env.BASE_URL}${n.image}` : undefined,
-    }
-  }).filter((c): c is NonNullable<typeof c> => c !== null)
+  // Las tarjetas salen del blog: los posts marcados con `hero` en su
+  // frontmatter y, si faltan, las publicaciones más recientes.
+  const cards = blog.getHeroPosts(lang).map((post) => ({
+    key: post.id,
+    href: `/${lang}/blog/${post.slug}`,
+    eyebrow: post.heroEyebrow,
+    title: post.heroTitle ?? post.title,
+    description: post.heroExcerpt ?? post.excerpt,
+    date: post.date,
+    image: post.cover
+      ? `${import.meta.env.BASE_URL}${post.cover.replace(/^\//, '')}`
+      : undefined,
+  }))
 
   return (
     <section data-dark-island className="relative -mt-16 flex min-h-screen flex-col overflow-hidden">
