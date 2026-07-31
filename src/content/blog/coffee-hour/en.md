@@ -1,6 +1,6 @@
 ---
 slug: coffee-hour-tuesday-thursday
-title: "Coffee Hour: Tuesdays & Thursdays, 4 to 7 p.m. at Café Los Grisales"
+title: "Coffee Hour: Tuesdays & Thursdays, 4 to 7 p.m. in Pereira"
 description: "Coffee Hour: Tuesdays and Thursdays from 4:00 to 7:00 p.m., combos at special prices to share at our Pereira shops."
 excerpt: "Tuesdays and Thursdays, 4 to 7 p.m.: special combos to enjoy coffee as a meeting point."
 keywords: ["coffee hour", "coffee combos pereira", "café los grisales", "coffee deals", "afternoon plan pereira"]

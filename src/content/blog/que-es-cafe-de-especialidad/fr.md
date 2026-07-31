@@ -1,13 +1,13 @@
 ---
 slug: quest-ce-que-le-cafe-de-specialite
-title: "Qu'est-ce que le café de spécialité et comment le reconnaître"
+title: "Qu'est-ce que le café de spécialité et comment le choisir"
 description: "Apprenez ce qu'est le café de spécialité, sa notation (SCA) et comment reconnaître une tasse de qualité."
 excerpt: "Un guide clair pour comprendre le café de spécialité : définition, échelle SCA et comment l'identifier dans la tasse."
 keywords: ["qu'est-ce que le café de spécialité", "café de spécialité", "SCA café score", "café de qualité", "reconnaître café spécialité", "café spécialité colombie"]
 date: 2026-06-18
 updated: 2026-06-18
 author: "Café Los Grisales"
-cover: /blog/que-es-cafe-de-especialidad/cover.svg
+cover: /blog/que-es-cafe-de-especialidad/cover.webp
 coverAlt: "Grains de café de spécialité soigneusement sélectionnés, prêts pour la dégustation chez Café Los Grisales"
 tags: ["café de spécialité", "éducation café", "SCA", "Colombie"]
 faq:

@@ -1,13 +1,13 @@
 ---
 slug: cafe-en-pereira-plaza
-title: "Café en Pereira Plaza: tienda y experiencia Café Los Grisales"
+title: "Café en Pereira Plaza: tienda y experiencia Los Grisales"
 description: "Café de especialidad en Pereira Plaza: vive la experiencia Café Los Grisales, horarios y recomendaciones."
 excerpt: "Nuestra tienda en Pereira Plaza: un punto de encuentro para los amantes del café de especialidad en Pereira."
 keywords: ["café pereira plaza", "cafe pereira plaza", "cafe los grisales pereira plaza", "tienda café pereira", "pereira plaza cafetería"]
 date: 2026-06-18
 updated: 2026-06-18
 author: "Café Los Grisales"
-cover: /blog/cafe-pereira-plaza/cover.svg
+cover: /blog/cafe-pereira-plaza/cover.webp
 coverAlt: "Tienda Café Los Grisales en Pereira Plaza, con barra de barismo y diseño cálido inspirado en el paisaje cafetero"
 tags: ["tiendas", "Pereira Plaza", "café de especialidad", "Pereira"]
 relatedSede: pereira-plaza

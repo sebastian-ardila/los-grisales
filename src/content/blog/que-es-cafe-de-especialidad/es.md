@@ -7,7 +7,7 @@ keywords: ["qué es café de especialidad", "cafe de especialidad", "SCA café",
 date: 2026-06-18
 updated: 2026-06-18
 author: "Café Los Grisales"
-cover: /blog/que-es-cafe-de-especialidad/cover.svg
+cover: /blog/que-es-cafe-de-especialidad/cover.webp
 coverAlt: "Granos de café de especialidad cuidadosamente seleccionados, listos para la cata en Café Los Grisales"
 tags: ["café de especialidad", "educación del café", "SCA", "Colombia"]
 faq:

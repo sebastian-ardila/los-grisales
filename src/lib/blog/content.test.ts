@@ -63,7 +63,7 @@ describe('hero curado desde el contenido', () => {
         expect(post.heroEyebrow, `${post.id} heroEyebrow`).toBeTruthy()
         expect(post.heroTitle ?? post.title, `${post.id} título`).toBeTruthy()
         expect(post.heroExcerpt, `${post.id} heroExcerpt`).toBeTruthy()
-        expect(post.cover, `${post.id} cover`).toMatch(/^\/blog\/.+\.(webp|svg)$/)
+        expect(post.cover, `${post.id} cover`).toMatch(/^\/blog\/.+\.webp$/)
         expect(post.tags, `${post.id} tags`).toContain('novedades')
       }
     })
@@ -96,5 +96,25 @@ describe('textos exactos de las tarjetas nuevas del hero', () => {
     expect(card.heroExcerpt).toBe(
       'Descubre un plan diferente entre café de especialidad, gastronomía y experiencias cafeteras en el corazón del Eje Cafetero.',
     )
+  })
+})
+
+describe('portadas aptas para compartir', () => {
+  it('ninguna portada es SVG: los crawlers sociales no lo renderizan', () => {
+    for (const lang of ['es', 'en', 'fr'] as Lang[]) {
+      for (const post of blog.getAllPosts(lang)) {
+        expect(post.cover, `${post.id}/${lang}`).toMatch(/\.webp$/)
+      }
+    }
+  })
+})
+
+describe('títulos que no trunca Google', () => {
+  it('ningún title pasa de 60 caracteres', () => {
+    for (const lang of ['es', 'en', 'fr'] as Lang[]) {
+      for (const post of blog.getAllPosts(lang)) {
+        expect(post.title.length, `${post.id}/${lang}: ${post.title}`).toBeLessThanOrEqual(60)
+      }
+    }
   })
 })

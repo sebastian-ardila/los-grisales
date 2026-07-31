@@ -7,7 +7,7 @@ keywords: ["what is specialty coffee", "specialty coffee", "SCA coffee score", "
 date: 2026-06-18
 updated: 2026-06-18
 author: "Café Los Grisales"
-cover: /blog/que-es-cafe-de-especialidad/cover.svg
+cover: /blog/que-es-cafe-de-especialidad/cover.webp
 coverAlt: "Carefully selected specialty coffee beans ready for cupping at Café Los Grisales"
 tags: ["specialty coffee", "coffee education", "SCA", "Colombia"]
 faq:

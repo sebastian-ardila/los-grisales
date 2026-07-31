@@ -1,6 +1,6 @@
 ---
 slug: zone-mondial-football-cafe
-title: "Zone Mondial : vivez la Coupe du Monde chez Café Los Grisales"
+title: "Zone Mondial : vivez la Coupe du Monde chez Los Grisales"
 description: "Vivez les matchs de la Coupe du Monde dans nos boutiques de Pereira : écran géant, ambiance et promos sur cocktails et bière."
 excerpt: "Nos boutiques deviennent une Zone Mondial : écran géant, ambiance et promos pendant les matchs."
 keywords: ["zone mondial", "voir coupe du monde pereira", "football café pereira", "café los grisales", "promos coupe du monde"]

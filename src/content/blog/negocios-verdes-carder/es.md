@@ -1,6 +1,6 @@
 ---
 slug: sostenibilidad-negocios-verdes-carder
-title: "Sostenibilidad real: Negocios Verdes certificados por la CARDER"
+title: "Negocios Verdes certificados por la CARDER"
 description: "Café Los Grisales es Negocio Verde certificado por la CARDER: reutilizamos lixiviados, ahorramos agua y tenemos Sello Verde."
 excerpt: "Procesos ecológicos, cero vertimientos y el Sello Verde de la CARDER: así vivimos la sostenibilidad."
 keywords: ["negocios verdes", "carder", "café sostenible", "sello verde", "café los grisales"]

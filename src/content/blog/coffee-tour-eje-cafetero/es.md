@@ -1,13 +1,13 @@
 ---
 slug: coffee-tour-en-pereira
-title: "Coffee Tour en Pereira: del grano a la taza con Café Los Grisales"
+title: "Coffee Tour en Pereira: del grano a la taza"
 description: "Vive nuestro Coffee Tour en Pereira: recorre la finca, conoce el proceso del café y cata del grano a la taza."
 excerpt: "Una experiencia completa donde la finca, el proceso y la cata se convierten en un solo recorrido."
 keywords: ["coffee tour pereira", "coffee tour eje cafetero", "tour cafetero colombia", "visita finca cafe pereira", "cafe los grisales tour"]
 date: 2026-06-18
 updated: 2026-06-18
 author: "Café Los Grisales"
-cover: /blog/coffee-tour-eje-cafetero/cover.svg
+cover: /blog/coffee-tour-eje-cafetero/cover.webp
 coverAlt: "Recorrido por la finca cafetera en el Eje Cafetero durante el Coffee Tour de Café Los Grisales"
 tags: ["Coffee Tour", "Pereira", "experiencia cafetera", "Eje Cafetero"]
 relatedSede: coffee-tour

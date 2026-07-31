@@ -1,6 +1,6 @@
 ---
 slug: experience-coffee-tour
-title: "Coffee Tour Experience : le café de spécialité colombien à son origine"
+title: "Coffee Tour Experience : le café colombien à son origine"
 description: "Découvrez le café de spécialité colombien à son origine avec une expérience authentique à la ferme, à Pereira, en Colombie."
 excerpt: "Parcourez les plantations, suivez le processus de la graine à la tasse et dégustez un café de spécialité là où tout commence."
 keywords: ["coffee tour colombie", "expérience café de spécialité", "visite ferme de café", "dégustation de café", "que faire à pereira", "région du café colombie"]

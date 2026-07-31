@@ -1,6 +1,6 @@
 ---
 slug: coffee-hour-mardi-jeudi
-title: "Coffee Hour : mardi et jeudi de 16h à 19h chez Café Los Grisales"
+title: "Coffee Hour : mardi et jeudi de 16h à 19h à Pereira"
 description: "Coffee Hour : mardi et jeudi de 16h à 19h, des combos à prix préférentiel à partager dans nos boutiques de Pereira."
 excerpt: "Mardi et jeudi de 16h à 19h : des combos spéciaux pour vivre le café comme point de rencontre."
 keywords: ["coffee hour", "combos café pereira", "café los grisales", "promos café", "plan après-midi pereira"]

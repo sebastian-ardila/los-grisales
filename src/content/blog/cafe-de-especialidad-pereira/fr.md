@@ -1,13 +1,13 @@
 ---
 slug: cafe-de-specialite-pereira
-title: "Café de spécialité à Pereira : l'expérience Café Los Grisales"
+title: "Café de spécialité à Pereira : notre expérience"
 description: "Découvrez le café de spécialité à Pereira par Café Los Grisales : origine, procédés et où le déguster."
 excerpt: "Ce qui rend notre café spécial, comment nous le cultivons et où le déguster à Pereira."
 keywords: ["café de spécialité pereira", "café pereira", "cafe los grisales", "origine unique colombie", "café eje cafetero"]
 date: 2026-06-18
 updated: 2026-06-18
 author: "Café Los Grisales"
-cover: /blog/cafe-de-especialidad-pereira/cover.svg
+cover: /blog/cafe-de-especialidad-pereira/cover.webp
 coverAlt: "Tasse de café de spécialité servie chez Café Los Grisales à Pereira, avec des grains de café frais en arrière-plan"
 tags: ["café de spécialité", "Pereira", "Eje Cafetero"]
 relatedSede: pereira-plaza

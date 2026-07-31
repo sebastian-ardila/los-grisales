@@ -7,7 +7,7 @@ keywords: ["coffee unicentro pereira", "cafe los grisales unicentro", "specialty
 date: 2026-06-18
 updated: 2026-06-18
 author: "Café Los Grisales"
-cover: /blog/cafe-unicentro-pereira/cover.svg
+cover: /blog/cafe-unicentro-pereira/cover.webp
 coverAlt: "Interior of the Café Los Grisales shop at Unicentro Pereira, with barista bar and warm atmosphere"
 tags: ["shops", "Unicentro Pereira", "specialty coffee", "Pereira"]
 relatedSede: unicentro

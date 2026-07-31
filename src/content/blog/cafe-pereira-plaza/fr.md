@@ -7,7 +7,7 @@ keywords: ["café pereira plaza", "cafe los grisales pereira plaza", "café de s
 date: 2026-06-18
 updated: 2026-06-18
 author: "Café Los Grisales"
-cover: /blog/cafe-pereira-plaza/cover.svg
+cover: /blog/cafe-pereira-plaza/cover.webp
 coverAlt: "Boutique Café Los Grisales à Pereira Plaza, avec bar barista et design chaleureux inspiré du paysage cafetier"
 tags: ["boutiques", "Pereira Plaza", "café de spécialité", "Pereira"]
 relatedSede: pereira-plaza

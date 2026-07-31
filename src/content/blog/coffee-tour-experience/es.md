@@ -1,6 +1,6 @@
 ---
 slug: experiencia-coffee-tour
-title: "Coffee Tour Experience: el café de especialidad colombiano en su origen"
+title: "Coffee Tour Experience: café colombiano en su origen"
 description: "Descubre el café de especialidad colombiano en su origen con una experiencia auténtica de finca cafetera en Pereira, Colombia."
 excerpt: "Recorre los cafetales, sigue el proceso de la semilla a la taza y cata café de especialidad donde todo empieza."
 keywords: ["coffee tour colombia", "experiencia café de especialidad", "tour finca cafetera", "cata de café", "qué hacer en pereira", "eje cafetero"]

@@ -1,6 +1,6 @@
 ---
 slug: coffee-hour-martes-jueves
-title: "Coffee Hour: martes y jueves de 4 a 7 p.m. en Café Los Grisales"
+title: "Coffee Hour: martes y jueves de 4 a 7 p.m. en Pereira"
 description: "Coffee Hour: martes y jueves de 4:00 a 7:00 p.m., combos a precio preferencial para compartir en nuestras tiendas de Pereira."
 excerpt: "Martes y jueves de 4 a 7 p.m.: combos especiales para vivir el café como punto de encuentro."
 keywords: ["coffee hour", "combos café pereira", "café los grisales", "promociones café", "plan tarde pereira"]
