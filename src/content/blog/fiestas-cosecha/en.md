@@ -12,8 +12,7 @@ coverAlt: "Collage of the 2026 Harvest Festival with the Café Los Grisales shop
 tags: ["novedades", "eventos", "Pereira"]
 hero: 2
 heroEyebrow: "Events"
-heroTitle: "Harvest Festival"
-heroExcerpt: "What to do in Pereira between coffee, food and plantations"
+heroExcerpt: "Discover a different plan among specialty coffee, food and coffee experiences in the heart of Colombia's Coffee Region."
 relatedSede: unicentro
 faq: []
 ---

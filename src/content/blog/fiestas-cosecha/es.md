@@ -12,8 +12,7 @@ coverAlt: "Collage de las Fiestas de la Cosecha 2026 con las tiendas de Café Lo
 tags: ["novedades", "eventos", "Pereira"]
 hero: 2
 heroEyebrow: "Eventos"
-heroTitle: "Fiestas de la Cosecha"
-heroExcerpt: "Qué hacer en Pereira entre café, gastronomía y cafetales"
+heroExcerpt: "Descubre un plan diferente entre café de especialidad, gastronomía y experiencias cafeteras en el corazón del Eje Cafetero."
 relatedSede: unicentro
 faq: []
 ---

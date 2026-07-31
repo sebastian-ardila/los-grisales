@@ -12,8 +12,7 @@ coverAlt: "Collage des Fêtes de la Récolte 2026 avec les boutiques Café Los G
 tags: ["novedades", "eventos", "Pereira"]
 hero: 2
 heroEyebrow: "Événements"
-heroTitle: "Fêtes de la Récolte"
-heroExcerpt: "Que faire à Pereira entre café, gastronomie et plantations"
+heroExcerpt: "Découvrez un plan différent entre café de spécialité, gastronomie et expériences caféières au cœur de la région du café."
 relatedSede: unicentro
 faq: []
 ---

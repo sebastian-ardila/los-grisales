@@ -13,7 +13,7 @@ tags: ["novedades", "Coffee Tour", "Pereira"]
 hero: 1
 heroEyebrow: "Experiencia"
 heroTitle: "Coffee Tour Experience"
-heroExcerpt: "Café de especialidad colombiano, de la semilla a la taza"
+heroExcerpt: "Descubre el café de especialidad colombiano en su origen con una experiencia auténtica de finca cafetera en Pereira, Colombia."
 relatedSede: coffee-tour
 faq: []
 ---

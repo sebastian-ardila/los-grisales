@@ -38,3 +38,19 @@ describe('HeroNoticeCard', () => {
     expect(img).toHaveAttribute('src', '/blog/x/cover.webp')
   })
 })
+
+describe('HeroNoticeCard – tooltip de la descripción larga', () => {
+  const larga =
+    'Descubre un plan diferente entre café de especialidad, gastronomía y experiencias cafeteras en el corazón del Eje Cafetero.'
+
+  it('añade un tooltip con el texto completo cuando la descripción se recorta', () => {
+    renderCard({ description: larga })
+    const tooltip = screen.getByRole('tooltip')
+    expect(tooltip).toHaveTextContent(larga)
+  })
+
+  it('no añade tooltip cuando la descripción cabe entera', () => {
+    renderCard({ description: 'Martes y jueves de 4:00 a 7:00 p.m.' })
+    expect(screen.queryByRole('tooltip')).toBeNull()
+  })
+})

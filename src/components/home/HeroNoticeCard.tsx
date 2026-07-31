@@ -29,6 +29,10 @@ export default function HeroNoticeCard({
   eyebrow,
 }: HeroNoticeCardProps) {
   const formattedDate = formatPostDate(date, lang)
+  // A dos líneas de `line-clamp` caben ~70 caracteres en el ancho de la
+  // tarjeta; por encima de eso la descripción se recorta con ellipsis y el
+  // texto completo se ofrece en un tooltip al pasar el cursor.
+  const conTooltip = description.length > 70
 
   return (
     <Link
@@ -108,10 +112,20 @@ export default function HeroNoticeCard({
         </div>
 
         <div className="relative z-10 p-4">
-          <h3 className="font-display text-lg font-semibold leading-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)]">
+          <h3 className="line-clamp-3 font-display text-lg font-semibold leading-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)]">
             {title}
           </h3>
-          <p className="mt-1 line-clamp-2 text-xs leading-snug text-white/80">{description}</p>
+          <div className="group/desc relative mt-1">
+            <p className="line-clamp-2 text-xs leading-snug text-white/80">{description}</p>
+            {conTooltip && (
+              <span
+                role="tooltip"
+                className="pointer-events-none absolute bottom-full left-0 z-20 mb-2 w-full rounded-lg bg-[#03211f]/95 p-2.5 text-xs leading-snug text-white opacity-0 shadow-xl ring-1 ring-[#C4A962]/40 backdrop-blur-sm group-hover/desc:opacity-100 motion-reduce:transition-none"
+              >
+                {description}
+              </span>
+            )}
+          </div>
         </div>
 
         <span

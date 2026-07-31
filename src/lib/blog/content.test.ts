@@ -58,11 +58,11 @@ describe('hero curado desde el contenido', () => {
       expect(blog.getHeroPosts(lang).map((p) => p.id)).toEqual(ESPERADO)
     })
 
-    it(`${lang}: cada post del hero tiene etiqueta, título corto, resumen y portada`, () => {
+    it(`${lang}: cada post del hero tiene etiqueta, título, resumen y portada`, () => {
       for (const post of blog.getHeroPosts(lang)) {
         expect(post.heroEyebrow, `${post.id} heroEyebrow`).toBeTruthy()
-        expect(post.heroTitle, `${post.id} heroTitle`).toBeTruthy()
-        expect(post.heroExcerpt!.length, `${post.id} heroExcerpt`).toBeLessThanOrEqual(70)
+        expect(post.heroTitle ?? post.title, `${post.id} título`).toBeTruthy()
+        expect(post.heroExcerpt, `${post.id} heroExcerpt`).toBeTruthy()
         expect(post.cover, `${post.id} cover`).toMatch(/^\/blog\/.+\.(webp|svg)$/)
         expect(post.tags, `${post.id} tags`).toContain('novedades')
       }
@@ -74,5 +74,27 @@ describe('hero curado desde el contenido', () => {
     expect(ids).not.toContain('hablemos-de-cafe')
     expect(ids).not.toContain('zona-mundialista')
     expect(blog.getPost('es', 'zona-mundialista-futbol-cafe')!.date).toBe('2026-06-25')
+  })
+})
+
+describe('textos exactos de las tarjetas nuevas del hero', () => {
+  it('Coffee Tour Experience usa la descripción corta aportada', () => {
+    const [card] = blog.getHeroPosts('en')
+    expect(card.id).toBe('coffee-tour-experience')
+    expect(card.heroTitle).toBe('Coffee Tour Experience')
+    expect(card.heroExcerpt).toBe(
+      'Discover Colombian specialty coffee at its origin with an authentic coffee farm experience in Pereira, Colombia.',
+    )
+  })
+
+  it('Fiestas de la Cosecha usa el título completo y la descripción corta aportada', () => {
+    const card = blog.getHeroPosts('es')[1]
+    expect(card.id).toBe('fiestas-cosecha')
+    expect(card.heroTitle ?? card.title).toBe(
+      '¿Qué hacer en Pereira durante las Fiestas de la Cosecha?',
+    )
+    expect(card.heroExcerpt).toBe(
+      'Descubre un plan diferente entre café de especialidad, gastronomía y experiencias cafeteras en el corazón del Eje Cafetero.',
+    )
   })
 })
