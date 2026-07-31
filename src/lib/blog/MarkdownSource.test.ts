@@ -107,3 +107,35 @@ Cuerpo con FAQ.`
     expect(post!.faq).toEqual([])
   })
 })
+
+describe('campos hero del frontmatter', () => {
+  const heroFiles: Record<string, string> = {
+    '/src/content/blog/marcado/es.md':
+      `---\nslug: marcado-es\ntitle: Marcado\ndescription: d\nexcerpt: Excerpt largo\nkeywords: [k]\ndate: 2026-06-01\nauthor: A\ncover: /c.jpg\ncoverAlt: alt\ntags: [t]\nhero: 2\nheroEyebrow: Evento\nheroTitle: Corto\nheroExcerpt: Una línea\n---\nCuerpo.`,
+    '/src/content/blog/simple/es.md':
+      `---\nslug: simple-es\ntitle: Simple\ndescription: d\nexcerpt: e\nkeywords: [k]\ndate: 2026-06-02\nauthor: A\ncover: /c.jpg\ncoverAlt: alt\ntags: [t]\n---\nCuerpo.`,
+    '/src/content/blog/invalido/es.md':
+      `---\nslug: invalido-es\ntitle: Inválido\ndescription: d\nexcerpt: e\nkeywords: [k]\ndate: 2026-06-03\nauthor: A\ncover: /c.jpg\ncoverAlt: alt\ntags: [t]\nhero: cero\n---\nCuerpo.`,
+  }
+  const heroSrc = new MarkdownSource(heroFiles)
+
+  it('lee hero, heroEyebrow, heroTitle y heroExcerpt', () => {
+    const post = heroSrc.getPost('es', 'marcado-es')!
+    expect(post.hero).toBe(2)
+    expect(post.heroEyebrow).toBe('Evento')
+    expect(post.heroTitle).toBe('Corto')
+    expect(post.heroExcerpt).toBe('Una línea')
+  })
+
+  it('deja los campos hero indefinidos cuando no están en el frontmatter', () => {
+    const post = heroSrc.getPost('es', 'simple-es')!
+    expect(post.hero).toBeUndefined()
+    expect(post.heroEyebrow).toBeUndefined()
+    expect(post.heroTitle).toBeUndefined()
+    expect(post.heroExcerpt).toBeUndefined()
+  })
+
+  it('ignora un hero que no sea entero >= 1', () => {
+    expect(heroSrc.getPost('es', 'invalido-es')!.hero).toBeUndefined()
+  })
+})

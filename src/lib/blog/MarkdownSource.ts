@@ -27,6 +27,16 @@ function toStringArray(value: unknown): string[] {
 }
 
 /**
+ * Normaliza `hero` del frontmatter a un entero >= 1. Cualquier otro valor
+ * (ausente, texto, 0, negativo) deja el post sin fijar en el hero.
+ */
+function toHeroOrder(value: unknown): number | undefined {
+  if (value == null || value === '') return undefined
+  const n = Number(value)
+  return Number.isInteger(n) && n >= 1 ? n : undefined
+}
+
+/**
  * Normaliza una fecha del frontmatter a "YYYY-MM-DD". El parser YAML convierte
  * `date: 2026-06-25` (sin comillas) en un objeto `Date` (medianoche UTC); sin
  * esta normalización, `String(date)` produce una cadena local que desfasa un
@@ -78,6 +88,10 @@ export class MarkdownSource implements ContentSource {
           cover: String(a.cover ?? ''),
           coverAlt: String(a.coverAlt ?? ''),
           tags: toStringArray(a.tags),
+          hero: toHeroOrder(a.hero),
+          heroEyebrow: a.heroEyebrow ? String(a.heroEyebrow) : undefined,
+          heroTitle: a.heroTitle ? String(a.heroTitle) : undefined,
+          heroExcerpt: a.heroExcerpt ? String(a.heroExcerpt) : undefined,
           relatedSede: a.relatedSede
             ? (String(a.relatedSede) as SedeRef)
             : undefined,
