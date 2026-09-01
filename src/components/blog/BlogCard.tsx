@@ -17,8 +17,26 @@ const READ_LABEL: Record<Lang, string> = { es: 'Leer artículo', en: 'Read artic
  * enlace estirado.
  */
 export default function BlogCard({ post, lang }: Props) {
+  // La portada es decorativa: el título que va debajo ya nombra el artículo,
+  // así que anunciarla duplicaría el texto en un lector de pantalla.
+  const cover = post.cover
+    ? `${import.meta.env.BASE_URL}${post.cover.replace(/^\//, '')}`
+    : null
+
   return (
     <article className="group relative flex flex-col border-t border-brand/15 pt-7">
+      {cover && (
+        <div className="mb-5 overflow-hidden rounded-xl bg-brand/5">
+          <img
+            src={cover}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="aspect-[16/9] w-full object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.04]"
+          />
+        </div>
+      )}
+
       <div className="mb-3 flex flex-wrap gap-x-2 gap-y-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand/70">
         {post.tags.slice(0, 3).map((tag, i) => (
           <span key={tag} className="inline-flex items-center gap-2">
