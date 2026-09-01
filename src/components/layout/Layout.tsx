@@ -17,7 +17,7 @@ export default function Layout() {
   const { showTableModal, setShowTableModal } = useTable()
   const { isCartOpen } = useCart()
   const { lang } = useParams()
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   const { i18n } = useTranslation()
 
   // Sync i18n language with URL param
@@ -35,11 +35,23 @@ export default function Layout() {
   useEffect(() => {
     const stripLang = (p: string) => p.replace(/^\/(es|en|fr)/, '') || '/'
     const pagePath = stripLang(pathname)
-    if (prevPagePathRef.current !== null && prevPagePathRef.current !== pagePath) {
+    // Con ancla en la URL manda el efecto de abajo, que baja a la sección.
+    if (!hash && prevPagePathRef.current !== null && prevPagePathRef.current !== pagePath) {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior })
     }
     prevPagePathRef.current = pagePath
-  }, [pathname])
+  }, [pathname, hash])
+
+  // Enlaces con ancla (#tour, #tienda…): el router no desplaza por su cuenta.
+  // `#?mesa=3` y similares no nombran ninguna sección y se ignoran.
+  useEffect(() => {
+    const id = hash.replace(/^#/, '').split('?')[0]
+    if (!id) return
+    const timer = window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    }, 80)
+    return () => window.clearTimeout(timer)
+  }, [pathname, hash])
 
   return (
     <div className="flex min-h-screen flex-col">

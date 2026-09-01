@@ -21,7 +21,8 @@ function renderAt(path: string) {
 describe('BlogPostPage', () => {
   it('renderiza el h1 del artículo existente', () => {
     const slug = blog.getAllPosts('es')[0].slug
-    const title = blog.getPost('es', slug)!.title
+    const post = blog.getPost('es', slug)!
+    const title = post.headline ?? post.title
     renderAt(`/es/blog/${slug}`)
     expect(screen.getByRole('heading', { level: 1, name: title })).toBeInTheDocument()
   })
@@ -34,7 +35,8 @@ describe('BlogPostPage', () => {
   it('cambio de idioma: un slug de otro idioma redirige a la traducción del mismo artículo (no a la lista)', () => {
     const esSlug = blog.getAllPosts('es')[0].slug
     const enSlug = blog.getPost('es', esSlug)!.translations.en
-    const enTitle = blog.getPost('en', enSlug)!.title
+    const enPost = blog.getPost('en', enSlug)!
+    const enTitle = enPost.headline ?? enPost.title
     // slug en español bajo el prefijo /en (lo que produce el cambio de idioma)
     renderAt(`/en/blog/${esSlug}`)
     expect(screen.getByRole('heading', { level: 1, name: enTitle })).toBeInTheDocument()

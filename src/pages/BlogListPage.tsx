@@ -22,9 +22,9 @@ export default function BlogListPage() {
           fr: 'Blog café de spécialité & Coffee Tour à Pereira | Café Los Grisales',
         }}
         description={{
-          es: 'Artículos sobre café de especialidad, Coffee Tour y dónde tomar café en Pereira (Unicentro y Pereira Plaza).',
-          en: 'Articles about specialty coffee, Coffee Tour and where to have coffee in Pereira (Unicentro and Pereira Plaza).',
-          fr: 'Articles sur le café de spécialité, le Coffee Tour et où prendre un café à Pereira (Unicentro et Pereira Plaza).',
+          es: 'Artículos sobre café de especialidad, Coffee Tour y dónde tomar café en Pereira (CC Unicentro).',
+          en: 'Articles about specialty coffee, Coffee Tour and where to have coffee in Pereira (CC Unicentro).',
+          fr: 'Articles sur le café de spécialité, le Coffee Tour et où prendre un café à Pereira (CC Unicentro).',
         }}
         alternates={{ es: '/blog', en: '/blog', fr: '/blog' }}
       />

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { WhatsappLogo, Storefront, Buildings, MapPin, Clock, ArrowRight, Coffee } from '@phosphor-icons/react'
-import { sedes } from '../../config/sedes'
+import { sedes, visibleSedes } from '../../config/sedes'
 import type { SedeConfig } from '../../data/types'
 import { reviewsBySede } from '../../data/reviews'
 import PhotoStack from '../ui/PhotoStack'
@@ -31,8 +31,10 @@ export default function CafeBarSection() {
   const isEn = lang === 'en'
   const [whatsappOpen, setWhatsappOpen] = useState(false)
 
-  const sedeList = [sedes['pereira-plaza'], sedes['unicentro']]
-  const sharedSede: SedeConfig = sedes['pereira-plaza'] // mismo whatsappNumber para ambas
+  // Tiendas físicas que siguen abiertas (el Coffee Tour tiene su propia sección).
+  const sedeList = visibleSedes.filter((s) => !s.isCoffeeTour)
+  const sharedSede: SedeConfig = sedes['unicentro'] // mismo whatsappNumber para toda la marca
+  const varias = sedeList.length > 1
 
   return (
     <section
@@ -43,13 +45,23 @@ export default function CafeBarSection() {
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           index="02"
-          title={{ es: 'Nuestras Tiendas de Café', en: 'Our Coffee Shops', fr: 'Nos Boutiques de Café' }[lang]}
+          title={
+            varias
+              ? { es: 'Nuestras Tiendas de Café', en: 'Our Coffee Shops', fr: 'Nos Boutiques de Café' }[lang]
+              : { es: 'Nuestra Tienda de Café', en: 'Our Coffee Shop', fr: 'Notre Boutique de Café' }[lang]
+          }
           tagline={
-            {
-              es: 'Dos lugares en Pereira donde nuestro café de especialidad te recibe en persona.',
-              en: 'Two places in Pereira where our specialty coffee meets you in person.',
-              fr: 'Deux adresses à Pereira où notre café de spécialité vous accueille en personne.',
-            }[lang]
+            varias
+              ? {
+                  es: 'Dos lugares en Pereira donde nuestro café de especialidad te recibe en persona.',
+                  en: 'Two places in Pereira where our specialty coffee meets you in person.',
+                  fr: 'Deux adresses à Pereira où notre café de spécialité vous accueille en personne.',
+                }[lang]
+              : {
+                  es: 'Un lugar en Pereira donde nuestro café de especialidad te recibe en persona.',
+                  en: 'A place in Pereira where our specialty coffee meets you in person.',
+                  fr: 'Une adresse à Pereira où notre café de spécialité vous accueille en personne.',
+                }[lang]
           }
           backdrop={photos[0].src}
         />
@@ -60,14 +72,16 @@ export default function CafeBarSection() {
             style={{ backgroundColor: 'rgba(255,255,255,0.55)' }}
             className="flex flex-col self-start overflow-hidden rounded-2xl border border-black/10 shadow-[0_8px_30px_-14px_rgba(0,0,0,0.08)]"
           >
-            <div className="grid sm:grid-cols-2">
+            <div className={varias ? 'grid sm:grid-cols-2' : 'grid'}>
               {sedeList.map((sede, idx) => {
                 const Icon = sedeIcons[sede.id] ?? Storefront
                 return (
                   <div
                     key={sede.id}
                     className={`flex flex-col p-6 md:p-7 ${
-                      idx === 0 ? 'border-b border-black/10 sm:border-b-0 sm:border-r' : ''
+                      idx < sedeList.length - 1
+                        ? 'border-b border-black/10 sm:border-b-0 sm:border-r'
+                        : ''
                     }`}
                   >
                     {/* Header */}
@@ -181,14 +195,8 @@ export default function CafeBarSection() {
 
       {/* Reviews — combined from both sedes, interleaved so they don't appear grouped */}
       <ReviewsBlock
-        reviews={interleave(
-          reviewsBySede['pereira-plaza'].map((r) => ({ ...r, sedeName: 'Pereira Plaza' })),
-          reviewsBySede['unicentro'].map((r) => ({ ...r, sedeName: 'Unicentro' }))
-        )}
-        sedeLinks={[
-          { label: 'Pereira Plaza', url: sedes['pereira-plaza'].googleReviewsUrl },
-          { label: 'Unicentro', url: sedes['unicentro'].googleReviewsUrl },
-        ]}
+        reviews={interleave(reviewsBySede['pereira-plaza'], reviewsBySede['unicentro'])}
+        sedeLinks={[{ label: 'Unicentro', url: sedes['unicentro'].googleReviewsUrl }]}
         isEn={!!isEn}
         title={{ es: 'Lo que dicen de nuestras tiendas', en: 'What people say about our coffee shops', fr: 'Ce qu\'on dit de nos boutiques' }[lang]}
         displayCount={{ es: '+20 reseñas', en: '+20 reviews', fr: '+20 avis' }[lang]}

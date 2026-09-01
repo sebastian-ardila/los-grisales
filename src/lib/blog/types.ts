@@ -13,6 +13,9 @@ export interface BlogMeta {
   /** Slug localizado para la URL en este idioma. */
   slug: string
   title: string
+  /** Titular largo para el H1 y la tarjeta del blog. Fallback: `title`
+   *  (que se mantiene corto para no truncarse en resultados de búsqueda). */
+  headline?: string
   description: string
   excerpt: string
   keywords: string[]

@@ -10,7 +10,6 @@ author: "Café Los Grisales"
 cover: /blog/fiestas-cosecha/cover.webp
 coverAlt: "Collage des Fêtes de la Récolte 2026 avec les boutiques Café Los Grisales à Pereira, le Coffee Tour et son café de spécialité"
 tags: ["novedades", "eventos", "Pereira"]
-hero: 2
 heroEyebrow: "Événements"
 heroExcerpt: "Découvrez un plan différent entre café de spécialité, gastronomie et expériences caféières au cœur de la région du café."
 relatedSede: unicentro

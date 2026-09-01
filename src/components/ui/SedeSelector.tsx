@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Storefront, Buildings, Mountains } from '@phosphor-icons/react'
 import { useSede } from '../../context/SedeContext'
-import { sedes } from '../../config/sedes'
+import { visibleSedes } from '../../config/sedes'
 import type { SedeId } from '../../data/types'
 import { useLang } from '../../utils/lang'
 
@@ -19,7 +19,7 @@ export default function SedeSelector() {
   const { lang } = useParams()
   const currentI18nLang = useLang()
 
-  const sedeList = Object.values(sedes).sort((a, b) => {
+  const sedeList = [...visibleSedes].sort((a, b) => {
     if (a.isCoffeeTour && !b.isCoffeeTour) return -1
     if (!a.isCoffeeTour && b.isCoffeeTour) return 1
     return 0
@@ -39,7 +39,7 @@ export default function SedeSelector() {
           <p className="mt-1 text-white/70">{t('sede.subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className={`grid grid-cols-1 gap-4 ${sedeList.length > 2 ? 'sm:grid-cols-3' : 'sm:grid-cols-2'}`}>
           {sedeList.map((sede) => (
             <button
               key={sede.id}

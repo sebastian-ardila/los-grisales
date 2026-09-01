@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { InstagramLogo, FacebookLogo, TiktokLogo, YoutubeLogo, WhatsappLogo, PawPrint, EnvelopeSimple } from '@phosphor-icons/react'
-import { sedes } from '../../config/sedes'
+import { visibleSedes } from '../../config/sedes'
 import { social } from '../../data/social'
 import { useLang } from '../../utils/lang'
 
@@ -11,7 +11,7 @@ export default function Footer() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const sedeList = Object.values(sedes)
+  const sedeList = visibleSedes
 
   const goToContact = () => {
     const onHome = location.pathname === `/${lang}` || location.pathname === `/${lang}/`

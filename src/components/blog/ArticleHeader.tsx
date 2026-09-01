@@ -23,7 +23,7 @@ export default function ArticleHeader({ post, lang }: Props) {
       </div>
 
       <h1 className="font-display text-4xl font-bold leading-tight text-brand md:text-5xl">
-        {post.title}
+        {post.headline ?? post.title}
       </h1>
 
       <div className="mt-6 flex items-center justify-center gap-2.5 text-sm text-brand/60">

@@ -2,6 +2,7 @@ import HeroSection from '../components/home/HeroSection'
 import TourSection from '../components/home/TourSection'
 import CafeBarSection from '../components/home/CafeBarSection'
 import SpecialtyCoffeeSection from '../components/home/SpecialtyCoffeeSection'
+import ShopSection from '../components/home/ShopSection'
 import ContactSection from '../components/home/ContactSection'
 import SEO from '../components/seo/SEO'
 
@@ -24,6 +25,7 @@ export default function HomePage() {
       <TourSection />
       <CafeBarSection />
       <SpecialtyCoffeeSection />
+      <ShopSection />
       <ContactSection />
     </>
   )

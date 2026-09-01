@@ -12,7 +12,7 @@ const KEY = '1f4a276d01849237315bc3a1f337ce00'
 const LANGS = ['es', 'en', 'fr']
 
 function buildUrls() {
-  const base = ['', '/historia', '/productos', '/blog']
+  const base = ['', '/historia', '/blog']
   const urls = []
   for (const lang of LANGS) {
     for (const b of base) urls.push(`${SITE_ORIGIN}/${lang}${b}`)

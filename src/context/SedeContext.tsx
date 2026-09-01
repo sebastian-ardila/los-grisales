@@ -12,12 +12,14 @@ interface SedeContextValue {
 
 const SedeContext = createContext<SedeContextValue | null>(null)
 
-const DEFAULT_SEDE: SedeId = 'pereira-plaza'
+const DEFAULT_SEDE: SedeId = 'unicentro'
 
 export function SedeProvider({ children }: { children: ReactNode }) {
   const [sedeId, setSedeId] = useState<SedeId>(() => {
     const saved = localStorage.getItem('los-grisales-sede')
-    if (saved === 'pereira-plaza' || saved === 'unicentro' || saved === 'coffee-tour') return saved
+    // Una sede oculta guardada de antes (p. ej. Pereira Plaza) vuelve al valor
+    // por defecto en lugar de resucitar una sede que ya no se muestra.
+    if ((saved === 'unicentro' || saved === 'coffee-tour') && !sedes[saved]?.hidden) return saved
     return DEFAULT_SEDE
   })
   const [showSelector, setShowSelector] = useState(false)

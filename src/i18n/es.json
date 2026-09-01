@@ -76,7 +76,6 @@
   "sede": {
     "title": "Selecciona tu sede",
     "subtitle": "¿En cuál sede te encuentras?",
-    "pereiraPlaza": "Pereira Plaza",
     "unicentro": "Unicentro"
   },
   "reservations": {
@@ -132,7 +131,7 @@
       "kicker": "De la semilla a la taza",
       "title": "Trazabilidad y calidez en Pereira",
       "p1": "Creemos en la transparencia y en la conexión directa con quienes disfrutan nuestro café. Por eso, en Café Los Grisales no sólo ofrecemos un producto, sino una experiencia completa de trazabilidad, donde cada cliente puede conocer el recorrido del café desde la semilla hasta la taza. Este enfoque nos permite garantizar calidad, identidad y un vínculo real con nuestro origen.",
-      "p2": "Te llevamos el sabor de la Finca Vista Hermosa hasta el corazón de Pereira. Hoy contamos con dos puntos de venta tipo café bar: uno en el Centro Comercial Pereira Plaza y otro en Unicentro, donde podrás disfrutar de bebidas preparadas con nuestro propio café de especialidad, explorar diferentes métodos de preparación y llevarte a casa una bolsa de café procesada por nuestra familia. En cada visita encontrarás la misma calidez de nuestra finca: atención cercana, conocimiento real y un café con nombre, historia y origen garantizado."
+      "p2": "Te llevamos el sabor de la Finca Vista Hermosa hasta el corazón de Pereira. Hoy nos encontrarás en nuestro punto de venta tipo café bar en el Centro Comercial Unicentro, donde podrás disfrutar de bebidas preparadas con nuestro propio café de especialidad, explorar diferentes métodos de preparación y llevarte a casa una bolsa de café procesada por nuestra familia. En cada visita encontrarás la misma calidez de nuestra finca: atención cercana, conocimiento real y un café con nombre, historia y origen garantizado."
     },
     "section3": {
       "kicker": "Vive la experiencia",
@@ -143,7 +142,7 @@
       "kicker": "Nuestras sedes",
       "title": "Café de especialidad directo de la finca a tu taza",
       "p1": "En el corazón de Pereira encontrarás dos sedes Café Bar donde el café de especialidad de la Finca Vista Hermosa es el protagonista. Cada bebida se prepara con grano cosechado y procesado por nosotros, garantizando trazabilidad completa: sabes exactamente quién, dónde y cómo se cultivó lo que estás bebiendo. No vendemos café cualquiera — vendemos el nuestro, con nombre y origen.",
-      "p2": "Visítanos en CC Pereira Plaza o en CC Unicentro. Allí podrás explorar diferentes métodos de preparación (espresso, V60, prensa francesa, Chemex), disfrutar bebidas de autor con nuestro café honey, lavado o natural, y llevarte a casa una bolsa lista para que la magia siga en tu cocina. Cada visita es un viaje desde el origen hasta la taza, atendido por gente que conoce la finca de memoria."
+      "p2": "Visítanos en CC Unicentro Pereira. Allí podrás explorar diferentes métodos de preparación (espresso, V60, prensa francesa, Chemex), disfrutar bebidas de autor con nuestro café honey, lavado o natural, y llevarte a casa una bolsa lista para que la magia siga en tu cocina. Cada visita es un viaje desde el origen hasta la taza, atendido por gente que conoce la finca de memoria."
     },
     "tagline": "Un solo café.",
     "taglineAccent": "Tres formas de vivirlo.",

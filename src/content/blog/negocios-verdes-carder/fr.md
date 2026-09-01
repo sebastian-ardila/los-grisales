@@ -10,7 +10,6 @@ author: "Café Los Grisales"
 cover: /blog/negocios-verdes-carder/cover.webp
 coverAlt: "Sachet de Café Los Grisales à côté du label Entreprise Verte de la CARDER"
 tags: ["novedades", "durabilité", "CARDER", "Pereira"]
-hero: 3
 heroEyebrow: "Durabilité"
 heroTitle: "Durabilité réelle"
 heroExcerpt: "Entreprise Verte certifiée par la CARDER"

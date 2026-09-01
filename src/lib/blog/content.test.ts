@@ -3,14 +3,14 @@ import { blog } from './index'
 import type { Lang } from './types'
 
 const EXPECTED = {
-  es: ['cafe-de-especialidad-pereira', 'coffee-tour-en-pereira', 'cafe-en-unicentro-pereira', 'cafe-en-pereira-plaza', 'que-es-cafe-de-especialidad', 'sostenibilidad-negocios-verdes-carder', 'hablemos-de-cafe-unicentro-pereira', 'zona-mundialista-futbol-cafe', 'coffee-hour-martes-jueves', 'experiencia-coffee-tour', 'que-hacer-en-pereira-fiestas-de-la-cosecha'],
-  en: ['specialty-coffee-pereira', 'coffee-tour-in-pereira', 'coffee-at-unicentro-pereira', 'coffee-at-pereira-plaza', 'what-is-specialty-coffee', 'sustainable-coffee-carder', 'lets-talk-coffee-unicentro-pereira', 'world-cup-zone-football-coffee', 'coffee-hour-tuesday-thursday', 'coffee-tour-experience', 'what-to-do-in-pereira-harvest-festival'],
-  fr: ['cafe-de-specialite-pereira', 'coffee-tour-a-pereira', 'cafe-a-unicentro-pereira', 'cafe-a-pereira-plaza', 'quest-ce-que-le-cafe-de-specialite', 'cafe-durable-carder', 'parlons-cafe-unicentro-pereira', 'zone-mondial-football-cafe', 'coffee-hour-mardi-jeudi', 'experience-coffee-tour', 'que-faire-a-pereira-fetes-de-la-recolte'],
+  es: ['cafe-de-especialidad-pereira', 'coffee-tour-en-pereira', 'cafe-en-unicentro-pereira', 'cafe-en-pereira-plaza', 'que-es-cafe-de-especialidad', 'sostenibilidad-negocios-verdes-carder', 'hablemos-de-cafe-unicentro-pereira', 'zona-mundialista-futbol-cafe', 'coffee-hour-martes-jueves', 'experiencia-coffee-tour', 'que-hacer-en-pereira-fiestas-de-la-cosecha', 'pausa-en-pereira-plaza', 'una-taza-que-ayuda', 'tu-visita-ayudara-a-nuestra-ciudad', 'plan-familiar-entre-cafetales-pereira'],
+  en: ['specialty-coffee-pereira', 'coffee-tour-in-pereira', 'coffee-at-unicentro-pereira', 'coffee-at-pereira-plaza', 'what-is-specialty-coffee', 'sustainable-coffee-carder', 'lets-talk-coffee-unicentro-pereira', 'world-cup-zone-football-coffee', 'coffee-hour-tuesday-thursday', 'coffee-tour-experience', 'what-to-do-in-pereira-harvest-festival', 'pause-at-pereira-plaza', 'a-cup-that-helps', 'your-visit-will-help-our-city', 'family-day-among-coffee-fields-pereira'],
+  fr: ['cafe-de-specialite-pereira', 'coffee-tour-a-pereira', 'cafe-a-unicentro-pereira', 'cafe-a-pereira-plaza', 'quest-ce-que-le-cafe-de-specialite', 'cafe-durable-carder', 'parlons-cafe-unicentro-pereira', 'zone-mondial-football-cafe', 'coffee-hour-mardi-jeudi', 'experience-coffee-tour', 'que-faire-a-pereira-fetes-de-la-recolte', 'pause-a-pereira-plaza', 'une-tasse-qui-aide', 'votre-visite-aidera-notre-ville', 'journee-entre-cafeiers-plan-famille-pereira'],
 } as const
 
 describe('contenido real del blog', () => {
   for (const lang of ['es', 'en', 'fr'] as Lang[]) {
-    it(`${lang}: hay 11 posts con los slugs esperados`, () => {
+    it(`${lang}: hay 15 posts con los slugs esperados`, () => {
       const slugs = blog.getAllPosts(lang).map((p) => p.slug).sort()
       expect(slugs).toEqual([...EXPECTED[lang]].sort())
     })
@@ -51,7 +51,7 @@ describe('FAQ en el contenido real', () => {
 })
 
 describe('hero curado desde el contenido', () => {
-  const ESPERADO = ['coffee-tour-experience', 'fiestas-cosecha', 'negocios-verdes-carder', 'coffee-hour']
+  const ESPERADO = ['pausa-pereira-plaza', 'una-taza-que-ayuda', 'pereira-te-espera', 'coffee-hour']
 
   for (const lang of ['es', 'en', 'fr'] as Lang[]) {
     it(`${lang}: el hero muestra los 4 posts marcados en orden`, () => {
@@ -78,24 +78,57 @@ describe('hero curado desde el contenido', () => {
 })
 
 describe('textos exactos de las tarjetas nuevas del hero', () => {
-  it('Coffee Tour Experience usa la descripción corta aportada', () => {
-    const [card] = blog.getHeroPosts('en')
-    expect(card.id).toBe('coffee-tour-experience')
-    expect(card.heroTitle).toBe('Coffee Tour Experience')
+  it('la primera tarjeta es el comunicado de Pereira Plaza', () => {
+    const [card] = blog.getHeroPosts('es')
+    expect(card.id).toBe('pausa-pereira-plaza')
+    expect(card.heroTitle).toBe('Seguimos aquí, gracias por acompañarnos.')
     expect(card.heroExcerpt).toBe(
-      'Discover Colombian specialty coffee at its origin with an authentic coffee farm experience in Pereira, Colombia.',
+      'Nuestro punto de Pereira Plaza cerró temporalmente. Te esperamos en Unicentro Pereira y en nuestro Coffee Tour.',
     )
   })
 
-  it('Fiestas de la Cosecha usa el título completo y la descripción corta aportada', () => {
+  it('la segunda tarjeta es la campaña Una taza que ayuda', () => {
     const card = blog.getHeroPosts('es')[1]
-    expect(card.id).toBe('fiestas-cosecha')
-    expect(card.heroTitle ?? card.title).toBe(
-      '¿Qué hacer en Pereira durante las Fiestas de la Cosecha?',
-    )
+    expect(card.id).toBe('una-taza-que-ayuda')
+    expect(card.heroTitle).toBe('Una taza que ayuda')
     expect(card.heroExcerpt).toBe(
-      'Descubre un plan diferente entre café de especialidad, gastronomía y experiencias cafeteras en el corazón del Eje Cafetero.',
+      'Compra una libra de nuestro café, recibe un americano y convierte tu visita en un aporte para nuestra ciudad.',
     )
+  })
+
+  it('la tercera tarjeta invita a seguir visitando la región', () => {
+    const card = blog.getHeroPosts('es')[2]
+    expect(card.id).toBe('pereira-te-espera')
+    expect(card.heroTitle).toBe('Tu visita ayudará a nuestra ciudad')
+    expect(card.heroExcerpt).toBe(
+      'Sigue descubriendo Pereira, Dosquebradas y el Eje Cafetero. Tu visita también ayuda a que nuestra región vuelva a ponerse en marcha.',
+    )
+  })
+
+  it('Coffee Hour cierra el hero y las novedades anteriores salen', () => {
+    const ids = blog.getHeroPosts('es').map((p) => p.id)
+    expect(ids[3]).toBe('coffee-hour')
+    for (const salido of ['coffee-tour-experience', 'fiestas-cosecha', 'negocios-verdes-carder']) {
+      expect(ids, salido).not.toContain(salido)
+    }
+  })
+})
+
+describe('artículo largo fuera de novedades', () => {
+  const ID = 'plan-familiar-cafetales'
+
+  it('no aparece en el hero y no lleva el tag novedades', () => {
+    expect(blog.getHeroPosts('es').map((p) => p.id)).not.toContain(ID)
+    const post = blog.getPost('es', 'plan-familiar-entre-cafetales-pereira')!
+    expect(post.tags).not.toContain('novedades')
+  })
+
+  it('conserva el titular completo aunque el title SEO sea corto', () => {
+    const post = blog.getPost('es', 'plan-familiar-entre-cafetales-pereira')!
+    expect(post.headline).toBe(
+      'Un día entre cafetales: un plan familiar para conocer el café en Pereira',
+    )
+    expect(post.title.length).toBeLessThanOrEqual(60)
   })
 })
 

@@ -13,7 +13,7 @@ const distDir = resolve(__dirname, '..', 'dist')
 const LANGS = ['es', 'en', 'fr']
 
 function routesToRender() {
-  const base = ['', '/historia', '/productos', '/blog']
+  const base = ['', '/historia', '/blog']
   const paths = []
   for (const lang of LANGS) {
     for (const b of base) paths.push(`/${lang}${b}`)

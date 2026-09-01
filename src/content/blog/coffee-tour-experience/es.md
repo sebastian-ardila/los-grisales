@@ -10,7 +10,6 @@ author: "Café Los Grisales"
 cover: /blog/coffee-tour-experience/cover.webp
 coverAlt: "Coffee Tour Experience de Café Los Grisales: una visitante con tazas de café entre los cafetales cerca de Pereira"
 tags: ["novedades", "Coffee Tour", "Pereira"]
-hero: 1
 heroEyebrow: "Experiencia"
 heroTitle: "Coffee Tour Experience"
 heroExcerpt: "Descubre el café de especialidad colombiano en su origen con una experiencia auténtica de finca cafetera en Pereira, Colombia."

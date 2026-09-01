@@ -79,6 +79,7 @@ export class MarkdownSource implements ContentSource {
           id,
           slug: String(a.slug),
           title: String(a.title ?? ''),
+          headline: a.headline ? String(a.headline) : undefined,
           description: String(a.description ?? ''),
           excerpt: String(a.excerpt ?? ''),
           keywords: toStringArray(a.keywords),

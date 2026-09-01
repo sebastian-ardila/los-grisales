@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import {
   Coffee,
   CoffeeBean,
@@ -283,8 +283,9 @@ export default function SpecialtyCoffeeSection() {
                 className="absolute inset-0 block h-full w-full object-contain"
               />
             </div>
-            <Link
-              to={`/${lang}/productos`}
+            <button
+              type="button"
+              onClick={() => goToAnchor('tienda')}
               style={{
                 backgroundColor: '#064947',
                 color: '#ffffff',
@@ -305,7 +306,7 @@ export default function SpecialtyCoffeeSection() {
                 weight="bold"
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
-            </Link>
+            </button>
           </div>
         </div>
       </div>

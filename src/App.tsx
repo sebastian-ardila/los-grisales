@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import { SedeProvider } from './context/SedeContext'
 import { TableProvider } from './context/TableContext'
@@ -7,10 +7,17 @@ import Layout from './components/layout/Layout'
 import LangRedirect from './components/layout/LangRedirect'
 import HomePage from './pages/HomePage'
 import HistoryPage from './pages/HistoryPage'
-import ProductsPage from './pages/ProductsPage'
 
 const BlogListPage = lazy(() => import('./pages/BlogListPage'))
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage'))
+
+/** La tienda vive ahora en la home: /:lang/productos conserva el enlace y
+ *  lleva a la sección #tienda. */
+function ProductsRedirect() {
+  const { lang } = useParams()
+  const target = lang === 'en' || lang === 'fr' ? lang : 'es'
+  return <Navigate to={`/${target}#tienda`} replace />
+}
 
 export default function App() {
   return (
@@ -26,7 +33,7 @@ export default function App() {
               <Route path="/:lang" element={<Layout />}>
                 <Route index element={<HomePage />} />
                 <Route path="historia" element={<HistoryPage />} />
-                <Route path="productos" element={<ProductsPage />} />
+                <Route path="productos" element={<ProductsRedirect />} />
                 <Route path="blog" element={<Suspense fallback={null}><BlogListPage /></Suspense>} />
                 <Route path="blog/:slug" element={<Suspense fallback={null}><BlogPostPage /></Suspense>} />
               </Route>

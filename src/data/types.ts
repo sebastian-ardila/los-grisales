@@ -48,6 +48,9 @@ export interface SedeConfig {
   schedule: DaySchedule[]
   tableCount: number
   isCoffeeTour?: boolean
+  /** Sede fuera de servicio: no se muestra en ninguna parte del sitio.
+   *  La configuración se conserva para no romper enlaces ni referencias. */
+  hidden?: boolean
   bookingApps?: BookingApp[]
 }
 

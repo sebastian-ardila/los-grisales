@@ -1,8 +1,12 @@
 import type { SedeConfig } from '../data/types'
 
 export const sedes: Record<string, SedeConfig> = {
+  // Cerrada temporalmente tras el terremoto del 10 de agosto de 2026: se
+  // mantiene la configuración (el número de WhatsApp es el mismo para toda la
+  // marca) pero `hidden` la saca de todas las vistas.
   'pereira-plaza': {
     id: 'pereira-plaza',
+    hidden: true,
     name: 'Los Grisales - CC Pereira Plaza',
     nameShort: 'Pereira Plaza',
     address: 'CC Pereira Plaza Local 209, Pereira',
@@ -72,6 +76,9 @@ export const sedes: Record<string, SedeConfig> = {
     ],
   },
 }
+
+/** Sedes que se muestran en el sitio, en el orden declarado. */
+export const visibleSedes = Object.values(sedes).filter((s) => !s.hidden)
 
 export function getSedeScheduleForDay(sedeId: string, dayOfWeek: number): { open: number; close: number } | null {
   if (sedeId === 'pereira-plaza') {

@@ -33,7 +33,7 @@ export default function BlogCard({ post, lang }: Props) {
           to={`/${lang}/blog/${post.slug}`}
           className="after:absolute after:inset-0 after:content-[''] transition-colors duration-200 focus:outline-none focus-visible:underline focus-visible:decoration-accent group-hover:text-brand-light"
         >
-          {post.title}
+          {post.headline ?? post.title}
         </Link>
       </h2>
 

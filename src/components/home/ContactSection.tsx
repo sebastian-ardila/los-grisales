@@ -59,7 +59,7 @@ export default function ContactSection() {
       phone,
       reason: selectedReason?.label || reason,
       message,
-      whatsappNumber: sedes['pereira-plaza'].whatsappNumber,
+      whatsappNumber: sedes['unicentro'].whatsappNumber,
     })
     window.open(url, '_blank')
   }

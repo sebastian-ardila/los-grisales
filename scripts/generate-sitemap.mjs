@@ -23,7 +23,6 @@ const today = new Date().toISOString().slice(0, 10)
 const ROUTES = [
   { path: '', priority: '1.0', changefreq: 'weekly' },
   { path: '/historia', priority: '0.8', changefreq: 'monthly' },
-  { path: '/productos', priority: '0.8', changefreq: 'weekly' },
   { path: '/blog', priority: '0.7', changefreq: 'weekly' },
 ]
 
