@@ -10,7 +10,6 @@ author: "Café Los Grisales"
 cover: /blog/una-taza-que-ayuda/cover.webp
 coverAlt: "Campaña Una taza que ayuda de Café Los Grisales: una libra de café y un americano de cortesía en Unicentro Pereira"
 tags: ["novedades", "Pereira"]
-hero: 2
 heroEyebrow: "Campaña"
 heroTitle: "Una taza que ayuda"
 heroExcerpt: "Compra una libra de nuestro café, recibe un americano y convierte tu visita en un aporte para nuestra ciudad."

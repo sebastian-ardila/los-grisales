@@ -10,7 +10,6 @@ author: "Café Los Grisales"
 cover: /blog/pereira-te-espera/cover.webp
 coverAlt: "Paisaje cafetero de Pereira y Dosquebradas: la región del Eje Cafetero que te espera con Café Los Grisales"
 tags: ["novedades", "Pereira"]
-hero: 3
 heroEyebrow: "Turismo"
 heroTitle: "Tu visita ayudará a nuestra ciudad"
 heroExcerpt: "Sigue descubriendo Pereira, Dosquebradas y el Eje Cafetero. Tu visita también ayuda a que nuestra región vuelva a ponerse en marcha."

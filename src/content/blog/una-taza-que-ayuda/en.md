@@ -10,7 +10,6 @@ author: "Café Los Grisales"
 cover: /blog/una-taza-que-ayuda/cover.webp
 coverAlt: "Café Los Grisales A cup that helps campaign: a pound of coffee and a complimentary americano at Unicentro Pereira"
 tags: ["novedades", "Pereira"]
-hero: 2
 heroEyebrow: "Campaign"
 heroTitle: "A cup that helps"
 heroExcerpt: "Buy a pound of our coffee, get an americano and turn your visit into a contribution to our city."

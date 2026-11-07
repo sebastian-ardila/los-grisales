@@ -3,14 +3,14 @@ import { blog } from './index'
 import type { Lang } from './types'
 
 const EXPECTED = {
-  es: ['cafe-de-especialidad-pereira', 'coffee-tour-en-pereira', 'cafe-en-unicentro-pereira', 'cafe-en-pereira-plaza', 'que-es-cafe-de-especialidad', 'sostenibilidad-negocios-verdes-carder', 'hablemos-de-cafe-unicentro-pereira', 'zona-mundialista-futbol-cafe', 'coffee-hour-martes-jueves', 'experiencia-coffee-tour', 'que-hacer-en-pereira-fiestas-de-la-cosecha', 'pausa-en-pereira-plaza', 'una-taza-que-ayuda', 'tu-visita-ayudara-a-nuestra-ciudad', 'plan-familiar-entre-cafetales-pereira'],
-  en: ['specialty-coffee-pereira', 'coffee-tour-in-pereira', 'coffee-at-unicentro-pereira', 'coffee-at-pereira-plaza', 'what-is-specialty-coffee', 'sustainable-coffee-carder', 'lets-talk-coffee-unicentro-pereira', 'world-cup-zone-football-coffee', 'coffee-hour-tuesday-thursday', 'coffee-tour-experience', 'what-to-do-in-pereira-harvest-festival', 'pause-at-pereira-plaza', 'a-cup-that-helps', 'your-visit-will-help-our-city', 'family-day-among-coffee-fields-pereira'],
-  fr: ['cafe-de-specialite-pereira', 'coffee-tour-a-pereira', 'cafe-a-unicentro-pereira', 'cafe-a-pereira-plaza', 'quest-ce-que-le-cafe-de-specialite', 'cafe-durable-carder', 'parlons-cafe-unicentro-pereira', 'zone-mondial-football-cafe', 'coffee-hour-mardi-jeudi', 'experience-coffee-tour', 'que-faire-a-pereira-fetes-de-la-recolte', 'pause-a-pereira-plaza', 'une-tasse-qui-aide', 'votre-visite-aidera-notre-ville', 'journee-entre-cafeiers-plan-famille-pereira'],
+  es: ['cafe-de-especialidad-pereira', 'coffee-tour-en-pereira', 'cafe-en-unicentro-pereira', 'cafe-en-pereira-plaza', 'que-es-cafe-de-especialidad', 'sostenibilidad-negocios-verdes-carder', 'hablemos-de-cafe-unicentro-pereira', 'zona-mundialista-futbol-cafe', 'coffee-hour-martes-jueves', 'experiencia-coffee-tour', 'que-hacer-en-pereira-fiestas-de-la-cosecha', 'pausa-en-pereira-plaza', 'una-taza-que-ayuda', 'tu-visita-ayudara-a-nuestra-ciudad', 'plan-familiar-entre-cafetales-pereira', 'natilla-de-cafe-y-bunuelos-navidad', 'cierre-de-ano-empresarial-finca-cafetera', 'kits-de-cafe-para-regalar-en-navidad'],
+  en: ['specialty-coffee-pereira', 'coffee-tour-in-pereira', 'coffee-at-unicentro-pereira', 'coffee-at-pereira-plaza', 'what-is-specialty-coffee', 'sustainable-coffee-carder', 'lets-talk-coffee-unicentro-pereira', 'world-cup-zone-football-coffee', 'coffee-hour-tuesday-thursday', 'coffee-tour-experience', 'what-to-do-in-pereira-harvest-festival', 'pause-at-pereira-plaza', 'a-cup-that-helps', 'your-visit-will-help-our-city', 'family-day-among-coffee-fields-pereira', 'coffee-natilla-and-bunuelos-christmas', 'corporate-year-end-coffee-farm', 'christmas-coffee-gift-kits'],
+  fr: ['cafe-de-specialite-pereira', 'coffee-tour-a-pereira', 'cafe-a-unicentro-pereira', 'cafe-a-pereira-plaza', 'quest-ce-que-le-cafe-de-specialite', 'cafe-durable-carder', 'parlons-cafe-unicentro-pereira', 'zone-mondial-football-cafe', 'coffee-hour-mardi-jeudi', 'experience-coffee-tour', 'que-faire-a-pereira-fetes-de-la-recolte', 'pause-a-pereira-plaza', 'une-tasse-qui-aide', 'votre-visite-aidera-notre-ville', 'journee-entre-cafeiers-plan-famille-pereira', 'natilla-au-cafe-et-bunuelos-noel', 'fin-d-annee-entreprise-ferme-cafeiere', 'coffrets-cafe-a-offrir-noel'],
 } as const
 
 describe('contenido real del blog', () => {
   for (const lang of ['es', 'en', 'fr'] as Lang[]) {
-    it(`${lang}: hay 15 posts con los slugs esperados`, () => {
+    it(`${lang}: hay 18 posts con los slugs esperados`, () => {
       const slugs = blog.getAllPosts(lang).map((p) => p.slug).sort()
       expect(slugs).toEqual([...EXPECTED[lang]].sort())
     })
@@ -51,7 +51,7 @@ describe('FAQ en el contenido real', () => {
 })
 
 describe('hero curado desde el contenido', () => {
-  const ESPERADO = ['pausa-pereira-plaza', 'una-taza-que-ayuda', 'pereira-te-espera', 'coffee-hour']
+  const ESPERADO = ['pausa-pereira-plaza', 'natilla-cafe-bunuelos', 'cierre-de-ano-empresas', 'kits-cafe-navidad']
 
   for (const lang of ['es', 'en', 'fr'] as Lang[]) {
     it(`${lang}: el hero muestra los 4 posts marcados en orden`, () => {
@@ -77,8 +77,8 @@ describe('hero curado desde el contenido', () => {
   })
 })
 
-describe('textos exactos de las tarjetas nuevas del hero', () => {
-  it('la primera tarjeta es el comunicado de Pereira Plaza', () => {
+describe('textos exactos de las tarjetas del hero', () => {
+  it('la primera tarjeta sigue siendo el comunicado de Pereira Plaza', () => {
     const [card] = blog.getHeroPosts('es')
     expect(card.id).toBe('pausa-pereira-plaza')
     expect(card.heroTitle).toBe('Seguimos aquí, gracias por acompañarnos.')
@@ -87,29 +87,38 @@ describe('textos exactos de las tarjetas nuevas del hero', () => {
     )
   })
 
-  it('la segunda tarjeta es la campaña Una taza que ayuda', () => {
+  it('la segunda tarjeta es la natilla de café y buñuelos', () => {
     const card = blog.getHeroPosts('es')[1]
-    expect(card.id).toBe('una-taza-que-ayuda')
-    expect(card.heroTitle).toBe('Una taza que ayuda')
+    expect(card.id).toBe('natilla-cafe-bunuelos')
+    expect(card.heroTitle).toBe('Una Navidad con sabor a café')
     expect(card.heroExcerpt).toBe(
-      'Compra una libra de nuestro café, recibe un americano y convierte tu visita en un aporte para nuestra ciudad.',
+      'Disfruta una combinación muy nuestra: natilla de café y buñuelos para reuniones familiares y eventos empresariales.',
     )
   })
 
-  it('la tercera tarjeta invita a seguir visitando la región', () => {
+  it('la tercera tarjeta es el cierre de año empresarial', () => {
     const card = blog.getHeroPosts('es')[2]
-    expect(card.id).toBe('pereira-te-espera')
-    expect(card.heroTitle).toBe('Tu visita ayudará a nuestra ciudad')
+    expect(card.id).toBe('cierre-de-ano-empresas')
+    expect(card.heroTitle).toBe('Un cierre de año diferente')
     expect(card.heroExcerpt).toBe(
-      'Sigue descubriendo Pereira, Dosquebradas y el Eje Cafetero. Tu visita también ayuda a que nuestra región vuelva a ponerse en marcha.',
+      'Despide el año con tu equipo de trabajo en una experiencia entre cafetales y sabores colombianos.',
     )
   })
 
-  it('Coffee Hour cierra el hero y las novedades anteriores salen', () => {
+  it('la cuarta tarjeta son los kits de Navidad', () => {
+    const card = blog.getHeroPosts('es')[3]
+    expect(card.id).toBe('kits-cafe-navidad')
+    expect(card.heroTitle).toBe('Regala momentos, regala café')
+    expect(card.heroExcerpt).toBe(
+      'Sorprende esta Navidad con kits de café de especialidad, ideales para aguinaldos, regalos empresariales y detalles para quienes más quieres.',
+    )
+  })
+
+  it('las novedades anteriores salen del hero y conservan su publicación en el blog', () => {
     const ids = blog.getHeroPosts('es').map((p) => p.id)
-    expect(ids[3]).toBe('coffee-hour')
-    for (const salido of ['coffee-tour-experience', 'fiestas-cosecha', 'negocios-verdes-carder']) {
+    for (const salido of ['una-taza-que-ayuda', 'pereira-te-espera', 'coffee-hour']) {
       expect(ids, salido).not.toContain(salido)
+      expect(blog.getAllPosts('es').map((p) => p.id), salido).toContain(salido)
     }
   })
 })
@@ -130,6 +139,21 @@ describe('artículo largo fuera de novedades', () => {
     )
     expect(post.title.length).toBeLessThanOrEqual(60)
   })
+})
+
+describe('novedades de Navidad', () => {
+  const NUEVOS = ['natilla-cafe-bunuelos', 'cierre-de-ano-empresas', 'kits-cafe-navidad']
+
+  for (const lang of ['es', 'en', 'fr'] as Lang[]) {
+    it(`${lang}: están publicadas como novedades con su portada WebP`, () => {
+      const posts = blog.getAllPosts(lang).filter((p) => NUEVOS.includes(p.id))
+      expect(posts.map((p) => p.id).sort()).toEqual([...NUEVOS].sort())
+      for (const p of posts) {
+        expect(p.tags, p.id).toContain('novedades')
+        expect(p.cover, p.id).toBe(`/blog/${p.id}/cover.webp`)
+      }
+    })
+  }
 })
 
 describe('portadas aptas para compartir', () => {

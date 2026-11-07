@@ -10,7 +10,6 @@ author: "Café Los Grisales"
 cover: /blog/pereira-te-espera/cover.webp
 coverAlt: "Paysage caféier de Pereira et Dosquebradas : la région du café qui vous attend avec Café Los Grisales"
 tags: ["novedades", "Pereira"]
-hero: 3
 heroEyebrow: "Tourisme"
 heroTitle: "Votre visite aidera notre ville"
 heroExcerpt: "Continuez à découvrir Pereira, Dosquebradas et la région du café. Votre visite aide aussi notre région à repartir."
